@@ -1,0 +1,1 @@
+select l.id from Weather l inner join Weather r on (l.recordDate = DATE_ADD(r.recordDate, INTERVAL 1 DAY)) where l.temperature > r.temperature
