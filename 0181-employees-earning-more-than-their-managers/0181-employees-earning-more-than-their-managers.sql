@@ -1,0 +1,1 @@
+select l.name Employee from Employee l inner join Employee r on (l.managerId = r.id) where l.salary > r.salary
