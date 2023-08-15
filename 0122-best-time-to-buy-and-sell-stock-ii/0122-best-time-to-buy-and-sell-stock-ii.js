@@ -2,27 +2,17 @@
  * @param {number[]} prices
  * @return {number}
  */
-var maxProfit = function(prices) {
+const maxProfit = (prices) => {
   let profit = 0;
-  let owning = false;
-  let price = 0;
+  let price = undefined;
   for (let i = 0; i < prices.length; ++i) {
-    if (owning) {
-      if (prices[i + 1] === undefined || prices[i] > prices[i + 1]) {
-        // sell
-        owning = false;
-        profit += prices[i] - price;
-      } else {
-        // do nothing
-      }
-    } else {
-      if (prices[i + 1] === undefined || prices[i] > prices[i + 1]) {
-        // do nothing
-      } else {
-        // buy
-        owning = true;
+    if (price === undefined) {
+      if (prices[i + 1] !== undefined && prices[i] <= prices[i + 1]) {
         price = prices[i];
       }
+    } else if (prices[i + 1] === undefined || prices[i] > prices[i + 1]) {
+      profit += prices[i] - price;
+      price = undefined;
     }
   }
   return profit;
