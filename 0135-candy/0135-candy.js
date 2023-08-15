@@ -2,12 +2,11 @@
  * @param {number[]} ratings
  * @return {number}
  */
-var candy = function(children) {
-  const candys = [], rating = [];
+var candy = function(rating) {
+  const candys = [], children = [];
 
-  for (const i in children) {
+  for (const i in rating) {
     candys[i] = 1;
-    rating[i] = children[i];
     children[i] = i;
   }
 
