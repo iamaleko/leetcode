@@ -3,8 +3,7 @@
  * @return {number}
  */
 var candy = function(children) {
-  const candys = {};
-  const rating = {};
+  const candys = [], rating = [];
 
   for (const i in children) {
     candys[i] = 1;
