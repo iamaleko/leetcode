@@ -5,25 +5,27 @@
  */
 var fullJustify = function(words, max) {
     const lines = [[]];
-    let length = 0;
+    let length = 0, last = 0;
     for (const word of words) {
-      if (length + word.length + lines[lines.length - 1].length > max) {
+      last = lines.length - 1;
+      if (length + word.length + lines[last].length > max) {
         let spaces = max - length;
         let pointer = 0;
         while (spaces--) {
-          lines[lines.length - 1][pointer] += ' ';
-          pointer = pointer >= lines[lines.length - 1].length - 2 ? 0 : pointer + 1;
+          lines[last][pointer] += ' ';
+          pointer = pointer >= lines[last].length - 2 ? 0 : pointer + 1;
         }
-        lines[lines.length - 1] = lines[lines.length - 1].join('');
+        lines[last] = lines[last].join('');
 
         lines.push([]);
         length = 0;
+        ++last;
       }
-      lines[lines.length - 1].push(word);
+      lines[last].push(word);
       length += word.length;
     }
 
-    lines[lines.length - 1] = lines[lines.length - 1].join(' ').padEnd(max, ' ');
+    lines[last] = lines[last].join(' ').padEnd(max, ' ');
 
     return lines;
 };
