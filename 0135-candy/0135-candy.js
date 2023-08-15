@@ -2,12 +2,12 @@
  * @param {number[]} ratings
  * @return {number}
  */
-var candy = function(rating) {
+const candy = (rating) => {
   const candys = [], children = [];
 
   for (const i in rating) {
     candys[i] = 1;
-    children[i] = i;
+    children[i] = +i;
   }
 
   children.sort((a, b) => rating[a] - rating[b]);
@@ -16,7 +16,8 @@ var candy = function(rating) {
 
   for (const i of children) {
     if (rating[i - 1] !== undefined && rating[i] > rating[i - 1]) candys[i] = candys[i - 1] + 1;
-    if (rating[+i + 1] !== undefined && rating[i] > rating[+i + 1]) candys[i] = Math.max(candys[+i + 1] + 1, candys[i]);
+    if (rating[i + 1] !== undefined && rating[i] > rating[i + 1]) candys[i] = Math.max(candys[i + 1] + 1, candys[i]);
+
     candy += candys[i];
   }
 
