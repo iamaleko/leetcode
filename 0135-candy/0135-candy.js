@@ -15,7 +15,7 @@ var candy = function(rating) {
   let candy = 0;
 
   for (const i of children) {
-    if (rating[i - 1] !== undefined && rating[i] > rating[i - 1]) candys[i] = Math.max(candys[i - 1] + 1, candys[i]);
+    if (rating[i - 1] !== undefined && rating[i] > rating[i - 1]) candys[i] = candys[i - 1] + 1;
     if (rating[+i + 1] !== undefined && rating[i] > rating[+i + 1]) candys[i] = Math.max(candys[+i + 1] + 1, candys[i]);
     candy += candys[i];
   }
