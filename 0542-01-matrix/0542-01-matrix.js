@@ -92,7 +92,8 @@
 // };
 
 const updateMatrix = (mat) => {
-  const queue = [];
+  const queuex = [];
+  const queuey = [];
   const my = mat.length - 1;
   const mx = mat[0].length - 1;
   const max = (my + 1) * (mx + 1);
@@ -100,34 +101,40 @@ const updateMatrix = (mat) => {
   for (const y in mat) {
     for (const x in mat[y]) {
       if (mat[y][x] === 0) {
-        queue.push([+x, +y]);
+        queuex.push(+x);
+        queuey.push(+y);
       } else {
         mat[y][x] = max;
       }
     }
   }
 
-  while (queue.length) {
-    const [x, y] = queue.shift();
+  while (queuex.length) {
+    const x = queuex.shift();
+    const y = queuey.shift();
 
     if (x > 0 && mat[y][x - 1] > mat[y][x]) {
       mat[y][x - 1] = mat[y][x] + 1;
-      queue.push([x - 1, y]);
+      queuex.push(x - 1);
+      queuey.push(y);
     }
 
     if (y > 0 && mat[y - 1][x] > mat[y][x]) {
       mat[y - 1][x] = mat[y][x] + 1;
-      queue.push([x, y - 1]);
+      queuex.push(x);
+      queuey.push(y - 1);
     }
 
     if (x < mx && mat[y][x + 1] > mat[y][x]) {
       mat[y][x + 1] = mat[y][x] + 1;
-      queue.push([x + 1, y]);
+      queuex.push(x + 1);
+      queuey.push(y);
     }
 
     if (y < my && mat[y + 1][x] > mat[y][x]) {
       mat[y + 1][x] = mat[y][x] + 1;
-      queue.push([x, y + 1]);
+      queuex.push(x);
+      queuey.push(y + 1);
     }
   }
 
