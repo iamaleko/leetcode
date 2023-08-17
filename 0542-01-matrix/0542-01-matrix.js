@@ -93,13 +93,16 @@
 
 const updateMatrix = (mat) => {
   const queue = [];
+  const my = mat.length - 1;
+  const mx = mat[0].length - 1;
+  const max = (my + 1) * (mx + 1);
 
   for (const y in mat) {
     for (const x in mat[y]) {
       if (mat[y][x] === 0) {
         queue.push([+x, +y]);
       } else {
-        mat[y][x] = Number.MAX_VALUE;
+        mat[y][x] = max;
       }
     }
   }
@@ -117,12 +120,12 @@ const updateMatrix = (mat) => {
       queue.push([x, y - 1]);
     }
 
-    if (x < mat[y].length - 1 && mat[y][x + 1] > mat[y][x]) {
+    if (x < mx && mat[y][x + 1] > mat[y][x]) {
       mat[y][x + 1] = mat[y][x] + 1;
       queue.push([x + 1, y]);
     }
 
-    if (y < mat.length - 1 && mat[y + 1][x] > mat[y][x]) {
+    if (y < my && mat[y + 1][x] > mat[y][x]) {
       mat[y + 1][x] = mat[y][x] + 1;
       queue.push([x, y + 1]);
     }
