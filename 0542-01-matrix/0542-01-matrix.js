@@ -37,7 +37,7 @@ const updateMatrix = (mat) => {
 
   while (queue.length) {
     const [x, y, s] = queue.shift();
-    if (out[y][x] === undefined || out[y][x] > s) {
+    if (out[y][x] === undefined) {
       out[y][x] = s;
       if (x > 0)                 queue.push([x - 1, y, s + 1])
       if (x < mat[y].length - 1) queue.push([x + 1, y, s + 1])
