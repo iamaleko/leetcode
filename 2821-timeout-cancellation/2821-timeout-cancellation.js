@@ -1,0 +1,1 @@
+const cancellable = (fn, args, t, i) => (i = setTimeout(() => fn(...args), t), () => clearTimeout(i));
