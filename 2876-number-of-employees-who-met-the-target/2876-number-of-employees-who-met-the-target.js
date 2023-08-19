@@ -1,0 +1,1 @@
+const numberOfEmployeesWhoMetTarget = (hours, target) => hours.filter((time) => time >= target).length;
