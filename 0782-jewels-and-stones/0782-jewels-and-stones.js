@@ -1,0 +1,1 @@
+const numJewelsInStones = (jewels, stones) => stones.replace(new RegExp(`[^${jewels}]`, 'g'), '').length;
