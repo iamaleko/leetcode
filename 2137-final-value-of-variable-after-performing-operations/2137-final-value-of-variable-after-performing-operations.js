@@ -1,0 +1,1 @@
+const finalValueAfterOperations = op => op.reduce((a, op) => op[1] === '+' ? ++a : --a, 0);
