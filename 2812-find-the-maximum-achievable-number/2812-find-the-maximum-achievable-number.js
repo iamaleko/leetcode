@@ -3,6 +3,4 @@
  * @param {number} t
  * @return {number}
  */
-var theMaximumAchievableX = function(num, t) {
-    return num + t * 2;
-};
+const theMaximumAchievableX = (num, t) => num + t * 2;
