@@ -1,1 +1,2 @@
-const numberOfEmployeesWhoMetTarget = (hours, target) => hours.filter((time) => time >= target).length;
+// const numberOfEmployeesWhoMetTarget = (hours, target) => hours.filter((time) => time >= target).length;
+const numberOfEmployeesWhoMetTarget = (hours, target) => hours.reduce((a, time) => time >= target ? ++a : a, 0);
