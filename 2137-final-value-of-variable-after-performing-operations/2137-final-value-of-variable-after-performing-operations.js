@@ -1,5 +1,1 @@
-const finalValueAfterOperations = ops => {
-  let x = 0;
-  for (const op of ops) op === '++X' || op === 'X++' ? ++x : --x;
-  return x;
-}
+const finalValueAfterOperations = op => op.reduce((a, op) => op === '++X' || op === 'X++' ? ++a : --a, 0);
