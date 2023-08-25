@@ -2,26 +2,18 @@ const countNodes = (root) => {
   // empty tree
   if (!root) return 0;
 
-  let depth = 0, l = root, r = root;
-  while (l.left || r.right) {
-    if (l.left) {
+  let depth = 0, node = root;
+  while (node.left) {
+    if (node.left) {
       ++depth;
-      l = l.left;
-    }
-    if (r.right) {
-      ++depth;
-      r = r.right;
+      node = node.left;
     }
   }
 
-  // perfect tree
-  if (depth % 2 === 0) return 2 ** (depth / 2 + 1) - 1;
-
-  // complete tree
-  depth = (depth + 1) / 2;
+  // complete or perfect tree
   let size = 2 ** depth - 1;
-  while (root.left && root.right) {
-    let node = root.left;
+  while (root) {
+    node = root.left;
     let level = 0;
     while (node) {
       ++level;
@@ -36,5 +28,5 @@ const countNodes = (root) => {
       --depth;
     }
   }
-  return root.left ? size + 1 : size;
+  return size;
 };
