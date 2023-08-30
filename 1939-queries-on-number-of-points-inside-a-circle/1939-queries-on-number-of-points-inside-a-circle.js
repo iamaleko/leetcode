@@ -14,7 +14,7 @@ const countPoints = (points, queries) => {
       const key = getKey(px,py,qx,qy,qr);
       let cache = map.get(key);
       if (cache === undefined) {
-        cache = Math.sqrt(Math.pow(qx - px, 2) + Math.pow(qy - py, 2)) <= qr;
+        cache = py < qy - qr || py > qy + qr || px < qx - qr || px > qx + qr ? false : Math.sqrt(Math.pow(qx - px, 2) + Math.pow(qy - py, 2)) <= qr;
         map.set(key, cache);
       }
       if (cache) ++answers[i]
