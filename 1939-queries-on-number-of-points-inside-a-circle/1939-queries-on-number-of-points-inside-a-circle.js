@@ -5,18 +5,16 @@
  */
 const countPoints = (points, queries) => {
   const answers = [];
-  // const map = new Map();
-  // const getKey = (px,py,qx,qy,qr) => px+','+py+','+qx+','+qy+','+qr;
+  const map = new Map();
   for (const i in queries) {
     const [qx,qy,qr] = queries[i];
     answers[i] = 0;
     for (const [px,py] of points) {
-      // const key = getKey(px,py,qx,qy,qr);
-      // let cache = map.get(key);
-      // if (cache === undefined) {
-        const cache = py < qy - qr || py > qy + qr || px < qx - qr || px > qx + qr ? false : Math.sqrt(Math.pow(qx - px, 2) + Math.pow(qy - py, 2)) <= qr;
-        // map.set(key, cache);
-      // }
+      let cache = map.get(px+','+py+','+qx+','+qy+','+qr);
+      if (cache === undefined) {
+        cache = py < qy - qr || py > qy + qr || px < qx - qr || px > qx + qr ? false : Math.sqrt(Math.pow(qx - px, 2) + Math.pow(qy - py, 2)) <= qr;
+        map.set(px+','+py+','+qx+','+qy+','+qr, cache);
+      }
       if (cache) ++answers[i]
     }
   }
