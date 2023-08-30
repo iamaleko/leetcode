@@ -4,7 +4,6 @@
  * @return {number[]}
  */
 const countPoints = (points, queries) => {
-  let count;
   for (const i in queries) {
     const [qx,qy,qr] = queries[i];
     queries[i] = 0;
