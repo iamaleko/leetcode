@@ -4,14 +4,14 @@
  * @return {number[]}
  */
 const countPoints = (points, queries) => {
-  const answers = [];
   let count;
-  for (const [qx,qy,qr] of queries) {
+  for (const i in queries) {
     count = 0;
+    const [qx,qy,qr] = queries[i];
     for (const [px,py] of points) {
       if ((qx - px) * (qx - px) + (qy - py) * (qy - py) <= qr * qr) ++count;
     }
-    answers.push(count)
+    queries[i] = count;
   }
-  return answers;
+  return queries;
 };
