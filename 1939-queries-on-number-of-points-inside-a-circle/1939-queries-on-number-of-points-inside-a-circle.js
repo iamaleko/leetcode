@@ -6,12 +6,11 @@
 const countPoints = (points, queries) => {
   let count;
   for (const i in queries) {
-    count = 0;
     const [qx,qy,qr] = queries[i];
+    queries[i] = 0;
     for (const [px,py] of points) {
-      if ((qx - px) * (qx - px) + (qy - py) * (qy - py) <= qr * qr) ++count;
+      if ((qx - px) * (qx - px) + (qy - py) * (qy - py) <= qr * qr) ++queries[i];
     }
-    queries[i] = count;
   }
   return queries;
 };
