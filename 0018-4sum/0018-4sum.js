@@ -12,7 +12,7 @@ const fourSum = function(nums, target) {
       for (let c = b + 1; c < nums.length - 1; ++c) {
         for (let d = c + 1; d < nums.length; ++d) {
           if (nums[a] + nums[b] + nums[c] + nums[d] > target) {
-            // if (d - a === 3) break all;
+            if (d - a === 3) break all;
             break;
           }
           if (nums[a] + nums[b] + nums[c] + nums[d] === target) {
