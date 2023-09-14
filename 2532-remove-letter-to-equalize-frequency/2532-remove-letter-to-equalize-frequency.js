@@ -19,10 +19,8 @@ const equalFrequency = function(word) {
       freq[map[char]] = 1;
     }
   }
+  
   const entries = Object.entries(freq);
-
-  console.log(entries);
-
   if (
     entries.length === 1 &&
     (entries[0][0] === '1' || entries[0][1] === 1)
