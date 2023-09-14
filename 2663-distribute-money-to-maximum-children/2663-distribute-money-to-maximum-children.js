@@ -7,7 +7,6 @@ const distMoney = (money, children) => {
   if (money < children) return -1;
   if (money - children < 7) return 0;
   let res = Math.min(Math.floor(money / 8), children);
-  // console.log(money - 8 * res, children - res)
   while (
     money - 8 * res > 0 && children - res === 0 ||
     money - 8 * res < children - res ||
