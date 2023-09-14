@@ -19,7 +19,7 @@ const equalFrequency = function(word) {
       freq[map[char]] = 1;
     }
   }
-  
+
   const entries = Object.entries(freq);
   if (
     entries.length === 1 &&
@@ -28,12 +28,9 @@ const equalFrequency = function(word) {
   if (
     entries.length === 2 && (
       (entries[0][0] - entries[1][0] === 1 && entries[0][1] === 1) ||
-      (entries[1][0] - entries[0][0] === 1 && entries[1][1] === 1)
+      (entries[1][0] - entries[0][0] === 1 && entries[1][1] === 1) ||
+      (entries[0][0] === '1' && entries[0][1] === 1 || entries[1][0] === '1' && entries[1][1] === 1)
     )
-  ) return true;
-  if (
-    entries.length === 2 && 
-    (entries[0][0] === '1' && entries[0][1] === 1 || entries[1][0] === '1' && entries[1][1] === 1)
   ) return true;
 
   return false;
