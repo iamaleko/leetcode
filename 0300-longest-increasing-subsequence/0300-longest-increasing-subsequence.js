@@ -3,18 +3,19 @@
  * @return {number}
  */
 const lengthOfLIS = (nums) => {
-  const sub = [];
+  let end = 0;
   for (const num of nums) {
-    let l = 0, r = sub.length - 1, c;
+    let l = 0, r = end, c;
     while (l <= r) {
       c = l + r >>> 1;
-      if (sub[c] >= num) {
+      if (nums[c] >= num) {
         r = c - 1;
       } else {
         l = c + 1;
       }
     }
-    sub[l] = num;
+    nums[l] = num;
+    if (end < l) end = l;
   }
-  return sub.length;
+  return end + 1;
 };
