@@ -6,6 +6,6 @@ class NumArray {
     }
   }
   sumRange(l, r) {
-    return this.#nums[++r] - this.#nums[l];
+    return this.#nums[r + 1] - this.#nums[l];
   }
 }
