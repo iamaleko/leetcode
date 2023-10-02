@@ -26,7 +26,6 @@ const longestValidParentheses = (s) => {
     }
   }
 
-  console.log(intervals);
   let max = 0;
   for ([from, to] of intervals) {
     if (max < to - from + 1) max = to - from + 1;
