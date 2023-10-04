@@ -8,7 +8,7 @@ const cellsInRange = (s) => {
   while (x1 <= x2) {
     let y1 = s[1];
     while (y1 <= y2) {
-      res.push(`${String.fromCharCode(x1)}${y1}`);
+      res.push(String.fromCharCode(x1) + y1);
       ++y1;
     }
     ++x1;
