@@ -10,7 +10,6 @@ const isValidSudoku = function(board) {
       if (val !== '.') {
         const box = Math.floor(row / 3) * 3 + Math.floor(col / 3) + 1;
         if (
-          val < 1 || val > 9 || val % 1 > 0 ||
           set.has(row+1<<4|val) ||
           set.has(col+1<<8|val) ||
           set.has(box<<12|val)
