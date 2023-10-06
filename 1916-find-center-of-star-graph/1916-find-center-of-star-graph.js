@@ -14,6 +14,5 @@ const findCenter = (edges) => {
       } 
     }
   }
-  console.log(map, max, out);
   return out;
 };
