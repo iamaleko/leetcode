@@ -12,9 +12,6 @@ var timeLimit = function(fn, t) {
       fn(...args)
         .then(resolve)
         .catch(reject)
-        .finally(() => {
-          clearTimeout(timeout);
-        });
     });      
   }
 };
