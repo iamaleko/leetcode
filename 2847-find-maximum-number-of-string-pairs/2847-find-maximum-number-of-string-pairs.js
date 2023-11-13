@@ -3,13 +3,13 @@
  * @return {number}
  */
 var maximumNumberOfStringPairs = function(words) {
-  const map = {};
+  const set = new Set();
   let cnt = 0;
   for (const i in words) {
-    if (words[i] in map) {
+    if (set.has(words[i])) {
       ++cnt;
     } else {
-      map[words[i].split('').reverse().join('')] = i;
+      set.add(words[i].split('').reverse().join(''));
     }
   }
   return cnt;
