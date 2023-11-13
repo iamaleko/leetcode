@@ -5,11 +5,11 @@
 var maximumNumberOfStringPairs = function(words) {
   const set = new Set();
   let cnt = 0;
-  for (const i in words) {
-    if (set.has(words[i])) {
+  for (const word of words) {
+    if (set.has(word)) {
       ++cnt;
     } else {
-      set.add(words[i].split('').reverse().join(''));
+      set.add(word.split('').reverse().join(''));
     }
   }
   return cnt;
