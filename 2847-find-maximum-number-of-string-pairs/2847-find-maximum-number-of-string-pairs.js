@@ -9,7 +9,7 @@ var maximumNumberOfStringPairs = function(words) {
     if (set.has(word)) {
       ++cnt;
     } else {
-      set.add(word.split('').reverse().join(''));
+      set.add(word[1] + word[0]);
     }
   }
   return cnt;
