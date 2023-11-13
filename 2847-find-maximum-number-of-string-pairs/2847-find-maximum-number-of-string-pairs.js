@@ -6,13 +6,11 @@ var maximumNumberOfStringPairs = function(words) {
   const map = {};
   let cnt = 0;
   for (const i in words) {
-    const word = words[i].split('').reverse().join('');
-    map[word] = i;
-  }
-  for (const i in words) {
-    if (words[i] in map && map[words[i]] !== i) {
+    if (words[i] in map) {
       ++cnt;
+    } else {
+      map[words[i].split('').reverse().join('')] = i;
     }
   }
-  return cnt / 2;
+  return cnt;
 };
