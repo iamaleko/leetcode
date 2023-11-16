@@ -36,7 +36,7 @@ var numBusesToDestination = function(routes, source, target) {
 
       for (const _joint of graph.get(stop)) {
         const _val = checked.get(_joint);
-        if (!_val || _val > val + 1) {
+        if (!_val/* || _val > val + 1*/) {
           queue.push(_joint);
           checked.set(_joint, val + 1);
         }
