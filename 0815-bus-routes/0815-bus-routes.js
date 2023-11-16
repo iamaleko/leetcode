@@ -20,25 +20,23 @@ var numBusesToDestination = function(routes, source, target) {
   }
   
   const queue = [];
-  const checked = new Map();
+  const checked = new Set();
 
   for (const joint of graph.get(source)) {
-    queue.push(joint);
-    checked.set(joint, 1);
+    queue.push([joint, 1]);
+    checked.add(joint);
   }
 
   while (queue.length) {
-    const joint = queue.shift();
-    const val = checked.get(joint);
+    const [joint, val] = queue.shift();
 
     for (const stop of joint) {
       if (stop === target) return val;
 
       for (const _joint of graph.get(stop)) {
-        const _val = checked.get(_joint);
-        if (!_val/* || _val > val + 1*/) {
-          queue.push(_joint);
-          checked.set(_joint, val + 1);
+        if (!checked.has(_joint)) {
+          queue.push([_joint, val + 1]);
+          checked.add(_joint);
         }
       }
     }
