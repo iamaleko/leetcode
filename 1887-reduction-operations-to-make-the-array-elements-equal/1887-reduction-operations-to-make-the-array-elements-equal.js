@@ -4,11 +4,23 @@ const reductionOperations = (nums) => {
   
   // if elements differ
   nums.sort((a,b) => b - a);
-  let ops = 0;
-  for (let i = 1; i < nums.length; ++i) {
-    if (nums[i] !== nums[i - 1]) {
-      ops += i;
+  
+  const bin = (t, l, r) => {
+    while (l < r) {
+      const c = (l + r) / 2 | 0;
+      if (nums[c] === t) {
+        l = c + 1;
+      } else {
+        r = c;
+      }
     }
+    return l;
   }
+  
+  let ops = 0, l = 0, r = nums.length - 1;
+  while (nums[l] !== nums[r]) {
+    ops += l = bin(nums[l], l, r);
+  }
+  
   return ops;
 };
