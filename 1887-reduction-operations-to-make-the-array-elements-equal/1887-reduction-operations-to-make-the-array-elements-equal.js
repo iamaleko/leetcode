@@ -10,14 +10,14 @@ const reductionOperations = (nums) => {
     if (l < r && nums[l] > nums[l + 1]) {
       ++l;
     } else {
-    while (l < r) {
-      c = (l + r) / 2 | 0;
-      if (nums[c] === t) {
-        l = c + 1;
-      } else {
-        r = c;
+      while (l < r) {
+        c = (l + r) / 2 | 0;
+        if (nums[c] === t) {
+          l = c + 1;
+        } else {
+          r = c;
+        }
       }
-    }
     }
     ops += l;
     t = nums[l];
