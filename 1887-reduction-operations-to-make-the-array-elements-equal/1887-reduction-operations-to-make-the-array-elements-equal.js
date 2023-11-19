@@ -7,7 +7,7 @@ const reductionOperations = (nums) => {
   
   if (nums[l] === nums[r]) return 0;
   
-  if (nums.length < 10000) {
+  if (nums.length < 5000) {
     for (let i = 1; i < nums.length; ++i) {
       if (nums[i] !== nums[i - 1]) {
         ops += i;
