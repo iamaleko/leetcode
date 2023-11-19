@@ -7,6 +7,9 @@ const reductionOperations = (nums) => {
   
   let c, t = nums[l];
   while (t !== nums[r]) {
+    if (l < r && nums[l] > nums[l + 1]) {
+      ++l;
+    } else {
     while (l < r) {
       c = (l + r) / 2 | 0;
       if (nums[c] === t) {
@@ -14,6 +17,7 @@ const reductionOperations = (nums) => {
       } else {
         r = c;
       }
+    }
     }
     ops += l;
     t = nums[l];
