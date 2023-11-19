@@ -1,22 +1,26 @@
 const reductionOperations = (nums) => {
   nums.sort((a,b) => b - a);
   
-  let ops = 0, l = 0, r = nums.length - 1, a, b, c;
+  let ops = 0,
+      l = 0,
+      r = nums.length - 1,
+      t = nums[l],
+      c;
   
-  if (nums[l] === nums[r]) return 0;
+  if (t === nums[r]) return 0;
   
-  while (nums[l] !== nums[r]) {
-    a = nums[l];
-    b = r;
-    while (l < b) {
-      c = (l + b) / 2 | 0;
-      if (nums[c] === a) {
+  while (t !== nums[r]) {
+    while (l < r) {
+      c = (l + r) / 2 | 0;
+      if (nums[c] === t) {
         l = c + 1;
       } else {
-        b = c;
+        r = c;
       }
     }
     ops += l;
+    t = nums[l];
+    r = nums.length - 1;
   }
   
   return ops;
