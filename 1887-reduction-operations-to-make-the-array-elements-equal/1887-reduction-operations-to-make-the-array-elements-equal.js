@@ -3,25 +3,29 @@ const reductionOperations = (nums) => {
   
   let ops = 0, l = 0, r = nums.length - 1;
   
+  // edge case
   if (nums[l] === nums[r]) return 0;
   
+  // search
   let c, t = nums[l];
   while (t !== nums[r]) {
-    if (l < r && nums[l] > nums[l + 1]) {
-      ++l;
+    if (nums[l] > nums[l + 1]) {
+      // edge case
+      t = nums[++l];
+      ops += l;
     } else {
+      // binsearch
       while (l < r) {
-        c = (l + r) / 2 | 0;
-        if (nums[c] === t) {
+        if (nums[c = l + r >>> 1] === t) {
           l = c + 1;
         } else {
           r = c;
         }
       }
+      ops += l;
+      t = nums[l];
+      r = nums.length - 1;
     }
-    ops += l;
-    t = nums[l];
-    r = nums.length - 1;
   } 
   
   return ops;
