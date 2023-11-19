@@ -1,6 +1,6 @@
 const reductionOperations = (nums) => {
   // if all elements already the same
-  if (new Set(nums).size === 1) return 0;
+  // if (new Set(nums).size === 1) return 0;
   
   // if elements differ
   nums.sort((a,b) => b - a);
