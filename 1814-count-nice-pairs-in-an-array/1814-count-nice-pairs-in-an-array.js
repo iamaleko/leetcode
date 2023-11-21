@@ -16,8 +16,8 @@ const countNicePairs = (nums) => {
   };
   
   let pairs = 0, count, diff;
-  for (const i in nums) {
-    diff = nums[i] - rev(nums[i]);
+  for (const num of nums) {
+    diff = num - rev(num);
     count = map.get(diff) || 0;
     if (count) {
       pairs += count;
