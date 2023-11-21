@@ -3,7 +3,7 @@
  * @return {number}
  */
 const countNicePairs = (nums) => {
-  const map = {};
+  const map = new Map();
   
   const rev = (num) => {
     res = 0;
@@ -15,15 +15,14 @@ const countNicePairs = (nums) => {
     return res;
   };
   
-  let pairs = 0;
+  let pairs = 0, count, diff;
   for (const i in nums) {
-    const diff = nums[i] - rev(nums[i]);
-    if (diff in map) {
-      pairs += map[diff];
-      ++map[diff];
-    } else {
-      map[diff] = 1;
+    diff = nums[i] - rev(nums[i]);
+    count = map.get(diff) || 0;
+    if (count) {
+      pairs += count;
     }
+    map.set(diff, count + 1);
   }
   
   return pairs % 1000000007;
