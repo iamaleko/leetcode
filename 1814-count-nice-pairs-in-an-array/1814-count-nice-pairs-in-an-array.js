@@ -2,7 +2,8 @@
  * @param {number[]} nums
  * @return {number}
  */
-const countNicePairs = (nums, pairs = 0, diff, rev, num, count, map = new Map()) => {
+const countNicePairs = (nums) => {
+  let pairs = 0, diff, rev, num, count, map = new Map();
   for (num of nums) {
     diff = num;
     rev = 0;
