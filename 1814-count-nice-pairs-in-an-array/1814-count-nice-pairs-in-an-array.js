@@ -16,7 +16,7 @@ const countNicePairs = (nums) => {
     // }
     // diff -= rev;
     
-    while (num) diff -= ((num % 10 | 0) * 10 ** (Math.log10((num = num / 10 | 0) * 10) | 0));
+    while (num >= 1) diff -= ((num % 10 | 0) * 10 ** (1 + Math.log10((num = num / 10)) | 0));
     
     count = map.get(diff) | 0;
     pairs += count;
