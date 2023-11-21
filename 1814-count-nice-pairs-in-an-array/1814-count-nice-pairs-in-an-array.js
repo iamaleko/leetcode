@@ -4,7 +4,9 @@
  */
 const countNicePairs = (nums) => {
   let pairs = 0, diff, rev, num, count, map = new Map();
-  for (num of nums) {
+  //for (num of nums) {
+  for (let i = 0; i < nums.length; ++i) {
+    num = nums[i];
     diff = num;
     rev = 0;
     
