@@ -15,7 +15,7 @@ const knightDialer = (n) => {
     '8': ['1','3'],
     '9': ['4','2'],
   };
-  let curr = {}, prev = {
+  let sum = 0, key, val, curr = {}, prev = {
     '0': 1,
     '1': 1,
     '2': 1,
@@ -29,8 +29,8 @@ const knightDialer = (n) => {
   }
   
   while (--n > 0) {
-    for (const key in prev) {
-      for (const val of map[key]) {
+    for (key in prev) {
+      for (val of map[key]) {
         curr[val] = curr[val] ? (curr[val] + prev[key]) % mod : prev[key];
       }
     }
@@ -38,8 +38,7 @@ const knightDialer = (n) => {
     curr = {};
   }
   
-  let sum = 0;
-  for (const key in prev) {
+  for (key in prev) {
     sum += prev[key];
   }
   return sum % mod;
