@@ -3,6 +3,7 @@
  * @return {number}
  */
 const knightDialer = (n) => {
+  const mod = 1e9 + 7;
   const map = {
     '0': ['4','6'],
     '1': ['8','6'],
@@ -40,10 +41,10 @@ const knightDialer = (n) => {
         }
       }
     }
-    for (const key in _curr) _curr[key] %= (Math.pow(10, 9) + 7);
+    for (const key in _curr) _curr[key] %= mod;
     curr = _curr;
   }
   
   for (const key in curr) sum += curr[key];
-  return sum % (Math.pow(10, 9) + 7);
+  return sum % mod;
 };
