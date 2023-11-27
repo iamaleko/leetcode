@@ -34,14 +34,9 @@ const knightDialer = (n) => {
     const _curr = {};
     for (let key in curr) {
       for (let _key of map[key]) {
-        if (_curr[_key]) {
-          _curr[_key] += curr[key];
-        } else {
-          _curr[_key] = curr[key];
-        }
+        _curr[_key] = _curr[_key] ? (_curr[_key] + curr[key]) % mod : curr[key];
       }
     }
-    for (const key in _curr) _curr[key] %= mod;
     curr = _curr;
   }
   
