@@ -3,8 +3,7 @@
  * @return {number}
  */
 const knightDialer = (n) => {
-  const mod = 1e9 + 7;
-  const map = {
+  const mod = 1e9 + 7, map = {
     '0': ['4','6'],
     '1': ['8','6'],
     '2': ['7','9'],
@@ -16,8 +15,7 @@ const knightDialer = (n) => {
     '8': ['1','3'],
     '9': ['4','2'],
   };
-  let sum = 0;
-  let curr = {
+  let curr = {}, prev = {
     '0': 1,
     '1': 1,
     '2': 1,
@@ -31,15 +29,18 @@ const knightDialer = (n) => {
   }
   
   while (--n > 0) {
-    const _curr = {};
-    for (let key in curr) {
-      for (let _key of map[key]) {
-        _curr[_key] = _curr[_key] ? (_curr[_key] + curr[key]) % mod : curr[key];
+    for (const key in prev) {
+      for (const val of map[key]) {
+        curr[val] = curr[val] ? (curr[val] + prev[key]) % mod : prev[key];
       }
     }
-    curr = _curr;
+    prev = curr;
+    curr = {};
   }
   
-  for (const key in curr) sum += curr[key];
+  let sum = 0;
+  for (const key in prev) {
+    sum += prev[key];
+  }
   return sum % mod;
 };
