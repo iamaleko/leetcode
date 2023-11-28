@@ -4,7 +4,6 @@
  */
 const numberOfWays = function(corridor) {
   let seats_pairs = 0;
-  let plant_groups = [];
   let vars = 1;
   
   let seats = 0, plants = 0;
@@ -14,7 +13,6 @@ const numberOfWays = function(corridor) {
       ++seats;
       if (seats === 2) {
         if (plants) {
-          plant_groups.push(plants);
           vars = (vars * (plants+1)) % (1e9+7)
           plants = 0;
         }
@@ -29,8 +27,5 @@ const numberOfWays = function(corridor) {
   }
   
   if (seats > 0 || seats_pairs === 0) return 0;
-  
-  console.log(seats_pairs, plant_groups);
-  
   return vars;
 };
