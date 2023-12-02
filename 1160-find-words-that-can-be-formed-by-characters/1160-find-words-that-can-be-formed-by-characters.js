@@ -4,18 +4,20 @@
  * @return {number}
  */
 const countCharacters = (words, chars) => {
-  const map = new Map();
-  for (const char of chars) map.set(char, (map.get(char) ?? 0) + 1);
+  const charsMap = new Map();
+  for (const char of chars) {
+    charsMap.set(char, (charsMap.get(char) ?? 0) + 1);
+  }
                                     
-  let sum = 0;
-  upper: for (const word of words) {
-    const _map = new Map(map);
+  let sum = 0, val;
+  words: for (const word of words) {
+    const wordMap = new Map(charsMap);
+    
     for (const char of word) {
-      let val = _map.get(char) ?? 0;
-      if (val) {
-        _map.set(char, val - 1)
+      if (val = wordMap.get(char)) {
+        wordMap.set(char, val - 1)
       } else {
-        continue upper;
+        continue words;
       }
     }
     
