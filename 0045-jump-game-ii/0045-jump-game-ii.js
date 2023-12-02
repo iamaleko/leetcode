@@ -3,19 +3,19 @@
  * @return {number}
  */
 const jump = (nums) => {
-  let i = nums.length - 1;
-  let steps = 0;
+  let i = nums.length - 1,
+      jumps = 0;
+  
   while (i > 0) {
-    let j = i - 1
-    let less = j;
+    let j = i - 1, min = j;
     while (j >= 0) {
-      if (j + nums[j] >= i) less = j;
+      if (j + nums[j] >= i) min = j;
       --j;
     }
     
-    ++steps;
-    i = less;
+    ++jumps;
+    i = min;
   }
   
-  return steps;
+  return jumps;
 };
