@@ -9,9 +9,9 @@ const countCharacters = (words, chars) => {
     charsMap.set(char, (charsMap.get(char) ?? 0) + 1);
   }
                                     
-  let sum = 0, val;
-  words: for (const word of words) {
-    const wordMap = new Map(charsMap);
+  let sum = 0, val, word, wordMap;
+  words: for (word of words) {
+    wordMap = new Map(charsMap);
     
     for (const char of word) {
       if (val = wordMap.get(char)) {
