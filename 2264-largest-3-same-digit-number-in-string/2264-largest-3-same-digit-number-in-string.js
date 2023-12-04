@@ -2,7 +2,7 @@
  * @param {string} num
  * @return {string}
  */
-const largestGoodInteger = (num) => {
+const largestGoodInteger = (num) => {  
   let max = '';
   for (let i = 2; i < num.length; ++i) {
     if (
