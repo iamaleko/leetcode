@@ -4,7 +4,7 @@
  */
 const largestOddNumber = (num) => {
   let i = num.length;
-  while (i-- > 0) if (
+  while (i--) if (
     num[i] === '1' ||
     num[i] === '3' ||
     num[i] === '5' ||
