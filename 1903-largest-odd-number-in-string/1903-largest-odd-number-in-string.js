@@ -10,6 +10,6 @@ const largestOddNumber = (num) => {
     num[i] === '5' ||
     num[i] === '7' ||
     num[i] === '9'
-  ) return num.substring(0, i + 1);
+  ) return num.substring(0, ++i);
   return '';
 };
