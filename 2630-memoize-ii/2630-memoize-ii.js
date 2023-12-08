@@ -3,8 +3,7 @@
  * @return {Function}
  */
 const memoize = (fn) => {
-  const cache = new Map();
-  const cached = Symbol();
+  const cache = new Map(), cached = Symbol();
   
   return (...args) => {
     let map = cache;
