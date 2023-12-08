@@ -1,4 +1,4 @@
-const tree2str = (node, b = '', a = '') => {
+const tree2str = (node) => {
   if (node.left && node.right) {
     return node.val + '(' + tree2str(node.left) + ')(' + tree2str(node.right) + ')';
   }
