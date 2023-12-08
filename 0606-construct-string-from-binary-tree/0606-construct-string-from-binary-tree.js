@@ -1,24 +1,12 @@
 const tree2str = (node, b = '', a = '') => {
   if (node.left && node.right) {
-    return tree2str(node.left, b + node.val + '(', tree2str(node.right, ')(', ')' + a));
+    return node.val + '(' + tree2str(node.left) + ')(' + tree2str(node.right) + ')';
   }
   if (node.left) {
-    return tree2str(node.left, b + node.val + '(', ')' + a);
+    return node.val + '(' + tree2str(node.left) + ')';
   }
   if (node.right) {
-    return tree2str(node.right, b + node.val + '()(', ')' + a);
+    return node.val + '()(' + tree2str(node.right) + ')';
   }
-  return b + node.val + a;
-  
-  
-  // if (node.left && node.right) {
-  //   return node.val + '(' + tree2str(node.left) + ')(' + tree2str(node.right) + ')';
-  // }
-  // if (node.left) {
-  //   return node.val + '(' + tree2str(node.left) + ')';
-  // }
-  // if (node.right) {
-  //   return node.val + '()(' + tree2str(node.right) + ')';
-  // }
-  // return node.val + '';
+  return node.val + '';
 };
