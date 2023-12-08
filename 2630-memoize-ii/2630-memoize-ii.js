@@ -2,11 +2,11 @@
  * @param {Function} fn
  * @return {Function}
  */
-function memoize(fn) {
+const memoize = (fn) => {
   const cache = new Map();
   const cached = Symbol();
   
-  return function(...args) {
+  return (...args) => {
     let map = cache;
     for (const arg of args) {
       if (!map.has(arg)) {
@@ -15,12 +15,10 @@ function memoize(fn) {
       map = map.get(arg);
     }
     
-    if (map.has(cached)) {
-      return map.get(cached);
-    } else {
-      const result = fn(...args);
-      map.set(cached, result);
-      return result; 
+    if (!map.has(cached)) {
+      map.set(cached, fn(...args));
     }
+    
+    return map.get(cached);
   }
 }
