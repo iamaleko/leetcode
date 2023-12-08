@@ -9,16 +9,18 @@ const memoize = (fn) => {
   return (...args) => {
     let map = cache;
     for (const arg of args) {
-      if (!map.has(arg)) {
-        map.set(arg, new Map());
+      if (map.has(arg)) {
+        map = map.get(arg); 
+      } else {
+        map.set(arg, map = new Map());
       }
-      map = map.get(arg);
     }
     
-    if (!map.has(cached)) {
-      map.set(cached, fn(...args));
+    if (map.has(cached)) {
+      return map.get(cached);
+    } else {
+      map.set(cached, map = fn(...args));
+      return map;
     }
-    
-    return map.get(cached);
   }
 }
