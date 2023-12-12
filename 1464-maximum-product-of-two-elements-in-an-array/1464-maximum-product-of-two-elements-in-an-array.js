@@ -1,11 +1,11 @@
 const maxProduct = (nums) => {
-  let a = 0, b = 0, i = 0;
-  for (;i<nums.length;++i) {
-    if (nums[i] > a) {
+  let a = 0, b = 0, num;
+  for (num of nums) {
+    if (num > a) {
       b = a;
-      a = nums[i];
-    } else if (nums[i] > b) {
-      b = nums[i];
+      a = num;
+    } else if (num > b) {
+      b = num;
     }
   }
   return (a - 1) * (b - 1);
