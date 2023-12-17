@@ -3,18 +3,19 @@ class FoodRatings {
     this.cm = new Map();
     this.fm = new Map();
     
+    const arr = [];
     for (const i in foods) {
-      const item = [foods[i], ratings[i], cuisines[i]];
-      this.fm.set(foods[i], item);
-      if (this.cm.has(cuisines[i])) {
-        this.cm.get(cuisines[i]).push(item);
-      } else {
-        this.cm.set(cuisines[i], [item]);
-      }
+      arr.push([foods[i], ratings[i], cuisines[i]]);
     }
+    arr.sort((a,b) => b[1] === a[1] ? (b < a ? 1 : -1) : b[1] - a[1]);
     
-    for (const [, arr] of this.cm) {
-      arr.sort((a,b) => b[1] === a[1] ? (b < a ? 1 : -1) : b[1] - a[1]);
+    for (const item of arr) {
+      this.fm.set(item[0], item);
+      if (this.cm.has(item[2])) {
+        this.cm.get(item[2]).push(item);
+      } else {
+        this.cm.set(item[2], [item]);
+      }
     }
   }
   
@@ -25,11 +26,11 @@ class FoodRatings {
       const arr = this.cm.get(item[2]);
       const i = arr.indexOf(item);
       
-      if (item[1] < rating) { // search till start
+      if (item[1] < rating) {
         const l = this.search(0, i, arr, item[0], rating);
         arr.splice(i, 1)
         arr.splice(l, 0, item);
-      } else { // serach till end
+      } else {
         const l = this.search(i, arr.length - 1, arr, item[0], rating);
         arr.splice(l, 0, item);
         arr.splice(i, 1)
@@ -52,7 +53,6 @@ class FoodRatings {
   }
   
   highestRated(cuisine) {
-    const arr = this.cm.get(cuisine);
-    return arr[0] ? arr[0][0] : null;
+    return this.cm.get(cuisine)[0][0];
   }
 }
