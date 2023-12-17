@@ -1,31 +1,47 @@
-function FoodRatings(foods, cuisines, ratings) {
-    let n = foods.length, cm = new Map(), fm = new Map(); // cm: cuisine map {cuisine: pq}, fm: food map {food: [cuisine, rating]}
-    for (let i = 0; i < n; i++) {
-        fm.set(foods[i], [cuisines[i], ratings[i]]);
-        if (!cm.has(cuisines[i])) {
-            let pq = new MaxPriorityQueue({
-                compare: (x, y) => {
-                    if (x[0] != y[0]) return y[0] - x[0]; // first priority: high rate comes first
-                    return x[1].localeCompare(y[1]); // second priority: lexical smaller comes first
-                }
-            });
-            cm.set(cuisines[i], pq);
+/**
+ * @param {string[]} foods
+ * @param {string[]} cuisines
+ * @param {number[]} ratings
+ */
+var FoodRatings = function(foods, cuisines, ratings) {
+    this.foods = foods;
+    this.cuisines = cuisines;
+    this.ratings = ratings;
+};
+
+/** 
+ * @param {string} food 
+ * @param {number} newRating
+ * @return {void}
+ */
+FoodRatings.prototype.changeRating = function(food, newRating) {
+    const indexOfFood = this.foods.findIndex((el) => el === food);
+    this.ratings[indexOfFood] = newRating;
+};
+
+/** 
+ * @param {string} cuisine
+ * @return {string}
+ */
+FoodRatings.prototype.highestRated = function(cuisine) {
+    const length = this.foods.length;
+
+    const newFoodRatings = {
+        highestRatedFoods: [],
+        highestRating: 0
+    }
+    for (let i = 0; i < length; i++) {
+        if (this.cuisines[i] === cuisine) {
+            if (this.ratings[i] > newFoodRatings.highestRating) {
+                newFoodRatings.highestRatedFoods = [this.foods[i]]
+                newFoodRatings.highestRating = this.ratings[i]
+            } else if (this.ratings[i] === newFoodRatings.highestRating) {
+                newFoodRatings.highestRatedFoods.push(this.foods[i])
+            }
         }
-        cm.get(cuisines[i]).enqueue([ratings[i], foods[i]])
     }
-    return { changeRating, highestRated }
-    function changeRating(food, newRating) {
-        let cur = fm.get(food), cuisine = cur[0];
-        cur[1] = newRating;
-        fm.set(food, cur);
-        cm.get(cuisine).enqueue([newRating, food]);
-    }
-    function highestRated(cuisine) {
-        let pq = cm.get(cuisine);
-        while (fm.get(pq.front()[1])[1] != pq.front()[0]) pq.dequeue(); // lazy remove
-        return pq.front()[1];
-    }
-}
+    return newFoodRatings.highestRatedFoods.sort()[0];
+};
 
 // class FoodRatings {
 //   constructor(foods, cuisines, ratings) {
@@ -57,12 +73,10 @@ function FoodRatings(foods, cuisines, ratings) {
 //         const l = this.search(0, i, arr, item, rating);
 //         arr.splice(i, 1)
 //         arr.splice(l, 0, item);
-//         // console.log(rating, item, arr, i, l, '<')
 //       } else { // serach till end
 //         const l = this.search(i, arr.length - 1, arr, item, rating);
 //         arr.splice(l, 0, item);
 //         arr.splice(i, 1)
-//         // console.log(rating, item, arr, i, l, '>')  
 //       }
 //       item[1] = rating;
 //     }
