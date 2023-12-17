@@ -24,7 +24,7 @@ class FoodRatings {
     
     if (item[1] !== rating) {
       const arr = this.cm.get(item[2]);
-      const i = arr.indexOf(item);
+      const i = this.search(0, arr.length - 1, arr, item[0], item[1]);//arr.indexOf(item);
       
       if (item[1] < rating) {
         const l = this.search(0, i, arr, item[0], rating);
