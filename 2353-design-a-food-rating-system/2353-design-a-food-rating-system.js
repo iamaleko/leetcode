@@ -1,8 +1,10 @@
 class Heap {
     constructor(data, comparator) {
-        this.comparator = comparator;
+        this.comparator = (a, b) => {
+          return comparator(this.heap[a], this.heap[b]);
+        };
         this.map = new Map();
-        data.sort((a,b) => this.comparator(a, b));
+        data.sort((a,b) => comparator(a, b));
         this.heap = data;
         for (const i in this.heap) {
             this.map.set(this.heap[i], i);
@@ -10,30 +12,20 @@ class Heap {
     }
     update(el) {
       const i = this.map.get(el);
-      // console.log('---------------')
-      // console.log('from', i, el)
       this.repair(i);
-      // console.log('to', this.map.get(el), this.heap)
     }
     repair(i) {
-        // this.n = (this.n ?? 0) + 1;
-        // if (this.n > 10) return;
         const pi = this.parent(i);
-        if (i && this.comparator(this.heap[i], this.heap[pi]) < 0) {
+        if (i && this.comparator(i, pi) < 0) {
           this.swap(i, pi);
           this.repair(pi);
-          // console.log('up', pi)
         } else {
           const ri = this.right(i);
           const li = this.left(i);
-          const sm = ri < this.heap.length && li < this.heap.length ? 
-                     (this.comparator(this.heap[li], this.heap[ri]) < 0 ? li : ri) :
-                     ri < this.heap.length ? ri : li;
-          // console.log('down check', sm)
-          if (sm < this.heap.length && this.comparator(this.heap[i], this.heap[sm]) > 0) {
-            this.swap(i, sm);
-            this.repair(sm);
-            // console.log('down', sm)
+          const si = ri in this.heap && li in this.heap && this.comparator(li, ri) >= 0 ? ri : li;
+          if (si in this.heap && this.comparator(i, si) > 0) {
+            this.swap(i, si);
+            this.repair(si);
           }
         }
     }
@@ -62,7 +54,7 @@ class FoodRatings {
   constructor(foods, cuisines, ratings) {
     this.cm = new Map();
     this.fm = new Map();
-    const comparator = (a,b) => b[1] === a[1] ? (b < a ? 1 : -1) : b[1] - a[1];
+    const comparator = (a,b) => b[1] === a[1] ? (b === a ? 0 : b < a ? 1 : -1) : b[1] - a[1];
     
     for (const i in foods) {
       const item = [foods[i], ratings[i], cuisines[i]];
@@ -81,10 +73,8 @@ class FoodRatings {
   
   changeRating(food, rating) {
     const item = this.fm.get(food);
-    const heap = this.cm.get(item[2]);
-    
     item[1] = rating;
-    heap.update(item);
+    this.cm.get(item[2]).update(item);
   }
   
   highestRated(cuisine) {
