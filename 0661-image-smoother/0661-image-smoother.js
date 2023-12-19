@@ -30,11 +30,9 @@ const imageSmoother = (img) => {
           img[y][--x] +
           img[y-1][x] + 
           img[y+1][x] + 
-          
           img[y][++x] + 
           img[y-1][x] + 
-          img[y+1][x] + 
-          
+          img[y+1][x] +   
           img[y][++x] +
           img[y-1][x] +
           img[y+1][x]
