@@ -25,11 +25,19 @@ const imageSmoother = (img) => {
 
     // center 
     for (y = 1; y < h; ++y) {
-      for (x = 1; x < w; ++x) {
+      for (x = 1; x < w;) {
         res[y][x] = (
-          img[y][x] + img[y][x-1] + img[y][x+1] +
-          img[y-1][x] + img[y-1][x-1] + img[y-1][x+1] +
-          img[y+1][x] + img[y+1][x-1] + img[y+1][x+1]
+          img[y][--x] +
+          img[y-1][x] + 
+          img[y+1][x] + 
+          
+          img[y][++x] + 
+          img[y-1][x] + 
+          img[y+1][x] + 
+          
+          img[y][++x] +
+          img[y-1][x] +
+          img[y+1][x]
         ) / 9 | 0;
       }
     }
