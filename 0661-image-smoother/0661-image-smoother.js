@@ -1,11 +1,10 @@
 const imageSmoother = (img) => {
-  const w = img[0].length - 1, h = img.length - 1;
-  if (w === 0 && h === 0) return img;
-  
-  const res = Array.from({length: h + 1}, () => Array.from({length: w + 1}));
+  const w = img[0].length - 1, h = img.length - 1, res = new Array(h + 1);
+  let y, x;
   
   if (w > 1 && h > 1) {
-    let y, x;
+    res[0] = new Array(w + 1);
+    res[h] = new Array(w + 1);
     
     // corners
     res[0][0] = (img[0][0] + img[0][1] + img[1][1] + img[1][0]) / 4 | 0;
@@ -19,6 +18,7 @@ const imageSmoother = (img) => {
       res[h][x] = (img[h][x] + img[h][x-1] + img[h][x+1] + img[h-1][x-1] + img[h-1][x+1] + img[h-1][x]) / 6 | 0;
     }
     for (y = 1; y < h; ++y) {
+      res[y] = new Array(w + 1);
       res[y][0] = (img[y][0] + img[y-1][0] + img[y+1][0] + img[y-1][1] + img[y+1][1] + img[y][1]) / 6 | 0;
       res[y][w] = (img[y][w] + img[y-1][w] + img[y+1][w] + img[y-1][w-1] + img[y+1][w-1] + img[y][w-1]) / 6 | 0;
     }
@@ -33,48 +33,47 @@ const imageSmoother = (img) => {
         ) / 9 | 0;
       }
     }
-    
-    return res;
-  }
-  
-  for (let y = 0; y < h + 1; ++y) {
-    for (let x = 0; x < w + 1; ++x) {
-      let sum = img[y][x], cnt = 1;
-      
-      if (y > 0) {
-        sum += img[y - 1][x];
-        ++cnt;
+  } else {
+    for (y = 0; y < h + 1; ++y) {
+      res[y] = new Array(w + 1);
+      for (x = 0; x < w + 1; ++x) {
+        let sum = img[y][x], cnt = 1;
+
+        if (y > 0) {
+          sum += img[y - 1][x];
+          ++cnt;
+          if (x > 0) {
+            sum += img[y - 1][x - 1];
+            ++cnt;
+          }
+          if (x < w) {
+            sum += img[y - 1][x + 1];
+            ++cnt;
+          }
+        }
+        if (y < h) {
+          sum += img[y + 1][x];
+          ++cnt;
+          if (x > 0) {
+            sum += img[y + 1][x - 1];
+            ++cnt;
+          }
+          if (x < w) {
+            sum += img[y + 1][x + 1];
+            ++cnt;
+          }
+        }
         if (x > 0) {
-          sum += img[y - 1][x - 1];
+          sum += img[y][x - 1];
           ++cnt;
         }
         if (x < w) {
-          sum += img[y - 1][x + 1];
+          sum += img[y][x + 1];
           ++cnt;
         }
+
+        res[y][x] = sum / cnt | 0;
       }
-      if (y < h) {
-        sum += img[y + 1][x];
-        ++cnt;
-        if (x > 0) {
-          sum += img[y + 1][x - 1];
-          ++cnt;
-        }
-        if (x < w) {
-          sum += img[y + 1][x + 1];
-          ++cnt;
-        }
-      }
-      if (x > 0) {
-        sum += img[y][x - 1];
-        ++cnt;
-      }
-      if (x < w) {
-        sum += img[y][x + 1];
-        ++cnt;
-      }
-      
-      res[y][x] = sum / cnt | 0;
     }
   }
   
