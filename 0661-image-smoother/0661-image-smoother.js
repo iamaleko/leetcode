@@ -1,10 +1,10 @@
 const imageSmoother = (img) => {
-  const w = img[0].length - 1, h = img.length - 1, res = new Array(h + 1);
+  const w = img[0].length - 1, h = img.length - 1, res = [];
   let y, x;
   
   if (w > 1 && h > 1) {
-    res[0] = new Array(w + 1);
-    res[h] = new Array(w + 1);
+    res[0] = [];
+    res[h] = [];
     
     // corners
     res[0][0] = (img[0][0] + img[0][1] + img[1][1] + img[1][0]) / 4 | 0;
@@ -18,7 +18,7 @@ const imageSmoother = (img) => {
       res[h][x] = (img[h][x] + img[h][x-1] + img[h][x+1] + img[h-1][x-1] + img[h-1][x+1] + img[h-1][x]) / 6 | 0;
     }
     for (y = 1; y < h; ++y) {
-      res[y] = new Array(w + 1);
+      res[y] = [];
       res[y][0] = (img[y][0] + img[y-1][0] + img[y+1][0] + img[y-1][1] + img[y+1][1] + img[y][1]) / 6 | 0;
       res[y][w] = (img[y][w] + img[y-1][w] + img[y+1][w] + img[y-1][w-1] + img[y+1][w-1] + img[y][w-1]) / 6 | 0;
     }
@@ -35,7 +35,7 @@ const imageSmoother = (img) => {
     }
   } else {
     for (y = 0; y < h + 1; ++y) {
-      res[y] = new Array(w + 1);
+      res[y] = [];
       for (x = 0; x < w + 1; ++x) {
         let sum = img[y][x], cnt = 1;
 
