@@ -4,7 +4,7 @@ const imageSmoother = (img) => {
   
   const res = Array.from({length: h + 1}, () => Array.from({length: w + 1}));
   
-  if (0 && w > 1 && h > 1) {
+  if (w > 1 && h > 1) {
     let y, x;
     
     // corners
