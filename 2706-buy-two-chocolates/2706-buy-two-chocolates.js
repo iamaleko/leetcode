@@ -8,5 +8,5 @@ const buyChoco = (prices, money) => {
             b = price;
         }
     }
-    return a && b && a + b <= money ? money - a - b : money;
+    return a + b <= money ? money - a - b : money;
 };
