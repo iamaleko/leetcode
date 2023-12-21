@@ -9,20 +9,18 @@ const reverseVowels = (s) => {
     while (l <= r || li !== undefined && ri !== undefined) {
         if (li !== undefined) {
             if (ri !== undefined) {
-                [s[li],s[ri]] = [s[ri],s[li]];
+                [s[li], s[ri]] = [s[ri], s[li]];
                 li = undefined;
                 ri = undefined;
+            } else if (vovels.has(s[r])) {
+                ri = r--;
             } else {
-                if (vovels.has(s[r])) {
-                    ri = r;
-                }
-                --r;
+                --r;   
             }
+        } else if (vovels.has(s[l])) {
+            li = l++;
         } else {
-            if (vovels.has(s[l])) {
-                li = l;
-            }
-            ++l;
+            ++l;   
         }
     }
     return s.join('');
