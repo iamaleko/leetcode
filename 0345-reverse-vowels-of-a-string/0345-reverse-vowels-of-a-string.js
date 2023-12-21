@@ -6,19 +6,20 @@ const reverseVowels = (s) => {
     const vovels = new Set(['a','A','e','E','i','I','o','O','u','U'])
     s = s.split('');
     let l = 0, r = s.length - 1, li, ri;
-    while (l <= r || li !== undefined && ri !== undefined) {
-        if (li !== undefined) {
-            if (ri !== undefined) {
-                [s[li], s[ri]] = [s[ri], s[li]];
+    while (l <= r || li && ri) {
+        if (li) {
+            if (ri) {
+                s[l++] = ri;
+                s[r--] = li;
                 li = undefined;
                 ri = undefined;
             } else if (vovels.has(s[r])) {
-                ri = r--;
+                ri = s[r];
             } else {
                 --r;   
             }
         } else if (vovels.has(s[l])) {
-            li = l++;
+            li = s[l];
         } else {
             ++l;   
         }
