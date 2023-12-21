@@ -3,26 +3,25 @@
  * @return {string}
  */
 const reverseVowels = (s) => {
-    const vovels = new Set(['a','A','e','E','i','I','o','O','u','U'])
-    s = s.split('');
+    const vovels = new Set(['a','A','e','E','i','I','o','O','u','U']), res = new Array(s.length);
     let l = 0, r = s.length - 1, li, ri;
     while (l <= r || li && ri) {
         if (li) {
             if (ri) {
-                s[l++] = ri;
-                s[r--] = li;
+                res[l++] = ri;
+                res[r--] = li;
                 li = undefined;
                 ri = undefined;
             } else if (vovels.has(s[r])) {
                 ri = s[r];
             } else {
-                --r;   
+                res[r] = s[r--];
             }
         } else if (vovels.has(s[l])) {
             li = s[l];
         } else {
-            ++l;   
+            res[l] = s[l++];
         }
     }
-    return s.join('');
+    return res.join('');
 };
