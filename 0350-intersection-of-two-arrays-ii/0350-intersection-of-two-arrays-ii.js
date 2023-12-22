@@ -4,9 +4,9 @@
  * @return {number[]}
  */
 const intersect = (a, b) => {
-    const m = {};
-    for (const n of b) n in m ? ++m[n] : m[n] = 1;
-    const r = [];
-    for (const n of a) if (n in m && m[n]) r.push(n), --m[n];
+    let n;
+    const m = {}, r = [];
+    for (n of b) n in m ? ++m[n] : m[n] = 1;
+    for (n of a) if (n in m && --m[n] > -1) r.push(n);
     return r;
 };
