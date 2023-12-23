@@ -5,9 +5,9 @@
 const isPathCrossing = (path) => {
     const set = new Set();
     let x = 10000, y = 10000;
-    const cantor = (x, y) => (x + y) * (x + y + 1) / 2 + y;
+    const key = (x, y) => (x << 14) + y;
     
-    set.add(cantor(x,y));
+    set.add(key(x,y));
     
     for (let d of path) {
         switch (d) {
@@ -17,7 +17,7 @@ const isPathCrossing = (path) => {
             case 'E': ++x; break;
         }
         
-        if (set.has(d = cantor(x,y))) return true;
+        if (set.has(d = key(x, y))) return true;
         set.add(d);
     }
     
