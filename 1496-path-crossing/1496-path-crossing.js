@@ -3,24 +3,22 @@
  * @return {boolean}
  */
 const isPathCrossing = (path) => {
-    const map = new Map();
-    let x = 0, y = 0;
+    const set = new Set();
+    let x = 10000, y = 10000;
+    const cantor = (x, y) => (x + y) * (x + y + 1) / 2 + y;
     
-    map.set(x, new Set());
-    map.get(x).add(y);
+    set.add(cantor(x,y));
     
-    for (const d of path) {
-        if (d === 'N') { --y; } else
-        if (d === 'S') { ++y; } else
-        if (d === 'W') { --x; } else
-        if (d === 'E') { ++x; }
-        
-        if (map.has(x)) {
-            if (map.get(x).has(y)) return true;
-        } else {
-            map.set(x, new Set());
+    for (let d of path) {
+        switch (d) {
+            case 'N': --y; break;
+            case 'S': ++y; break;
+            case 'W': --x; break;
+            case 'E': ++x; break;
         }
-        map.get(x).add(y);
+        
+        if (set.has(d = cantor(x,y))) return true;
+        set.add(d);
     }
     
     return false;
