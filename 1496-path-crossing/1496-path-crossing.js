@@ -4,8 +4,7 @@
  */
 const isPathCrossing = (path) => {
     let x = 10000, y = 10000;
-    const map = {};
-    map[(x << 15) + y] = null;
+    const map = {[(x << 15) + y]: null};
     
     for (const d of path) {
         switch (d) {
