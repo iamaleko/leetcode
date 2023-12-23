@@ -3,10 +3,8 @@
  * @return {boolean}
  */
 const isPathCrossing = (path) => {
-    const set = new Set();
     let x = 10000, y = 10000;
-    
-    set.add((x << 15) + y);
+    const set = new Set([(x << 15) + y]);
     
     for (const d of path) {
         switch (d) {
