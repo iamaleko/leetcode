@@ -4,7 +4,8 @@
  */
 const isPathCrossing = (path) => {
     let x = 10000, y = 10000;
-    const set = new Set([(x << 15) + y]);
+    const map = new Map();
+    map.set((x << 15) + y, null);
     
     for (const d of path) {
         switch (d) {
@@ -14,8 +15,8 @@ const isPathCrossing = (path) => {
             case 'E': ++x; break;
         }
         
-        if (set.has((x << 15) + y)) return true;
-        set.add((x << 15) + y);
+        if (map.has((x << 15) + y)) return true;
+        map.set((x << 15) + y, null);
     }
     
     return false;
