@@ -8,7 +8,7 @@ const isPathCrossing = (path) => {
     
     set.add((x << 15) + y);
     
-    for (let d of path) {
+    for (const d of path) {
         switch (d) {
             case 'N': --y; break;
             case 'S': ++y; break;
@@ -16,8 +16,8 @@ const isPathCrossing = (path) => {
             case 'E': ++x; break;
         }
         
-        if (set.has(d = (x << 15) + y)) return true;
-        set.add(d);
+        if (set.has((x << 15) + y)) return true;
+        set.add((x << 15) + y);
     }
     
     return false;
