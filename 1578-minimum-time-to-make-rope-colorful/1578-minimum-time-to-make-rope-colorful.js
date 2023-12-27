@@ -1,7 +1,7 @@
 const minCost = (colors, time) => {
     let max = 0, res = 0;
     
-    for (const i in colors) {
+    for (let i = 1; i < colors.length; ++i) {
         if (colors[i - 1] === colors[i]) {
             if (!max) max = time[i - 1];
             if (max < time[i]) {
