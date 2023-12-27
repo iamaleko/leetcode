@@ -1,25 +1,18 @@
 const minCost = (colors, time) => {
-    const groups = [];
-    let group = 0;
+    let max = 0, res = 0;
+    
     for (const i in colors) {
         if (colors[i - 1] === colors[i]) {
-            if (!groups[group]) groups[group] = {max: time[i - 1], sum: 0};
-            if (groups[group].max < time[i]) {
-                groups[group].sum += groups[group].max;
-                groups[group].max = time[i];
+            if (!max) max = time[i - 1];
+            if (max < time[i]) {
+                res += max;
+                max = time[i];
             } else {
-                groups[group].sum += time[i];   
+                res += time[i];   
             }
-        } else if (groups[group]) {
-            ++group;
+        } else {
+            max = 0;
         }
-    }
-    
-    if (!groups.length) return 0;
-    
-    let res = 0;
-    for (group of groups) {
-        res += group.sum;
     }
     
     return res;
