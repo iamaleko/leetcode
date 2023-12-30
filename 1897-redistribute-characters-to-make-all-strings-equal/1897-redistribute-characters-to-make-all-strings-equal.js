@@ -6,7 +6,7 @@ const makeEqual = (words) => {
     const ind = new Array(26).fill(0), len = words.length;
     let a = 0, b = 0;
     for (; a < len; ) {
-        if (b < words[a].length) {
+        if (words[a][b]) {
             ++ind[words[a][b++].charCodeAt(0) - 97];
         } else {
             b = 0;
