@@ -3,16 +3,19 @@
  * @return {boolean}
  */
 const makeEqual = (words) => {
-    const map = new Map();
-    for (const word of words) {
-        for (const char of word) {
-            char in map ? ++map[char] : (map[char] = 1);
+    const ind = new Array(26).fill(0);
+    let a = 0, b = 0;
+    for (; a < words.length; ) {
+        if (words[a][b]) {
+            ++ind[words[a][b].charCodeAt(0) - 97];
+            ++b;
+        } else {
+            b = 0;
+            ++a;
         }
     }
     
-    for (const key in map) {
-        if (map[key] % words.length !== 0) return false;
-    }
+    for (a = 0; a < 26; ++a) if (ind[a] % words.length !== 0) return false;
     
     return true;
 };
