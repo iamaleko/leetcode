@@ -15,7 +15,7 @@ const makeEqual = (words) => {
         }
     }
     
-    for (a = 0; a < 26; ++a) if (ind[a] % words.length !== 0) return false;
+    for (a = 0; a < 26; ++a) if (ind[a] && ind[a] % words.length !== 0) return false;
     
     return true;
 };
