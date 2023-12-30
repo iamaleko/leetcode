@@ -7,8 +7,7 @@ const makeEqual = (words) => {
     let a = 0, b = 0;
     for (; a < len; ) {
         if (b < words[a].length) {
-            ++ind[words[a][b].charCodeAt(0) - 97];
-            ++b;
+            ++ind[words[a][b++].charCodeAt(0) - 97];
         } else {
             b = 0;
             ++a;
