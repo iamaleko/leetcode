@@ -4,19 +4,18 @@
  */
 const findMatrix = (nums) => {
     const map = new Map();
-    for (const num of nums) num in map ? ++map[num] : (map[num] = 1);
-    const res = [];
-    for (const num in map) {
-        let i = 0;
-        while (map[num]) {
-            if (res[i]) {
-                res[i].push(num);
-            } else {
-                res[i] = [num];
-            }
-            ++i;
-            --map[num];
+    let max = 1, num;
+    for (num of nums) {
+        if (num in map) {
+            if (max < ++map[num]) max = map[num];
+        } else {
+            map[num] = 1   
         }
+    }
+    const res = new Array(max).fill().map(() => []);
+    for (num in map) {
+        let i = 0;
+        while (map[num]--) res[i++].push(num);
     }
     return res;
 };
