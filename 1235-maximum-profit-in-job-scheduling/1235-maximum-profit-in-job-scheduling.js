@@ -28,7 +28,11 @@ const jobScheduling = (from, to, cost) => {
     
     // select most valuable job
     for (let i = jobs.length - 2; i > -1; --i) {
-        jobs[i].cost = Math.max(jobs[i].cost + (jobs[jobs[i].next]?.cost || 0), jobs[i + 1].cost);
+        if (jobs[i].next !== -1) {
+            jobs[i].cost = Math.max(jobs[i].cost + jobs[jobs[i].next].cost, jobs[i + 1].cost);
+        } else {
+            jobs[i].cost = Math.max(jobs[i].cost, jobs[i + 1].cost);
+        }
     }
     
     return jobs[0].cost;
