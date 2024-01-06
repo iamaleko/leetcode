@@ -10,7 +10,7 @@ const jobScheduling = (from, to, cost) => {
             next: -1,
         })
     }
-    jobs.sort((a, b) => a.from - b.from || a.to - b.to);
+    jobs.sort((a, b) => a.from - b.from);
     
     // find next
     for (let i = 0; i < jobs.length; ++i) {
