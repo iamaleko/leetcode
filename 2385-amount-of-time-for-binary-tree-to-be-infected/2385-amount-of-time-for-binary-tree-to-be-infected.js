@@ -23,17 +23,15 @@ const amountOfTime = (root, val) => {
     queue.push(start)
     while (queue.length) {
         const node = queue.pop();
-        const deep = node.val;
-
-        if (deep > max) max = deep;
+        if (node.val > max) max = node.val;
         if (node.left) {
             delete node.left.parent;
-            node.left.val = deep + 1;
+            node.left.val = node.val + 1;
             queue.push(node.left);
         }
         if (node.right) {
             delete node.right.parent;
-            node.right.val = deep + 1;
+            node.right.val = node.val + 1;
             queue.push(node.right);
         }
         if (node.parent) {
@@ -42,7 +40,7 @@ const amountOfTime = (root, val) => {
             } else {
                 delete node.parent.right;
             }
-            node.parent.val = deep + 1;
+            node.parent.val = node.val + 1;
             queue.push(node.parent);
         }
     }
