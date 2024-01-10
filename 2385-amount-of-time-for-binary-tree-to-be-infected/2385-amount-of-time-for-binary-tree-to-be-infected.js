@@ -7,7 +7,10 @@ const amountOfTime = (root, val) => {
     queue.push(root)
     while (queue.length) {
         const node = queue.pop();
-        if (node.val === val) start = node;
+        if (node.val === val) {
+            start = node;
+            node.val = 0;
+        }
         if (node.left) {
             node.left.parent = node;
             queue.push(node.left);
@@ -19,7 +22,6 @@ const amountOfTime = (root, val) => {
     }
     
     // deep
-    start.val = 0;
     queue.push(start)
     while (queue.length) {
         const node = queue.pop();
