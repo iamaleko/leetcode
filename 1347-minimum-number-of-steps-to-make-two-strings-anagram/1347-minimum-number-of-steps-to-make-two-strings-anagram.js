@@ -1,5 +1,5 @@
 const minSteps = (s, t) => {
-    const a = new Map(), b = new Map();
+    const a = {}, b = {};
     let steps = 0, n;
     
     for (n of s) n in a ? ++a[n] : a[n] = 1;
