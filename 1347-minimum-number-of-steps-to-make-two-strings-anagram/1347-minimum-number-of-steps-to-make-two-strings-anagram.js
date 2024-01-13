@@ -1,8 +1,9 @@
-const minSteps = (s, t, m = {}, n) => {
-    let i = t.length;
+const minSteps = (s, t) => {
+    const m = {};
+    let i = 0, n;
     
     for (n of s) n in m ? ++m[n] : m[n] = 1;
-    for (n of t) if (m[n]) --m[n], --i;
+    for (n of t) m[n] ? --m[n] : ++i;
     
     return i;
 };
