@@ -4,7 +4,12 @@ const maxLength = (arr) => {
     return s;
   }
 
-  const find = (n, p) => p in arr ? n & arr[p] ? find(n, p + 1) : Math.max(find(n, p + 1), find(n | arr[p], p + 1)) : bits(n);
+  const find = (n, p) =>
+    ++p in arr ?
+      n & arr[p] ?
+        find(n, p) :
+        Math.max(find(n, p), find(n | arr[p], p)) :
+      bits(n);
 
   for (const i in arr) {
     let m = 0, j = 0;
@@ -12,7 +17,7 @@ const maxLength = (arr) => {
     arr[i] = m;
   }
 
-  return find(0, 0);
+  return find(0, -1);
 };
 
 
