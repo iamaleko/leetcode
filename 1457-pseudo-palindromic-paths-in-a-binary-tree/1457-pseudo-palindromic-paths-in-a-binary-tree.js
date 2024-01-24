@@ -1,7 +1,9 @@
 const pseudoPalindromicPaths  = (root) => {
-  let res = 0, node, i, n;
+  let res = 0, node;
+  
   root.val = 1 << root.val;
   const queue = [root];
+
   while (queue.length) {
     node = queue.pop();
     if (node.left) {
@@ -12,17 +14,13 @@ const pseudoPalindromicPaths  = (root) => {
       node.right.val = node.val ^ 1 << node.right.val;
       queue.push(node.right);
     }
-    if (!node.left && !node.right) {
-      if (node.val === 0) {
-        ++res;
-      } else {
-        n = 0;
-        while (node.val) {
-          if (node.val & 1) ++n;
-          node.val = node.val >> 1;
-        }
-        if (n === 1) ++res;
-      }
+    if (
+      !node.left && !node.right && (
+        node.val === 0 || node.val === 2 || node.val === 4 || node.val === 8 || node.val === 16 ||
+        node.val === 32 || node.val === 64 || node.val === 128 || node.val === 256 || node.val === 512
+      )
+    ) {
+      ++res;
     }
   }
   return res;
