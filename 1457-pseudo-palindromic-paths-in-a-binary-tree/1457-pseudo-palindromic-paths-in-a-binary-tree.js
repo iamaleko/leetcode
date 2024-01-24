@@ -1,19 +1,25 @@
 const pseudoPalindromicPaths  = (root) => {
   let res = 0;
-  const queue = [[root, [0,0,0,0,0,0,0,0,0]]];
+  root.mem = [0,0,0,0,0,0,0,0,0];
+  const queue = [root];
   while (queue.length) {
-    const [node, mem] = queue.pop();
-    ++mem[node.val - 1];
+    const node = queue.pop();
+    ++node.mem[node.val - 1];
     if (node.left && node.right) {
-      queue.push([node.left, mem]);
-      queue.push([node.right, mem.slice()]);
+      node.left.mem = node.mem;
+      node.right.mem = node.mem.slice();
+      queue.push(node.left);
+      queue.push(node.right);
     } else if (node.left) {
-      queue.push([node.left, mem]);
+      node.left.mem = node.mem;
+      queue.push(node.left);
     } else if (node.right) {
-      queue.push([node.right, mem]);
-    } else if (mem.filter(e => e % 2 !== 0).length < 2) {
+      node.right.mem = node.mem;
+      queue.push(node.right);
+    } else if (node.mem.filter(e => e % 2 !== 0).length < 2) {
       ++res;
     }
+    delete node.mem;
   }
   return res;
 };
