@@ -2,7 +2,7 @@ const longestCommonSubsequence = (a, b) => {
   const mem = [];
   const dp = (ap, bp) => {
     if (ap === a.length || bp === b.length) return 0;
-    if (ap in mem) {
+    if (ap < mem.length) {
       if (bp in mem[ap]) return mem[ap][bp];
     } else {
       mem[ap] = [];
