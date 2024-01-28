@@ -11,8 +11,8 @@ const numSubmatrixSumTarget = (matrix, target) => {
   for (ww = 1; ww <= w; ++ww) for (wh = 1; wh <= h; ++wh) for (x = ww - 1; x < w; ++x) for (y = wh - 1; y < h; ++y) {
     if (
       matrix[y][x] -
-      (y - wh >= 0 ? matrix[y - wh][x] : 0) -
-      (x - ww >= 0 ? matrix[y][x - ww] - (y - wh >= 0 ? matrix[y - wh][x - ww] : 0) : 0) ===
+      (y >= wh ? matrix[y - wh][x] : 0) -
+      (x >= ww ? matrix[y][x - ww] - (y >= wh ? matrix[y - wh][x - ww] : 0) : 0) ===
       target
     ) ++res;
   }
