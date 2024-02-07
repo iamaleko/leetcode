@@ -1,8 +1,5 @@
 const frequencySort = (s) => {
-  const map = {};
-  for (const char of s) char in map ? ++map[char] : map[char] = 1;
-  return Object.entries(map)
-    .sort((a, b) => b[1] - a[1])
-    .map((item) => ''.padStart(item[1], item[0]))
-    .join``;
+  const arr = new Array(122).fill('');
+  for (let i = 0; i < s.length; arr[s.charCodeAt(i)] += s[i++]);
+  return arr.sort((a, b) => b.length - a.length).join``;
 };
