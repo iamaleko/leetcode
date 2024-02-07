@@ -1,10 +1,10 @@
 const maxDepth = (s) => {
-  let max = 0, level = 0;
-  for (const chr of s) {
-    if (chr === '(') {
+  let max = 0, level = 0, i = 0;
+  for (; i < s.length; ++i) {
+    if (s[i] === '(') {
       ++level;
       if (level > max) max = level;
-    } else if (chr === ')') {
+    } else if (s[i] === ')') {
       --level;
     }
   }
