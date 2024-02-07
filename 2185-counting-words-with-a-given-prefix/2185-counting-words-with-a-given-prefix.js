@@ -1,5 +1,5 @@
 const prefixCount = (words, pref) => {
-  let res = 0, len = pref.length;
-  for (const word of words) if (word.substr(0, len) === pref) ++res;
+  let res = 0;
+  for (const word of words) if (word.startsWith(pref)) ++res;
   return res;
 };
