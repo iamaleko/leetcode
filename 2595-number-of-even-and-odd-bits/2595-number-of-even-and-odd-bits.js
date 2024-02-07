@@ -1,9 +1,6 @@
 const evenOddBit = (n) => {
-  let odd = 0, even = 0, isOdd = true;
-  while (n) {
-    if (n & 1) isOdd ? ++odd : ++even;
-    n >>= 1;
-    isOdd = !isOdd;
-  }
+  let odd = 0, even = 0, a = n & 341, b = n & 682;
+  while (a) a &= a - 1, ++odd;
+  while (b) b &= b - 1, ++even;
   return [odd, even];
 };
