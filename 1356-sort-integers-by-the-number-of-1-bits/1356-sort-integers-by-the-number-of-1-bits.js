@@ -1,14 +1,8 @@
 const sortByBits = (arr) => {
-  const mem = {};
-  const bits = n => {
-    let bits = 0;
-    while (n) n &= n - 1, ++bits;
-    return bits;
+  const bits = (n, b = 0) => {
+    while (n) n &= n - 1, ++b;
+    return b;
   }
-  arr.sort((a, b) => {
-    a in mem || (mem[a] = bits(a));
-    b in mem || (mem[b] = bits(b));
-    return mem[a] - mem[b] || a - b
-  });
+  arr.sort((a, b) => bits(a) - bits(b) || a - b);
   return arr;
 };
