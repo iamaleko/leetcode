@@ -1,13 +1,19 @@
 const checkArithmeticSubarrays = (nums, l, r) => {
   const res = [];
-  main: for (let i = 0; i < l.length; ++i) {
-    const arr = nums.slice(l[i], r[i] + 1).sort((a, b) => a - b),
-          diff = arr[0] - arr[1];
-    for (let j = 2; j < arr.length; ++j) if (arr[j - 1] - arr[j] !== diff) {
-      res.push(false);
-      continue main;  
+  for (let i = 0; i < l.length; ++i) {
+    let min = Infinity;
+    let max = -Infinity;
+    for (let p = l[i]; p <= r[i]; ++p) {
+      if (nums[p] < min) min = nums[p];
+      if (nums[p] > max) max = nums[p];
     }
-    res.push(true);
+    const diff = (max - min) / (r[i] - l[i]);
+    const arr = new Array(r[i] - l[i] + 1).fill(0);
+    for (let p = l[i]; p <= r[i]; ++p) {
+      const ind = (nums[p] - min) / diff;
+      if (ind % 1 || ++arr[ind] > 1) break;
+    }
+    res.push(!~arr.indexOf(0));
   }
   return res;
 };
