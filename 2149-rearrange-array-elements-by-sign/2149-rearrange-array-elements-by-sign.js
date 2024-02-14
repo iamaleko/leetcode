@@ -1,7 +1,6 @@
 const rearrangeArray = (nums) => {
-  const res = [];
-  let pi = 0, ni = 1;
-  for (let i = 0; i < nums.length; ++i) {
+  const res = new Array(nums.length);
+  for (let pi = 0, ni = 1, i = 0; i < nums.length; ++i) {
     if (nums[i] < 0) {
       res[ni] = nums[i];
       ni += 2;
