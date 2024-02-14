@@ -1,4 +1,6 @@
 const firstPalindrome = (words) => {
-  for (const word of words) if (word.length === 1 || word === word.split``.reverse().join``) return word;
+  for (const word of words)
+    for (let l = 0, r = word.length - 1; word[l] === word[r]; ++l, --r)
+      if (l >= r) return word;
   return '';
 };
