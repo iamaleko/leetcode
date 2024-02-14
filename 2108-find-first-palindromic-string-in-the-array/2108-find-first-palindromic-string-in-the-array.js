@@ -1,6 +1,6 @@
 const firstPalindrome = (words) => {
-  for (const word of words)
-    for (let l = 0, r = word.length - 1; word[l] === word[r]; ++l, --r)
-      if (l >= r) return word;
+  for (let i = 0; i < words.length; ++i)
+    for (let l = 0, r = words[i].length - 1; words[i][l] === words[i][r]; ++l, --r)
+      if (l >= r) return words[i];
   return '';
 };
