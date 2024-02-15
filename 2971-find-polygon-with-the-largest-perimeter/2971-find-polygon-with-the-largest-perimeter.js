@@ -1,9 +1,6 @@
 const largestPerimeter = (nums) => {
-  let max = -1;
   nums.sort((a, b) => a - b);
-  for (let i = 1; i < nums.length; ++i) {
-    if (i > 1 && nums[i - 1] > nums[i]) max = nums[i - 1] + nums[i];
-    nums[i] += nums[i - 1];
-  }
+  let max = -1, i = 2, sum = nums[1] + nums[0];
+  for (; i < nums.length; ++i) sum > nums[i] ? max = sum += nums[i] : sum += nums[i];
   return max;
 };
