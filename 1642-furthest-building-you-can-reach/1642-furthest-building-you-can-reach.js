@@ -6,7 +6,6 @@ const furthestBuilding = (arr, briks, ledders) => {
       gap: arr[i] - arr[i - 1],
       briks: 0,
       ledders: 0,
-      deleted: 0,
     });
   }
   gaps.sort((a, b) => a.gap - b.gap);
@@ -15,7 +14,7 @@ const furthestBuilding = (arr, briks, ledders) => {
   let lp = gaps.length - 1, bp = lp, max = len - 1;
   const allocate = () => {
     while (lp >= 0) {
-      if (!gaps[lp].deleted) {
+      if (gaps[lp].gap) {
         if (!ledders) break;
         --ledders;
         gaps[lp].ledders = 1;
@@ -26,7 +25,7 @@ const furthestBuilding = (arr, briks, ledders) => {
     }
     if (bp > lp) bp = lp;
     while (bp >= 0) {
-      if (!gaps[bp].deleted) {
+      if (gaps[bp].gap) {
         if (!briks) break;
         const need = Math.min(briks, gaps[bp].gap - gaps[bp].briks);
         gaps[bp].briks += need;
@@ -40,11 +39,11 @@ const furthestBuilding = (arr, briks, ledders) => {
   allocate();
   
   // remove buildings
-  let deleted = 0;
-  while (bp >= 0 && max > 0 && deleted < gaps.length) {
+  let removed = 0;
+  while (bp >= 0 && max > 0 && removed < gaps.length) {
     if (map[max]) {
-      ++deleted;
-      map[max].deleted = 1;
+      ++removed;
+      map[max].gap = 0;
       ledders += map[max].ledders;
       map[max].ledders = 0;
       briks += map[max].briks;
