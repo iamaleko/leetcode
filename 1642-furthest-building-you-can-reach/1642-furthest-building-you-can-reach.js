@@ -1,16 +1,19 @@
 const furthestBuilding = (arr, briks, ledders) => {
   // create gaps map
-  const gaps = [];
-  const map = {};
-  for (let i = 1; i < arr.length; ++i) {
-    const gap = arr[i] - arr[i - 1];
-    if (gap > 0) gaps.push(map[i] = { gap: gap, briks: 0, ledders: 0, deleted: 0 });
+  const gaps = [], map = {}, len = arr.length;
+  for (let i = 1; i < len; ++i) {
+    if (arr[i] - arr[i - 1] > 0) gaps.push(map[i] = {
+      gap: arr[i] - arr[i - 1],
+      briks: 0,
+      ledders: 0,
+      deleted: 0,
+    });
   }
   gaps.sort((a, b) => a.gap - b.gap);
 
-  // set pointers
-  let lp = gaps.length - 1, bp = lp, max = arr.length - 1;
-  const count = () => {
+  // allocate recources
+  let lp = gaps.length - 1, bp = lp, max = len - 1;
+  const allocate = () => {
     while (lp >= 0) {
       if (!gaps[lp].deleted) {
         if (!ledders) break;
@@ -34,19 +37,19 @@ const furthestBuilding = (arr, briks, ledders) => {
       }
     }
   } 
+  allocate();
   
   // remove buildings
-  count();
   let deleted = 0;
   while (bp >= 0 && max > 0 && deleted < gaps.length) {
     if (map[max]) {
       ++deleted;
       map[max].deleted = 1;
       ledders += map[max].ledders;
-      briks += map[max].briks;
       map[max].ledders = 0;
+      briks += map[max].briks;
       map[max].briks = 0;
-      count();
+      allocate();
     }
     --max;
   }
