@@ -1,7 +1,8 @@
 class MyHashSet {
   constructor() {
-    this.size = 1000;
+    this.size = 10000;
     this.table = [];
+    this.maxBucketSize = 10;
     this.allowExpand = true;
   }
   expandTable() {
@@ -23,7 +24,7 @@ class MyHashSet {
     if (this.contains(key)) return;
     const index = this.getIndex(key);
     if (this.table[index] === undefined) this.table[index] = [];
-    if (this.table[index].length === 10 && this.allowExpand) {
+    if (this.table[index].length === this.maxBucketSize && this.allowExpand) {
       this.expandTable();
       this.add(key);
     } else {
