@@ -17,8 +17,16 @@ class MyHashSet {
     }
     this.allowExpand = true;
   }
+  hash(val) {
+    let n = 0;
+    const str = String(val);
+    for (let i = 0; i < str.length; ++i) {
+        n = ((n << 5) - n + str.charCodeAt(i)) | 0;
+    }
+    return Math.abs(n);
+  }
   getIndex(key) {
-    return key % this.size;
+    return this.hash(key) % this.size;
   }
   add(key) {
     if (this.contains(key)) return;
