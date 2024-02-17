@@ -1,6 +1,6 @@
 class MyHashSet {
   constructor() {
-    this.size = 10000;
+    this.size = 100;
     this.table = [];
     this.maxBucketSize = 10;
     this.allowExpand = true;
