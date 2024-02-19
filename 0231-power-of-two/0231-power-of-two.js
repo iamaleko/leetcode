@@ -6,6 +6,6 @@
 //   return b === 1;
 // }
 const isPowerOfTwo = (n) => {
-  if (n) while ((n = n / 2) % 1 === 0);
+  if (n > 0) while ((n = n / 2) % 1 === 0);
   return n === 0.5;
 }
