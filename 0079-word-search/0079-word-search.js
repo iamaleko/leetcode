@@ -1,26 +1,24 @@
 const exist = (m, str) => {
   let mx = m[0].length - 1, my = m.length - 1;
 
-  const dfs = (y, x, i, s) => {
-    const pair = (y << 5) + x;
-
-    if (s.has(pair) || m[y][x] !== str[i]) return false;
+  const dfs = (y, x, i) => {
+    if (m[y][x] !== str[i]) return false;
     if (++i === str.length) return true;
     
-    s.add(pair);
-    const res = y && dfs(y - 1, x, i, s) ||
-                y < my && dfs(y + 1, x, i, s) ||
-                x && dfs(y, x - 1, i, s) ||
-                x < mx && dfs(y, x + 1, i, s);
-    s.delete(pair);
+    const chr = m[y][x];
+    m[y][x] = '';
+    const res = y && dfs(y - 1, x, i) ||
+                y < my && dfs(y + 1, x, i) ||
+                x && dfs(y, x - 1, i) ||
+                x < mx && dfs(y, x + 1, i);
+    m[y][x] = chr;
 
     return res;
   }
 
-  // search
   for (let y = 0; y <= my; ++y)
     for (let x = 0; x <= mx; ++x)
-      if (dfs(y, x, 0, new Set())) return true;
+      if (dfs(y, x, 0)) return true;
 
   return false;
 };
