@@ -1,10 +1,18 @@
 const findJudge = (n, trust) => {
-  const untrusted = new Set(new Array(n).fill(0).map((v, i) => i + 1));
-  const trusted = new Map();
+  if (trust.length === 0) return n === 1 ? 1 : -1;
+
+  const map = new Map();
+  let res = -1;
+
   for (const [who, whom] of trust) {
-    untrusted.delete(who);
-    trusted.set(whom, (trusted.get(whom) || 0) + 1);
+    map.set(who, -1);
+    if (res === who) res = -1;
+    let cnt = map.get(whom) || 0;
+    if (cnt !== -1) {
+      map.set(whom, ++cnt);
+      if (cnt === n - 1) res = whom;
+    }
   }
-  const candidate = untrusted.size === 1 && untrusted.values().next().value;
-  return candidate && (trusted.get(candidate) || 0) === n - 1 ? candidate : -1;
+
+  return res;
 };
