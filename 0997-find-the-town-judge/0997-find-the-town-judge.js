@@ -4,10 +4,10 @@ const findJudge = (n, trust) => {
   const mem = new Array(n + 1).fill(1);
   let res = -1;
 
-  for (const [who, whom] of trust) {
-    mem[who] = 0;
-    if (res === who) res = -1;
-    if (mem[whom] && ++mem[whom] === n) res = whom;
+  for (let i = 0; i < trust.length; ++i) {
+    mem[trust[i][0]] = 0;
+    if (res === trust[i][0]) res = -1;
+    if (mem[trust[i][1]] && ++mem[trust[i][1]] === n) res = trust[i][1];
   }
 
   return res;
