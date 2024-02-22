@@ -4,13 +4,13 @@ const findJudge = (n, trust) => {
   const map = new Map();
   let res = -1;
 
-  for (const [who, whom] of trust) {
-    map.set(who, -1);
-    if (res === who) res = -1;
-    let cnt = map.get(whom) || 0;
+  for (let i = 0; i < trust.length; ++i) {
+    map.set(trust[i][0], -1);
+    if (res === trust[i][0]) res = -1;
+    let cnt = map.get(trust[i][1]) || 0;
     if (cnt !== -1) {
-      map.set(whom, ++cnt);
-      if (cnt === n - 1) res = whom;
+      map.set(trust[i][1], ++cnt);
+      if (cnt === n - 1) res = trust[i][1];
     }
   }
 
