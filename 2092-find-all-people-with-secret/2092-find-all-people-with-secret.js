@@ -16,6 +16,7 @@ const findAllPeople = (n, meetings, f) => {
     for (const set of frame) {
       if (set.has(a)) l = set;
       if (set.has(b)) r = set;
+      if (l && r) break;
     }
 
     if (!l && !r) {
