@@ -14,10 +14,8 @@ const findAllPeople = (n, meetings, f) => {
 
     let ai, bi;
     for (const i in frame) {
-      if (frame[i]) {
-        if (frame[i].has(a)) ai = i;
-        if (frame[i].has(b)) bi = i;
-      }
+      if (frame[i].has(a)) ai = i;
+      if (frame[i].has(b)) bi = i;
     }
 
     if (ai === undefined && bi === undefined) {
@@ -29,12 +27,8 @@ const findAllPeople = (n, meetings, f) => {
     } else if (ai !== bi) {
       for (const id of frame[ai]) frame[bi].add(id);
       frame[bi].add(a);
-      frame[ai] = undefined;
+      frame.splice(ai, 1);
     }
-  }
-
-  for (let i = 0; i < frames.length; ++i) {
-    frames[i] = frames[i].filter(set => set);
   }
 
   for (const frame of frames) {
