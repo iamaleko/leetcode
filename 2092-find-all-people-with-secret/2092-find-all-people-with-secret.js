@@ -12,8 +12,8 @@ const findAllPeople = (n, meetings, f) => {
     }
     const frame = frames.at(-1);
 
-    let ai, bi;
-    for (const i in frame) {
+    let ai, bi, i = 0;
+    for (; i < frame.length; ++i) {
       if (frame[i].has(a)) ai = i;
       if (frame[i].has(b)) bi = i;
     }
