@@ -7,27 +7,27 @@ const findAllPeople = (n, meetings, f) => {
   let lastTime;
   for (const [a, b, time] of meetings) {
     if (time !== lastTime) {
-      frames.push([]);
+      frames.push(new Set());
       lastTime = time;
     }
     const frame = frames.at(-1);
 
-    let ai, bi;
-    for (const i in frame) {
-      if (frame[i].has(a)) ai = i;
-      if (frame[i].has(b)) bi = i;
+    let l, r;
+    for (const set of frame) {
+      if (set.has(a)) l = set;
+      if (set.has(b)) r = set;
     }
 
-    if (ai === undefined && bi === undefined) {
-      frame.push(new Set([a,b]));
-    } else if (ai !== undefined && bi === undefined) {
-      frame[ai].add(b);
-    } else if (ai === undefined && bi !== undefined) {
-      frame[bi].add(a);
-    } else if (ai !== bi) {
-      for (const id of frame[ai]) frame[bi].add(id);
-      frame[bi].add(a);
-      frame.splice(ai, 1);
+    if (!l && !r) {
+      frame.add(new Set([a,b]));
+    } else if (l && !r) {
+      l.add(b);
+    } else if (!l && r) {
+      r.add(a);
+    } else if (l !== r) {
+      r.add(a);
+      for (const id of l) r.add(id);
+      frame.delete(l);
     }
   }
 
