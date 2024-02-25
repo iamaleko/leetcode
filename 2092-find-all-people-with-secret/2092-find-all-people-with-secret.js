@@ -1,6 +1,10 @@
 const findAllPeople = (n, meetings, f) => {
   const people = new Set([0,f]),
-        frames = [];
+        frames = [],
+        union = (l, r) => {
+          for (const val of r) l.add(val);
+          return l;
+        };
 
   meetings.sort((a, b) => a[2] - b[2]);
 
@@ -26,9 +30,9 @@ const findAllPeople = (n, meetings, f) => {
     } else if (!l && r) {
       r.add(a);
     } else if (l !== r) {
-      r.add(a);
-      for (const id of l) r.add(id);
-      frame.delete(l);
+      l.add(a);
+      union(l, r);
+      frame.delete(r);
     }
   }
 
@@ -36,7 +40,7 @@ const findAllPeople = (n, meetings, f) => {
     for (const set of frame) {
       for (const whom of set) {
         if (people.has(whom)) {
-          for (const id of set) people.add(id);
+          union(people, set);
           break;
         }
       }
