@@ -25,7 +25,7 @@ const findAllPeople = (n, meetings, f) => {
     } else if (ai === undefined && bi !== undefined) {
       frame[bi].add(a);
     } else if (ai !== bi) {
-      frame[bi] = frame[bi].union(frame[ai]);
+      for (const id of frame[ai]) frame[bi].add(id);
       frame[bi].add(a);
       frame.splice(ai, 1);
     }
