@@ -38,8 +38,8 @@ const findAllPeople = (n, meetings, f) => {
 
   for (const frame of frames) {
     for (const set of frame) {
-      for (const whom of set) {
-        if (people.has(whom)) {
+      for (const id of set) {
+        if (people.has(id)) {
           union(people, set);
           break;
         }
