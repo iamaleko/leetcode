@@ -11,7 +11,7 @@ const reverseWords = (s) => {
       l = r = 0;
     }
   }
-  return s.slice(r);
+  return s.slice(l);
 };
 
 // const reverseWords = (s) => {
