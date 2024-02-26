@@ -1,6 +1,6 @@
 const reverseWords = (s) => {
   let m = s.length, l = 0, r = 0;
-  while (r < m) {
+  while (r <= m) {
     if (s[l] === ' ') {
       r = ++l;
     } else if (s[r] !== ' ') {
@@ -11,7 +11,7 @@ const reverseWords = (s) => {
       l = r = 0;
     }
   }
-  return s.trim();
+  return s.slice(r);
 };
 
 // const reverseWords = (s) => {
