@@ -15,12 +15,12 @@ const longestConsecutive = (nums) => {
         expandRight = (l) => {
           maxmap.delete(l[1]);
           maxmap.set(++l[1], l);
-          return minmap.has(l[1] + 1) ? merge(l, minmap.get(l[1] + 1)) : l;
+          return /*minmap.has(l[1] + 1) ? merge(l, minmap.get(l[1] + 1)) : */l;
         },
         expandLeft = (r) => {
           minmap.delete(r[0]);
           minmap.set(--r[0], r);
-          return maxmap.has(r[0] - 1) ? merge(maxmap.get(r[0] - 1), r) : r;
+          return /*maxmap.has(r[0] - 1) ? merge(maxmap.get(r[0] - 1), r) : */r;
         };
   
   for (const num of nums) {
