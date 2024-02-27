@@ -1,8 +1,8 @@
 const simplifyPath = (path) => {
   let s = '';
   path += '/';
-  for (const chr of path) {
-    if (chr === '/') {
+  for (let i = 0; i < path.length; i++) {
+    if (path[i] === '/') {
       if (s.endsWith('/.')) {
         s = s.slice(0, -2);
       } else if (s.endsWith('/..')) {
@@ -11,7 +11,7 @@ const simplifyPath = (path) => {
         s = s.slice(0, -1);
       }
     }
-    s += chr;
+    s += path[i];
   }
   return s.slice(0, -1) || '/';
 };
