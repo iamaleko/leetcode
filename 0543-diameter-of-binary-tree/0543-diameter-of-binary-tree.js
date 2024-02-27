@@ -1,18 +1,18 @@
 const diameterOfBinaryTree = (root) => {
   let max = 0;
-  const rec = (node) => {
-    if (!node) return -1;
+
+  const recursion = (node) => {
     if (!node.left && !node.right) return 0;
 
-    const l = rec(node.left) + 1;
-    const r = rec(node.right) + 1;
+    const l = node.left ? recursion(node.left) + 1 : 0;
+    const r = node.right ? recursion(node.right) + 1 : 0;
     
     if (max < l + r) max = l + r;
 
     return Math.max(l, r);
   }
 
-  rec(root);
+  recursion(root);
 
   return max;
 };
