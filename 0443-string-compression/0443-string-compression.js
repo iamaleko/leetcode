@@ -1,8 +1,7 @@
 const compress = (chars) => {
-  let p = 0, last = chars[0];
+  let p = 0;
   if (chars.length) {
-    let cnt = 1;
-    for (let i = 1; i <= chars.length; i++) {
+    for (let last = chars[0], cnt = 1, i = 1; i <= chars.length; i++) {
       if (chars[i] !== last) {
         chars[p++] = last;
         last = chars[i];
