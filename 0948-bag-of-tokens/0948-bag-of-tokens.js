@@ -1,7 +1,7 @@
 const bagOfTokensScore = (tokens, power) => {
   let score = 0, l = 0, r = tokens.length - 1, penalty = 0;
   tokens.sort((a, b) => a - b);
-  do {
+  while (l <= r) {
     if (power >= tokens[l]) {
       power -= tokens[l++];
       ++score;
@@ -13,6 +13,6 @@ const bagOfTokensScore = (tokens, power) => {
     } else {
       break;
     }
-  } while (l <= r);
+  };
   return score + penalty;
 };
