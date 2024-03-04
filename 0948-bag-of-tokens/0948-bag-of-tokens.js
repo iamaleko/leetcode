@@ -3,17 +3,15 @@ const bagOfTokensScore = (tokens, power) => {
   tokens.sort((a, b) => a - b);
   do {
     if (power >= tokens[l]) {
-      power -= tokens[l];
+      power -= tokens[l++];
       ++score;
       penalty = 0;
-      ++l;
     } else if (score) {
-      power += tokens[r];
+      power += tokens[r--];
       --score;
       ++penalty;
-      --r;
     } else {
-      return score + penalty;
+      break;
     }
   } while (l <= r);
   return score + penalty;
