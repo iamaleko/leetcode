@@ -15,7 +15,6 @@ const pairSum = (head) => {
     prev = l;
     l = tmp;
   }
-  
   r = prev;
   l = head;
   while(r) {
@@ -23,6 +22,5 @@ const pairSum = (head) => {
     l = l.next;
     r = r.next;
   }
-
   return max;
 };
