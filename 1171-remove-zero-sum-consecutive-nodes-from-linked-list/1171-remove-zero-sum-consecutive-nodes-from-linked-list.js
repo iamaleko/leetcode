@@ -13,7 +13,7 @@ const removeZeroSumSublists = (head) => {
   while (node) {
     if (node.sum === 0) {
       head = node.next;
-    } else if (node.sum in map && map[node.sum] !== node) {
+    } else if (node.sum in map) {
       node.next = map[node.sum].next;
     }
     node = node.next;
