@@ -1,20 +1,21 @@
 const removeZeroSumSublists = (head) => {
   // running sum
-  let node = head, map = {};
-  head.sum = head.val;
-  while (node.next) {
-    node.next.sum = node.next.val + node.sum;
+  let node = head, map = {}, sum = 0;
+  while (node) {
+    sum += node.val;
+    map[sum] = node;
     node = node.next;
-    map[node.sum] = node;
   }
 
   // rechain
   node = head;
+  sum = 0;
   while (node) {
-    if (node.sum === 0) {
+    sum += node.val;
+    if (sum === 0) {
       head = node.next;
-    } else if (node.sum in map) {
-      node.next = map[node.sum].next;
+    } else if (sum in map) {
+      node.next = map[sum].next;
     }
     node = node.next;
   }
