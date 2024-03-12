@@ -14,7 +14,7 @@ const removeZeroSumSublists = (head) => {
     sum += node.val;
     if (sum === 0) {
       head = node.next;
-    } else if (sum in map) {
+    } else if (map.hasOwnProperty(sum)) {
       node.next = map[sum].next;
     }
     node = node.next;
