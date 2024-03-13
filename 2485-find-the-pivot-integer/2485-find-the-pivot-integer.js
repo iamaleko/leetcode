@@ -1,11 +1,9 @@
 const pivotInteger = (n) => {
-  const arr = new Array(n + 1).fill(0).map((e,i) => i);
-  for (let i = 1; i < arr.length; ++i) {
-    arr[i] += arr[i-1];
-  }
-  const sum = arr.at(-1);
-  for (const i in arr) {
-    if (sum - arr[i - 1] === arr[i]) return i;
-  }
+  let total = 0, sum = 0, i;
+  for (i = 1; i <= n; total += i++);
+  for (i = 1; i <= n; ++i) {
+    if (sum === (total -= i)) return i;
+    sum += i;
+  };
   return -1;
 };
