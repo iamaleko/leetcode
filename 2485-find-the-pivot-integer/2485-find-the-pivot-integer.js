@@ -1,9 +1,8 @@
 const pivotInteger = (n) => {
-  let total = 0, sum = 0, i;
-  for (i = 1; i <= n; total += i++);
-  for (i = 1; i <= n; ++i) {
+  let total = n * ++n / 2, sum = 0, i = 1;
+  while (i < n) {
     if (sum === (total -= i)) return i;
-    sum += i;
+    sum += i++;
   };
   return -1;
 };
