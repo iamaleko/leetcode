@@ -1,12 +1,12 @@
 const findMaxLength = (nums) => {
-  let map = new Array(1e5 * 2), level = 1e5, max = 0, i = 0;
+  let map = new Map(), level = 0, max = 0, i = 0;
   while (i < nums.length) {
-    if ((nums[i] ? ++level : --level) === 1e5) {
+    if ((nums[i] ? ++level : --level) === 0) {
       max = ++i;
-    } else if (map[level] === undefined) {
-      map[level] = i++;
+    } else if (map.has(level)) {
+      max = Math.max(max, i++ - map.get(level));
     } else {
-      max = Math.max(max, i++ - map[level]);
+      map.set(level, i++);
     }
   }
   return max;
