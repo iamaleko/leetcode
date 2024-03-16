@@ -1,9 +1,10 @@
 const findMaxLength = (nums) => {
-  const map = new Map();
-  map.set(0, -1);
-  let level = 0, max = 0, i = 0;
+  let map = new Map(), level = 0, max = 0, i = 0;
   while (i < nums.length) {
-    if (map.has(nums[i] ? ++level : --level)) {
+    nums[i] ? ++level : --level;
+    if (level === 0) {
+      max = ++i;
+    } else if (map.has(level)) {
       max = Math.max(max, i++ - map.get(level));
     } else {
       map.set(level, i++);
