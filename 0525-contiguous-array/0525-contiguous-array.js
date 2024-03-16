@@ -9,13 +9,15 @@ const findMaxLength = (nums) => {
       max = i;
     } else if (level < 0) {
       if (nums[-level] & 4294901760) {
-        max = Math.max(max, i - ((nums[-level] & 4294901760) >>> 16));
+        // max = Math.max(max, i - ((nums[-level] & 4294901760) >>> 16));
+        if (max < i - ((nums[-level] & 4294901760) >>> 16)) max = i - ((nums[-level] & 4294901760) >>> 16);
       } else {
         nums[-level] |= i << 16;
       }
     } else if (level > 0) {
       if (nums[level] & 65535) {
-        max = Math.max(max, i - (nums[level] & 65535));
+        // max = Math.max(max, i - (nums[level] & 65535));
+        if (max < i - (nums[level] & 65535)) max = i - (nums[level] & 65535);
       } else {
         nums[level] |= i;
       }
