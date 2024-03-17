@@ -3,7 +3,7 @@ const insert = (nodes, node) => {
     let l = 0, r = nodes.length - 1, c;
     while (l < r) {
       c = l + r >>> 1;
-      if (left ? nodes[c][1] < target : nodes[c][0] <= target) {
+      if (left ? nodes[c][1] < target : nodes[c][0] < target) {
         l = c + 1;
       } else {
         r = c - 1;
