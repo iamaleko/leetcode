@@ -4,14 +4,14 @@ const findMaxLength = (nums) => {
     if ((nums[i] ? ++level : --level) === 0) {
       max = i++;
     } else if (level < 0) {
-      if (a[-level]) {
+      if (a[-level] !== undefined) {
         if (max < i - a[-level]) max = i - a[-level];
         i++;
       } else {
         a[-level] = ++i;
       }
     } else if (level > 0) {
-      if (b[level]) {
+      if (b[level] !== undefined) {
         if (max < i - b[level]) max = i - b[level];
         i++;
       } else {
