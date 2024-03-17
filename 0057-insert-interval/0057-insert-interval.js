@@ -11,15 +11,17 @@ const insert = (nodes, node) => {
     }
     return l;
   }
+  
   let l = search(node[0], true),
       r = search(node[1], false);
   if (nodes[l] && nodes[l][1] < node[0]) l++;
   if (nodes[r] && nodes[r][0] > node[1]) r--;
+
   if (l > r) {
     // no overlaps
     nodes.splice(l, 0, node);
   } else if (r === l && nodes[l]) {
-    // same existing mode
+    // same existing node
     if (nodes[l] && nodes[l][1] >= node[0] && nodes[l][0] > node[0]) nodes[l][0] = node[0];
     if (nodes[r] && nodes[r][0] <= node[1] && nodes[r][1] < node[1]) nodes[r][1] = node[1];
   } else {
