@@ -24,11 +24,10 @@ const insert = (nodes, node) => {
     if (nodes[r] && nodes[r][0] <= node[1] && nodes[r][1] < node[1]) nodes[r][1] = node[1];
   } else {
     // with overlaps
-    const mergedNode = [
+    nodes.splice(l, r - l + 1, [
       nodes[l] ? Math.min(nodes[l][0], node[0]) : node[0],
       nodes[r] ? Math.max(nodes[r][1], node[1]) : node[1],
-    ];
-    nodes.splice(l, r - l + 1, mergedNode);
+    ]);
   }
   return nodes;
 };
