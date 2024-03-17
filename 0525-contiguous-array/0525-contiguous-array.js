@@ -10,7 +10,7 @@ const findMaxLength = (nums) => {
         if (max < i - ((nums[-level - 1] & 4294901760) >>> 16)) max = i - ((nums[-level - 1] & 4294901760) >>> 16);
         i++;
       } else {
-        nums[-level-1] |= ++i << 16;
+        nums[-level - 1] |= ++i << 16;
       }
     } else if (level > 0) {
       if (nums[level - 1] & 65535) {
