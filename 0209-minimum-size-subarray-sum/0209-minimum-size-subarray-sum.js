@@ -4,7 +4,7 @@ const minSubArrayLen = (target, nums) => {
   while (l < nums.length && r < nums.length) {
     if (sum < target) {
       sum += nums[++r];
-    } else if (sum >= target) {
+    } else {
       if (r - l < min) min = r - l;
       sum -= nums[l++];
     }
