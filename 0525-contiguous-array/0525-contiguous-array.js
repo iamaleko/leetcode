@@ -1,23 +1,21 @@
 const findMaxLength = (nums) => {
-  let level = 0, max = -1, i = 0;
+  let level = 0, max = -1, i = 0, a = [], b = [];
   while (i < nums.length) {
-    nums[i] ? level++ : level--;
-    nums[i] = 0;
-    if (level === 0) {
+    if ((nums[i] ? ++level : --level) === 0) {
       max = i++;
     } else if (level < 0) {
-      if (nums[-level - 1] & 4294901760) {
-        if (max < i - ((nums[-level - 1] & 4294901760) >>> 16)) max = i - ((nums[-level - 1] & 4294901760) >>> 16);
+      if (a[-level]) {
+        if (max < i - a[-level]) max = i - a[-level];
         i++;
       } else {
-        nums[-level - 1] |= ++i << 16;
+        a[-level] = ++i;
       }
     } else if (level > 0) {
-      if (nums[level - 1] & 65535) {
-        if (max < i - (nums[level - 1] & 65535)) max = i - (nums[level - 1] & 65535);
+      if (b[level]) {
+        if (max < i - b[level]) max = i - b[level];
         i++;
       } else {
-        nums[level - 1] |= ++i;
+        b[level] = ++i;
       }
     }
   }
