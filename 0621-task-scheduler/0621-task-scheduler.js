@@ -1,46 +1,41 @@
 const leastInterval = (tasks, n) => {
-  // create freq
-  const freq = [];
+  // create queue
+  const queue = [];
   tasks.sort();
-  let last = tasks[0], cnt = 1;
+  let last = tasks[0], repeats = 1;
   for (let i = 1; i < tasks.length; i++) {
     if (last !== tasks[i]) {
-      freq.push([last, cnt, -Infinity]);
-      cnt = 1;
+      queue.push([repeats, -Infinity]);
+      repeats = 1;
       last = tasks[i];
     } else {
-      cnt++;
+      repeats++;
     }
   }
-  freq.push([last, cnt, -Infinity]);
-  freq.sort((a, b) => b[1] - a[1]);
-  // console.log('freq', freq)
+  queue.push([repeats, -Infinity]);
+  queue.sort((a, b) => b[0] - a[0]);
 
-  // start solving
-  let step = 0, left = tasks.length, idle = 0;
-  while (left) {
-    let op;
-    for (let i = 0; i < freq.length; i++) if (freq[i][2] < step - n) { op = i; break; }
-    if (op === undefined) {
-      step++;
-      // idle++;
-      continue;
+  // start performing tasks
+  let ops = 0, left = tasks.length;
+  while (queue.length) {
+    // select task from queue O(32)
+    let i = 0;
+    for (; i < queue.length; i++) if (queue[i][1] < ops - n) break;
+
+    // perform task
+    if (i < queue.length) {
+      queue[i][0]--;
+      queue[i][1] = ops;
+      
+      // update queue
+      if (queue[i][0] === 0) {
+        queue.splice(i, 1); // dequeue if it is last task of this type
+      } else if (i < queue.length - 1 && queue[i][0] < queue[i + 1][0]) {
+        queue.sort((a, b) => b[0] - a[0]); // resort queue
+      }
     }
-    // if (idle) {console.log('perform', step, 'idle', idle); idle = 0;}
-    freq[op][1]--;
-    freq[op][2] = step;
-    left--;
-    
-    // console.log('perform', freq[op][0], step)
-    if (freq[op][1] === 0) {
-      freq.splice(op, 1);
-      // console.log('remove', step, freq)
-    } else if (op < freq.length - 1 && freq[op][1] < freq[op + 1][1]) {
-      freq.sort((a, b) => b[1] - a[1]);
-      // console.log('resort', step, freq)
-    }
-    step++;
+    ops++;
   }
 
-  return step;
+  return ops;
 };
