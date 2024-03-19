@@ -16,9 +16,9 @@ const leastInterval = (tasks, n) => {
   queue.sort((a, b) => b[0] - a[0]);
 
   // start performing tasks
-  let ops = 0, left = tasks.length;
+  let ops = 0;
   while (queue.length) {
-    // select task from queue O(32)
+    // select task from queue
     let i = 0;
     for (; i < queue.length; i++) if (queue[i][1] < ops - n) break;
 
