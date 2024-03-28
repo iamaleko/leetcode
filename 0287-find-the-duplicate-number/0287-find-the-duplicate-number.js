@@ -11,3 +11,5 @@ const findDuplicate = (nums) => {
   }
   return s;
 };
+
+// explanation of cicle start node detection https://yuminlee2.medium.com/floyds-cycle-detection-algorithm-b27ed50c607f#:~:text=Floyd's%20Cycle%20Detection%20Algorithm%20initializes,Floyd's%20Tortoise%20and%20Hair%20Algorithm.
