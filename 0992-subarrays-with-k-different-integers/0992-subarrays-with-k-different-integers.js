@@ -1,23 +1,14 @@
 const subarraysWithKDistinct = (nums, k) => {
-  const sw = (k) => { // k elements or less
-    let l = 0, r = 0, m = {}, s = 0, res = 0;
+  const subarraysWithKDistinctOrLess = (k) => {
+    let l = 0, r = 0, m = {}, res = 0;
     while (r < nums.length) {
-      if (m[nums[r]]) {
-        m[nums[r]]++;
-      } else {
-        m[nums[r]] = 1;
-        s++;
-      }
-      while (s > k) {
-        if (m[nums[l]]-- === 1) s--;
-        l++;
-      }
-      res += r - l + 1;
-      r++;
+      m[nums[r]] ? m[nums[r]]++ : (k--, m[nums[r]] = 1);
+      while (k < 0) if (m[nums[l++]]-- === 1) k++;
+      res += r++ - l + 1;
     }
     return res;
   };
-  return sw(k) - sw(k - 1);
+  return subarraysWithKDistinctOrLess(k) - subarraysWithKDistinctOrLess(k - 1);
 }
 
 // const subarraysWithKDistinct = (nums, k) => {
