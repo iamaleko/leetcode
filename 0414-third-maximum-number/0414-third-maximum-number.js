@@ -1,38 +1,44 @@
 class Heap {
   constructor(comp) {
     this.heap = [];
-    this.comparator = comp;
-    this.min = 0;
+    this.comparator = (a, b) => comp(this.heap[a], this.heap[b]) > 0;
   }
   push(n) {
     this.heap.push(n);
-    this.heapify(this.heap.length - 1);
+    this.bubble(this.heap.length - 1);
   }
   pop() {
-    if (this.min === this.heap.length) return undefined;
-    let res = this.heap[this.heap.length - 1];
-    this.heap[this.heap.length - 1] = this.heap[this.min];
-    this.heap[this.min] = undefined;
-    this.min++;
-    this.heapify(this.heap.length - 1);
-    return res;
+    if (this.heap.length === 1) {
+      return this.heap.pop();
+    } else {
+      let res = this.heap[0];
+      this.heap[0] = this.heap.pop();
+      this.sink(0);
+      return res;
+    }
   }
-  heapify(i) {
-    if (this.heap[i] === undefined) return;
-    let l = this.heap.length - (((this.heap.length - i - 1) * 2) + 1) - 1,
-        r = this.heap.length - (((this.heap.length - i - 1) * 2) + 2) - 1,
+  bubble(i) {
+    let p = i >>> 1;
+    if (this.comparator(i, p)) {
+      [this.heap[i], this.heap[p]] = [this.heap[p], this.heap[i]];
+      this.bubble(p);
+    }
+  }
+  sink(i) {
+    let l = i * 2 + 1,
+        r = i * 2 + 2,
         s = i;
-    if (l >= this.min && this.comparator(this.heap[l], this.heap[s])) s = l;
-    if (r >= this.min && this.comparator(this.heap[r], this.heap[s])) s = r;
+    if (this.comparator(l, s)) s = l;
+    if (this.comparator(r, s)) s = r;
     if (s !== i) {
       [this.heap[i], this.heap[s]] = [this.heap[s], this.heap[i]];
-      this.heapify(s);
+      this.sink(s);
     }
   }
 }
 
 const thirdMax = (nums) => {
-  let heap = new Heap((a, b) => a > b);
+  let heap = new Heap((a, b) => a - b);
   for (const num of nums) heap.push(num);
   let i = 1, max = heap.pop(), res = max;
   while (true) {
