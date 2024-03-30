@@ -1,0 +1,1 @@
+const countSegments = (s) => (s = s.trim()) ? s.split(/\s+/).length : 0;
