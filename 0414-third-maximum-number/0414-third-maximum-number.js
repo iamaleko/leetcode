@@ -1,7 +1,7 @@
 class Heap {
   constructor(comp) {
     this.heap = [];
-    this.comparator = (a, b) => comp(this.heap[a], this.heap[b]) > 0;
+    this.comparator = comp;
   }
   push(n) {
     this.heap.push(n);
@@ -18,18 +18,20 @@ class Heap {
     }
   }
   bubble(i) {
+    if (i < 0) return;
     let p = i >>> 1;
-    if (this.comparator(i, p)) {
+    if (p > -1 && this.comparator(this.heap[i], this.heap[p])) {
       [this.heap[i], this.heap[p]] = [this.heap[p], this.heap[i]];
       this.bubble(p);
     }
   }
   sink(i) {
+    if (i < 0) return;
     let l = i * 2 + 1,
         r = i * 2 + 2,
         s = i;
-    if (this.comparator(l, s)) s = l;
-    if (this.comparator(r, s)) s = r;
+    if (l < this.heap.length && this.comparator(this.heap[l], this.heap[s])) s = l;
+    if (r < this.heap.length && this.comparator(this.heap[r], this.heap[s])) s = r;
     if (s !== i) {
       [this.heap[i], this.heap[s]] = [this.heap[s], this.heap[i]];
       this.sink(s);
@@ -38,7 +40,7 @@ class Heap {
 }
 
 const thirdMax = (nums) => {
-  let heap = new Heap((a, b) => a - b);
+  let heap = new Heap((a, b) => a > b);
   for (const num of nums) heap.push(num);
   let i = 1, max = heap.pop(), res = max;
   while (true) {
