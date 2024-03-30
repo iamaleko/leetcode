@@ -2,7 +2,7 @@ const subarraysWithKDistinct = (nums, k) => {
   const sw = (k) => { // k elements or less
     let l = 0, r = 0, m = {}, s = 0, res = 0;
     while (r < nums.length) {
-      if (m.hasOwnProperty(nums[r])) {
+      if (m[nums[r]]) {
         m[nums[r]]++;
       } else {
         m[nums[r]] = 1;
