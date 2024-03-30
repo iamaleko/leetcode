@@ -8,7 +8,7 @@ class Heap {
     this.bubble(this.heap.length - 1);
   }
   pop() {
-    if (this.heap.length === 1) {
+    if (this.heap.length <= 1) {
       return this.heap.pop();
     } else {
       let res = this.heap[0];
