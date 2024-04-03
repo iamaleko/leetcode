@@ -1,7 +1,6 @@
 const exist = (board, word) => {
   const dfs = (y, x, p) => {
     if (board[y]?.[x] !== word[p++]) return false;
-    const char = board[y][x];
     board[y][x] = null;
     if (
       p === word.length ||
@@ -10,7 +9,7 @@ const exist = (board, word) => {
       dfs(y, x + 1, p) ||
       dfs(y, x - 1, p)
     ) return true;
-    board[y][x] = char;
+    board[y][x] = word[p - 1];
   }
   for (let y = 0; y < board.length; y++) {
     for (let x = 0; x < board[0].length; x++) {
