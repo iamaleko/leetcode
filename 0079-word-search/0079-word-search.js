@@ -1,8 +1,9 @@
 const exist = (board, word) => {
+  word = word.split('').reverse();
   const dfs = (y, x, word) => {
-    const char = board[y]?.[x];
-    if (char === word.at(-1)) {
-      word = word.slice(0, -1);
+    if (board[y]?.[x] === word.at(-1)) {
+      const bchar = board[y][x];
+      const wchar = word.pop();
       board[y][x] = null;
       if (
         word.length === 0 ||
@@ -11,7 +12,8 @@ const exist = (board, word) => {
         dfs(y, x + 1, word) ||
         dfs(y, x - 1, word)
       ) return true;
-      board[y][x] = char;
+      board[y][x] = bchar;
+      word.push(wchar);
     }
     return false;
   }
