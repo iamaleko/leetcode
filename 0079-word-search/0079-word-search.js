@@ -1,6 +1,6 @@
 const exist = (board, word) => {
   const dfs = (y, x, p) => {
-    if (board[y] && board[y][x] === word[p]) {
+    if (board[y]?.[x] === word[p]) {
       const char = board[y][x];
       board[y][x] = null;
       if (
