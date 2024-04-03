@@ -1,24 +1,24 @@
-const exist = (m, str) => {
-  let mx = m[0].length - 1, my = m.length - 1;
-
-  const dfs = (y, x, i) => {
-    if (m[y][x] !== str[i]) return false;
-    if (++i === str.length) return true;
-    
-    const chr = m[y][x];
-    m[y][x] = '';
-    const res = y && dfs(y - 1, x, i) ||
-                y < my && dfs(y + 1, x, i) ||
-                x && dfs(y, x - 1, i) ||
-                x < mx && dfs(y, x + 1, i);
-    m[y][x] = chr;
-
-    return res;
+const exist = (board, word) => {
+  const dfs = (y, x, word) => {
+    const char = board[y]?.[x];
+    if (char === word.at(-1)) {
+      word = word.slice(0, -1);
+      board[y][x] = null;
+      if (
+        word.length === 0 ||
+        dfs(y - 1, x, word) ||
+        dfs(y + 1, x, word) ||
+        dfs(y, x + 1, word) ||
+        dfs(y, x - 1, word)
+      ) return true;
+      board[y][x] = char;
+    }
+    return false;
   }
-
-  for (let y = 0; y <= my; ++y)
-    for (let x = 0; x <= mx; ++x)
-      if (dfs(y, x, 0)) return true;
-
+  for (let y = 0; y < board.length; y++) {
+    for (let x = 0; x < board[0].length; x++) {
+      if (dfs(y, x, word)) return true;
+    }
+  }
   return false;
 };
