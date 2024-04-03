@@ -1,10 +1,10 @@
 const exist = (board, word) => {
   const dfs = (y, x, p) => {
-    if (board[y]?.[x] === word[p]) {
+    if (board[y]?.[x] === word[p++]) {
       const char = board[y][x];
       board[y][x] = null;
       if (
-        ++p === word.length ||
+        p === word.length ||
         dfs(y - 1, x, p) ||
         dfs(y + 1, x, p) ||
         dfs(y, x + 1, p) ||
