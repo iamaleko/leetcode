@@ -1,10 +1,8 @@
 const maxDepth = (s) => {
-  let max = 0, level = 0;
-  for (const chr of s) {
-    switch (chr) {
-      case '(': if (++level > max) max = level; break;
-      case ')': --level; break;
-    }
+  let l = 0, m = 0;
+  for (let i = 0; i < s.length; i++) {
+    if (s[i] === '(') { l++; if (l > m) m = l; }
+    else if (s[i] === ')') { l--; }
   }
-  return max;
+  return m;
 };
