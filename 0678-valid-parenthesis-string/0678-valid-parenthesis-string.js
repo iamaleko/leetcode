@@ -5,8 +5,9 @@
  */
 const checkValidString = (s) => {
   const mem = {};
+  const pair = (a,b) => (a + b) * (a + b + 1) / 2 + b; 
   const req = (i, level) => {
-    const key = level+'|'+i;
+    const key = pair(i, level);
     if (mem.hasOwnProperty(key)) return mem[key];
 
     while (i < s.length) {
