@@ -10,11 +10,12 @@ const checkValidString = (s) => {
       max++;
     } else if (char === ')') {
       min && min--; // can't have less than zero opening brackets
-      if (max-- === 0) return false; // too many closing brackets on the left side
+      max--;
     } else if (char === '*') {
       min && min--; // can't have less than zero opening brackets
       max++;
     }
+    if (max < 0) return false; // too many closing brackets on the left side
   }
   return min === 0; // it's enough closing brackets
 };
