@@ -4,8 +4,6 @@ class Solution:
     r = len(nums) - 1
     while l <= r:
       c = (l + r) // 2
-      if nums[c] == target:
-        return c
       if nums[c] < target:
         l = c + 1
       else:
