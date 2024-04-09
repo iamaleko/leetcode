@@ -1,27 +1,18 @@
-class Tree:
-  def __init__(self, char = '_'):
-    self.map = {}
-    self.cnt = 1
+class Solution:
+  def longestCommonPrefix(self, strs: List[str]) -> str:
+    trie = {}
+    prefix = strs[0]
+    for i in range(len(strs)):
+      if len(strs[i]) < len(prefix):
+        prefix = strs[i]
+      node = trie
+      for j in range(len(strs[i])):
+        if strs[i][j] not in node:
+          if i and len(prefix) > j:
+            prefix = prefix[:j]
+            break
+          node[strs[i][j]] = {}
+        node = node[strs[i][j]]
+    return prefix
 
-  def inc(self):
-    self.cnt += 1
-
-  def add(self, char):
-    if char in self.map:
-      self.map[char].inc()
-    else:
-      self.map[char] = Tree(char)
-    return self.map[char]
-
-
-class Solution(object):
-  def longestCommonPrefix(self, strs):
-    tree = Tree()
-    sub = ''
-    for str in strs:
-      node = tree
-      for char in str:
-        node = node.add(char)
-        if node.cnt == len(strs):
-          sub += char
-    return sub
+        
