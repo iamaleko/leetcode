@@ -10,9 +10,5 @@ class Solution:
   def timeRequiredToBuy(self, tickets: List[int], k: int) -> int:
     seconds: int = 0
     for i in range(len(tickets)):
-      if tickets[i] >= tickets[k]:
-        seconds += tickets[k]
-        if i > k: seconds -= 1
-      else:
-        seconds += tickets[i]
+      seconds += tickets[k] - (1 if i > k else 0) if tickets[i] >= tickets[k] else tickets[i]
     return seconds
