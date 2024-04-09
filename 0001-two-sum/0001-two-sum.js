@@ -5,9 +5,9 @@
 // };
 
 const twoSum = (nums, target) => {
-  let map = new Map();
-  for (let i = 0; i < nums.length; i++) map.set(nums[i], i);
+  const map = {};
+  for (let i = 0; i < nums.length; i++) map[nums[i]] = i;
   for (let i = 0; i < nums.length; i++)
-    if (map.has(target - nums[i]) && map.get(target - nums[i]) !== i)
-      return [i, map.get(target - nums[i])];
+    if (map.hasOwnProperty(target - nums[i]) && map[target - nums[i]] !== i)
+      return [i, map[target - nums[i]]];
 };
