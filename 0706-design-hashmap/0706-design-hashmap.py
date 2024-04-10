@@ -29,7 +29,8 @@ class MyHashMap:
     key = str(key)
     hash = 0
     for chr in key:
-      hash = (ord(chr) + (hash << 6) + (hash << 16) - hash)
+      # hash = (ord(chr) + (hash << 6) + (hash << 16) - hash) # SDBM hash
+      hash = hash * 131 + ord(chr) # BKDR hash
     return hash
 
   def index(self, hash: int) -> int:
