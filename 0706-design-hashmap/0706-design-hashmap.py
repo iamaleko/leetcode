@@ -1,33 +1,86 @@
+class Node:
+  def __init__(self, key, val, next = None):
+    self.key = key
+    self.val = val
+    self.next = next
+
+class Bucket:
+  def __init__(self):
+    self.head = None
+    self.tail = None
+
+  def add(self, node) -> None:
+    if self.tail:
+      self.tail.next = node
+    else:
+      self.head = node
+    self.tail = node
+
 class MyHashMap:
   def __init__(self):
-    self.size = 1000000
-    self.list = [None for i in range(self.size)]
+    self.capacity = 1 << 4
+    self.load_factor = 0.75
+    self.list = [Bucket() for _ in range(self.capacity)]
+    self.size = 0
 
-  def hash(self, key: int) -> int:
-    return key % self.size
+  def hash(self, key) -> int:
+    key = str(key)
+    max = (1 << 64) - 1
+    hash = 0
+    for chr in key:
+      hash = (ord(chr) + (hash << 6) + (hash << 16) - hash) & max
+    return hash
 
-  def put(self, key: int, value: int) -> None:
+  def index(self, hash: int) -> int:
+    return hash & (self.capacity - 1)
+
+  def put(self, key: int, val: int) -> None:
     hash = self.hash(key)
-    if self.list[hash] != None:
-      for i, item in enumerate(self.list[hash]):
-        if item[0] == key:
-          self.list[hash][i] = (key, value)
-          return
-      self.list[hash].append((key, value))
-    else:
-      self.list[hash] = [(key, value)]
+    index = self.index(hash)
+    # update existent node
+    node = self.list[index].head
+    while node:
+      if node.key == key:
+        node.val = val
+        return
+      node = node.next
+    # add new node
+    self.list[index].add(Node(key, val))
+    self.size += 1
+    if self.size > self.capacity * self.load_factor:
+      self.resize()
 
   def get(self, key: int) -> int:
     hash = self.hash(key)
-    if self.list[hash] != None:
-      for item in self.list[hash]:
-        if item[0] == key:
-          return item[1]
+    index = self.index(hash)
+    # find node
+    node = self.list[index].head
+    while node:
+      if node.key == key:
+        return node.val
+      node = node.next
+    # node not found
     return -1
 
   def remove(self, key: int) -> None:
     hash = self.hash(key)
-    if self.list[hash] != None:
-      for i, item in enumerate(self.list[hash]):
-        if item[0] == key:
-          self.list[hash].pop(i)
+    index = self.index(hash)
+    # find node
+    node = self.list[index].head
+    last = None
+    while node:
+      if node.key == key:
+        if last:
+          last.next = node.next
+        else:
+          self.list[index].head = node.next
+        if self.list[index].tail == node:
+          self.list[index].tail = last
+        self.size -= 1
+        return
+      last = node
+      node = node.next
+
+  def resize(self) -> None:
+    # TODO
+    return
