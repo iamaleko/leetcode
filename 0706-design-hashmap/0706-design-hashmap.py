@@ -28,10 +28,10 @@ class MyHashMap:
 
   def hash(self, key) -> int:
     key = str(key)
-    max = (1 << 64) - 1
+    # max = (1 << 64) - 1
     hash = 0
     for chr in key:
-      hash = (ord(chr) + (hash << 6) + (hash << 16) - hash) & max
+      hash = (ord(chr) + (hash << 6) + (hash << 16) - hash)# & max
     return hash
 
   def index(self, hash: int) -> int:
