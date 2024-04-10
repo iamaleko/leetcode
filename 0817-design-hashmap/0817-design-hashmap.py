@@ -20,7 +20,7 @@ class Bucket:
 
 class MyHashMap:
   def __init__(self):
-    self.capacity = 1 << 4
+    self.capacity = 1 << 8
     self.load_factor = 0.75
     self.list = [None for _ in range(self.capacity)]
     self.size = 0
