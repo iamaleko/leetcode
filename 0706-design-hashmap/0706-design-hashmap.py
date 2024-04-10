@@ -13,10 +13,9 @@ class Bucket:
   def add(self, node) -> None:
     if self.tail:
       self.tail.next = node
-      self.tail = node
     else:
       self.head = node
-      self.tail = node
+    self.tail = node
     node.next = None
 
 class MyHashMap:
