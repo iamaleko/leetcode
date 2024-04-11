@@ -5,24 +5,11 @@ class Node:
     self.val = val
     self.next = next
 
-class Bucket:
-  def __init__(self):
-    self.head = None
-    self.tail = None
-
-  def add(self, node) -> None:
-    if self.tail:
-      self.tail.next = node
-    else:
-      self.head = node
-    self.tail = node
-    node.next = None
-
 class MyHashMap:
   def __init__(self):
     self.capacity = 1 << 4
     self.load_factor = 0.75
-    self.list = [None for _ in range(self.capacity)]
+    self.list = [None] * self.capacity
     self.size = 0
 
   def hash(self, key) -> int:
@@ -42,26 +29,23 @@ class MyHashMap:
     hash = self.hash(key)
     index = self.index(hash)
     # update existent node
-    node = self.list[index].head if self.list[index] else None
+    node = self.list[index]
     while node:
       if node.key == key:
         node.val = val
         return
       node = node.next
-    # add new node
-    if not self.list[index]:
-      self.list[index] = Bucket()
-    self.list[index].add(Node(hash, key, val))
-    # resize if needed
+    # or add new node
+    self.list[index] = Node(hash, key, val, self.list[index])
+    # and resize if needed
     self.size += 1
-    if self.size > self.capacity * self.load_factor:
+    if self.size / self.capacity > self.load_factor:
       self.resize()
 
   def get(self, key: int) -> int:
-    hash = self.hash(key)
-    index = self.index(hash)
+    index = self.index(self.hash(key))
     # find node
-    node = self.list[index].head if self.list[index] else None
+    node = self.list[index]
     while node:
       if node.key == key:
         return node.val
@@ -70,19 +54,16 @@ class MyHashMap:
     return -1
 
   def remove(self, key: int) -> None:
-    hash = self.hash(key)
-    index = self.index(hash)
+    index = self.index(self.hash(key))
     # find node
-    node = self.list[index].head if self.list[index] else None
+    node = self.list[index]
     last = None
     while node:
       if node.key == key:
         if last:
           last.next = node.next
-        if node == self.list[index].head:
-          self.list[index].head = node.next
-        if node == self.list[index].tail:
-          self.list[index].tail = last
+        else:
+          self.list[index] = node.next
         self.size -= 1
         return
       last = node
@@ -90,14 +71,12 @@ class MyHashMap:
 
   def resize(self) -> None:
     self.capacity <<= 1
-    list = [None for _ in range(self.capacity)]
-    for bucket in self.list:
-      node = bucket.head if bucket else None
+    list = [None] * self.capacity
+    for node in self.list:
       while node:
-        next = node.next
         index = self.index(node.hash)
-        if not list[index]:
-          list[index] = Bucket()
-        list[index].add(node)
+        next = node.next
+        node.next = list[index]
+        list[index] = node
         node = next
     self.list = list
