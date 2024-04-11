@@ -23,12 +23,11 @@ class Solution:
     cnt = 0
     max = 0
     p = 0
-    while p < len(s):
+    for p, chr in enumerate(s):
       if p - k > -1 and s[p - k] in vovels:
         cnt -= 1
-      if s[p] in vovels:
+      if chr in vovels:
         cnt += 1
         if cnt > max:
           max = cnt
-      p += 1
     return max
