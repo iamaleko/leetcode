@@ -11,9 +11,6 @@ class Solution:
     
     if k:
       stack = stack[:-k]
-
-    if not stack:
-      stack.append(0)
-
-    return ''.join(map(str, stack))
+    
+    return ''.join(map(str, stack)) or '0'
         
