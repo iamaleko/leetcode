@@ -5,7 +5,7 @@ class Solution:
       if num not in map:
         map[num] = set()
       map[num].add(i)
-    print(map)
+
     cnt = 0
     for i, num in enumerate(nums):
       key = k - num
