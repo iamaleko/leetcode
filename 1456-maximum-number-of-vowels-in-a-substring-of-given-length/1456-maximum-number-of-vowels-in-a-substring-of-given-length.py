@@ -24,11 +24,11 @@ class Solution:
     max = 0
     p = 0
     while p < len(s):
-      if s[p] in vovels:
-        cnt += 1
       if p - k > -1 and s[p - k] in vovels:
         cnt -= 1
-      if cnt > max:
-        max = cnt
+      if s[p] in vovels:
+        cnt += 1
+        if cnt > max:
+          max = cnt
       p += 1
     return max
