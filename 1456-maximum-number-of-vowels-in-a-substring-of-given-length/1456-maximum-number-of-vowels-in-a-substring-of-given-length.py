@@ -19,7 +19,7 @@
 
 class Solution:
   def maxVowels(self, s: str, k: int) -> int:
-    vovels = set(['a','e','i','o','u'])
+    vovels = 'aeiou'
     cnt = 0
     max = 0
     p = 0
