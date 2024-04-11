@@ -20,10 +20,10 @@ class Solution:
     z = 0
     n = len(nums)
     for r in range(n):
-      if nums[r] == 0:
+      if not nums[r]:
         z += 1
       if z > 1: # при таком подходе левый указатель за весь проход отстанет от правого на максимальную длинну на успешном участке
-        if nums[l] == 0:
+        if not nums[l]:
           z -= 1
         l += 1
     return n - l - 1
