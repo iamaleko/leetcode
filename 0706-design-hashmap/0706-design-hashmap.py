@@ -27,10 +27,12 @@ class MyHashMap:
 
   def hash(self, key) -> int:
     key = str(key)
-    hash = 0
+    # hash = 0 # SDBM or BKDR hash
+    hash = 5381 # DJB hash
     for chr in key:
       # hash = (ord(chr) + (hash << 6) + (hash << 16) - hash) # SDBM hash
-      hash = hash * 131 + ord(chr) # BKDR hash
+      # hash = hash * 131 + ord(chr) # BKDR hash
+      hash = (hash << 5) + hash + ord(chr) # DJB hash
     return hash
 
   def index(self, hash: int) -> int:
