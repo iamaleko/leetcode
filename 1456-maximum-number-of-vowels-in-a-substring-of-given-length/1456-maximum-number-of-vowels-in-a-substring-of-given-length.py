@@ -22,12 +22,15 @@ class Solution:
     vovels = 'aeiou'
     cnt = 0
     max = 0
-    p = 0
-    for p, chr in enumerate(s):
-      if p - k > -1 and s[p - k] in vovels:
+    r = 0
+    l = r - k
+    while r < len(s):
+      if l > -1 and s[l] in vovels:
         cnt -= 1
-      if chr in vovels:
+      if s[r] in vovels:
         cnt += 1
         if cnt > max:
           max = cnt
+      l += 1
+      r += 1
     return max
