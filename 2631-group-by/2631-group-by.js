@@ -4,12 +4,12 @@
  */
 Array.prototype.groupBy = function(fn) {
     const res = {};
-    for (const item of this) {
-      const key = fn(item);
+    for (let i = 0; i < this.length; i++) {
+      const key = fn(this[i]);
       if (key in res) {
-        res[key].push(item)
+        res[key].push(this[i])
       } else {
-        res[key] = [item]
+        res[key] = [this[i]]
       }
     }
     return res;
