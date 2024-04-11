@@ -4,8 +4,9 @@
  */
 Array.prototype.groupBy = function(fn) {
     const res = {};
+    let key;
     for (let i = 0; i < this.length; i++) {
-      const key = fn(this[i]);
+      key = fn(this[i]);
       if (key in res) {
         res[key].push(this[i])
       } else {
