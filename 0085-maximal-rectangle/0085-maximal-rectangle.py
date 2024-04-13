@@ -29,7 +29,8 @@ class Solution:
     xs = 1
     while x > 0 and matrix[y][x - 1]:
       xs += 1
-      x -= 1
-      ys = min(ys, matrix[y][x])
+      if ys > matrix[y][x - 1]:
+        ys = matrix[y][x - 1]
       res = max(res, ys * xs)
+      x -= 1
     return res
