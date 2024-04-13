@@ -4,7 +4,6 @@ class Solution:
     st = []
     hs.append(-1)
     for i in range(len(hs)):
-      li = 0
       while st and hs[st[-1]] > hs[i]:
         si = st.pop()
         sw = i - st[-1] - 1 if st else i
