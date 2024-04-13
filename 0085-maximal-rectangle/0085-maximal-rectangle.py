@@ -9,31 +9,27 @@ class Solution:
         if matrix[y][x] and y > 0:
           matrix[y][x] += matrix[y - 1][x]
 
-    max = 0
+    res = 0
     y = h - 1
     x = w - 1
     while True:
       if matrix[y][x]:
-        val = self.calc(y,x,matrix)
-        if val > max:
-          max = val
+        res = max(res, self.calc(y,x,matrix))
       x -= 1
       if x < 0:
         x = w - 1
         y -= 1
       if y < 0:
         break
-    return max
+    return res
 
-  def calc(self, y, x, sum):
-    max = sum[y][x]
-    ys = max
+  def calc(self, y, x, matrix):
+    res = matrix[y][x]
+    ys = matrix[y][x]
     xs = 1
-    while x > 0 and sum[y][x - 1]:
+    while x > 0 and matrix[y][x - 1]:
       xs += 1
-      if ys > sum[y][x - 1]:
-        ys = sum[y][x - 1]
-      if max < ys * xs:
-        max = ys * xs
       x -= 1
-    return max
+      ys = min(ys, matrix[y][x])
+      res = max(res, ys * xs)
+    return res
