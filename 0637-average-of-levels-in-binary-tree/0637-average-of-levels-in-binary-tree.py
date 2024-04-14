@@ -20,19 +20,34 @@
 #         sum[i] /= cnt[i]
 #     return sum
 
+# class Solution:
+#   def averageOfLevels(self, root: Optional[TreeNode]) -> List[float]:
+#     res = []
+#     queue = [root]
+#     while queue:
+#       sum = 0
+#       _queue = []
+#       for node in queue:
+#         sum += node.val
+#         if node.left: _queue.append(node.left)
+#         if node.right: _queue.append(node.right)
+#       res.append(sum / len(queue))
+#       queue = _queue
+#     return res
+
 class Solution:
   def averageOfLevels(self, root: Optional[TreeNode]) -> List[float]:
     res = []
-    queue = [root]
+    queue = deque([root])
     while queue:
       sum = 0
-      _queue = []
-      for node in queue:
+      cnt = len(queue)
+      for i in range(cnt):
+        node = queue.popleft()
         sum += node.val
-        if node.left: _queue.append(node.left)
-        if node.right: _queue.append(node.right)
-      res.append(sum / len(queue))
-      queue = _queue
+        if node.left: queue.append(node.left)
+        if node.right: queue.append(node.right)
+      res.append(sum / cnt)
     return res
 
         
