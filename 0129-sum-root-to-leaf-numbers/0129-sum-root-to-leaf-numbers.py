@@ -16,7 +16,8 @@
 class Solution:
   def sumNumbers(self, root: Optional[TreeNode]) -> int:
     def traverse(node, n):
-      if not node: return 0
+      if not node:
+        return 0
       n = n * 10 + node.val
       return traverse(node.left, n) + traverse(node.right, n) if node.left or node.right else n
     return traverse(root, 0)
