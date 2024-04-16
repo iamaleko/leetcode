@@ -8,13 +8,11 @@ class Solution:
   def addOneRow(self, left: Optional[TreeNode], val: int, depth: int, right: Optional[TreeNode] = None) -> Optional[TreeNode]:
     if depth == 1:
       return TreeNode(val, left, None) if left else TreeNode(val, None, right)
-    elif left:
-      left.left = self.addOneRow(left.left, val, depth - 1)
-      left.right = self.addOneRow(None, val, depth - 1, left.right)
-      return left
-    elif right:
-      right.left = self.addOneRow(right.left, val, depth - 1)
-      right.right = self.addOneRow(None, val, depth - 1, right.right)
-      return right
-    else:
-      return None
+    depth -= 1
+    node = left if left else right
+    if node:
+      if node.left or depth == 1:
+        node.left = self.addOneRow(node.left, val, depth)
+      if node.right or depth == 1:
+        node.right = self.addOneRow(None, val, depth, node.right)
+    return node
