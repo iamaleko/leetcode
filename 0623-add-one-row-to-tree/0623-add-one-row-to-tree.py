@@ -9,7 +9,7 @@ class Solution:
     if depth == 1:
       return TreeNode(val, left, None) if left else TreeNode(val, None, right)
     depth -= 1
-    node = left if left else right
+    node = left or right
     if node:
       if node.left or depth == 1:
         node.left = self.addOneRow(node.left, val, depth)
