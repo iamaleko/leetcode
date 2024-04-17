@@ -15,16 +15,16 @@
 #     return res
 
 class Solution:
+  def tr(self, node, s):
+    s = chr(97 + node.val) + s
+    if node.left or node.right:
+      if node.left:
+        self.tr(node.left, s)
+      if node.right:
+        self.tr(node.right, s)
+    elif not self.res or self.res > s:
+      self.res = s
   def smallestFromLeaf(self, root: Optional[TreeNode]) -> str:
     self.res = None
-    def tr(node, s):
-      s = chr(97 + node.val) + s
-      if node.left or node.right:
-        if node.left:
-          tr(node.left, s)
-        if node.right:
-          tr(node.right, s)
-      elif not self.res or self.res > s:
-        self.res = s
-    tr(root, '')
+    self.tr(root, '')
     return self.res
