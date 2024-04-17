@@ -33,23 +33,24 @@
 #     return res
 
 class Node:
-  def __init__(self, val, next = None):
-    self.val = val
+  def __init__(self, node, s, next = None):
+    self.node = node
+    self.s = s
     self.next = next
 
 class Solution:
   def smallestFromLeaf(self, root: Optional[TreeNode]) -> str:
     res = None
-    ll = Node((root, ''))
-    while ll:
-      node, s = ll.val
-      ll = ll.next
-      s = chr(97 + node.val) + s
+    head = Node(root, '')
+    while head:
+      node = head.node
+      s = chr(97 + node.val) + head.s
+      head = head.next
       if node.left or node.right:
         if node.left:
-          ll = Node((node.left, s), ll)
+          head = Node(node.left, s, head)
         if node.right:
-          ll = Node((node.right, s), ll)
+          head = Node(node.right, s, head)
       elif not res or res > s:
         res = s
     return res
