@@ -15,7 +15,7 @@
 #         res = s
 #     return res
 
-# faster because of deque linked list realization 
+# faster because of deque native linked list realization 
 class Solution:
   def smallestFromLeaf(self, root: Optional[TreeNode]) -> str:
     res = None
@@ -32,7 +32,7 @@ class Solution:
         res = s
     return res
 
-# simple linked list realization
+# simple linked list realization, little bit slower than deque but faster than list
 # class ListNode:
 #   def __init__(self, node, s, next = None):
 #     self.node = node
