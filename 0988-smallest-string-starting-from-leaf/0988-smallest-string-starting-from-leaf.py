@@ -32,7 +32,8 @@
 #         res = s
 #     return res
 
-class Node:
+# simple linked list realization
+class ListNode:
   def __init__(self, node, s, next = None):
     self.node = node
     self.s = s
@@ -41,16 +42,16 @@ class Node:
 class Solution:
   def smallestFromLeaf(self, root: Optional[TreeNode]) -> str:
     res = None
-    head = Node(root, '')
+    head = ListNode(root, '')
     while head:
       node = head.node
       s = chr(97 + node.val) + head.s
       head = head.next
       if node.left or node.right:
         if node.left:
-          head = Node(node.left, s, head)
+          head = ListNode(node.left, s, head)
         if node.right:
-          head = Node(node.right, s, head)
+          head = ListNode(node.right, s, head)
       elif not res or res > s:
         res = s
     return res
