@@ -10,7 +10,6 @@ class Solution:
           queue.append((node.left, s))
         if node.right:
           queue.append((node.right, s))
-      else:
-        if not res or res > s:
-          res = s
+      elif not res or res > s:
+        res = s
     return res
