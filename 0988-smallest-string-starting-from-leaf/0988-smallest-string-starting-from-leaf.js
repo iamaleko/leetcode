@@ -10,10 +10,11 @@ const smallestFromLeaf = (root) => {
   let res = '',
       head = new ListNode(root),
       node,
-      s;
+      s,
+      voc = 'abcdefghijklmnopqrstuvwxyz';
   while (head) {
     node = head.node;
-    s = String.fromCharCode(97 + node.val) + head.s;
+    s = voc[node.val] + head.s;
     head = head.next;
     if (node.left || node.right) {
       if (node.left) head = new ListNode(node.left, s, head);
