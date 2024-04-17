@@ -32,23 +32,24 @@
 #         res = s
 #     return res
 
+class Node:
+  def __init__(self, val, next = None):
+    self.val = val
+    self.next = next
+
 class Solution:
   def smallestFromLeaf(self, root: Optional[TreeNode]) -> str:
     res = None
-    queue = [None] * 8500
-    i = 0
-    queue[i] = (root, '')
-    while i > -1:
-      node, s = queue[i]
-      i -= 1
+    ll = Node((root, ''))
+    while ll:
+      node, s = ll.val
+      ll = ll.next
       s = chr(97 + node.val) + s
       if node.left or node.right:
         if node.left:
-          i += 1
-          queue[i] = (node.left, s)
+          ll = Node((node.left, s), ll)
         if node.right:
-          i += 1
-          queue[i] = (node.right, s)
+          ll = Node((node.right, s), ll)
       elif not res or res > s:
         res = s
     return res
