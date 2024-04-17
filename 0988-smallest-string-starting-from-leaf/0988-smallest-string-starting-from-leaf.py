@@ -1,3 +1,4 @@
+# slower because of list using as queue
 # class Solution:
 #   def smallestFromLeaf(self, root: Optional[TreeNode]) -> str:
 #     res = None
@@ -14,6 +15,7 @@
 #         res = s
 #     return res
 
+# faster because of deque linked list realization 
 class Solution:
   def smallestFromLeaf(self, root: Optional[TreeNode]) -> str:
     res = None
@@ -30,6 +32,7 @@ class Solution:
         res = s
     return res
 
+# slower because of function call stack
 # class Solution:
 #   def tr(self, node, s):
 #     s = chr(97 + node.val) + s
