@@ -16,18 +16,39 @@
 #     return res
 
 # faster because of deque linked list realization 
+# class Solution:
+#   def smallestFromLeaf(self, root: Optional[TreeNode]) -> str:
+#     res = None
+#     queue = deque([(root, '')])
+#     while queue:
+#       node, s = queue.pop()
+#       s = chr(97 + node.val) + s
+#       if node.left or node.right:
+#         if node.left:
+#           queue.append((node.left, s))
+#         if node.right:
+#           queue.append((node.right, s))
+#       elif not res or res > s:
+#         res = s
+#     return res
+
 class Solution:
   def smallestFromLeaf(self, root: Optional[TreeNode]) -> str:
     res = None
-    queue = deque([(root, '')])
-    while queue:
-      node, s = queue.pop()
+    queue = [None] * 8500
+    i = 0
+    queue[i] = (root, '')
+    while i > -1:
+      node, s = queue[i]
+      i -= 1
       s = chr(97 + node.val) + s
       if node.left or node.right:
         if node.left:
-          queue.append((node.left, s))
+          i += 1
+          queue[i] = (node.left, s)
         if node.right:
-          queue.append((node.right, s))
+          i += 1
+          queue[i] = (node.right, s)
       elif not res or res > s:
         res = s
     return res
