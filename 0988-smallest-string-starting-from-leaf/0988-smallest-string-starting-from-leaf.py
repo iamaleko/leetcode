@@ -16,45 +16,45 @@
 #     return res
 
 # faster because of deque linked list realization 
-# class Solution:
-#   def smallestFromLeaf(self, root: Optional[TreeNode]) -> str:
-#     res = None
-#     queue = deque([(root, '')])
-#     while queue:
-#       node, s = queue.pop()
-#       s = chr(97 + node.val) + s
-#       if node.left or node.right:
-#         if node.left:
-#           queue.append((node.left, s))
-#         if node.right:
-#           queue.append((node.right, s))
-#       elif not res or res > s:
-#         res = s
-#     return res
-
-# simple linked list realization
-class ListNode:
-  def __init__(self, node, s, next = None):
-    self.node = node
-    self.s = s
-    self.next = next
-
 class Solution:
   def smallestFromLeaf(self, root: Optional[TreeNode]) -> str:
     res = None
-    head = ListNode(root, '')
-    while head:
-      node = head.node
-      s = chr(97 + node.val) + head.s
-      head = head.next
+    queue = deque([(root, '')])
+    while queue:
+      node, s = queue.pop()
+      s = chr(97 + node.val) + s
       if node.left or node.right:
         if node.left:
-          head = ListNode(node.left, s, head)
+          queue.append((node.left, s))
         if node.right:
-          head = ListNode(node.right, s, head)
+          queue.append((node.right, s))
       elif not res or res > s:
         res = s
     return res
+
+# simple linked list realization
+# class ListNode:
+#   def __init__(self, node, s, next = None):
+#     self.node = node
+#     self.s = s
+#     self.next = next
+
+# class Solution:
+#   def smallestFromLeaf(self, root: Optional[TreeNode]) -> str:
+#     res = None
+#     head = ListNode(root, '')
+#     while head:
+#       node = head.node
+#       s = chr(97 + node.val) + head.s
+#       head = head.next
+#       if node.left or node.right:
+#         if node.left:
+#           head = ListNode(node.left, s, head)
+#         if node.right:
+#           head = ListNode(node.right, s, head)
+#       elif not res or res > s:
+#         res = s
+#     return res
 
 # slower because of function call stack
 # class Solution:
