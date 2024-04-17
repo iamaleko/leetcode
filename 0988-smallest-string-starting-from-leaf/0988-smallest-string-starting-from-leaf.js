@@ -8,10 +8,12 @@ class ListNode {
 }
 const smallestFromLeaf = (root) => {
   let res = '',
-      head = new ListNode(root);
+      head = new ListNode(root),
+      node,
+      s;
   while (head) {
-    const node = head.node,
-          s = String.fromCharCode(97 + node.val) + head.s;
+    node = head.node;
+    s = String.fromCharCode(97 + node.val) + head.s;
     head = head.next;
     if (node.left || node.right) {
       if (node.left) head = new ListNode(node.left, s, head);
