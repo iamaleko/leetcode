@@ -1,32 +1,22 @@
 class Solution:
-  def __init__(self):
-    self.LAND = '1'
-    self.WATER = '0'
-    self.VISITED = '2'
-
-  def fill(self, y, x):
-    queue = deque([(y,x)])
-    while queue:
-      y, x = queue.pop()
-      self.grid[y][x] = self.VISITED
-      if y > 0 and self.grid[y - 1][x] == self.LAND:
-        queue.append((y - 1, x))
-      if y < self.maxy and self.grid[y + 1][x] == self.LAND:
-        queue.append((y + 1, x))
-      if x > 0 and self.grid[y][x - 1] == self.LAND:
-        queue.append((y, x - 1))
-      if x < self.maxx and self.grid[y][x + 1] == self.LAND:
-        queue.append((y, x + 1))
-
   def numIslands(self, grid: List[List[str]]) -> int:
     res = 0
-    self.grid = grid
-    self.maxy = len(grid) - 1
-    self.maxx = len(grid[0]) - 1
-    for y in range(self.maxy + 1):
-      for x in range(self.maxx + 1):
-        if grid[y][x] == self.LAND:
+    LAND = '1'
+    WATER = '0'
+    VISITED = '2'
+    maxy = len(grid) - 1
+    maxx = len(grid[0]) - 1
+    for y in range(maxy + 1):
+      for x in range(maxx + 1):
+        if grid[y][x] == LAND:
           res += 1
-          self.fill(y, x)
+          queue = deque([(y,x)])
+          while queue:
+            _y, _x = queue.pop()
+            grid[_y][_x] = VISITED
+            if _y > 0 and grid[_y - 1][_x] == LAND: queue.append((_y - 1, _x))
+            if _y < maxy and grid[_y + 1][_x] == LAND: queue.append((_y + 1, _x))
+            if _x > 0 and grid[_y][_x - 1] == LAND: queue.append((_y, _x - 1))
+            if _x < maxx and grid[_y][_x + 1] == LAND: queue.append((_y, _x + 1))
     return res
         
