@@ -3,18 +3,39 @@
  * @return {number}
  */
 const numIslands = function(grid) {
-  const dfs = (y, x) => {
-    grid[y][x] = '2';
-    if (grid[y][x - 1] === '1') dfs(y, x - 1);
-    if (grid[y][x + 1] === '1') dfs(y, x + 1);
-    if (grid[y - 1] && grid[y - 1][x] === '1') dfs(y - 1, x);
-    if (grid[y + 1] && grid[y + 1][x] === '1') dfs(y + 1, x);
-  }
   let count = 0;
-  for (const y in grid) {
-    for (const x in grid[y]) {
-      if (grid[y][x]!=='1') continue;
-      dfs(+y, +x);
+  for (let y in grid) {
+    for (let x in grid[y]) {
+      if (grid[y][x] !== '1') continue;
+      
+      x *= 1
+      y *= 1
+
+      const queue = [];
+      queue.push([y, x])
+      grid[y][x] = '2';
+    
+      while (queue.length) {
+        let [y, x] = queue.pop();
+        
+        if (x > 0 && grid[y][x - 1] === '1') {
+          grid[y][x - 1] = '2';
+          queue.push([y, x - 1]);
+        }
+        if (y > 0 && grid[y - 1][x] === '1') {
+          grid[y - 1][x] = '2';
+          queue.push([y - 1, x]);
+        }
+        if (x < grid[0].length - 1 && grid[y][x + 1] === '1') {
+          grid[y][x + 1] = '2';
+          queue.push([y, x + 1]);
+        }
+        if (y < grid.length - 1 && grid[y + 1][x] === '1') {
+          grid[y + 1][x] = '2';
+          queue.push([y + 1, x]);
+        }
+      }
+
       ++count;
     }
   }
