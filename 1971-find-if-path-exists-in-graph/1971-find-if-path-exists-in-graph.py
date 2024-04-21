@@ -3,14 +3,14 @@
 class UnionFind:
   def __init__(self):
     self.parent = {}
+    self.rank = {}
   
   def add(self, i: int) -> int:
     parent = self.find(i)
     if parent == None:
       self.parent[i] = i
       parent = i
-    else:
-      self.parent[i] = parent
+      self.rank[parent] = 1
     return parent
 
   def find(self, i: int) -> int | None:
@@ -29,11 +29,15 @@ class UnionFind:
       return False
     elif parent1 == parent2:
       return parent1
-    elif random.random() < .5:
+    elif self.parent[parent1] < self.parent[parent2]:
       self.parent[parent1] = parent2
+      self.rank[parent2] += self.rank[parent1]
+      del self.rank[parent1]
       return parent2
     else:
       self.parent[parent2] = parent1
+      self.rank[parent1] += self.rank[parent2]
+      del self.rank[parent2]
       return parent1
 
 class Solution:
