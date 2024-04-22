@@ -48,22 +48,30 @@ class Solution:
         step += 1
         
         _point = (abs((point[0] + 1) % 10), point[1], point[2], point[3])
-        heapq.heappush(queue, (step * dist(point, _point), _point, step))
+        if _point not in visited:
+          heapq.heappush(queue, (step * dist(point, _point), _point, step))
         _point = (abs((point[0] - 1) % 10), point[1], point[2], point[3])
-        heapq.heappush(queue, (step * dist(point, _point), _point, step))
+        if _point not in visited:
+          heapq.heappush(queue, (step * dist(point, _point), _point, step))
 
         _point = (point[0], abs((point[1] + 1) % 10), point[2], point[3])
-        heapq.heappush(queue, (step * dist(point, _point), _point, step))
+        if _point not in visited:
+          heapq.heappush(queue, (step * dist(point, _point), _point, step))
         _point = (point[0], abs((point[1] - 1) % 10), point[2], point[3])
-        heapq.heappush(queue, (step * dist(point, _point), _point, step))
+        if _point not in visited:
+          heapq.heappush(queue, (step * dist(point, _point), _point, step))
 
         _point = (point[0], point[1], abs((point[2] + 1) % 10), point[3])
-        heapq.heappush(queue, (step * dist(point, _point), _point, step))
+        if _point not in visited:
+          heapq.heappush(queue, (step * dist(point, _point), _point, step))
         _point = (point[0], point[1], abs((point[2] - 1) % 10), point[3])
-        heapq.heappush(queue, (step * dist(point, _point), _point, step))
+        if _point not in visited:
+          heapq.heappush(queue, (step * dist(point, _point), _point, step))
 
         _point = (point[0], point[1], point[2], abs((point[3] + 1) % 10))
-        heapq.heappush(queue, (step * dist(point, _point), _point, step))
+        if _point not in visited:
+          heapq.heappush(queue, (step * dist(point, _point), _point, step))
         _point = (point[0], point[1], point[2], abs((point[3] - 1) % 10))
-        heapq.heappush(queue, (step * dist(point, _point), _point, step))
+        if _point not in visited:
+          heapq.heappush(queue, (step * dist(point, _point), _point, step))
     return -1
