@@ -1,7 +1,7 @@
 class Solution:
   def openLock(self, deadends: List[str], target: str) -> int:
     target = tuple([int(d) for d in target])
-    
+
     dp = {}
     for deadend in deadends:
       dp[tuple([int(d) for d in deadend])] = -1
@@ -22,6 +22,5 @@ class Solution:
         queue.append((a, b, abs((c - 1) % 10), d, step))
         queue.append((a, b, c, abs((d + 1) % 10), step))
         queue.append((a, b, c, abs((d - 1) % 10), step))
-    
     
     return -1
