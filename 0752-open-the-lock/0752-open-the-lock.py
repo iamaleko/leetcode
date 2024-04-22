@@ -27,8 +27,8 @@
 
 class Solution:
   def openLock(self, deadends: List[str], target: str) -> int:
-    def dist(a, b):
-      return abs(a[0] + b[0]) + abs(a[1] + b[1]) + abs(a[2] + b[2]) + abs(a[3] + b[3])
+    def cost(a, b, s):
+      return s * ((a[0] + b[0] | 0) + (a[1] + b[1] | 0) + (a[2] + b[2] | 0) + (a[3] + b[3] | 0))
     
     start = (0,0,0,0)
     target = tuple([int(d) for d in target])
@@ -52,36 +52,36 @@ class Solution:
         _point = (abs((point[0] + 1) % 10), point[1], point[2], point[3])
         if _point not in visited:
           visited.add(_point)
-          heapq.heappush(queue, (step * dist(point, _point), _point, step))
+          heapq.heappush(queue, (cost(point, _point, step), _point, step))
         _point = (abs((point[0] - 1) % 10), point[1], point[2], point[3])
         if _point not in visited:
           visited.add(_point)
-          heapq.heappush(queue, (step * dist(point, _point), _point, step))
+          heapq.heappush(queue, (cost(point, _point, step), _point, step))
 
         _point = (point[0], abs((point[1] + 1) % 10), point[2], point[3])
         if _point not in visited:
           visited.add(_point)
-          heapq.heappush(queue, (step * dist(point, _point), _point, step))
+          heapq.heappush(queue, (cost(point, _point, step), _point, step))
         _point = (point[0], abs((point[1] - 1) % 10), point[2], point[3])
         if _point not in visited:
           visited.add(_point)
-          heapq.heappush(queue, (step * dist(point, _point), _point, step))
+          heapq.heappush(queue, (cost(point, _point, step), _point, step))
 
         _point = (point[0], point[1], abs((point[2] + 1) % 10), point[3])
         if _point not in visited:
           visited.add(_point)
-          heapq.heappush(queue, (step * dist(point, _point), _point, step))
+          heapq.heappush(queue, (cost(point, _point, step), _point, step))
         _point = (point[0], point[1], abs((point[2] - 1) % 10), point[3])
         if _point not in visited:
           visited.add(_point)
-          heapq.heappush(queue, (step * dist(point, _point), _point, step))
+          heapq.heappush(queue, (cost(point, _point, step), _point, step))
 
         _point = (point[0], point[1], point[2], abs((point[3] + 1) % 10))
         if _point not in visited:
           visited.add(_point)
-          heapq.heappush(queue, (step * dist(point, _point), _point, step))
+          heapq.heappush(queue, (cost(point, _point, step), _point, step))
         _point = (point[0], point[1], point[2], abs((point[3] - 1) % 10))
         if _point not in visited:
           visited.add(_point)
-          heapq.heappush(queue, (step * dist(point, _point), _point, step))
+          heapq.heappush(queue, (cost(point, _point, step), _point, step))
     return -1
