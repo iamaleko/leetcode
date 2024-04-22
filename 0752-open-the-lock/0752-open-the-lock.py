@@ -30,6 +30,7 @@ class Solution:
     def dist(a, b):
       return abs(a[0] + b[0]) + abs(a[1] + b[1]) + abs(a[2] + b[2]) + abs(a[3] + b[3])
     
+    start = (0,0,0,0)
     target = tuple([int(d) for d in target])
 
     visited = set()
@@ -37,8 +38,9 @@ class Solution:
       visited.add(tuple([int(d) for d in deadend]))
 
     queue = []
-    heapq.heappush(queue, (0, (0,0,0,0), 0))
-    visited.add((0,0,0,0))
+    if start not in visited:
+      heapq.heappush(queue, (0, start, 0))
+      visited.add(start)
 
     while queue:
       _, point, step = heapq.heappop(queue)
