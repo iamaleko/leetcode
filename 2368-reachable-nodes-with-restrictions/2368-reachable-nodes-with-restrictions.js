@@ -1,3 +1,4 @@
+// UnionFind
 const reachableNodes = (n, edges, restricted) => {
   restricted = new Set(restricted);
   const parents = {}, rank = {};
