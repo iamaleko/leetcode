@@ -27,24 +27,23 @@
 
 class Solution:
   def openLock(self, deadends: List[str], target: str) -> int:
-    start = (0,0,0,0)
-    end = tuple([int(d) for d in target])
+    target = tuple([int(d) for d in target])
 
     costs = {}
     for deadend in deadends:
       costs[tuple([int(d) for d in deadend])] = -1
 
     queue = []
-    if start not in costs:
-      heapq.heappush(queue, (0, start, 0))
-      costs[start] = 0
+    if (0,0,0,0) not in costs:
+      heapq.heappush(queue, (0, (0,0,0,0), 0))
+      costs[(0,0,0,0)] = 0
 
     while queue:
       _, point, step = heapq.heappop(queue)
-      if point == end:
+      if point == target:
         return step
       step += 1
-      _points = [
+      points = [
         (abs((point[0] + 1) % 10), point[1], point[2], point[3]),
         (abs((point[0] - 1) % 10), point[1], point[2], point[3]),
         (point[0], abs((point[1] + 1) % 10), point[2], point[3]),
@@ -54,15 +53,15 @@ class Solution:
         (point[0], point[1], point[2], abs((point[3] + 1) % 10)),
         (point[0], point[1], point[2], abs((point[3] - 1) % 10))
       ]
-      for _point in _points:
-        _cost = step + math.sqrt(
+      for _point in points:
+        cost = step + math.sqrt(
           (_point[0] + point[0]) ** 2 +
           (_point[1] + point[1]) ** 2 +
           (_point[2] + point[2]) ** 2 +
           (_point[3] + point[3]) ** 2
         )
-        if _point not in costs or _cost < costs[_point]:
-          costs[_point] = _cost
-          heapq.heappush(queue, (_cost, _point, step))
+        if _point not in costs or cost < costs[_point]:
+          costs[_point] = cost
+          heapq.heappush(queue, (cost, _point, step))
 
     return -1
