@@ -38,40 +38,48 @@ class Solution:
 
     queue = []
     heapq.heappush(queue, (0, (0,0,0,0), 0))
+    visited.add((0,0,0,0))
 
     while queue:
-      cost, point, step = heapq.heappop(queue)
+      _, point, step = heapq.heappop(queue)
       if point == target:
         return step
-      if point not in visited:
-        visited.add(point)
+      else:
         step += 1
         
         _point = (abs((point[0] + 1) % 10), point[1], point[2], point[3])
         if _point not in visited:
+          visited.add(_point)
           heapq.heappush(queue, (step * dist(point, _point), _point, step))
         _point = (abs((point[0] - 1) % 10), point[1], point[2], point[3])
         if _point not in visited:
+          visited.add(_point)
           heapq.heappush(queue, (step * dist(point, _point), _point, step))
 
         _point = (point[0], abs((point[1] + 1) % 10), point[2], point[3])
         if _point not in visited:
+          visited.add(_point)
           heapq.heappush(queue, (step * dist(point, _point), _point, step))
         _point = (point[0], abs((point[1] - 1) % 10), point[2], point[3])
         if _point not in visited:
+          visited.add(_point)
           heapq.heappush(queue, (step * dist(point, _point), _point, step))
 
         _point = (point[0], point[1], abs((point[2] + 1) % 10), point[3])
         if _point not in visited:
+          visited.add(_point)
           heapq.heappush(queue, (step * dist(point, _point), _point, step))
         _point = (point[0], point[1], abs((point[2] - 1) % 10), point[3])
         if _point not in visited:
+          visited.add(_point)
           heapq.heappush(queue, (step * dist(point, _point), _point, step))
 
         _point = (point[0], point[1], point[2], abs((point[3] + 1) % 10))
         if _point not in visited:
+          visited.add(_point)
           heapq.heappush(queue, (step * dist(point, _point), _point, step))
         _point = (point[0], point[1], point[2], abs((point[3] - 1) % 10))
         if _point not in visited:
+          visited.add(_point)
           heapq.heappush(queue, (step * dist(point, _point), _point, step))
     return -1
