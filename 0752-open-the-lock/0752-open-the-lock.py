@@ -4,15 +4,12 @@ class Solution:
     for end in deadends:
       dp[end] = -1
 
-    def toKey(a,b,c,d):
-      return str(a) + str(b) + str(c) + str(d)
-
     queue = deque([(0,0,0,0,0)])
 
     while queue:
       a,b,c,d,step = queue.popleft()
       
-      key = toKey(a,b,c,d)
+      key = str(a) + str(b) + str(c) + str(d)
       if key in dp and dp[key] <= step:
         continue
       dp[key] = step
