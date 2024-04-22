@@ -31,17 +31,15 @@ class Solution:
 
     costs = {}
     for deadend in deadends:
-      costs[tuple([int(d) for d in deadend])] = -1
+      costs[tuple([int(d) for d in deadend])] = (-1,0)
 
     queue = []
+    heapq.heapify(queue)
     if (0,0,0,0) not in costs:
       heapq.heappush(queue, (0, (0,0,0,0), 0))
-      costs[(0,0,0,0)] = 0
-
+      costs[(0,0,0,0)] = (0,0)
     while queue:
       _, point, step = heapq.heappop(queue)
-      if point == target:
-        return step
       step += 1
       points = [
         (abs((point[0] + 1) % 10), point[1], point[2], point[3]),
@@ -54,14 +52,11 @@ class Solution:
         (point[0], point[1], point[2], abs((point[3] - 1) % 10))
       ]
       for _point in points:
-        cost = step + math.sqrt(
-          (_point[0] + point[0]) ** 2 +
-          (_point[1] + point[1]) ** 2 +
-          (_point[2] + point[2]) ** 2 +
-          (_point[3] + point[3]) ** 2
-        )
-        if _point not in costs or cost < costs[_point]:
-          costs[_point] = cost
+        cost = step
+        for i in range(4):
+          cost += min(abs(_point[i] - target[i]), 10 - abs(target[i] - _point[i]))
+        if _point not in costs or costs[_point][1] > cost:
+          costs[_point] = (cost, step)
           heapq.heappush(queue, (cost, _point, step))
 
-    return -1
+    return costs[target][1] if target in costs else -1
