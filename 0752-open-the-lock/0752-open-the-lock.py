@@ -1,13 +1,15 @@
 class Solution:
   def openLock(self, deadends: List[str], target: str) -> int:
+    target = tuple([int(d) for d in target])
     dp = {}
     for deadend in deadends:
       dp[tuple([int(d) for d in deadend])] = -1
 
     queue = deque([(0,0,0,0,0)])
-
     while queue:
       a,b,c,d,step = queue.popleft()
+      if (a,b,c,d) == target:
+        return step
       if (a,b,c,d) not in dp:
         dp[(a,b,c,d)] = step
         step += 1
@@ -20,5 +22,5 @@ class Solution:
         queue.append((a, b, c, abs((d + 1) % 10), step))
         queue.append((a, b, c, abs((d - 1) % 10), step))
     
-    target = tuple([int(d) for d in target])
-    return dp[target] if target in dp else -1
+    
+    return -1
