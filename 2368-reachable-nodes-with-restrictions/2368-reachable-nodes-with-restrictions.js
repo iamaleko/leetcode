@@ -1,38 +1,37 @@
 const reachableNodes = (n, edges, restricted) => {
   restricted = new Set(restricted);
-  const parents = {}
-  const sizes = {}
+  const parents = {}, rank = {}
   for (let [a, b] of edges) {
     if (restricted.has(a) || restricted.has(b)) continue;
-    if (!(a in parents)) {
+    if (a in parents) {
+      while (a !== parents[a]) {
+        parents[a] = parents[parents[a]]
+        a = parents[a]
+      }
+    } else {
       parents[a] = a;
-      sizes[a] = 1
+      rank[a] = 1
     }
-    if (!(b in parents)) {
+    if (b in parents) {
+      while (b !== parents[b]) {
+        parents[b] = parents[parents[b]]
+        b = parents[b]
+      }
+    } else {
       parents[b] = b;
-      sizes[b] = 1
-    }
-    while (a !== parents[a]) {
-      parents[a] = parents[parents[a]]
-      a = parents[a]
-    }
-    while (b !== parents[b]) {
-      parents[b] = parents[parents[b]]
-      b = parents[b]
+      rank[b] = 1
     }
     if (a !== b) {
-      if (sizes[a] > sizes[b]) {
-        parents[b] = a
-        sizes[a] += sizes[b]
-        delete sizes[b]
-      } else {
-        parents[a] = b
-        sizes[b] += sizes[a]
-        delete sizes[a]
-      }
+      if (rank[a] > rank[b]) [a, b] = [b, a]
+      parents[a] = b
+      rank[b] += rank[a]
+      delete rank[a]
     }
   }
-  z = 0
-  while (z !== parents[z]) z = parents[z];
-  return sizes[z] || 1;
+  if (0 in parents) {
+    z = 0
+    while (z !== parents[z]) z = parents[z];
+    return rank[z];
+  }
+  return 1;
 };
