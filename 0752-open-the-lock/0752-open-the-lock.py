@@ -1,6 +1,7 @@
 class Solution:
   def openLock(self, deadends: List[str], target: str) -> int:
     target = tuple([int(d) for d in target])
+    
     dp = {}
     for deadend in deadends:
       dp[tuple([int(d) for d in deadend])] = -1
