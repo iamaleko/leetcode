@@ -44,8 +44,9 @@ class Solution:
 
     while queue:
       _, point, step = heapq.heappop(queue)
+      if point == end:
+        return step
       step += 1
-      
       _points = [
         (abs((point[0] + 1) % 10), point[1], point[2], point[3]),
         (abs((point[0] - 1) % 10), point[1], point[2], point[3]),
@@ -62,4 +63,4 @@ class Solution:
           costs[_point] = (_cost, step)
           heapq.heappush(queue, (_cost, _point, step))
 
-    return costs[end][1] if end in costs else -1
+    return -1
