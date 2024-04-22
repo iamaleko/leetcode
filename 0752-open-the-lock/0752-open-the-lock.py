@@ -14,21 +14,14 @@ class Solution:
         continue
       dp[key] = step
 
-      if a < 9: queue.append((a+1,b,c,d,step + 1))
-      if b < 9: queue.append((a,b+1,c,d,step + 1))
-      if c < 9: queue.append((a,b,c+1,d,step + 1))
-      if d < 9: queue.append((a,b,c,d+1,step + 1))
-      if a > 0: queue.append((a-1,b,c,d,step + 1))
-      if b > 0: queue.append((a,b-1,c,d,step + 1))
-      if c > 0: queue.append((a,b,c-1,d,step + 1))
-      if d > 0: queue.append((a,b,c,d-1,step + 1))
-      if a == 9: queue.append((0,b,c,d,step + 1))
-      if b == 9: queue.append((a,0,c,d,step + 1))
-      if c == 9: queue.append((a,b,0,d,step + 1))
-      if d == 9: queue.append((a,b,c,0,step + 1))
-      if a == 0: queue.append((9,b,c,d,step + 1))
-      if b == 0: queue.append((a,9,c,d,step + 1))
-      if c == 0: queue.append((a,b,9,d,step + 1))
-      if d == 0: queue.append((a,b,c,9,step + 1))
+      step += 1
+      queue.append((abs((a + 1) % 10), b, c, d, step))
+      queue.append((a, abs((b + 1) % 10), c, d, step))
+      queue.append((a, b, abs((c + 1) % 10), d, step))
+      queue.append((a, b, c, abs((d + 1) % 10), step))
+      queue.append((abs((a - 1) % 10), b, c, d, step))
+      queue.append((a, abs((b - 1) % 10), c, d, step))
+      queue.append((a, b, abs((c - 1) % 10), d, step))
+      queue.append((a, b, c, abs((d - 1) % 10), step))
       
     return dp[target] if target in dp else -1
