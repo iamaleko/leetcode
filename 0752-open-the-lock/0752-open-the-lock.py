@@ -10,7 +10,7 @@ class Solution:
       a,b,c,d,step = queue.popleft()
       
       key = str(a) + str(b) + str(c) + str(d)
-      if key in dp and dp[key] <= step:
+      if key in dp:
         continue
       dp[key] = step
 
