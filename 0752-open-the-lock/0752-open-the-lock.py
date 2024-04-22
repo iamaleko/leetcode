@@ -39,9 +39,6 @@ class Solution:
       heapq.heappush(queue, (0, start, 0))
       costs[start] = 0
 
-    def cost(a, b, s):
-      return s + math.sqrt((a[0] + b[0]) ** 2 + (a[1] + b[1]) ** 2 + (a[2] + b[2]) ** 2 + (a[3] + b[3]) ** 2)
-
     while queue:
       _, point, step = heapq.heappop(queue)
       if point == end:
@@ -58,7 +55,12 @@ class Solution:
         (point[0], point[1], point[2], abs((point[3] - 1) % 10))
       ]
       for _point in _points:
-        _cost = cost(point, _point, step)
+        _cost = step + math.sqrt(
+          (_point[0] + point[0]) ** 2 +
+          (_point[1] + point[1]) ** 2 +
+          (_point[2] + point[2]) ** 2 +
+          (_point[3] + point[3]) ** 2
+        )
         if _point not in costs or _cost < costs[_point]:
           costs[_point] = _cost
           heapq.heappush(queue, (_cost, _point, step))
