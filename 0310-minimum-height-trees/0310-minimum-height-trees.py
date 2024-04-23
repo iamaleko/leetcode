@@ -6,15 +6,15 @@ class Solution:
     for a, b in edges:
       m[a].add(b)
       m[b].add(a)
+    queue = deque()
     while True:
-      queue = deque()
       for node in m.keys():
         if len(m[node]) == 1:
           queue.append(node)
       if len(m) <= 2:
         break
       while queue:
-        node = queue.popleft()
+        node = queue.pop()
         node_nbr = m[node].pop()
         del m[node]
         m[node_nbr].remove(node)
