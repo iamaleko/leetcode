@@ -7,15 +7,19 @@ class Solution:
       m[a].add(b)
       m[b].add(a)
     queue = deque()
+    for node in m.keys():
+      if len(m[node]) == 1:
+        queue.append(node)
+    cnt = len(queue)
     while True:
-      for node in m.keys():
-        if len(m[node]) == 1:
-          queue.append(node)
       if len(m) <= 2:
         break
-      while queue:
-        node = queue.pop()
+      for _ in range(cnt):
+        node = queue.popleft()
         node_nbr = m[node].pop()
         del m[node]
         m[node_nbr].remove(node)
+        if len(m[node_nbr]) == 1:
+          queue.append(node_nbr)
+      cnt = len(queue)
     return list(m.keys())
