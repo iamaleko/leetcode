@@ -15,7 +15,7 @@ class Solution:
         break
       while queue:
         node = queue.popleft()
-        node_nbr = next(iter(m[node]))
+        node_nbr = m[node].pop()
         del m[node]
         m[node_nbr].remove(node)
     return list(m.keys())
