@@ -1,9 +1,8 @@
 class Solution:
+  def __init__(self):
+    self.ls = [0,1,1]
+    for i in range(3, 38):
+      self.ls.append(self.ls[i - 3] + self.ls[i - 2] + self.ls[i - 1])
   def tribonacci(self, n: int) -> int:
-    res = [0,1,1]
-    i = 3
-    while i <= n:
-      res.append(res[i - 3] + res[i - 2] + res[i - 1])
-      i += 1
-    return res[n]
+    return self.ls[n]
         
