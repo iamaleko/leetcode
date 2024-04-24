@@ -13,7 +13,9 @@ class Solution:
     a = 0
     b = 1
     c = 1
-    for i in range(3, n + 1):
+    n -= 2
+    while n:
       a, b, c = b, c, a + b + c
+      n -= 1
     return c
         
