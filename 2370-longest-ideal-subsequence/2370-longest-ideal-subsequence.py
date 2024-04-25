@@ -14,11 +14,11 @@ class Solution:
     last = {}
     dp = [1 for i in range(len(s))]
     for i in range(len(s) - 1, -1, -1):
-      a = s[i]
-      for j in range(ord(a) - k, ord(a) + k + 1):
+      a = ord(s[i])
+      for j in range(a - k, a + k + 1):
         b = chr(j)
         if b in last and dp[last[b]] + 1 > dp[i]:
           dp[i] = dp[last[b]] + 1
-      last[a] = i
+      last[s[i]] = i
     return max(dp)
         
