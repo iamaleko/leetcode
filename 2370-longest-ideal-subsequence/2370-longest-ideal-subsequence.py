@@ -20,6 +20,5 @@ class Solution:
         if b in last and dp[last[b]] + 1 > dp[i]:
           dp[i] = dp[last[b]] + 1
       last[a] = i
-    print(dp)
     return max(dp)
         
