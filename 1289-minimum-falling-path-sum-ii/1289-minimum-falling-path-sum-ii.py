@@ -4,7 +4,6 @@ class Solution:
       return grid[0][0]
     
     size = len(grid)
-    
     for i in range(1, size):
       
       a = math.inf
@@ -15,8 +14,8 @@ class Solution:
           a = e
         elif b > e:
           b = e
-      # print(grid[i - 1], a, b)
-      for j in range(0, size):
+
+      for j in range(size):
         if grid[i - 1][j] == a:
           grid[i][j] += b
         else:
