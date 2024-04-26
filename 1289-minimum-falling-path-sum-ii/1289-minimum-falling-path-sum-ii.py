@@ -6,13 +6,15 @@ class Solution:
     size = len(grid)
     
     for i in range(1, size):
+      m = min(grid[i - 1])
       for j in range(0, size):
-        val = grid[i][j]
-        grid[i][j] = math.inf
-        for k in range(0, size):
-          if j == k:
-            continue
-          grid[i][j] = min(grid[i][j], val + grid[i - 1][k])
+        if m == grid[i - 1][j]:
+          t = grid[i - 1][j]
+          grid[i - 1][j] = math.inf
+          grid[i][j] += min(grid[i - 1])
+          grid[i - 1][j] = t
+        else:
+          grid[i][j] += m
 
     return min(grid[size - 1])
 
