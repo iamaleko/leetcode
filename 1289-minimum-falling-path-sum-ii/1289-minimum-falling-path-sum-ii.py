@@ -6,15 +6,21 @@ class Solution:
     size = len(grid)
     
     for i in range(1, size):
-      m = min(grid[i - 1])
+      
+      a = math.inf
+      b = math.inf
+      for e in grid[i - 1]:
+        if a > e:
+          b = a
+          a = e
+        elif b > e:
+          b = e
+      # print(grid[i - 1], a, b)
       for j in range(0, size):
-        if m == grid[i - 1][j]:
-          t = grid[i - 1][j]
-          grid[i - 1][j] = math.inf
-          grid[i][j] += min(grid[i - 1])
-          grid[i - 1][j] = t
+        if grid[i - 1][j] == a:
+          grid[i][j] += b
         else:
-          grid[i][j] += m
+          grid[i][j] += a
 
     return min(grid[size - 1])
 
