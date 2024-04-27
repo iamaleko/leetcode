@@ -7,9 +7,9 @@ class Solution:
       m[letter].append(i)
 
     spent = {0: 0}
-    for kp in range(len(key)):
+    for letter in key:
       _spent = {}
-      for rp in m[key[kp]]:
+      for rp in m[letter]:
         for prp in spent:
           cost = spent[prp] + min(abs(prp - rp), ln - abs(prp - rp)) + 1
           if rp not in _spent or _spent[rp] > cost:
