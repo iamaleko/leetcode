@@ -2,9 +2,6 @@ class Solution:
   def findRotateSteps(self, ring: str, key: str) -> int:
     ln = len(ring)
 
-    def cost(i, k):
-      return min(abs(i - k), ln - abs(i - k)) + 1
-
     m = defaultdict(list)
     for i, letter in enumerate(ring):
       m[letter].append(i)
@@ -14,9 +11,9 @@ class Solution:
       _spent = {}
       for rp in m[key[kp]]:
         for prp in spent:
-          _cost = spent[prp] + cost(prp, rp)
-          if rp not in _spent or _spent[rp] > _cost:
-            _spent[rp] = _cost
+          cost = spent[prp] + min(abs(prp - rp), ln - abs(prp - rp)) + 1
+          if rp not in _spent or _spent[rp] > cost:
+            _spent[rp] = cost
       spent = _spent
 
     return min(spent.values())
