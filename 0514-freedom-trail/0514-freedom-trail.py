@@ -12,7 +12,6 @@ class Solution:
       m[letter].append(i)
 
     spent = {0: 0}
-
     for kp in range(len(key)):
       _spent = {}
       for rp in m[key[kp]]:
