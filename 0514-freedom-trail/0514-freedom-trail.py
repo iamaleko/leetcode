@@ -3,7 +3,7 @@ class Solution:
     ln = len(ring)
 
     def cost(i, k):
-      return min(abs(i - k), ln + i - k, ln + k - i) + 1
+      return min(abs(i - k), ln - abs(i - k)) + 1
 
     m = defaultdict(list)
     for i, letter in enumerate(ring):
