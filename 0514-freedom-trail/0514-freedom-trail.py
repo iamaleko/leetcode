@@ -8,10 +8,12 @@ class Solution:
 
     spent = {0: 0}
     for letter in key:
-      _spent = defaultdict(lambda: math.inf)
+      _spent = {}
       for rp in m[letter]:
         for prp in spent:
-          _spent[rp] = min(_spent[rp], spent[prp] + min(abs(prp - rp), ln - abs(prp - rp)) + 1)
+          cost = spent[prp] + min(abs(prp - rp), ln - abs(prp - rp)) + 1
+          if rp not in _spent or _spent[rp] > cost:
+            _spent[rp] = cost
       spent = _spent
 
     return min(spent.values())
