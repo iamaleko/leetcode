@@ -14,10 +14,9 @@ class Solution:
       _spent = {}
       for rp in m[key[kp]]:
         for prp in spent:
-          if rp in _spent:
-            _spent[rp] = min(spent[prp] + cost(prp, rp), _spent[rp])
-          else:
-            _spent[rp] = spent[prp] + cost(prp, rp)
+          _cost = spent[prp] + cost(prp, rp)
+          if rp not in _spent or _spent[rp] > _cost:
+            _spent[rp] = _cost
       spent = _spent
 
     return min(spent.values())
