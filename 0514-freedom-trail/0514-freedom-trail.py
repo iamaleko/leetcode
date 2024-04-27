@@ -11,9 +11,7 @@ class Solution:
       _spent = defaultdict(lambda: math.inf)
       for rp in m[letter]:
         for prp in spent:
-          cost = spent[prp] + min(abs(prp - rp), ln - abs(prp - rp)) + 1
-          if _spent[rp] > cost:
-            _spent[rp] = cost
+          _spent[rp] = min(_spent[rp], spent[prp] + min(abs(prp - rp), ln - abs(prp - rp)) + 1)
       spent = _spent
 
     return min(spent.values())
