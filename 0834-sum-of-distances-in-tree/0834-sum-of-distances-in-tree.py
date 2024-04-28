@@ -14,7 +14,7 @@ class Solution:
 
     # build tree from detected root
     children = [set() for _ in range(n)]
-    parents = [None] * n
+    parents = [None for _ in range(n)]
     q = deque([root])
     while q:
       i = q.popleft()
@@ -25,13 +25,13 @@ class Solution:
         q.append(val)
 
     # calc answer and nodes count from leaves to root
-    ans = [0] * n
-    nodes = [0] * n
-    visited = [0] * n
-    q = deque()
+    q.clear()
     for i in range(len(children)):
       if not len(children[i]):
         q.append(i)
+    ans = [0 for _ in range(n)]
+    nodes = [0 for _ in range(n)]
+    visited = [0 for _ in range(n)]
     while q:
       i = q.popleft()
       nodes[i] += 1
