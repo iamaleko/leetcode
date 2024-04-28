@@ -6,11 +6,13 @@ class Solution:
       tree[a].add(b)
       tree[b].add(a)
 
-    # detect root
+    # detect root in graph
     root = 0
+    size = 0
     for val in tree:
-      if len(tree[root]) < len(tree[val]):
+      if size < len(tree[val]):
         root = val
+        size = len(tree[val])
 
     # build tree from detected root
     children = [set() for _ in range(n)]
