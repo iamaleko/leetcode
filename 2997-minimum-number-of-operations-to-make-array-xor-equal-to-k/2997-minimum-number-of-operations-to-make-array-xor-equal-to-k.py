@@ -1,9 +1,8 @@
 class Solution:
   def minOperations(self, nums: List[int], k: int) -> int:
-    n = nums[0]
-    for i in range(1, len(nums)):
-      n ^= nums[i]
-    # print(bin(n), bin(k))
+    n = 0
+    for num in nums:
+      n ^= num
     res = 0
     while n or k:
       if n & 1 != k & 1:
