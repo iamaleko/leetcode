@@ -2,18 +2,18 @@ class Solution:
   def asteroidCollision(self, asteroids: List[int]) -> List[int]:
     st = deque()
     for a in asteroids:
-      if not st or a > 0 or st[-1] < 0:
+      if not st or a > 0 or st[-1] < 0: # append
         st.append(a)
       else:
         while st:
-          if st[-1] > -a:
+          if st[-1] > -a: # explode right
             break
-          elif st[-1] < -a:
+          elif st[-1] < -a: # explode left and proceed
             st.pop()
             if not st or st[-1] < 0:
               st.append(a)
               break
-          elif st[-1] == -a:
+          elif st[-1] == -a: # explode both
             st.pop()
             break
     return list(st)
