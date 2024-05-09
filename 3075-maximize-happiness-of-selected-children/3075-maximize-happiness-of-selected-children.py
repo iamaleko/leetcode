@@ -3,9 +3,8 @@ class Solution:
     h.sort(reverse = True)
     res = 0
     for i, n in enumerate(h):
-      if k:
-        res += max(0, n - i)
-        k -= 1
-      else:
+      if not k:
         break
+      res += max(0, n - i)
+      k -= 1
     return res
