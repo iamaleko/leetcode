@@ -9,9 +9,7 @@
 
 class Solution:
   def kthSmallestPrimeFraction(self, arr: List[int], k: int) -> List[int]:
-    h = []
-    for b in range(len(arr)):
-      h.append((1 / arr[b], 0, b))
+    h = [(1 / arr[b], 0, b) for b in range(len(arr))]
     heapify(h)
     while k:
       _, a, b = heappop(h)
