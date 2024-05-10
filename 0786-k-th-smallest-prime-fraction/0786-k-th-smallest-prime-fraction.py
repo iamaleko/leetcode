@@ -11,11 +11,9 @@ class Solution:
   def kthSmallestPrimeFraction(self, arr: List[int], k: int) -> List[int]:
     h = [(1 / arr[b], 0, b) for b in range(len(arr))]
     heapify(h)
-    while k:
+    for _ in range(1, k):
       _, a, b = heappop(h)
-      if k == 1:
-        return [arr[a], arr[b]]
-      a += 1
-      k -= 1
-      if a < b:
-        heappush(h, (arr[a] / arr[b], a, b))
+      if a + 1 < b:
+        heappush(h, (arr[a + 1] / arr[b], a + 1, b))
+    _, a, b = heappop(h)
+    return [arr[a], arr[b]]
