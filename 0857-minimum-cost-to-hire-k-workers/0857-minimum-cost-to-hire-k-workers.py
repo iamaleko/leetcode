@@ -1,7 +1,5 @@
 class Solution:
   def mincostToHireWorkers(self, quality: List[int], wage: List[int], k: int) -> float:
-    if len(wage) == 1:
-      return wage[0]
     if k == 1:
       return min(wage)
       
@@ -19,25 +17,3 @@ class Solution:
       heappush(h, -ratio[i][1])
 
     return ans
-
-
-
-    # h = []
-    # for p in range(len(ratio)):
-    #   heappush(h, (ratio[p][1] * ratio[-1][0], i))
-
-    # best = []
-    # for _ in range(k):
-    #   best.append(heappop(h))
-    # best.sort(key = lambda x: x[1])
-    # print(ratio)
-    # print(best)
-
-    # j = best[-1][1]
-    # total = ratio[j][2]
-    # for i in range(k - 1):
-    #   p = best[i][1]
-    #   total += ratio[p][1] * ratio[j][0]
-
-    # return total
-        
