@@ -2,9 +2,12 @@ class Solution:
   def getMaximumGold(self, grid: List[List[int]]) -> int:
     mx = len(grid[0]) - 1
     my = len(grid) - 1
+    total = sum([sum(x) for x in grid])
     self.ans = 0
 
     def dfs(y, x, s):
+      if s == total:
+        return
       t = grid[y][x]
       s += t
       grid[y][x] = 0
