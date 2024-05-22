@@ -1,26 +1,27 @@
 class Solution:
   def partition(self, s: str) -> List[List[str]]:
     s = list(s)
-    ans = []
+    ans = [s]
 
-    v = set([str(s)])
+    v = set([tuple(s)])
     q = deque([s])
 
     while q:
       s = q.popleft()
-      ans.append(s)
 
       for i in range(len(s) - 1):
         if s[i] == s[i + 1]:
           ss = s[:i] + [s[i] + s[i + 1]] + s[i + 2:]
-          if str(ss) not in v:
-            v.add(str(ss))
+          if tuple(ss) not in v:
+            v.add(tuple(ss))
             q.append(ss)
+            ans.append(ss)
         if i and s[i - 1] == s[i + 1]:
           ss = s[:i - 1] + [s[i - 1] + s[i] + s[i + 1]] + s[i + 2:]
-          if str(ss) not in v:
-            v.add(str(ss))
+          if tuple(ss) not in v:
+            v.add(tuple(ss))
             q.append(ss)
+            ans.append(ss)
       
     return ans
         
