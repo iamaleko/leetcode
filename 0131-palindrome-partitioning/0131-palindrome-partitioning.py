@@ -3,7 +3,7 @@ class Solution:
     s = list(s)
     ans = []
 
-    v = set([tuple(s)])
+    v = set([str(s)])
     q = deque([s])
 
     while q:
@@ -13,15 +13,13 @@ class Solution:
       for i in range(len(s) - 1):
         if s[i] == s[i + 1]:
           ss = s[:i] + [s[i] + s[i + 1]] + s[i + 2:]
-          if tuple(ss) not in v:
-            v.add(tuple(ss))
+          if str(ss) not in v:
+            v.add(str(ss))
             q.append(ss)
-
-      for i in range(1, len(s) - 1):
-        if s[i - 1] == s[i + 1]:
+        if i and s[i - 1] == s[i + 1]:
           ss = s[:i - 1] + [s[i - 1] + s[i] + s[i + 1]] + s[i + 2:]
-          if tuple(ss) not in v:
-            v.add(tuple(ss))
+          if str(ss) not in v:
+            v.add(str(ss))
             q.append(ss)
       
     return ans
