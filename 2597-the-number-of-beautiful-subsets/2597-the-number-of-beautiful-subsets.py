@@ -31,15 +31,16 @@ class Solution:
   def beautifulSubsets(self, nums, k):
     nums.sort()
     path = set()
+    ln = len(nums)
     def backtrack(i):
       ans = 0
-      for i in range(i + 1, len(nums)):
+      for i in range(i, ln):
         if nums[i] - k not in path:
           if nums[i] in path:
-            ans += 1 + backtrack(i)
+            ans += 1 + backtrack(i + 1)
           else:
             path.add(nums[i])
-            ans += 1 + backtrack(i)
+            ans += 1 + backtrack(i + 1)
             path.remove(nums[i])
       return ans
-    return backtrack(-1)
+    return backtrack(0)
