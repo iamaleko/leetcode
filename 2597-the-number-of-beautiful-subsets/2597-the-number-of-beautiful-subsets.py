@@ -33,13 +33,13 @@ class Solution:
     path = set()
     def backtrack(i):
       ans = 0
-      for j in range(i + 1, len(nums)):
-        if nums[j] - k not in path:
-          if nums[j] in path:
-            ans += 1 + backtrack(j)
+      for i in range(i + 1, len(nums)):
+        if nums[i] - k not in path:
+          if nums[i] in path:
+            ans += 1 + backtrack(i)
           else:
-            path.add(nums[j])
-            ans += 1 + backtrack(j)
-            path.remove(nums[j])
+            path.add(nums[i])
+            ans += 1 + backtrack(i)
+            path.remove(nums[i])
       return ans
     return backtrack(-1)
