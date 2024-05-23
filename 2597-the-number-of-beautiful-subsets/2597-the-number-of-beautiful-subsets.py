@@ -1,15 +1,14 @@
 class Solution:
   def beautifulSubsets(self, nums: List[int], k: int) -> int:
     nums.sort()
-    asets = []
+    subsets = []
 
     for n in nums:
-      for i in range(len(asets)):
-        aset = asets[i]
-        if (n - k) not in aset:
-          bset = aset.copy()
-          bset.add(n)
-          asets.append(bset)
-      asets.append(set([n]))
+      for i in range(len(subsets)):
+        if (n - k) not in subsets[i]:
+          subset = subsets[i].copy()
+          subset.add(n)
+          subsets.append(subset)
+      subsets.append(set([n]))
 
-    return len(asets)
+    return len(subsets)
