@@ -13,16 +13,33 @@
 
 #     return len(subsets)
 
+# class Solution:
+#   def beautifulSubsets(self, nums, k):
+#     nums.sort()
+#     path = [0] * 1001
+#     def backtrack(i):
+#       ans = 0
+#       for j in range(i + 1, len(nums)):
+#         if path[nums[j] - k] == 0:
+#           path[nums[j]] += 1
+#           ans += 1 + backtrack(j)
+#           path[nums[j]] -= 1
+#       return ans
+#     return backtrack(-1)
+
 class Solution:
   def beautifulSubsets(self, nums, k):
     nums.sort()
-    path = [0] * 1001
+    path = set()
     def backtrack(i):
       ans = 0
       for j in range(i + 1, len(nums)):
-        if path[nums[j] - k] == 0:
-          path[nums[j]] += 1
-          ans += 1 + backtrack(j)
-          path[nums[j]] -= 1
+        if nums[j] - k not in path:
+          if nums[j] in path:
+            ans += 1 + backtrack(j)
+          else:
+            path.add(nums[j])
+            ans += 1 + backtrack(j)
+            path.remove(nums[j])
       return ans
     return backtrack(-1)
