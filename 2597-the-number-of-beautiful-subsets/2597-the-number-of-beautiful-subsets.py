@@ -21,11 +21,12 @@ class Solution:
 
     def backtrack(i):
       ans = 0
-      for j in range(i, n):
-        if path[nums[j]] == 0:
-          path[nums[j] + k] += 1
-          ans += 1 + backtrack(j + 1)
-          path[nums[j] + k] -= 1
+      for num in nums[i:]:
+        i += 1
+        if path[num] == 0:
+          path[num + k] += 1
+          ans += 1 + backtrack(i)
+          path[num + k] -= 1
       return ans
     return backtrack(0)
 
