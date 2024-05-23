@@ -32,16 +32,16 @@ class Solution:
     nums.sort()
     path = set()
     ln = len(nums)
-
+    
     def backtrack(i):
       ans = 0
       for i in range(i, ln):
-        if nums[i] not in path:
-          if nums[i] + k in path:
+        if nums[i] - k not in path:
+          if nums[i] in path:
             ans += 1 + backtrack(i + 1)
           else:
-            path.add(nums[i] + k)
+            path.add(nums[i])
             ans += 1 + backtrack(i + 1)
-            path.remove(nums[i] + k)
+            path.remove(nums[i])
       return ans
     return backtrack(0)
