@@ -17,7 +17,6 @@ class Solution:
   def beautifulSubsets(self, nums, k):
     nums.sort()
     path = [0] * (1001 + k)
-    n = len(nums)
 
     def backtrack(i):
       ans = 0
