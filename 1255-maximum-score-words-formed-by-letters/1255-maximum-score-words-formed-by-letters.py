@@ -67,11 +67,12 @@ class Solution:
         wscore += score[ord(letter) - 97]
       words.append((wscore, wcount))
 
+    n = len(words)
+
 
     def backtrack(i):
       ans = 0
-
-      for j in range(i, len(words)):
+      for j in range(i, n):
         wscore, wcount = words[j]
 
         # can we use it?
@@ -82,7 +83,7 @@ class Solution:
             break
 
         if canuse:
-          if j + 1 == len(words):
+          if j + 1 == n:
             ans = max(ans, wscore)
           else:
             # lock used chars
