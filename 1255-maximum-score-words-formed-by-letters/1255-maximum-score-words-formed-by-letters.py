@@ -66,9 +66,7 @@ class Solution:
         wcount[ord(letter) - 97] += 1
         wscore += score[ord(letter) - 97]
       words.append((wscore, wcount))
-
     n = len(words)
-
 
     def backtrack(i):
       ans = 0
