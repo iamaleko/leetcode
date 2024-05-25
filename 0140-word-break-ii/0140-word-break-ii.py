@@ -1,6 +1,7 @@
 class Solution:
   def wordBreak(self, s: str, words: List[str]) -> List[str]:
     ans = []
+    words = set(words)
     def backtrack(i, sentence):
       if i == len(s):
         return ans.append(sentence[1:])
