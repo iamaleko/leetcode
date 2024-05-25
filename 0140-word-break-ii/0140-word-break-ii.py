@@ -1,13 +1,14 @@
 class Solution:
   def wordBreak(self, s: str, words: List[str]) -> List[str]:
     ans = []
-    def backtrack(i, str):
+    def backtrack(i, sentence):
       if i == len(s):
-        ans.append(str[1:])
+        ans.append(sentence[1:])
       else:
         for word in words:
-          if s[i:i + len(word)] == word:
-            backtrack(i + len(word), str + ' ' + s[i:i + len(word)])
+          j = i + len(word)
+          if s[i:j] == word:
+            backtrack(j, sentence + ' ' + s[i:j])
     backtrack(0, '')
     return ans
         
