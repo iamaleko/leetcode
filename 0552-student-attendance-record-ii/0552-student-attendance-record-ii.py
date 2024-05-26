@@ -17,19 +17,33 @@
 #     ans = dp((0, 0, 0))
 #     return ans
 
+# class Solution:
+#   def checkRecord(self, n: int) -> int:
+#     mod = int(1e9 + 7)
+#     prefixes = defaultdict(int)
+#     prefixes[(0, 0)] = 1
+
+#     for i in range(n):
+#       _prefixes = defaultdict(int)
+#       for (a, l), s in prefixes.items():
+#         s %= mod
+#         _prefixes[(a, 0)] += s
+#         if a < 1: _prefixes[(a + 1, 0)] += s
+#         if l < 2: _prefixes[(a, l + 1)] += s
+#       prefixes = _prefixes
+
+#     return sum(prefixes.values()) % mod
+
+@cache
+def dp(i, a, l):
+  if i == 0:
+    return 1
+  i -= 1
+  ans = dp(i, a, 0) # P
+  if a < 1: ans += dp(i, a + 1, 0) # A
+  if l < 2: ans += dp(i, a, l + 1) # L
+  return ans % int(1e9 + 7)
+
 class Solution:
   def checkRecord(self, n: int) -> int:
-    mod = int(1e9 + 7)
-    prefixes = defaultdict(int)
-    prefixes[(0, 0)] = 1
-
-    for i in range(n):
-      _prefixes = defaultdict(int)
-      for (a, l), s in prefixes.items():
-        s %= mod
-        _prefixes[(a, 0)] += s
-        if a < 1: _prefixes[(a + 1, 0)] += s
-        if l < 2: _prefixes[(a, l + 1)] += s
-      prefixes = _prefixes
-
-    return sum(prefixes.values()) % mod
+    return dp(n, 0, 0)
