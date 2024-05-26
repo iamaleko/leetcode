@@ -19,7 +19,7 @@
 
 class Solution:
   def checkRecord(self, n: int) -> int:
-    mod = 1e9 + 7
+    mod = int(1e9 + 7)
     prefixes = defaultdict(int)
     prefixes[(0, 0)] = 1
 
@@ -32,4 +32,4 @@ class Solution:
         if l < 2: _prefixes[(a, l + 1)] += s
       prefixes = _prefixes
 
-    return int(sum(prefixes.values()) % mod)
+    return sum(prefixes.values()) % mod
