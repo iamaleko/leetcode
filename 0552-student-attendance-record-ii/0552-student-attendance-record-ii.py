@@ -17,6 +17,7 @@
 #     ans = dp((0, 0, 0))
 #     return ans
 
+# OK
 # class Solution:
 #   def checkRecord(self, n: int) -> int:
 #     mod = int(1e9 + 7)
