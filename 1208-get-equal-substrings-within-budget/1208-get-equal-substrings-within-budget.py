@@ -34,9 +34,10 @@ class Solution:
     cumsum = [0]
     ans = 0
     l = 0
+    s += 'a'
+    t += 'a'
     for r in range(n + 1):
-      if r < n:
-        cumsum.append(cumsum[-1] + abs(ord(s[r]) - ord(t[r])))
+      cumsum.append(cumsum[-1] + abs(ord(s[r]) - ord(t[r])))
       while cumsum[r] - cumsum[l] > maxCost:
         l += 1
       if r - l > ans:
