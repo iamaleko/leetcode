@@ -30,16 +30,13 @@
 # Running sum optimized
 class Solution:
   def equalSubstring(self, s: str, t: str, maxCost: int) -> int:
-    n = len(s)
-    cumsum = [0]
-    ans = 0
-    l = 0
-    s += 'a'
-    t += 'a'
-    for r in range(n + 1):
-      cumsum.append(cumsum[-1] + abs(ord(s[r]) - ord(t[r])))
-      while cumsum[r] - cumsum[l] > maxCost:
-        l += 1
-      if r - l > ans:
-        ans = r - l
-    return ans
+    q = deque([0])
+    ans = 1
+    cumsum = 0
+    for i in range(len(s)):
+      q.append(cumsum := cumsum + abs(ord(s[i]) - ord(t[i])))
+      while q[-1] - q[0] > maxCost:
+        q.popleft()
+      if len(q) > ans:
+        ans = len(q)
+    return ans - 1
