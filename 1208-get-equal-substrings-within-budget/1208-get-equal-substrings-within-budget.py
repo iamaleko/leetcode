@@ -27,7 +27,7 @@
 #         ans = r - l
 #     return ans
 
-# Running sum optimized
+# Running sum v2
 class Solution:
   def equalSubstring(self, s: str, t: str, maxCost: int) -> int:
     q = deque([0])
