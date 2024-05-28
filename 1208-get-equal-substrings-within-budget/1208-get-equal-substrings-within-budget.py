@@ -42,15 +42,31 @@
 #     return ans - 1
 
 # Running sum v3
+# class Solution:
+#   def equalSubstring(self, s: str, t: str, maxCost: int) -> int:
+#     cumsum = [0]
+#     ans = -1
+#     l = 0
+#     for r in range(len(s)):
+#       cumsum.append(cumsum[-1] + abs(ord(s[r]) - ord(t[r])))
+#       while cumsum[-1] - cumsum[l] > maxCost:
+#         l += 1
+#       if r - l > ans:
+#         ans = r - l
+#     return ans + 1
+
+# Running sum v4
 class Solution:
   def equalSubstring(self, s: str, t: str, maxCost: int) -> int:
-    cumsum = [0]
     ans = -1
+    j = 0
     l = 0
-    for r in range(len(s)):
-      cumsum.append(cumsum[-1] + abs(ord(s[r]) - ord(t[r])))
-      while cumsum[-1] - cumsum[l] > maxCost:
-        l += 1
-      if r - l > ans:
-        ans = r - l
+    r = 0
+    for i in range(len(s)):
+      r += abs(ord(s[i]) - ord(t[i]))
+      while r - l > maxCost:
+        l += abs(ord(s[j]) - ord(t[j]))
+        j += 1
+      if i - j > ans:
+        ans = i - j
     return ans + 1
