@@ -4,9 +4,9 @@ class Solution:
     n = int(s, 2)
     while n > 1:
       ans += 1
-      if n % 2:
+      if n & 1:
         n += 1
       else:
-        n /= 2
+        n >>= 1
     return ans
         
