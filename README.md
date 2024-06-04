@@ -24,3 +24,7 @@ Collection of LeetCode questions to ace the coding interview!
 |  |
 | ------- |
 | [0619-biggest-single-number](https://github.com/iamaleko/leetcode/tree/master/0619-biggest-single-number) |
+# Math
+|  |
+| ------- |
+| [0507-perfect-number](https://github.com/iamaleko/leetcode/tree/master/0507-perfect-number) |
