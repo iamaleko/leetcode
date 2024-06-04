@@ -20,3 +20,7 @@ Collection of LeetCode questions to ace the coding interview!
 |  |
 | ------- |
 | [0409-longest-palindrome](https://github.com/iamaleko/leetcode/tree/master/0409-longest-palindrome) |
+# Database
+|  |
+| ------- |
+| [0619-biggest-single-number](https://github.com/iamaleko/leetcode/tree/master/0619-biggest-single-number) |
