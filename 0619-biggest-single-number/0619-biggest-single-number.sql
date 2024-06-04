@@ -1,0 +1,1 @@
+select max(num) num from (select num, count(1) cnt from MyNumbers group by num) sub where cnt = 1
