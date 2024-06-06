@@ -36,6 +36,6 @@ class Solution:
         if card + 1 in sets:
           sets[card + 1].append(size)
         else:
-          sets[card + 1] = deque([size])
+          sets[card + 1] = [size]
 
     return len(sets) == 0
