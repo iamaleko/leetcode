@@ -3,25 +3,18 @@ class Solution:
     if groupSize == 1:
       return True
 
-    sets = {}
+    sets = defaultdict(list)
     heapify(hand)
 
     while hand:
       card = heappop(hand)
-      if card in sets:
-        size = sets[card].pop() + 1
-        if size < groupSize:
-          if card + 1 not in sets:
-            sets[card + 1] = [size]
-          else:
-            sets[card + 1].append(size)
-        if len(sets[card]) == 0:
-          del sets[card]
-      else:
-        if card + 1 not in sets:
-          sets[card + 1] = [1]
-        else:
-          sets[card + 1].append(1)
+      size = sets[card].pop() + 1 if len(sets[card]) else 1
+      if size < groupSize:
+        sets[card + 1].append(size)
 
-    return len(sets) == 0
+    for waited in sets:
+      if len(sets[waited]):
+        return False
+
+    return True
       
