@@ -23,9 +23,6 @@ class Solution:
     hand.sort()
 
     for card in hand:
-      if card - 1 in sets:
-        return False
-
       if card in sets:
         size = sets[card].pop() + 1
         if not sets[card]:
@@ -38,4 +35,4 @@ class Solution:
         else:
           sets[card + 1] = [size]
 
-    return len(sets) == 0
+    return not sets
