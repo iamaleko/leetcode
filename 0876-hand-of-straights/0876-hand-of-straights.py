@@ -4,10 +4,9 @@ class Solution:
       return True
 
     sets = defaultdict(list)
-    heapify(hand)
+    hand.sort()
 
-    while hand:
-      card = heappop(hand)
+    for card in hand:
       size = sets[card].pop() + 1 if len(sets[card]) else 1
       if size < groupSize:
         sets[card + 1].append(size)
