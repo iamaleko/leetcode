@@ -17,22 +17,40 @@
 
 #     return True
       
+# class Solution:
+#   def isNStraightHand(self, hand: List[int], groupSize: int) -> bool:
+#     sets = {}
+#     hand.sort()
+
+#     for card in hand:
+#       if card in sets:
+#         size = sets[card].pop() + 1
+#         if not sets[card]:
+#           del sets[card]
+#       else:
+#         size = 1
+#       if size < groupSize:
+#         if card + 1 in sets:
+#           sets[card + 1].append(size)
+#         else:
+#           sets[card + 1] = [size]
+
+#     return not sets
+
 class Solution:
   def isNStraightHand(self, hand: List[int], groupSize: int) -> bool:
-    sets = {}
+    count = defaultdict(int)
+    for card in hand:
+      count[card] += 1
+
     hand.sort()
 
     for card in hand:
-      if card in sets:
-        size = sets[card].pop() + 1
-        if not sets[card]:
-          del sets[card]
-      else:
-        size = 1
-      if size < groupSize:
-        if card + 1 in sets:
-          sets[card + 1].append(size)
-        else:
-          sets[card + 1] = [size]
-
-    return not sets
+      if count[card]:
+        for i in range(groupSize):
+          if count[card + i]:
+            count[card + i] -= 1
+          else:
+            return False
+    
+    return True
