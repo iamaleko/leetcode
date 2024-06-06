@@ -16,11 +16,13 @@ Collection of LeetCode questions to ace the coding interview!
 |  |
 | ------- |
 | [0409-longest-palindrome](https://github.com/iamaleko/leetcode/tree/master/0409-longest-palindrome) |
+| [0876-hand-of-straights](https://github.com/iamaleko/leetcode/tree/master/0876-hand-of-straights) |
 | [2572-append-characters-to-string-to-make-subsequence](https://github.com/iamaleko/leetcode/tree/master/2572-append-characters-to-string-to-make-subsequence) |
 # Hash Table
 |  |
 | ------- |
 | [0409-longest-palindrome](https://github.com/iamaleko/leetcode/tree/master/0409-longest-palindrome) |
+| [0876-hand-of-straights](https://github.com/iamaleko/leetcode/tree/master/0876-hand-of-straights) |
 | [1044-find-common-characters](https://github.com/iamaleko/leetcode/tree/master/1044-find-common-characters) |
 # Database
 |  |
@@ -33,4 +35,9 @@ Collection of LeetCode questions to ace the coding interview!
 # Array
 |  |
 | ------- |
+| [0876-hand-of-straights](https://github.com/iamaleko/leetcode/tree/master/0876-hand-of-straights) |
 | [1044-find-common-characters](https://github.com/iamaleko/leetcode/tree/master/1044-find-common-characters) |
+# Sorting
+|  |
+| ------- |
+| [0876-hand-of-straights](https://github.com/iamaleko/leetcode/tree/master/0876-hand-of-straights) |
