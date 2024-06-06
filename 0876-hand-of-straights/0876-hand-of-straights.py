@@ -23,13 +23,19 @@ class Solution:
     hand.sort()
 
     for card in hand:
-      waited = card in sets
-      size = sets[card].pop() + 1 if waited else 1
+      # we already have incompleted sets
+      if card - 1 in sets:
+        return False
+
+      if card in sets:
+        size = sets[card].pop() + 1
+        if not len(sets[card]):
+          del sets[card]
+      else:
+        size = 1
       if size < groupSize:
         if card + 1 not in sets:
           sets[card + 1] = []
         sets[card + 1].append(size)
-      if waited and len(sets[card]) == 0:
-        del sets[card]
 
     return len(sets) == 0
