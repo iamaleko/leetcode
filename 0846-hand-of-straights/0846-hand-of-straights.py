@@ -34,7 +34,8 @@ class Solution:
         size = 1
       if size < groupSize:
         if card + 1 not in sets:
-          sets[card + 1] = []
-        sets[card + 1].append(size)
+          sets[card + 1] = [size]
+        else:
+          sets[card + 1].append(size)
 
     return len(sets) == 0
