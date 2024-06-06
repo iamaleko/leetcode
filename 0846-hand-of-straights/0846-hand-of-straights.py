@@ -29,7 +29,7 @@ class Solution:
 
       if card in sets:
         size = sets[card].pop() + 1
-        if not len(sets[card]):
+        if not sets[card]:
           del sets[card]
       else:
         size = 1
