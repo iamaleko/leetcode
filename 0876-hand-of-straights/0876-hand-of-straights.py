@@ -24,8 +24,8 @@ class Solution:
 
     for card in hand:
       # we already have incompleted sets
-      # if card - 1 in sets:
-      #   return False
+      if card - 1 in sets:
+        return False
 
       if card in sets:
         size = sets[card].pop() + 1
