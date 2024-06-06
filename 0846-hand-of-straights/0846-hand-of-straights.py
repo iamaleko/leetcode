@@ -23,13 +23,14 @@ class Solution:
     hand.sort()
 
     for card in hand:
+      if card - 1 in sets:
+        return False
+
       if card in sets:
         size = sets[card].pop() + 1
         if not sets[card]:
           del sets[card]
       else:
-        if card - 1 in sets:
-          return False
         size = 1
       if size < groupSize:
         if card + 1 not in sets:
