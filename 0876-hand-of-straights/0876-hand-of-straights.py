@@ -43,9 +43,10 @@ class Solution:
     for card in hand:
       count[card] += 1
 
-    hand.sort()
+    heapify(hand)
 
-    for card in hand:
+    while hand:
+      card = heappop(hand)
       if count[card]:
         for i in range(groupSize):
           if count[card + i]:
