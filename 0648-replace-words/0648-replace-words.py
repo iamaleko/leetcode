@@ -3,20 +3,20 @@ class Solution:
     root = 'root'
 
     tree = {}
-    for i, word in enumerate(words):
+    for word in words:
       node = tree
       for letter in word:
         if letter not in node:
           node[letter] = {}
         node = node[letter]
-      node[root] = i
+      node[root] = word
     
     s = s.split(' ')
-    for i, word in enumerate(s):
+    for i in range(len(s)):
       node = tree
-      for letter in word:
+      for letter in s[i]:
         if root in node:
-          s[i] = words[node[root]]
+          s[i] = node[root]
         elif letter in node:
           node = node[letter]
           continue
