@@ -17,10 +17,11 @@ class Solution:
       for letter in word:
         if root in node:
           s[i] = node[root]
+          break
         elif letter in node:
           node = node[letter]
-          continue
-        break
+        else:
+          break
 
     return ' '.join(s)
         
