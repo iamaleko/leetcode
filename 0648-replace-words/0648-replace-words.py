@@ -3,25 +3,24 @@ class Solution:
     root = 'root'
 
     tree = {}
-    for word in words:
+    for i, word in enumerate(words):
       node = tree
       for letter in word:
         if letter not in node:
           node[letter] = {}
         node = node[letter]
-      node[root] = word
+      node[root] = i
     
     s = s.split(' ')
     for i, word in enumerate(s):
       node = tree
       for letter in word:
         if root in node:
-          s[i] = node[root]
-          break
+          s[i] = words[node[root]]
         elif letter in node:
           node = node[letter]
-        else:
-          break
+          continue
+        break
 
     return ' '.join(s)
         
