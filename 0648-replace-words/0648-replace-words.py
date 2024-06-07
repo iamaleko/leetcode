@@ -12,9 +12,9 @@ class Solution:
       node[root] = word
     
     s = s.split(' ')
-    for i in range(len(s)):
+    for i, word in enumerate(s):
       node = tree
-      for letter in s[i]:
+      for letter in word:
         if root in node:
           s[i] = node[root]
         elif letter in node:
