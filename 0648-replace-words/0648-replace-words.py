@@ -11,17 +11,16 @@ class Solution:
         node = node[letter]
       node[root] = word
     
-    s = s.split(' ')
+    s = s.split()
     for i, word in enumerate(s):
       node = tree
       for letter in word:
         if root in node:
           s[i] = node[root]
-          break
         elif letter in node:
           node = node[letter]
-        else:
-          break
+          continue
+        break
 
     return ' '.join(s)
         
