@@ -17,7 +17,13 @@ class Solution:
     mid = 0
     hi = len(nums) - 1
     while mid <= hi:
-      if nums[mid] == 1:
+      if nums[hi] == 2:
+        hi -=1
+      elif nums[lo] == 0:
+        lo += 1
+        if mid < lo:
+          mid += 1
+      elif nums[mid] == 1:
         mid += 1
       elif nums[mid] == 0:
         nums[lo], nums[mid] = nums[mid], nums[lo]
