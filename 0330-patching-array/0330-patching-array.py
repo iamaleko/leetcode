@@ -49,4 +49,5 @@ class Solution:
     while s < n:
       s += s + 1
       ans += 1
+      
     return ans
