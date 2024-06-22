@@ -1,6 +1,7 @@
 class Solution:
   def calculate(self, s: str) -> int:
     st = []
+    s += '+'
     for ch in s:
       if ch == ' ':
         continue
@@ -22,17 +23,6 @@ class Solution:
         st[-1] += int(ch)
       else:
         st.append(int(ch))
-    if len(st) > 2:
-      if st[-2] == '*':
-        b = st.pop()
-        st.pop()
-        a = st.pop()
-        st.append(a * b)
-      elif st[-2] == '/':
-        b = st.pop()
-        st.pop()
-        a = st.pop()
-        st.append(a // b)
     st.reverse()
     while len(st) > 2:
       if st[-2] == '+':
@@ -45,5 +35,5 @@ class Solution:
         st.pop()
         b = st.pop()
         st.append(a - b)
-    return st[0]
+    return st[1]
         
