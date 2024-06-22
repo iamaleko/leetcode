@@ -16,8 +16,8 @@ class Solution:
     ans = 0
     odds = 0
     found = 0
-    for r in range(len(nums)):
-      if nums[r] & 1:
+    for num in nums:
+      if num & 1:
         odds += 1
         found = 0
       while odds == k:
