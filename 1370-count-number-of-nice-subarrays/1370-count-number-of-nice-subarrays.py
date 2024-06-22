@@ -28,20 +28,4 @@ class Solution:
       ans += found
     return ans
 
-def solve():
-    f = open('user.out', 'w')
-    iterator = map(loads, stdin)
-    while True:
-        try:
-            nums = next(iterator)
-            k = next(iterator)
-        except StopIteration:
-            break
-
-        print(solution.numberOfSubarrays(nums, k), file=f)
-
-solution = Solution()
-solve()
-exit()
-
         
