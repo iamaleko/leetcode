@@ -47,6 +47,7 @@ Collection of LeetCode questions to ace the coding interview!
 | [0507-perfect-number](https://github.com/iamaleko/leetcode/tree/master/0507-perfect-number) |
 | [0523-continuous-subarray-sum](https://github.com/iamaleko/leetcode/tree/master/0523-continuous-subarray-sum) |
 | [0633-sum-of-square-numbers](https://github.com/iamaleko/leetcode/tree/master/0633-sum-of-square-numbers) |
+| [1014-k-closest-points-to-origin](https://github.com/iamaleko/leetcode/tree/master/1014-k-closest-points-to-origin) |
 | [1370-count-number-of-nice-subarrays](https://github.com/iamaleko/leetcode/tree/master/1370-count-number-of-nice-subarrays) |
 # Array
 |  |
@@ -58,6 +59,7 @@ Collection of LeetCode questions to ace the coding interview!
 | [0648-replace-words](https://github.com/iamaleko/leetcode/tree/master/0648-replace-words) |
 | [0853-most-profit-assigning-work](https://github.com/iamaleko/leetcode/tree/master/0853-most-profit-assigning-work) |
 | [0876-hand-of-straights](https://github.com/iamaleko/leetcode/tree/master/0876-hand-of-straights) |
+| [1014-k-closest-points-to-origin](https://github.com/iamaleko/leetcode/tree/master/1014-k-closest-points-to-origin) |
 | [1016-subarray-sums-divisible-by-k](https://github.com/iamaleko/leetcode/tree/master/1016-subarray-sums-divisible-by-k) |
 | [1044-find-common-characters](https://github.com/iamaleko/leetcode/tree/master/1044-find-common-characters) |
 | [1137-height-checker](https://github.com/iamaleko/leetcode/tree/master/1137-height-checker) |
@@ -72,6 +74,7 @@ Collection of LeetCode questions to ace the coding interview!
 | [0502-ipo](https://github.com/iamaleko/leetcode/tree/master/0502-ipo) |
 | [0853-most-profit-assigning-work](https://github.com/iamaleko/leetcode/tree/master/0853-most-profit-assigning-work) |
 | [0876-hand-of-straights](https://github.com/iamaleko/leetcode/tree/master/0876-hand-of-straights) |
+| [1014-k-closest-points-to-origin](https://github.com/iamaleko/leetcode/tree/master/1014-k-closest-points-to-origin) |
 | [1137-height-checker](https://github.com/iamaleko/leetcode/tree/master/1137-height-checker) |
 | [1217-relative-sort-array](https://github.com/iamaleko/leetcode/tree/master/1217-relative-sort-array) |
 | [2148-minimum-number-of-moves-to-seat-everyone](https://github.com/iamaleko/leetcode/tree/master/2148-minimum-number-of-moves-to-seat-everyone) |
@@ -93,6 +96,7 @@ Collection of LeetCode questions to ace the coding interview!
 |  |
 | ------- |
 | [0502-ipo](https://github.com/iamaleko/leetcode/tree/master/0502-ipo) |
+| [1014-k-closest-points-to-origin](https://github.com/iamaleko/leetcode/tree/master/1014-k-closest-points-to-origin) |
 # Binary Search
 |  |
 | ------- |
@@ -103,3 +107,15 @@ Collection of LeetCode questions to ace the coding interview!
 |  |
 | ------- |
 | [1370-count-number-of-nice-subarrays](https://github.com/iamaleko/leetcode/tree/master/1370-count-number-of-nice-subarrays) |
+# Divide and Conquer
+|  |
+| ------- |
+| [1014-k-closest-points-to-origin](https://github.com/iamaleko/leetcode/tree/master/1014-k-closest-points-to-origin) |
+# Geometry
+|  |
+| ------- |
+| [1014-k-closest-points-to-origin](https://github.com/iamaleko/leetcode/tree/master/1014-k-closest-points-to-origin) |
+# Quickselect
+|  |
+| ------- |
+| [1014-k-closest-points-to-origin](https://github.com/iamaleko/leetcode/tree/master/1014-k-closest-points-to-origin) |
