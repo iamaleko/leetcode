@@ -16,6 +16,7 @@ Collection of LeetCode questions to ace the coding interview!
 | [0409-longest-palindrome](https://github.com/iamaleko/leetcode/tree/master/0409-longest-palindrome) |
 | [0648-replace-words](https://github.com/iamaleko/leetcode/tree/master/0648-replace-words) |
 | [1044-find-common-characters](https://github.com/iamaleko/leetcode/tree/master/1044-find-common-characters) |
+| [1371-minimum-remove-to-make-valid-parentheses](https://github.com/iamaleko/leetcode/tree/master/1371-minimum-remove-to-make-valid-parentheses) |
 | [2572-append-characters-to-string-to-make-subsequence](https://github.com/iamaleko/leetcode/tree/master/2572-append-characters-to-string-to-make-subsequence) |
 # Greedy
 |  |
@@ -125,3 +126,4 @@ Collection of LeetCode questions to ace the coding interview!
 |  |
 | ------- |
 | [0227-basic-calculator-ii](https://github.com/iamaleko/leetcode/tree/master/0227-basic-calculator-ii) |
+| [1371-minimum-remove-to-make-valid-parentheses](https://github.com/iamaleko/leetcode/tree/master/1371-minimum-remove-to-make-valid-parentheses) |
