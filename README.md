@@ -68,6 +68,7 @@ Collection of LeetCode questions to ace the coding interview!
 | [1137-height-checker](https://github.com/iamaleko/leetcode/tree/master/1137-height-checker) |
 | [1217-relative-sort-array](https://github.com/iamaleko/leetcode/tree/master/1217-relative-sort-array) |
 | [1370-count-number-of-nice-subarrays](https://github.com/iamaleko/leetcode/tree/master/1370-count-number-of-nice-subarrays) |
+| [1549-longest-continuous-subarray-with-absolute-diff-less-than-or-equal-to-limit](https://github.com/iamaleko/leetcode/tree/master/1549-longest-continuous-subarray-with-absolute-diff-less-than-or-equal-to-limit) |
 | [1605-minimum-number-of-days-to-make-m-bouquets](https://github.com/iamaleko/leetcode/tree/master/1605-minimum-number-of-days-to-make-m-bouquets) |
 | [2148-minimum-number-of-moves-to-seat-everyone](https://github.com/iamaleko/leetcode/tree/master/2148-minimum-number-of-moves-to-seat-everyone) |
 # Sorting
@@ -100,6 +101,7 @@ Collection of LeetCode questions to ace the coding interview!
 | ------- |
 | [0502-ipo](https://github.com/iamaleko/leetcode/tree/master/0502-ipo) |
 | [1014-k-closest-points-to-origin](https://github.com/iamaleko/leetcode/tree/master/1014-k-closest-points-to-origin) |
+| [1549-longest-continuous-subarray-with-absolute-diff-less-than-or-equal-to-limit](https://github.com/iamaleko/leetcode/tree/master/1549-longest-continuous-subarray-with-absolute-diff-less-than-or-equal-to-limit) |
 # Binary Search
 |  |
 | ------- |
@@ -110,6 +112,7 @@ Collection of LeetCode questions to ace the coding interview!
 |  |
 | ------- |
 | [1370-count-number-of-nice-subarrays](https://github.com/iamaleko/leetcode/tree/master/1370-count-number-of-nice-subarrays) |
+| [1549-longest-continuous-subarray-with-absolute-diff-less-than-or-equal-to-limit](https://github.com/iamaleko/leetcode/tree/master/1549-longest-continuous-subarray-with-absolute-diff-less-than-or-equal-to-limit) |
 # Divide and Conquer
 |  |
 | ------- |
@@ -127,3 +130,15 @@ Collection of LeetCode questions to ace the coding interview!
 | ------- |
 | [0227-basic-calculator-ii](https://github.com/iamaleko/leetcode/tree/master/0227-basic-calculator-ii) |
 | [1371-minimum-remove-to-make-valid-parentheses](https://github.com/iamaleko/leetcode/tree/master/1371-minimum-remove-to-make-valid-parentheses) |
+# Queue
+|  |
+| ------- |
+| [1549-longest-continuous-subarray-with-absolute-diff-less-than-or-equal-to-limit](https://github.com/iamaleko/leetcode/tree/master/1549-longest-continuous-subarray-with-absolute-diff-less-than-or-equal-to-limit) |
+# Ordered Set
+|  |
+| ------- |
+| [1549-longest-continuous-subarray-with-absolute-diff-less-than-or-equal-to-limit](https://github.com/iamaleko/leetcode/tree/master/1549-longest-continuous-subarray-with-absolute-diff-less-than-or-equal-to-limit) |
+# Monotonic Queue
+|  |
+| ------- |
+| [1549-longest-continuous-subarray-with-absolute-diff-less-than-or-equal-to-limit](https://github.com/iamaleko/leetcode/tree/master/1549-longest-continuous-subarray-with-absolute-diff-less-than-or-equal-to-limit) |
