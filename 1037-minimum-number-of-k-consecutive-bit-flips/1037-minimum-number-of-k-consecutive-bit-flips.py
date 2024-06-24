@@ -48,7 +48,7 @@ class Solution:
     j = len(nums) - k
 
     for i in range(len(nums)):
-      if states[i]:
+      if i in states and states[i]:
         flipped = not flipped
       if bool(nums[i]) == flipped:
         if i <= j:
