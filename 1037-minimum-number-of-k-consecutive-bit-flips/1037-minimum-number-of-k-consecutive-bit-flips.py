@@ -8,7 +8,8 @@ class Solution:
       if h and h[0] == i:
         flipped = not flipped
         h.popleft()
-      if ((nums[i] == 0 and not flipped) or (nums[i] == 1 and flipped)): # need flip
+      if bool(nums[i]) == flipped: # need flip
+      # if ((nums[i] == 0 and not flipped) or (nums[i] == 1 and flipped)): # need flip
         if i <= len(nums) - k: # can flip
           flips += 1
           flipped = not flipped
