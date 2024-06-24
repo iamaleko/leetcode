@@ -40,25 +40,43 @@
 #           return -1
 #     return flips
 
+# class Solution:
+#   def minKBitFlips(self, nums: List[int], k: int) -> int:
+#     flips = 0
+#     flipped = False
+#     states = set()
+#     j = len(nums) - k
+
+#     for i in range(len(nums)):
+#       if i in states:
+#         flipped = not flipped
+#         states.remove(i)
+#       if bool(nums[i]) == flipped:
+#         if i <= j:
+#           flips += 1
+#           flipped = not flipped
+#           if i + k in states:
+#             states.remove(i + k)
+#           else:
+#             states.add(i + k)
+#         else:
+#           return -1
+#     return flips
+
 class Solution:
   def minKBitFlips(self, nums: List[int], k: int) -> int:
     flips = 0
-    flipped = False
-    states = set()
+    flipped = 0
     j = len(nums) - k
-
-    for i in range(len(nums)):
-      if i in states:
-        flipped = not flipped
-        states.remove(i)
-      if bool(nums[i]) == flipped:
+    nums += [0]
+    for i in range(len(nums) - 1):
+      if nums[i] & 2:
+        flipped ^= 1
+      if nums[i] & 1 == flipped:
         if i <= j:
           flips += 1
-          flipped = not flipped
-          if i + k in states:
-            states.remove(i + k)
-          else:
-            states.add(i + k)
+          flipped ^= 1
+          nums[i + k] ^= 2
         else:
           return -1
     return flips
