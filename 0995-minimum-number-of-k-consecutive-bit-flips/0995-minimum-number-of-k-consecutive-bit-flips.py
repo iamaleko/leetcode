@@ -44,17 +44,20 @@ class Solution:
   def minKBitFlips(self, nums: List[int], k: int) -> int:
     flips = 0
     flipped = False
-    states = defaultdict(int)
+    states = set()
     j = len(nums) - k
 
     for i in range(len(nums)):
-      if i in states and states[i]:
+      if i in states:
         flipped = not flipped
       if bool(nums[i]) == flipped:
         if i <= j:
           flips += 1
           flipped = not flipped
-          states[i + k] ^= 1
+          if i + k in states:
+            del states[i + k]
+          else:
+            states.add(i + k)
         else:
           return -1
     return flips
