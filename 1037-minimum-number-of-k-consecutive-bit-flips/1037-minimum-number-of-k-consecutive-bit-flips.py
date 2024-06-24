@@ -1,26 +1,44 @@
+# class Solution:
+#   def minKBitFlips(self, nums: List[int], k: int) -> int:
+#     flips = 0
+#     flipped = False
+#     h = deque()
+
+#     for i in range(len(nums)):
+#       if h and h[0] == i:
+#         flipped = not flipped
+#         h.popleft()
+#       if bool(nums[i]) == flipped: # need flip
+#       # if ((nums[i] == 0 and not flipped) or (nums[i] == 1 and flipped)): # need flip
+#         if i <= len(nums) - k: # can flip
+#           flips += 1
+#           flipped = not flipped
+#           if h and h[-1] == i + k:
+#             h.pop()
+#           else:
+#             h.append(i + k)
+#         else:
+#           return -1
+#     return flips
+
 class Solution:
   def minKBitFlips(self, nums: List[int], k: int) -> int:
     flips = 0
     flipped = False
-    h = deque()
+    states = [0] * (len(nums) + 1)
+    j = len(nums) - k
 
     for i in range(len(nums)):
-      if h and h[0] == i:
+      if states[i]:
         flipped = not flipped
-        h.popleft()
-      if bool(nums[i]) == flipped: # need flip
-      # if ((nums[i] == 0 and not flipped) or (nums[i] == 1 and flipped)): # need flip
-        if i <= len(nums) - k: # can flip
+      if bool(nums[i]) == flipped:
+        if i <= j:
           flips += 1
           flipped = not flipped
-          if h and h[-1] == i + k:
-            h.pop()
-          else:
-            h.append(i + k)
+          states[i + k] ^= 1
         else:
           return -1
     return flips
-
 
 #  TLE
 # class Solution:
