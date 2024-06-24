@@ -50,12 +50,13 @@ class Solution:
     for i in range(len(nums)):
       if i in states:
         flipped = not flipped
+        states.remove(i)
       if bool(nums[i]) == flipped:
         if i <= j:
           flips += 1
           flipped = not flipped
           if i + k in states:
-            del states[i + k]
+            states.remove(i + k)
           else:
             states.add(i + k)
         else:
