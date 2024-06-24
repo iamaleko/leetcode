@@ -64,6 +64,7 @@ Collection of LeetCode questions to ace the coding interview!
 | [0876-hand-of-straights](https://github.com/iamaleko/leetcode/tree/master/0876-hand-of-straights) |
 | [1014-k-closest-points-to-origin](https://github.com/iamaleko/leetcode/tree/master/1014-k-closest-points-to-origin) |
 | [1016-subarray-sums-divisible-by-k](https://github.com/iamaleko/leetcode/tree/master/1016-subarray-sums-divisible-by-k) |
+| [1037-minimum-number-of-k-consecutive-bit-flips](https://github.com/iamaleko/leetcode/tree/master/1037-minimum-number-of-k-consecutive-bit-flips) |
 | [1044-find-common-characters](https://github.com/iamaleko/leetcode/tree/master/1044-find-common-characters) |
 | [1137-height-checker](https://github.com/iamaleko/leetcode/tree/master/1137-height-checker) |
 | [1217-relative-sort-array](https://github.com/iamaleko/leetcode/tree/master/1217-relative-sort-array) |
@@ -91,6 +92,7 @@ Collection of LeetCode questions to ace the coding interview!
 | ------- |
 | [0523-continuous-subarray-sum](https://github.com/iamaleko/leetcode/tree/master/0523-continuous-subarray-sum) |
 | [1016-subarray-sums-divisible-by-k](https://github.com/iamaleko/leetcode/tree/master/1016-subarray-sums-divisible-by-k) |
+| [1037-minimum-number-of-k-consecutive-bit-flips](https://github.com/iamaleko/leetcode/tree/master/1037-minimum-number-of-k-consecutive-bit-flips) |
 # Counting Sort
 |  |
 | ------- |
@@ -111,6 +113,7 @@ Collection of LeetCode questions to ace the coding interview!
 # Sliding Window
 |  |
 | ------- |
+| [1037-minimum-number-of-k-consecutive-bit-flips](https://github.com/iamaleko/leetcode/tree/master/1037-minimum-number-of-k-consecutive-bit-flips) |
 | [1370-count-number-of-nice-subarrays](https://github.com/iamaleko/leetcode/tree/master/1370-count-number-of-nice-subarrays) |
 | [1549-longest-continuous-subarray-with-absolute-diff-less-than-or-equal-to-limit](https://github.com/iamaleko/leetcode/tree/master/1549-longest-continuous-subarray-with-absolute-diff-less-than-or-equal-to-limit) |
 # Divide and Conquer
@@ -133,6 +136,7 @@ Collection of LeetCode questions to ace the coding interview!
 # Queue
 |  |
 | ------- |
+| [1037-minimum-number-of-k-consecutive-bit-flips](https://github.com/iamaleko/leetcode/tree/master/1037-minimum-number-of-k-consecutive-bit-flips) |
 | [1549-longest-continuous-subarray-with-absolute-diff-less-than-or-equal-to-limit](https://github.com/iamaleko/leetcode/tree/master/1549-longest-continuous-subarray-with-absolute-diff-less-than-or-equal-to-limit) |
 # Ordered Set
 |  |
@@ -142,3 +146,7 @@ Collection of LeetCode questions to ace the coding interview!
 |  |
 | ------- |
 | [1549-longest-continuous-subarray-with-absolute-diff-less-than-or-equal-to-limit](https://github.com/iamaleko/leetcode/tree/master/1549-longest-continuous-subarray-with-absolute-diff-less-than-or-equal-to-limit) |
+# Bit Manipulation
+|  |
+| ------- |
+| [1037-minimum-number-of-k-consecutive-bit-flips](https://github.com/iamaleko/leetcode/tree/master/1037-minimum-number-of-k-consecutive-bit-flips) |
