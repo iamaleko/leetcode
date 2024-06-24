@@ -2,12 +2,12 @@ class Solution:
   def minKBitFlips(self, nums: List[int], k: int) -> int:
     flips = 0
     flipped = False
-    h = []
+    h = deque()
 
     for i in range(len(nums)):
       while h and h[0] == i:
         flipped = not flipped
-        heappop(h)
+        h.popleft()
       can_flip = i <= len(nums) - k
       if nums[i] == 0 and flipped: # update
         # nums[i] = 1 # remove!
@@ -17,7 +17,7 @@ class Solution:
         if can_flip:
           flips += 1
           flipped = not flipped
-          heappush(h, i + k)
+          h.append(i + k)
           # nums[i] = 1 # remove!
           # print(i, 'update and change state', flipped, h) # remove!
         else:
