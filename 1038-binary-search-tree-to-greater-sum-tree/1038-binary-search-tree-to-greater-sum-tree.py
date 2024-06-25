@@ -7,10 +7,8 @@ class Solution:
         val += add
       if node.right:
         val += traverse(node.right, add)
-      # print(node.val, val)
       node.val = val
       if node.left:
-        # print('>', val)
         val = traverse(node.left, val)
       return val
 
