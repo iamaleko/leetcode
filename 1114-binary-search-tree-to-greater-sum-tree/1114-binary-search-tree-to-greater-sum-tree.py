@@ -1,17 +1,8 @@
 class Solution:
-  def bstToGst(self, root: TreeNode) -> TreeNode:
-
+  def bstToGst(self, root: TreeNode, add = 0) -> TreeNode:
     def traverse(node, add = 0):
-      val = node.val
-      if not node.right:
-        val += add
-      if node.right:
-        val += traverse(node.right, add)
-      node.val = val
-      if node.left:
-        val = traverse(node.left, val)
-      return val
-
+      node.val += traverse(node.right, add) if node.right else add
+      return traverse(node.left, node.val) if node.left else node.val
     traverse(root)
     return root
     
