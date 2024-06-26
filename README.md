@@ -26,6 +26,7 @@ Collection of LeetCode questions to ace the coding interview!
 | [0502-ipo](https://github.com/iamaleko/leetcode/tree/master/0502-ipo) |
 | [0853-most-profit-assigning-work](https://github.com/iamaleko/leetcode/tree/master/0853-most-profit-assigning-work) |
 | [0876-hand-of-straights](https://github.com/iamaleko/leetcode/tree/master/0876-hand-of-straights) |
+| [1285-balance-a-binary-search-tree](https://github.com/iamaleko/leetcode/tree/master/1285-balance-a-binary-search-tree) |
 | [2148-minimum-number-of-moves-to-seat-everyone](https://github.com/iamaleko/leetcode/tree/master/2148-minimum-number-of-moves-to-seat-everyone) |
 | [2572-append-characters-to-string-to-make-subsequence](https://github.com/iamaleko/leetcode/tree/master/2572-append-characters-to-string-to-make-subsequence) |
 # Hash Table
@@ -120,6 +121,7 @@ Collection of LeetCode questions to ace the coding interview!
 |  |
 | ------- |
 | [1014-k-closest-points-to-origin](https://github.com/iamaleko/leetcode/tree/master/1014-k-closest-points-to-origin) |
+| [1285-balance-a-binary-search-tree](https://github.com/iamaleko/leetcode/tree/master/1285-balance-a-binary-search-tree) |
 # Geometry
 |  |
 | ------- |
@@ -154,15 +156,19 @@ Collection of LeetCode questions to ace the coding interview!
 |  |
 | ------- |
 | [1114-binary-search-tree-to-greater-sum-tree](https://github.com/iamaleko/leetcode/tree/master/1114-binary-search-tree-to-greater-sum-tree) |
+| [1285-balance-a-binary-search-tree](https://github.com/iamaleko/leetcode/tree/master/1285-balance-a-binary-search-tree) |
 # Depth-First Search
 |  |
 | ------- |
 | [1114-binary-search-tree-to-greater-sum-tree](https://github.com/iamaleko/leetcode/tree/master/1114-binary-search-tree-to-greater-sum-tree) |
+| [1285-balance-a-binary-search-tree](https://github.com/iamaleko/leetcode/tree/master/1285-balance-a-binary-search-tree) |
 # Binary Search Tree
 |  |
 | ------- |
 | [1114-binary-search-tree-to-greater-sum-tree](https://github.com/iamaleko/leetcode/tree/master/1114-binary-search-tree-to-greater-sum-tree) |
+| [1285-balance-a-binary-search-tree](https://github.com/iamaleko/leetcode/tree/master/1285-balance-a-binary-search-tree) |
 # Binary Tree
 |  |
 | ------- |
 | [1114-binary-search-tree-to-greater-sum-tree](https://github.com/iamaleko/leetcode/tree/master/1114-binary-search-tree-to-greater-sum-tree) |
+| [1285-balance-a-binary-search-tree](https://github.com/iamaleko/leetcode/tree/master/1285-balance-a-binary-search-tree) |
