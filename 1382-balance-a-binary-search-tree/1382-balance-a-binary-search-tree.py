@@ -19,12 +19,11 @@ class Solution:
 
     def build(i,j):
       center = i + (j - i) // 2
-      node = TreeNode(vals[center])
-      if center > i:
-        node.left = build(i, center - 1)
-      if center < j:
-        node.right = build(center + 1, j)
-      return node
+      return TreeNode(
+        vals[center],
+        build(i, center - 1) if center > i else None,
+        build(center + 1, j) if center < j else None
+      )
 
     return build(0, len(vals) - 1)
         
