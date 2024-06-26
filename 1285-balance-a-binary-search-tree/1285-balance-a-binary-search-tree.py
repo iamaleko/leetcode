@@ -8,14 +8,12 @@ class Solution:
   def balanceBST(self, root: TreeNode) -> TreeNode:
     vals = []
     def traverse(node):
-      vals.append(node.val)
       if node.left:
         traverse(node.left)
+      vals.append(node.val)
       if node.right:
         traverse(node.right)
     traverse(root)
-    
-    vals.sort()
 
     def build(i,j):
       center = i + (j - i) // 2
