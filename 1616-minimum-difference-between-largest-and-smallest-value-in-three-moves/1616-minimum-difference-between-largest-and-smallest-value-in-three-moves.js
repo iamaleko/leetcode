@@ -53,15 +53,15 @@ var minDifference = function(nums) {
   if (nums.length <= 3) return 0
   const s = [Infinity, Infinity, Infinity, Infinity],
         l = [-Infinity, -Infinity, -Infinity, -Infinity];
-  for (let p, i = 0; i < nums.length; i++) {
+  for (let i = 0; i < nums.length; i++) {
     if (s[3] > nums[i]) {
-      p = 0;
+      let p = 0;
       while (s[p] < nums[i]) p++;
       s.splice(p, 0, nums[i]);
       s.pop();
     }
     if (l[3] < nums[i]) {
-      p = 0;
+      let p = 0;
       while (l[p] > nums[i]) p++;
       l.splice(p, 0, nums[i]);
       l.pop();
