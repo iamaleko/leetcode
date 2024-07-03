@@ -95,7 +95,7 @@ const minDifference = (nums) => {
       n;
   for (const num of nums) {
     for (n = s, p = 4; p && n.next && n.next.val < num; p--) n = n.next;
-    n.next = p ? new ListNode(num, n.next) : null
+    n.next = new ListNode(num, n.next)
 
     for (n = l, p = 4; p && n.next && n.next.val > num; p--) n = n.next;
     n.next = p ? new ListNode(num, n.next) : null
