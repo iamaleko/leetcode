@@ -45,27 +45,62 @@
 //   return Math.min(la - sd, lb - sc, lc - sb, ld - sa)
 // };
 
-/**
- * @param {number[]} nums
- * @return {number}
- */
-var minDifference = function(nums) {
-  if (nums.length <= 3) return 0
-  const s = [Infinity, Infinity, Infinity, Infinity],
-        l = [-Infinity, -Infinity, -Infinity, -Infinity];
-  for (const num of nums) {
-    if (s[3] > num) {
-      let p = 0;
-      while (s[p] < num) p++;
-      s.splice(p, 0, num);
-      s.pop();
-    }
-    if (l[3] < num) {
-      let p = 0;
-      while (l[p] > num) p++;
-      l.splice(p, 0, num);
-      l.pop();
+// /**
+//  * @param {number[]} nums
+//  * @return {number}
+//  */
+// var minDifference = function(nums) {
+//   if (nums.length <= 3) return 0
+//   const s = [Infinity, Infinity, Infinity, Infinity],
+//         l = [-Infinity, -Infinity, -Infinity, -Infinity];
+//   for (const num of nums) {
+//     if (s[3] > num) {
+//       let p = 0;
+//       while (s[p] < num) p++;
+//       s.splice(p, 0, num);
+//       s.pop();
+//     }
+//     if (l[3] < num) {
+//       let p = 0;
+//       while (l[p] > num) p++;
+//       l.splice(p, 0, num);
+//       l.pop();
+//     }
+//   }
+//   return Math.min(l[0] - s[3], l[1] - s[2], l[2] - s[1], l[3] - s[0])
+// };
+
+
+class ListNode {
+  constructor(val, next = null) {
+    this.val = val
+    this.next = next
+  }
+  [Symbol.iterator]() {
+    let node = this
+    return {
+      next: function() {
+        const res = { done: node === null, value: node && node.val }
+        node = node && node.next
+        return res;
+      }
     }
   }
+}
+
+const minDifference = (nums) => {
+  if (nums.length <= 3) return 0
+  let s = new ListNode(-Infinity),
+      l = new ListNode(Infinity),
+      n;
+  for (const num of nums) {
+    for (n = s, p = 4; p && n.next && n.next.val < num; p--) n = n.next;
+    n.next = p ? new ListNode(num, n.next) : null
+
+    for (n = l, p = 4; p && n.next && n.next.val > num; p--) n = n.next;
+    n.next = p ? new ListNode(num, n.next) : null
+  }
+  s = Array.from(s.next)
+  l = Array.from(l.next)
   return Math.min(l[0] - s[3], l[1] - s[2], l[2] - s[1], l[3] - s[0])
 };
