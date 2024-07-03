@@ -51,8 +51,8 @@
  */
 var minDifference = function(nums) {
   if (nums.length <= 3) return 0
-  const s = new Array(4).fill(Infinity),
-        l = new Array(4).fill(-Infinity);
+  const s = [Infinity, Infinity, Infinity, Infinity],
+        l = [-Infinity, -Infinity, -Infinity, -Infinity];
   for (let p, i = 0; i < nums.length; i++) {
     p = 0;
     while (s[p] < nums[i]) p++;
