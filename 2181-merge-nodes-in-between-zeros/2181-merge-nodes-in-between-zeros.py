@@ -4,7 +4,7 @@ class Solution:
     tail = head
     rs = 0
     node = node.next
-    while node:
+    while node != None:
       rs += node.val
       if not node.val:
         tail.next = ListNode(rs)
