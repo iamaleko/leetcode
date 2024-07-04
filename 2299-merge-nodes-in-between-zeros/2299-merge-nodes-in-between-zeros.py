@@ -4,9 +4,10 @@ class Solution:
     tail = head
     rs = 0
     node = node.next
-    while node != None:
-      rs += node.val
-      if not node.val:
+    while node:
+      if node.val:
+        rs += node.val
+      else:
         tail.next = ListNode(rs)
         tail = tail.next
         rs = 0
