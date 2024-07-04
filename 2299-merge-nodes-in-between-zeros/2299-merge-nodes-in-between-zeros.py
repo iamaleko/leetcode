@@ -1,6 +1,6 @@
 class Solution:
   def mergeNodes(self, node: Optional[ListNode]) -> Optional[ListNode]:
-    head = ListNode(0)
+    head = ListNode()
     tail = head
     rs = 0
     node = node.next
