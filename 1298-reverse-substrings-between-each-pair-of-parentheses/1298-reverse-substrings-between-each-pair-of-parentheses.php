@@ -10,7 +10,7 @@ class Solution {
           break;
         case ')':
           $from = array_pop($st);
-          $res = substr($res, 0, $from) . strrev(substr($res, $from, $to - $from)) . substr($res, $to);
+          $res = substr($res, 0, $from) . strrev(substr($res, $from));
           break;
         default:
           $res .= $s[$i];
