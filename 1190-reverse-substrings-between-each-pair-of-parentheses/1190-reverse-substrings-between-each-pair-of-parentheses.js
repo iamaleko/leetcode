@@ -1,5 +1,6 @@
 const reverseParentheses = (s) => {
-  const portals = new Map(), st = [], ans = '';
+  const portals = new Map(), st = [];
+  let ans = '';
 
   for (let i = 0; i < s.length; i++) {
     if (s[i] === '(') {
