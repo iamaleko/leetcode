@@ -6,8 +6,8 @@ const reverseParentheses = (s) => {
     if (s[i] === '(') {
       st.push(i);
     } else if (s[i] === ')') {
-      portals[st[st.length - 1]] = i;
       portals[i] = st.pop();
+      portals[portals[i]] = i;
     }
   }
   
