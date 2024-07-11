@@ -12,18 +12,14 @@ const reverseParentheses = (s) => {
   }
   
   let i = 0, reverse = false, ans = '';
-  while (true) {
+  while (i < s.length) {
     if (s[i] === '(' || s[i] === ')') {
       i = portals.get(i);
-      if (i === null) break;
-      portals.delete(i)
       reverse = !reverse;
-      reverse ? i-- : i++;
     } else {
-      if (i < 0 || i >= s.length) break;
       ans += s[i];
-      reverse ? i-- : i++;
     }
+    reverse ? i-- : i++;
   }
 
   return ans;
