@@ -1,5 +1,5 @@
 const reverseParentheses = (s) => {
-  const portals = new Map(), st = [];
+  const portals = new Map(), st = [], ans = '';
 
   for (let i = 0; i < s.length; i++) {
     if (s[i] === '(') {
@@ -11,15 +11,13 @@ const reverseParentheses = (s) => {
     }
   }
   
-  let i = 0, reverse = false, ans = '';
-  while (i < s.length) {
+  for (let i = 0, reverse = false; i < s.length; reverse ? i-- : i++) {
     if (s[i] === '(' || s[i] === ')') {
       i = portals.get(i);
       reverse = !reverse;
     } else {
       ans += s[i];
     }
-    reverse ? i-- : i++;
   }
 
   return ans;
