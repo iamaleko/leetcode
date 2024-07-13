@@ -1,3 +1,8 @@
+class Node:
+  def __init__(self, val, next):
+    self.next = next
+    self.val = val
+
 class Robot:
   def __init__(self, position, health, direction, index):
     self.position = position
@@ -17,26 +22,32 @@ class Solution:
     robots.sort(key = lambda robot: robot.position)
 
     # collide
-    r = []
+    tail = None
     for i in range(len(robots)):
       if robots[i].direction == 'R':
-        r.append(i)
+        tail = Node(i, tail)
       elif robots[i].direction == 'L':
-        for j in range(len(r) - 1, -1, -1):
+        node = tail
+        prev = None
+        while node:
           if robots[i].health <= 0:
             break
-          if robots[r[j]].health <= 0:
-            r.pop(j)
-            continue
-          if robots[i].health == robots[r[j]].health:
+          elif robots[node.val].health <= 0:
+            if node == tail:
+              tail = node.next
+            else:
+              prev.next = node.next
+          elif robots[i].health == robots[node.val].health:
             robots[i].health = 0
-            robots[r[j]].health = 0
-          elif robots[i].health > robots[r[j]].health:
+            robots[node.val].health = 0
+          elif robots[i].health > robots[node.val].health:
             robots[i].health -= 1
-            robots[r[j]].health = 0
-          elif robots[i].health < robots[r[j]].health:
-            robots[r[j]].health -= 1
+            robots[node.val].health = 0
+          elif robots[i].health < robots[node.val].health:
+            robots[node.val].health -= 1
             robots[i].health = 0
+          prev = node
+          node = node.next
 
     # answer
     ans = filter(lambda robot: robot.health > 0, robots)
