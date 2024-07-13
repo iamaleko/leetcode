@@ -22,22 +22,15 @@ class Solution:
     robots.sort(key = lambda robot: robot.position)
 
     # collide
-    tail = None
+    tail = Node(0, None)
     for i in range(len(robots)):
       if robots[i].direction == 'R':
-        tail = Node(i, tail)
+        tail.next = Node(i, tail.next)
       elif robots[i].direction == 'L':
-        node = tail
-        prev = None
-        while node:
-          if robots[i].health <= 0:
-            break
-          elif robots[node.val].health <= 0:
-            if node == tail:
-              tail = node.next
-            else:
-              prev.next = node.next
-          elif robots[i].health == robots[node.val].health:
+        node = tail.next
+        prev = tail
+        while node and robots[i].health:
+          if robots[i].health == robots[node.val].health:
             robots[i].health = 0
             robots[node.val].health = 0
           elif robots[i].health > robots[node.val].health:
@@ -46,11 +39,14 @@ class Solution:
           elif robots[i].health < robots[node.val].health:
             robots[node.val].health -= 1
             robots[i].health = 0
-          prev = node
+          if robots[node.val].health == 0:
+            prev.next = node.next
+          else:
+            prev = node
           node = node.next
 
     # answer
-    ans = filter(lambda robot: robot.health > 0, robots)
+    ans = filter(lambda robot: robot.health, robots)
     ans = sorted(ans, key = lambda robot: robot.index)
     ans = map(lambda robot: robot.health, ans)
     return ans
