@@ -1,7 +1,7 @@
 class Node:
-  def __init__(self, val, next):
+  def __init__(self, robot, next):
     self.next = next
-    self.val = val
+    self.robot = robot
 
 class Robot:
   def __init__(self, position, health, direction, index):
@@ -23,23 +23,23 @@ class Solution:
 
     # collide
     tail = Node(0, None)
-    for i in range(len(robots)):
-      if robots[i].direction == 'R':
-        tail.next = Node(i, tail.next)
-      elif robots[i].direction == 'L':
+    for robot in robots:
+      if robot.direction == 'R':
+        tail.next = Node(robot, tail.next)
+      elif robot.direction == 'L':
         node = tail.next
         prev = tail
-        while node and robots[i].health:
-          if robots[i].health == robots[node.val].health:
-            robots[i].health = 0
-            robots[node.val].health = 0
-          elif robots[i].health > robots[node.val].health:
-            robots[i].health -= 1
-            robots[node.val].health = 0
-          elif robots[i].health < robots[node.val].health:
-            robots[node.val].health -= 1
-            robots[i].health = 0
-          if robots[node.val].health == 0:
+        while node and robot.health:
+          if robot.health == node.robot.health:
+            robot.health = 0
+            node.robot.health = 0
+          elif robot.health > node.robot.health:
+            robot.health -= 1
+            node.robot.health = 0
+          elif robot.health < node.robot.health:
+            node.robot.health -= 1
+            robot.health = 0
+          if node.robot.health == 0:
             prev.next = node.next
           else:
             prev = node
