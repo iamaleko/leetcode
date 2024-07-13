@@ -1,11 +1,11 @@
 const maximumGain = (s, x, y) => {
-  let a = 'ab', av = x, b = 'ba', bv = y, st = [], ans = 0;
-  if (y > x) [a,b,av,bv] = [b,a,bv,av];
+  let str = 'ab', st = [], ans = 0;
+  if (y > x) [str,x,y] = ['ba',y,x];
 
   for (const chr of s) {
-    if (st.length && st[st.length - 1] + chr === a) {
+    if (st.length && st.at(-1) + chr === str) {
       st.pop();
-      ans += av;
+      ans += x;
     } else {
       st.push(chr);
     }
@@ -14,9 +14,9 @@ const maximumGain = (s, x, y) => {
   s = st.reverse().join('');
   st = [];
   for (const chr of s) {
-    if (st.length && st[st.length - 1] + chr === a) {
+    if (st.length && st.at(-1) + chr === str) {
       st.pop();
-      ans += bv;
+      ans += y;
     } else {
       st.push(chr);
     }
