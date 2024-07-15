@@ -234,6 +234,7 @@ Collection of LeetCode questions to ace the coding interview!
 ## Greedy
 |  |
 | ------- |
+| [0044-wildcard-matching](https://github.com/iamaleko/leetcode/tree/master/0044-wildcard-matching) |
 | [1616-minimum-difference-between-largest-and-smallest-value-in-three-moves](https://github.com/iamaleko/leetcode/tree/master/1616-minimum-difference-between-largest-and-smallest-value-in-three-moves) |
 | [1818-maximum-score-from-removing-substrings](https://github.com/iamaleko/leetcode/tree/master/1818-maximum-score-from-removing-substrings) |
 ## Linked List
@@ -259,6 +260,7 @@ Collection of LeetCode questions to ace the coding interview!
 ## Recursion
 |  |
 | ------- |
+| [0044-wildcard-matching](https://github.com/iamaleko/leetcode/tree/master/0044-wildcard-matching) |
 | [1951-find-the-winner-of-the-circular-game](https://github.com/iamaleko/leetcode/tree/master/1951-find-the-winner-of-the-circular-game) |
 ## Queue
 |  |
@@ -267,6 +269,7 @@ Collection of LeetCode questions to ace the coding interview!
 ## String
 |  |
 | ------- |
+| [0044-wildcard-matching](https://github.com/iamaleko/leetcode/tree/master/0044-wildcard-matching) |
 | [0726-number-of-atoms](https://github.com/iamaleko/leetcode/tree/master/0726-number-of-atoms) |
 | [1298-reverse-substrings-between-each-pair-of-parentheses](https://github.com/iamaleko/leetcode/tree/master/1298-reverse-substrings-between-each-pair-of-parentheses) |
 | [1720-crawler-log-folder](https://github.com/iamaleko/leetcode/tree/master/1720-crawler-log-folder) |
@@ -287,4 +290,8 @@ Collection of LeetCode questions to ace the coding interview!
 |  |
 | ------- |
 | [2306-create-binary-tree-from-descriptions](https://github.com/iamaleko/leetcode/tree/master/2306-create-binary-tree-from-descriptions) |
+## Dynamic Programming
+|  |
+| ------- |
+| [0044-wildcard-matching](https://github.com/iamaleko/leetcode/tree/master/0044-wildcard-matching) |
 <!---LeetCode Topics End-->
