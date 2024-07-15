@@ -1,6 +1,8 @@
 class Solution:
   def isMatch(self, s: str, p: str) -> bool:
     mem = {}
+    n = len(s)
+    m = len(p)
 
     def dp(key):
       if key in mem:
@@ -8,18 +10,17 @@ class Solution:
       
       i, j = key
       
-      # print(i, j)
-      if i == len(s) and j == len(p):
+      if i == n and j == m:
         mem[key] = True
-      elif j < len(p) and p[j] == '*':
+      elif j < m and p[j] == '*':
         mem[key] = False
-        for k in range(i, len(s) + 1):
+        for k in range(i, n + 1):
           if dp((k, j + 1)):
             mem[key] = True
             break
-      elif j < len(p) and p[j] == '?':
+      elif j < m and p[j] == '?':
         mem[key] = dp((i + 1, j + 1))
-      elif i < len(s) and j < len(p) and s[i] == p[j]:
+      elif i < n and j < m and s[i] == p[j]:
         mem[key] = dp((i + 1, j + 1))
       else:
         mem[key] = False
