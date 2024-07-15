@@ -14,7 +14,7 @@ class Solution:
         mem[key] = True
       elif j < m and p[j] == '*':
         mem[key] = False
-        for k in range(n, i - 1, -1):
+        for k in range(i, n + 1):
           if dp((k, j + 1)):
             mem[key] = True
             break
