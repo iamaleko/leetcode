@@ -46,13 +46,5 @@ class Solution:
         j = star_j
       else:
         return False
-    
-    for k in range(j, len(p)):
-      if p[k] != '*':
-        return False
 
-    return True
-
-
-
-        
+    return all([ch == '*' for ch in p[j:]])
