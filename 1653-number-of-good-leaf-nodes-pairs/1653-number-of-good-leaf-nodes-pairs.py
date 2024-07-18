@@ -21,10 +21,9 @@ class Solution:
     while leafs:
       node = leafs.popleft()
       if node.left and node.right:
-        for i in range(len(dist[node.right])):
-          dist[node.right][i] += 1
+        dist[node.right] = [e + 1 for e in dist[node.right]]
+        dist[node.left] = [e + 1 for e in dist[node.left]]
         for l in range(len(dist[node.left])):
-          dist[node.left][l] += 1
           for r in range(len(dist[node.right])):
             if dist[node.left][l] + dist[node.right][r] <= distance:
               ans += 1
@@ -33,15 +32,11 @@ class Solution:
         del dist[node.right]
 
       elif node.left:
-        for i in range(len(dist[node.left])):
-          dist[node.left][i] += 1
-        dist[node] = dist[node.left]
+        dist[node] = [e + 1 for e in dist[node.left]]
         del dist[node.left]
 
       elif node.right:
-        for i in range(len(dist[node.right])):
-          dist[node.right][i] += 1
-        dist[node] = dist[node.right]
+        dist[node] = [e + 1 for e in dist[node.right]]
         del dist[node.right]
       else:
         dist[node] = [0]
