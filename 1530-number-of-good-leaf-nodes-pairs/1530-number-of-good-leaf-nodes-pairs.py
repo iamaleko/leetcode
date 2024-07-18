@@ -37,7 +37,6 @@
 
 #     return ans
 
-# O(n)
 class Solution:
   def countPairs(self, root: TreeNode, distance: int) -> int:
     # build parent links and find leafs
@@ -70,15 +69,11 @@ class Solution:
           for r in dist[node.right]:
             if l.val - node.val + r.val - node.val <= distance:
               ans += 1
-        dist[node] = dist[node.left] + dist[node.right]
-        del dist[node.left]
-        del dist[node.right]
+        dist[node] = dist.pop(node.left) + dist.pop(node.right)
       elif node.left:
-        dist[node] = dist[node.left]
-        del dist[node.left]
+        dist[node] = dist.pop(node.left)
       elif node.right:
-        dist[node] = dist[node.right]
-        del dist[node.right]
+        dist[node] = dist.pop(node.right)
       else:
         dist[node] = [node]
       if node is not root and parent[node].left in dist and parent[node].right in dist:
