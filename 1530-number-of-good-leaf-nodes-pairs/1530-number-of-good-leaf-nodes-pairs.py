@@ -66,13 +66,17 @@ class Solution:
       if node.left and node.right:
         for l in dist[node.left]:
           for r in dist[node.right]:
-            if l.val + r.val <= distance + node.val * 2:
+            if l.val - node.val + r.val - node.val <= distance:
               ans += 1
-        dist[node] = dist[node.left] + dist[node.right]
+        dist[node] = [n for n in dist[node.left] + dist[node.right] if n.val - node.val < distance]
+        del dist[node.left]
+        del dist[node.right]
       elif node.left:
         dist[node] = dist[node.left]
+        del dist[node.left]
       elif node.right:
         dist[node] = dist[node.right]
+        del dist[node.right]
       else:
         dist[node] = [node]
       if node is not root and parent[node].left in dist and parent[node].right in dist:
