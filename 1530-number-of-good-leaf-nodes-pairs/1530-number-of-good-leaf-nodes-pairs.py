@@ -26,15 +26,12 @@ class Solution:
             if l + r <= distance:
               ans += 1
         dist[node] = [e + 1 for e in dist.pop(node.left) + dist.pop(node.right) if e + 1 < distance]
-
       elif node.left:
         dist[node] = [e + 1 for e in dist.pop(node.left) if e + 1 < distance]
-
       elif node.right:
         dist[node] = [e + 1 for e in dist.pop(node.right) if e + 1 < distance]
       else:
         dist[node] = [1]
-
       if node in parent and parent[node].left in dist and parent[node].right in dist:
         leafs.append(parent[node])
 
