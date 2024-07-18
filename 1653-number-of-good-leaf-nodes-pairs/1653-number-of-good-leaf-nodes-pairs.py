@@ -25,16 +25,16 @@ class Solution:
           for r in dist[node.right]:
             if l + r <= distance:
               ans += 1
-        dist[node] = [e + 1 for e in dist[node.left]] + [e + 1 for e in dist[node.right]]
+        dist[node] = [e + 1 for e in dist[node.left] if e + 1 < distance] + [e + 1 for e in dist[node.right] if e + 1 < distance]
         del dist[node.left]
         del dist[node.right]
 
       elif node.left:
-        dist[node] = [e + 1 for e in dist[node.left]]
+        dist[node] = [e + 1 for e in dist[node.left] if e + 1 < distance]
         del dist[node.left]
 
       elif node.right:
-        dist[node] = [e + 1 for e in dist[node.right]]
+        dist[node] = [e + 1 for e in dist[node.right] if e + 1 < distance]
         del dist[node.right]
       else:
         dist[node] = [1]
