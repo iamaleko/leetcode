@@ -58,25 +58,28 @@ class Solution:
         leafs.append(node)
     
     # traverse tree from leafs to root and count leaf paths
-    dist = { None: 1 }
     ans = 0
     while leafs:
       node = leafs.popleft()
       if node.left and node.right:
-        dist[node.left] = [n for n in dist[node.left] if n.val - node.val < distance]
-        dist[node.right] = [n for n in dist[node.right] if n.val - node.val < distance]
-        for l in dist[node.left]:
-          for r in dist[node.right]:
-            if l.val - node.val + r.val - node.val <= distance:
+        node.left.val = [n for n in node.left.val if n - node.val < distance]
+        node.right.val = [n for n in node.right.val if n - node.val < distance]
+        for l in node.left.val:
+          for r in node.right.val:
+            if l - node.val + r - node.val <= distance:
               ans += 1
-        dist[node] = dist.pop(node.left) + dist.pop(node.right)
+        node.val = node.left.val + node.right.val
       elif node.left:
-        dist[node] = dist.pop(node.left)
+        node.val = node.left.val
       elif node.right:
-        dist[node] = dist.pop(node.right)
+        node.val = node.right.val
       else:
-        dist[node] = [node]
-      if node is not root and parent[node].left in dist and parent[node].right in dist:
+        node.val = [node.val]
+      if node is not root and ((
+        not parent[node].left or type(parent[node].left.val) is list
+      ) and (
+        not parent[node].right or type(parent[node].right.val) is list
+      )):
         leafs.append(parent[node])
 
     return ans
