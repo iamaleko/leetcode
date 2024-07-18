@@ -64,11 +64,13 @@ class Solution:
     while leafs:
       node = leafs.popleft()
       if node.left and node.right:
+        dist[node.left] = [n for n in dist[node.left] if n.val - node.val < distance]
+        dist[node.right] = [n for n in dist[node.right] if n.val - node.val < distance]
         for l in dist[node.left]:
           for r in dist[node.right]:
             if l.val - node.val + r.val - node.val <= distance:
               ans += 1
-        dist[node] = [n for n in dist[node.left] + dist[node.right] if n.val - node.val < distance]
+        dist[node] = dist[node.left] + dist[node.right]
         del dist[node.left]
         del dist[node.right]
       elif node.left:
