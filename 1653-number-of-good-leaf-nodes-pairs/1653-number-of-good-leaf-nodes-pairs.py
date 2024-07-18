@@ -12,7 +12,7 @@ class Solution:
       if node.right:
         parent[node.right] = node
         q.append(node.right)
-      if node.left == None and node.right == None:
+      elif not node.left:
         leafs.append(node)
     
     # traverse tree from leafs to root and count leaf paths
