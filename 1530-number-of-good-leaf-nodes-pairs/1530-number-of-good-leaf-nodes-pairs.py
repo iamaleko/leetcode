@@ -66,7 +66,7 @@ class Solution:
       if node.left and node.right:
         for l in dist[node.left]:
           for r in dist[node.right]:
-            if (l - node.val) + (r - node.val) <= distance:
+            if l.val + r.val <= distance + node.val * 2:
               ans += 1
         dist[node] = dist.pop(node.left) + dist.pop(node.right)
       elif node.left:
@@ -74,7 +74,7 @@ class Solution:
       elif node.right:
         dist[node] = dist.pop(node.right)
       else:
-        dist[node] = [node.val]
+        dist[node] = [node]
       if node in parent and parent[node].left in dist and parent[node].right in dist:
         leafs.append(parent[node])
 
