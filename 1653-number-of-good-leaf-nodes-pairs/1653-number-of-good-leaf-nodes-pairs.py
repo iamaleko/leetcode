@@ -16,7 +16,7 @@ class Solution:
         leafs.append(node)
     
     # traverse tree from leafs to root and count leaf paths
-    dist = {}
+    dist = { None: 1 }
     ans = 0
     while leafs:
       node = leafs.popleft()
@@ -39,11 +39,7 @@ class Solution:
       else:
         dist[node] = [1]
 
-      if node in parent and (
-        not parent[node].left or parent[node].left in dist
-      ) and (
-        not parent[node].right or parent[node].right in dist
-      ):
+      if node in parent and parent[node].left in dist and parent[node].right in dist:
         leafs.append(parent[node])
 
     return ans
