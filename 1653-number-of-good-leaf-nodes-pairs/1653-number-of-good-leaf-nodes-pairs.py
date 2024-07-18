@@ -68,11 +68,11 @@ class Solution:
           for r in dist[node.right]:
             if l.val + r.val <= distance + node.val * 2:
               ans += 1
-        dist[node] = dist.pop(node.left) + dist.pop(node.right)
+        dist[node] = dist[node.left] + dist[node.right]
       elif node.left:
-        dist[node] = dist.pop(node.left)
+        dist[node] = dist[node.left]
       elif node.right:
-        dist[node] = dist.pop(node.right)
+        dist[node] = dist[node.right]
       else:
         dist[node] = [node]
       if node is not root and parent[node].left in dist and parent[node].right in dist:
