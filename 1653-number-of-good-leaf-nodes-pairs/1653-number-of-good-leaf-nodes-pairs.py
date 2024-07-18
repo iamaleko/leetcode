@@ -21,31 +21,30 @@ class Solution:
     while leafs:
       node = leafs.popleft()
       if node.left and node.right:
-        for key in dist[node.right]:
-          dist[node.right][key] += 1
-        for l_key in dist[node.left]:
-          dist[node.left][l_key] += 1
-          for r_key in dist[node.right]:
-            if dist[node.left][l_key] + dist[node.right][r_key] <= distance:
+        for i in range(len(dist[node.right])):
+          dist[node.right][i] += 1
+        for l in range(len(dist[node.left])):
+          dist[node.left][l] += 1
+          for r in range(len(dist[node.right])):
+            if dist[node.left][l] + dist[node.right][r] <= distance:
               ans += 1
-        dist[node.left].update(dist[node.right])
-        dist[node] = dist[node.left]
+        dist[node] = dist[node.left] + dist[node.right]
         del dist[node.left]
         del dist[node.right]
 
       elif node.left:
-        for key in dist[node.left]:
-          dist[node.left][key] += 1
+        for i in range(len(dist[node.left])):
+          dist[node.left][i] += 1
         dist[node] = dist[node.left]
         del dist[node.left]
 
       elif node.right:
-        for key in dist[node.right]:
-          dist[node.right][key] += 1
+        for i in range(len(dist[node.right])):
+          dist[node.right][i] += 1
         dist[node] = dist[node.right]
         del dist[node.right]
       else:
-        dist[node] = { node: 0 }
+        dist[node] = [0]
 
       if node in parent and (
         not parent[node].left or parent[node].left in dist
