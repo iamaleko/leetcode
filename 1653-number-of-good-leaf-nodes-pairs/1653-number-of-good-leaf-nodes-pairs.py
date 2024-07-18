@@ -75,7 +75,7 @@ class Solution:
         dist[node] = dist.pop(node.right)
       else:
         dist[node] = [node]
-      if node in parent and parent[node].left in dist and parent[node].right in dist:
+      if node is not root and parent[node].left in dist and parent[node].right in dist:
         leafs.append(parent[node])
 
     return ans
