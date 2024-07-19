@@ -5,7 +5,6 @@ class Solution {
     * @return Integer[]
     */
   function luckyNumbers($matrix) {
-    $ans = [];
     foreach ($matrix[0] as $x => $_) {
       $max = PHP_INT_MIN;
       $max_y = null;
@@ -24,9 +23,9 @@ class Solution {
         }
       }
       if ($min_x === $x) {
-        $ans []= $matrix[$max_y][$min_x];
+        return [$matrix[$max_y][$min_x]];
       }
     }
-    return $ans;
+    return [];
   }
 }
