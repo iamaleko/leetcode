@@ -205,6 +205,7 @@ Collection of LeetCode questions to ace the coding interview!
 ## Array
 |  |
 | ------- |
+| [0001-two-sum](https://github.com/iamaleko/leetcode/tree/master/0001-two-sum) |
 | [0350-intersection-of-two-arrays-ii](https://github.com/iamaleko/leetcode/tree/master/0350-intersection-of-two-arrays-ii) |
 | [1207-delete-nodes-and-return-forest](https://github.com/iamaleko/leetcode/tree/master/1207-delete-nodes-and-return-forest) |
 | [1293-three-consecutive-odds](https://github.com/iamaleko/leetcode/tree/master/1293-three-consecutive-odds) |
@@ -219,6 +220,7 @@ Collection of LeetCode questions to ace the coding interview!
 ## Hash Table
 |  |
 | ------- |
+| [0001-two-sum](https://github.com/iamaleko/leetcode/tree/master/0001-two-sum) |
 | [0350-intersection-of-two-arrays-ii](https://github.com/iamaleko/leetcode/tree/master/0350-intersection-of-two-arrays-ii) |
 | [0726-number-of-atoms](https://github.com/iamaleko/leetcode/tree/master/0726-number-of-atoms) |
 | [1207-delete-nodes-and-return-forest](https://github.com/iamaleko/leetcode/tree/master/1207-delete-nodes-and-return-forest) |
