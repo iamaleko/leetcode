@@ -283,6 +283,7 @@ Collection of LeetCode questions to ace the coding interview!
 |  |
 | ------- |
 | [0013-roman-to-integer](https://github.com/iamaleko/leetcode/tree/master/0013-roman-to-integer) |
+| [0014-longest-common-prefix](https://github.com/iamaleko/leetcode/tree/master/0014-longest-common-prefix) |
 | [0044-wildcard-matching](https://github.com/iamaleko/leetcode/tree/master/0044-wildcard-matching) |
 | [0726-number-of-atoms](https://github.com/iamaleko/leetcode/tree/master/0726-number-of-atoms) |
 | [1298-reverse-substrings-between-each-pair-of-parentheses](https://github.com/iamaleko/leetcode/tree/master/1298-reverse-substrings-between-each-pair-of-parentheses) |
@@ -319,4 +320,8 @@ Collection of LeetCode questions to ace the coding interview!
 |  |
 | ------- |
 | [1496-lucky-numbers-in-a-matrix](https://github.com/iamaleko/leetcode/tree/master/1496-lucky-numbers-in-a-matrix) |
+## Trie
+|  |
+| ------- |
+| [0014-longest-common-prefix](https://github.com/iamaleko/leetcode/tree/master/0014-longest-common-prefix) |
 <!---LeetCode Topics End-->
