@@ -263,6 +263,7 @@ Collection of LeetCode questions to ace the coding interview!
 ## Math
 |  |
 | ------- |
+| [0009-palindrome-number](https://github.com/iamaleko/leetcode/tree/master/0009-palindrome-number) |
 | [0504-base-7](https://github.com/iamaleko/leetcode/tree/master/0504-base-7) |
 | [1642-water-bottles](https://github.com/iamaleko/leetcode/tree/master/1642-water-bottles) |
 | [1951-find-the-winner-of-the-circular-game](https://github.com/iamaleko/leetcode/tree/master/1951-find-the-winner-of-the-circular-game) |
