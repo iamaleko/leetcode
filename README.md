@@ -221,6 +221,7 @@ Collection of LeetCode questions to ace the coding interview!
 |  |
 | ------- |
 | [0001-two-sum](https://github.com/iamaleko/leetcode/tree/master/0001-two-sum) |
+| [0013-roman-to-integer](https://github.com/iamaleko/leetcode/tree/master/0013-roman-to-integer) |
 | [0350-intersection-of-two-arrays-ii](https://github.com/iamaleko/leetcode/tree/master/0350-intersection-of-two-arrays-ii) |
 | [0726-number-of-atoms](https://github.com/iamaleko/leetcode/tree/master/0726-number-of-atoms) |
 | [1207-delete-nodes-and-return-forest](https://github.com/iamaleko/leetcode/tree/master/1207-delete-nodes-and-return-forest) |
@@ -264,6 +265,7 @@ Collection of LeetCode questions to ace the coding interview!
 |  |
 | ------- |
 | [0009-palindrome-number](https://github.com/iamaleko/leetcode/tree/master/0009-palindrome-number) |
+| [0013-roman-to-integer](https://github.com/iamaleko/leetcode/tree/master/0013-roman-to-integer) |
 | [0504-base-7](https://github.com/iamaleko/leetcode/tree/master/0504-base-7) |
 | [1642-water-bottles](https://github.com/iamaleko/leetcode/tree/master/1642-water-bottles) |
 | [1951-find-the-winner-of-the-circular-game](https://github.com/iamaleko/leetcode/tree/master/1951-find-the-winner-of-the-circular-game) |
@@ -280,6 +282,7 @@ Collection of LeetCode questions to ace the coding interview!
 ## String
 |  |
 | ------- |
+| [0013-roman-to-integer](https://github.com/iamaleko/leetcode/tree/master/0013-roman-to-integer) |
 | [0044-wildcard-matching](https://github.com/iamaleko/leetcode/tree/master/0044-wildcard-matching) |
 | [0726-number-of-atoms](https://github.com/iamaleko/leetcode/tree/master/0726-number-of-atoms) |
 | [1298-reverse-substrings-between-each-pair-of-parentheses](https://github.com/iamaleko/leetcode/tree/master/1298-reverse-substrings-between-each-pair-of-parentheses) |
