@@ -207,6 +207,7 @@ Collection of LeetCode questions to ace the coding interview!
 | ------- |
 | [0001-two-sum](https://github.com/iamaleko/leetcode/tree/master/0001-two-sum) |
 | [0026-remove-duplicates-from-sorted-array](https://github.com/iamaleko/leetcode/tree/master/0026-remove-duplicates-from-sorted-array) |
+| [0027-remove-element](https://github.com/iamaleko/leetcode/tree/master/0027-remove-element) |
 | [0350-intersection-of-two-arrays-ii](https://github.com/iamaleko/leetcode/tree/master/0350-intersection-of-two-arrays-ii) |
 | [1207-delete-nodes-and-return-forest](https://github.com/iamaleko/leetcode/tree/master/1207-delete-nodes-and-return-forest) |
 | [1293-three-consecutive-odds](https://github.com/iamaleko/leetcode/tree/master/1293-three-consecutive-odds) |
@@ -231,6 +232,7 @@ Collection of LeetCode questions to ace the coding interview!
 |  |
 | ------- |
 | [0026-remove-duplicates-from-sorted-array](https://github.com/iamaleko/leetcode/tree/master/0026-remove-duplicates-from-sorted-array) |
+| [0027-remove-element](https://github.com/iamaleko/leetcode/tree/master/0027-remove-element) |
 | [0350-intersection-of-two-arrays-ii](https://github.com/iamaleko/leetcode/tree/master/0350-intersection-of-two-arrays-ii) |
 ## Binary Search
 |  |
