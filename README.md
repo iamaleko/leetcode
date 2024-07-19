@@ -250,6 +250,7 @@ Collection of LeetCode questions to ace the coding interview!
 ## Linked List
 |  |
 | ------- |
+| [0021-merge-two-sorted-lists](https://github.com/iamaleko/leetcode/tree/master/0021-merge-two-sorted-lists) |
 | [2182-find-the-minimum-and-maximum-number-of-nodes-between-critical-points](https://github.com/iamaleko/leetcode/tree/master/2182-find-the-minimum-and-maximum-number-of-nodes-between-critical-points) |
 | [2299-merge-nodes-in-between-zeros](https://github.com/iamaleko/leetcode/tree/master/2299-merge-nodes-in-between-zeros) |
 ## Simulation
@@ -273,6 +274,7 @@ Collection of LeetCode questions to ace the coding interview!
 ## Recursion
 |  |
 | ------- |
+| [0021-merge-two-sorted-lists](https://github.com/iamaleko/leetcode/tree/master/0021-merge-two-sorted-lists) |
 | [0044-wildcard-matching](https://github.com/iamaleko/leetcode/tree/master/0044-wildcard-matching) |
 | [1951-find-the-winner-of-the-circular-game](https://github.com/iamaleko/leetcode/tree/master/1951-find-the-winner-of-the-circular-game) |
 ## Queue
