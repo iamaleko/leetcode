@@ -2,9 +2,8 @@ function isValid(s: string): boolean {
   const st: string[] = [],
         dict: Readonly<Record<string, string>> = { '(': ')', '{': '}', '[': ']' };
   for (const ch of s) {
-    const op = dict[ch];
-    if (op) {
-      st.push(op);
+    if (ch in dict) {
+      st.push(dict[ch]);
     } else if (st.pop() !== ch) {
       return false;
     }
