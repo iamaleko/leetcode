@@ -6,20 +6,20 @@ class Solution {
     */
   function luckyNumbers($matrix) {
     $ans = [];
-    for ($x = 0; $x < count($matrix[0]); $x++) {
-      $max_val = PHP_INT_MIN;
+    foreach ($matrix[0] as $x => $_) {
+      $max = PHP_INT_MIN;
       $max_y = null;
-      for ($y = 0; $y < count($matrix); $y++) {
-        if ($matrix[$y][$x] > $max_val) {
-          $max_val = $matrix[$y][$x];
+      foreach ($matrix as $y => $_) {
+        if ($matrix[$y][$x] > $max) {
+          $max = $matrix[$y][$x];
           $max_y = $y;
         }
       }
-      $min_val = PHP_INT_MAX;
+      $min = PHP_INT_MAX;
       $min_x = null;
-      for ($_x = 0; $_x < count($matrix[0]); $_x++) {
-        if ($matrix[$max_y][$_x] < $min_val) {
-          $min_val = $matrix[$max_y][$_x];
+      foreach ($matrix[0] as $_x => $_) {
+        if ($matrix[$max_y][$_x] < $min) {
+          $min = $matrix[$max_y][$_x];
           $min_x = $_x;
         }
       }
