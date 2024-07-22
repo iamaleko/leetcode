@@ -1,10 +1,9 @@
 function restoreMatrix(rowSum: number[], colSum: number[]): number[][] {
-  const w = colSum.length,
-        h = rowSum.length,
-        m = new Array(h).fill(0).map(() => new Array(w).fill(0));
+  const m = new Array(rowSum.length);
 
-  for (let y = 0; y < h; y++) {
-    for (let x = 0; x < w; x++) {
+  for (let y = 0; y < rowSum.length; y++) {
+    m[y] = new Array(colSum.length);
+    for (let x = 0; x < colSum.length; x++) {
       m[y][x] = Math.min(colSum[x], rowSum[y]);
       colSum[x] -= m[y][x];
       rowSum[y] -= m[y][x];
