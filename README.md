@@ -306,6 +306,7 @@ Collection of LeetCode questions to ace the coding interview!
 | [0020-valid-parentheses](https://github.com/iamaleko/leetcode/tree/master/0020-valid-parentheses) |
 | [0044-wildcard-matching](https://github.com/iamaleko/leetcode/tree/master/0044-wildcard-matching) |
 | [0521-longest-uncommon-subsequence-i](https://github.com/iamaleko/leetcode/tree/master/0521-longest-uncommon-subsequence-i) |
+| [0551-student-attendance-record-i](https://github.com/iamaleko/leetcode/tree/master/0551-student-attendance-record-i) |
 | [0726-number-of-atoms](https://github.com/iamaleko/leetcode/tree/master/0726-number-of-atoms) |
 | [1298-reverse-substrings-between-each-pair-of-parentheses](https://github.com/iamaleko/leetcode/tree/master/1298-reverse-substrings-between-each-pair-of-parentheses) |
 | [1720-crawler-log-folder](https://github.com/iamaleko/leetcode/tree/master/1720-crawler-log-folder) |
