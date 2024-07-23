@@ -1,22 +1,33 @@
-/**
- * Definition for a binary tree node.
- * class TreeNode {
- *     val: number
- *     left: TreeNode | null
- *     right: TreeNode | null
- *     constructor(val?: number, left?: TreeNode | null, right?: TreeNode | null) {
- *         this.val = (val===undefined ? 0 : val)
- *         this.left = (left===undefined ? null : left)
- *         this.right = (right===undefined ? null : right)
- *     }
- * }
- */
+function getMinimumDifference(node: TreeNode): number {
+  let ans = Infinity;
 
-function getMinimumDifference(root: TreeNode): number {
-  return Math.min(
-    root.left ? root.val - root.left.val : Infinity,
-    root.right ? root.right.val - root.val : Infinity,
-    root.left ? getMinimumDifference(root.left) : Infinity,
-    root.right ? getMinimumDifference(root.right) : Infinity
-  );
+  if (node.left) {
+    let leftVal = node.left.val,
+        right = node.left.right;
+    while (right) {
+      leftVal = right.val;
+      right = right.right;
+    }
+    ans = Math.min(ans, node.val - leftVal);
+  }
+
+  if (ans && node.right) {
+    let rightVal = node.right.val,
+        left = node.right.left;
+    while (left) {
+      rightVal = left.val;
+      left = left.left;
+    }
+    ans = Math.min(ans, rightVal - node.val);
+  }
+
+  if (ans && node.left) {
+    ans = Math.min(ans, getMinimumDifference(node.left));
+  }
+
+  if (ans && node.right) {
+    ans = Math.min(ans, getMinimumDifference(node.right));
+  }
+  
+  return ans;
 };
