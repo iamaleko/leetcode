@@ -15,7 +15,7 @@ function sortArray(nums: number[]): number[] {
 };
 
 function sink(nums: number[], i: number, ln: number = nums.length) {
-  let l, t, r;
+  let l: number, t: number, r: number;
   while (true) {
     l = i * 2 + 1;
     r = i * 2 + 2;
