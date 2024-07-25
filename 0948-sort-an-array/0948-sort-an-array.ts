@@ -15,11 +15,9 @@ function sortArray(nums: number[]): number[] {
 };
 
 function sink(nums: number[], i: number, ln: number = nums.length) {
-  let l, t, r;
   while (true) {
-    l = i * 2 + 1;
-    r = i * 2 + 2;
-    t = i;
+    const l = i * 2 + 1, r = i * 2 + 2;
+    let t = i;
     if (l < ln && nums[t] < nums[l]) t = l;
     if (r < ln && nums[t] < nums[r]) t = r;
     if (t === i) break;
