@@ -1,24 +1,26 @@
+// in-place heap sort
 function sortArray(nums: number[]): number[] {
-  function sink(i: number, ln: number) {
-    const l = i * 2 + 1,
-          r = i * 2 + 2;
-    let t = i;
-    if (l < ln && nums[t] < nums[l]) t = l;
-    if (r < ln && nums[t] < nums[r]) t = r;
-    if (t !== i) {
-      [nums[t], nums[i]] = [nums[i], nums[t]];
-      sink(t, ln);
-    }
+  //  heapify
+  for (let i = nums.length - 1 << 1; i >= 0; i--) {
+    sink(nums, i);
   }
 
-  for (let i = (nums.length - 1) << 1; i > -1; i--) {
-    sink(i, nums.length);
-  }
-
-  for (let i = 1; i < nums.length; i++) {
-    [nums[0], nums[nums.length - i]] = [nums[nums.length - i], nums[0]];
-    sink(0, nums.length - i)
+  // sort
+  for (let i = nums.length - 1; i > 0; i--) {
+    [nums[0], nums[i]] = [nums[i], nums[0]];
+    sink(nums, 0, i)
   }
 
   return nums;
 };
+
+function sink(nums: number[], i: number, ln: number = nums.length) {
+  const l = i * 2 + 1, r = i * 2 + 2;
+  let t = i;
+  if (l < ln && nums[t] < nums[l]) t = l;
+  if (r < ln && nums[t] < nums[r]) t = r;
+  if (t !== i) {
+    [nums[t], nums[i]] = [nums[i], nums[t]];
+    sink(nums, t, ln);
+  }
+}
