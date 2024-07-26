@@ -13,14 +13,14 @@ class Solution:
     count = math.inf
     for i in range(n):
       cities = { i: 0 }
-      q = deque([(0, i)])
-      while q:
-        dist, a = q.popleft()
+      h = [(0, i)]
+      while h:
+        dist, a = heappop(h)
         if a in m:
           for b in m[a].keys():
             if (dist + m[a][b] <= distanceThreshold) and (b not in cities or cities[b] > dist + m[a][b]):
               cities[b] = dist + m[a][b]
-              q.append((cities[b], b))
+              heappush(h, (cities[b], b))
       if len(cities) - 1 <= count:
         count = len(cities) - 1
         ans = i
