@@ -21,8 +21,11 @@ class Solution:
             if (dist + m[a][b] <= distanceThreshold) and (b not in cities or cities[b] > dist + m[a][b]):
               cities[b] = dist + m[a][b]
               heappush(h, (cities[b], b))
-      if len(cities) - 1 <= count:
-        count = len(cities) - 1
+              if len(cities) > count:
+                h.clear()
+                break
+      if len(cities) <= count:
+        count = len(cities)
         ans = i
 
     return ans
