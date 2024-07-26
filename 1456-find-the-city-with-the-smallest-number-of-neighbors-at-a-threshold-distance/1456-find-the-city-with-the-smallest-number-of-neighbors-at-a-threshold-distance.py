@@ -14,16 +14,13 @@ class Solution:
     for i in range(n):
       cities = { i: 0 }
       h = [(0, i)]
-      while h:
+      while h and len(cities) <= count:
         dist, a = heappop(h)
         if a in m:
           for b in m[a].keys():
             if (dist + m[a][b] <= distanceThreshold) and (b not in cities or cities[b] > dist + m[a][b]):
               cities[b] = dist + m[a][b]
               heappush(h, (cities[b], b))
-              if len(cities) > count:
-                h.clear()
-                break
       if len(cities) <= count:
         count = len(cities)
         ans = i
