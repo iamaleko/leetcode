@@ -9,20 +9,27 @@ class Solution:
       m[a][b] = cost
       m[b][a] = cost
     
-    ans = None
-    count = math.inf
+    dist = {}
     for i in range(n):
-      cities = { i: 0 }
+      dist[i] = { i: 0 }
+
+    for i in range(n):
       h = [(0, i)]
       while h:
-        dist, a = heappop(h)
+        _, a = heappop(h)
         if a in m:
           for b in m[a].keys():
-            if (dist + m[a][b] <= distanceThreshold) and (b not in cities or cities[b] > dist + m[a][b]):
-              cities[b] = dist + m[a][b]
-              heappush(h, (cities[b], b))
-      if len(cities) - 1 <= count:
-        count = len(cities) - 1
+            if dist[i][a] + m[a][b] <= distanceThreshold and (
+              b not in dist[i] or dist[i][b] > dist[i][a] + m[a][b]
+            ):
+              dist[i][b] = dist[i][a] + m[a][b]
+              # dist[b][i] = dist[i][a] + m[a][b]
+              heappush(h, (dist[i][a] + m[a][b], b))
+    
+    ans = 0
+    count = math.inf
+    for i in range(n):
+      if len(dist[i]) <= count:
+        count = len(dist[i])
         ans = i
-
     return ans
