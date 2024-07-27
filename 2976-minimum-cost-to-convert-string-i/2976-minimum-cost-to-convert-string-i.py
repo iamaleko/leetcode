@@ -1,38 +1,3 @@
-# class Solution:
-#   def minimumCost(self, source: str, target: str, original: List[str], changed: List[str], cost: List[int]) -> int:
-    # graph = {}
-    # for i in range(len(cost)):
-    #   if original[i] not in graph:
-    #     graph[original[i]] = {}
-    #   if changed[i] in graph[original[i]]:
-    #     if cost[i] < graph[original[i]][changed[i]]:
-    #       graph[original[i]][changed[i]] = cost[i]
-    #   else:
-    #     graph[original[i]][changed[i]] = cost[i]
-
-#     print(graph)
-
-#     def dfs(from_ch, target_ch, total_cost, visited, lv):
-#       if from_ch == target_ch:
-#         return total_cost
-#       new_total_cost = math.inf
-#       if from_ch in graph and from_ch not in visited:
-#         visited.add(from_ch)
-#         for to_ch in graph[from_ch].keys():
-#           new_total_cost = min(new_total_cost, dfs(to_ch, target_ch, total_cost + graph[from_ch][to_ch], visited, lv))
-#         visited.remove(from_ch)
-#       return new_total_cost
-
-#     total_cost = 0
-#     for i in range(len(target)):
-#       if source[i] != target[i]:
-#         ch_cost = dfs(source[i], target[i], 0, set(), 100)
-#         if ch_cost == math.inf:
-#           return -1
-#         total_cost += ch_cost
-#     return total_cost
-        
-
 class Solution:
   def minimumCost(self, source: str, target: str, original: List[str], changed: List[str], cost: List[int]) -> int:
     graph = {}
