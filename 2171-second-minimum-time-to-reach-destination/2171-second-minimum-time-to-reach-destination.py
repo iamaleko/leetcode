@@ -1,7 +1,5 @@
 class Solution:
   def secondMinimum(self, n: int, edges: List[List[int]], time: int, change: int) -> int:
-    debug = 0
-
     # build bidirectional graph
     graph = {}
     for a, b in edges:
@@ -11,7 +9,6 @@ class Solution:
         graph[b] = set()
       graph[a].add(b)
       graph[b].add(a)
-    # if debug: print('graph', graph)
     
     # find shortest path
     back = {}
@@ -19,44 +16,40 @@ class Solution:
     q = deque([(1, 0)])
     while q:
       a_node, dist = q.popleft()
-      dist += 1
       for b_node in graph[a_node]:
         if b_node not in back:
             back[b_node] = []
-        if len(back[b_node]) < 2 or back[b_node][-1][1] - back[b_node][-2][1] == 0:  
-          q.append((b_node, dist))
-          back[b_node].append((a_node, dist))
-          if b_node == n and not (len(back[b_node]) < 2 or back[b_node][-1][1] - back[b_node][-2][1] == 0):
+        if len(back[b_node]) < 2 or back[b_node][-1][1] - back[b_node][0][1] == 0:  
+          q.append((b_node, dist + 1))
+          back[b_node].append((a_node, dist + 1))
+          if b_node == n and not (len(back[b_node]) < 2 or back[b_node][-1][1] - back[b_node][0][1] == 0):
             q.clear()
-    # if debug: print('back', back)
 
-    best = back[n][0][1]
+    # find minimum extention
     extention = 2
     q = deque([n])
     while q:
       node = q.popleft()
       nodes = back[node]
-      if debug: print(node, nodes)
-      if nodes[0][0] != 1:
+      if nodes[0][0] != 1: # add fastets node
         q.append(nodes[0][0])
       if len(nodes) >= 2:
-        if nodes[-1][1] - nodes[-2][1]:
-          if extention > nodes[-1][1] - nodes[-2][1]:
-            extention = nodes[-1][1] - nodes[-2][1]
+        if nodes[-1][1] - nodes[0][1]:
+          if extention > nodes[-1][1] - nodes[0][1]:
+            extention = nodes[-1][1] - nodes[0][1]
             if extention == 1:
               q.clear()
-        elif nodes[-1][0] != 1:
-          q.append(nodes[-1][0])
-    if debug: print(best, extention)
+        else:
+          for i in range(1, len(nodes)):
+            if nodes[i][0] != 1: # add similar slower nodes
+              q.append(nodes[-1][0])
 
     # calculate time
     ans = 0
-    for i in range(best + extention):
+    for i in range(back[n][0][1] + extention):
       if (ans // change) % 2:
-        if debug: print('wait', change - ans % change, ans)
         ans += (change - (ans % change))
       ans += time
-      if debug: print('drive', time, ans)
 
     return ans
 
