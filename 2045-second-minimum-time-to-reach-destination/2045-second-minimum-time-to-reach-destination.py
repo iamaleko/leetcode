@@ -20,9 +20,10 @@ class Solution:
         if b_node not in back:
           back[b_node] = [0] # 0 index for dist difference
         if not back[b_node][0]:
-          q.append((b_node, dist + 1))
           back[b_node].append((a_node, dist + 1))
           back[b_node][0] = back[b_node][-1][1] - back[b_node][1][1]
+          if len(back[b_node]) == 2:
+            q.append((b_node, dist + 1))
           if b_node == n and back[b_node][0]:
             q.clear()
 
