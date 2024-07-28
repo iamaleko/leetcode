@@ -53,6 +53,3 @@ class Solution:
       ans += time
 
     return ans
-
-      
-        
