@@ -31,7 +31,7 @@ class Solution:
       l = 0
       r = len(arr) - 1
       while l <= r:
-        c = (l + r) // 2
+        c = l + r >> 1
         if arr[c] < num:
           l = c + 1
         else:
@@ -44,22 +44,10 @@ class Solution:
     right = sorted(rating[1:])
 
     for i in range(1, len(rating) - 1):
-      # print(left, right)
       left_i = self.search(rating[i], left)
       right_i = self.search(rating[i], right)
-      # count triplets
-      left_lower = left_i
-      left_greater = len(left) - left_i
-      right_lower = right_i
-      right_greater = len(right) - right_i - 1
-      # print(rating[i], left_lower, left_greater, right_lower, right_greater)
-      if left_lower and right_greater:
-        ans += left_lower * right_greater
-      if left_greater and right_lower:
-        ans += left_greater * right_lower
-      # remove from right
-      right.pop(right_i)
-      # add to left
-      left.insert(left_i, rating[i])
+      right.pop(right_i) # remove from right
+      ans += left_i * (len(right) - right_i) + (len(left) - left_i) * right_i # count triplets
+      left.insert(left_i, rating[i]) # add to left
 
     return ans
