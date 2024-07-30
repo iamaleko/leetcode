@@ -14,6 +14,7 @@ class Solution:
     ans = min(a[-1], b[0])
     if ans:
       for i in range(1, n):
-        ans = min(a[i - 1] + b[i], ans)
+        if a[i - 1] + b[i] < ans:
+          ans = a[i - 1] + b[i]
     return ans
         
