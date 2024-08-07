@@ -57,5 +57,5 @@ function numberToWords(num: number): string {
     ans += ' ' + dict[num];
   }
 
-  return ans.trim();
+  return ans.slice(1);
 };
