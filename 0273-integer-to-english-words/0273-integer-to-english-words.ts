@@ -34,26 +34,24 @@ function numberToWords(num: number): string {
     1e6: 'Million',
     1e9: 'Billion',
   };
-  const ans: string[] = [];
-  let n;
+  let ans = '', n: number;
 
   for (const factor of [1e9, 1e6, 1e3, 1e2]) {
     if (num >= factor) {
       n = num / factor | 0;
       num -= n * factor;
-      ans.push(numberToWords(n));
-      ans.push(dict[factor]);
+      ans += ' ' + numberToWords(n) + ' ' + dict[factor];
     }
   }
 
   if (num >= 20) {
     n = num / 10 | 0;
     num -= n * 10;
-    ans.push(dict[n * 10]);
+    ans += ' ' + dict[n * 10];
   }
   if (num > 0) {
-    ans.push(dict[num]);
+    ans += ' ' + dict[num];
   }
 
-  return ans.join(' ');
+  return ans.trim();
 };
