@@ -29,10 +29,10 @@ function numberToWords(num: number): string {
     70: 'Seventy',
     80: 'Eighty',
     90: 'Ninety',
-    100: 'Hundred',
-    1000: 'Thousand',
-    1000000: 'Million',
-    1000000000: 'Billion',
+    1e2: 'Hundred',
+    1e3: 'Thousand',
+    1e6: 'Million',
+    1e9: 'Billion',
   };
   const ans: string[] = [];
 
