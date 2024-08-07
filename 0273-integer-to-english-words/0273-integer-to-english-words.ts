@@ -1,5 +1,7 @@
 function numberToWords(num: number): string {
-  if (num === 0) return 'Zero';
+  if (num === 0) {
+    return 'Zero';
+  }
 
   const dict = {
     1: 'One',
@@ -34,6 +36,7 @@ function numberToWords(num: number): string {
     1e6: 'Million',
     1e9: 'Billion',
   };
+
   let ans = '', n: number;
 
   for (const factor of [1e9, 1e6, 1e3, 1e2]) {
@@ -49,7 +52,8 @@ function numberToWords(num: number): string {
     num -= n * 10;
     ans += ' ' + dict[n * 10];
   }
-  if (num > 0) {
+
+  if (num) {
     ans += ' ' + dict[num];
   }
 
