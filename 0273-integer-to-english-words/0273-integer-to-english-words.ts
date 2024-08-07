@@ -35,10 +35,11 @@ function numberToWords(num: number): string {
     1e9: 'Billion',
   };
   const ans: string[] = [];
+  let n;
 
   for (const factor of [1e9, 1e6, 1e3, 1e2]) {
     if (num >= factor) {
-      const n = Math.floor(num / factor);
+      n = num / factor | 0;
       num -= n * factor;
       ans.push(numberToWords(n));
       ans.push(dict[factor]);
@@ -46,7 +47,7 @@ function numberToWords(num: number): string {
   }
 
   if (num >= 20) {
-    const n = Math.floor(num / 10);
+    n = num / 10 | 0;
     num -= n * 10;
     ans.push(dict[n * 10]);
   }
