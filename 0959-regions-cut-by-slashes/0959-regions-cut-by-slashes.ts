@@ -1,7 +1,7 @@
 function regionsBySlashes(grid: string[]): number {
   const v: Record<number, number> = {}, w = grid[0].length - 1, h = grid.length - 1, t = 8, r = 4, b = 2, l = 1;
   const fill = (y, x, s): void => {
-    s = grid[y][x] === ' ' ? 15 : grid[y][x] === '/' ? (s & 9 ? 9 : 6) : (s & 12 ? 12 : 3);
+    s = grid[y][x] === ' ' ? t + r + b + l : grid[y][x] === '/' ? (s & t + l ? t + l : b + r) : (s & t + r ? t + r : b + l);
     v[(y << 5) + x] |= s;
     if (s & t && y > 0 && ~v[(y - 1 << 5) + x] & b) fill(y - 1, x, b);
     if (s & b && y < h && ~v[(y + 1 << 5) + x] & t) fill(y + 1, x, t);
