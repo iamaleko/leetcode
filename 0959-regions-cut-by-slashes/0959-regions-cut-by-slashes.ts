@@ -46,13 +46,13 @@ function regionsBySlashes(grid: string[]): number {
 //     if (map[y][x] === 0) {
 //       ans++;
 //       const q = [[y, x]];
+//       map[y][x] = 1;
 //       while (q.length) {
 //         const [y, x] = q.pop();
-//         map[y][x] = 1;
-//         if (y > 0 && !map[y - 1][x]) q.push([y - 1, x]);
-//         if (y < h - 1 && !map[y + 1][x]) q.push([y + 1, x]);
-//         if (x > 0 && !map[y][x - 1]) q.push([y, x - 1]);
-//         if (x < w - 1 && !map[y][x + 1]) q.push([y, x + 1]);
+//         if (y > 0 && !map[y - 1][x]) { map[y - 1][x] = 1; q.push([y - 1, x]); }
+//         if (y < h - 1 && !map[y + 1][x]) { map[y + 1][x] = 1; q.push([y + 1, x]); }
+//         if (x > 0 && !map[y][x - 1]) { map[y][x - 1] = 1; q.push([y, x - 1]); }
+//         if (x < w - 1 && !map[y][x + 1]) { map[y][x + 1] = 1; q.push([y, x + 1]); }
 //       }
 //     }
 //   }
