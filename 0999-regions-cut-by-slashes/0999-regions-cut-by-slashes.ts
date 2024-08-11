@@ -1,16 +1,16 @@
 function regionsBySlashes(grid: string[]): number {
-  const v: Record<number, number> = {}, w = grid[0].length - 1, h = grid.length - 1, t = 8, r = 4, b = 2, l = 1;
+  const v: Record<number, number> = {}, w = grid[0].length - 1, h = grid.length - 1;
   const fill = (y, x, s): void => {
     v[(y << 5) + x] |= s = grid[y][x] === ' ' ? 15 : grid[y][x] === '/' ? s & 9 ? 9 : 6 : s & 12 ? 12 : 3;
-    if (s & t && y > 0 && ~v[(y - 1 << 5) + x] & b) fill(y - 1, x, b);
-    if (s & b && y < h && ~v[(y + 1 << 5) + x] & t) fill(y + 1, x, t);
-    if (s & l && x > 0 && ~v[(y << 5) + x - 1] & r) fill(y, x - 1, r);
-    if (s & r && x < w && ~v[(y << 5) + x + 1] & l) fill(y, x + 1, l);
+    if (s & 8 && y > 0 && ~v[(y - 1 << 5) + x] & 2) fill(y - 1, x, 2);
+    if (s & 2 && y < h && ~v[(y + 1 << 5) + x] & 8) fill(y + 1, x, 8);
+    if (s & 1 && x > 0 && ~v[(y << 5) + x - 1] & 4) fill(y, x - 1, 4);
+    if (s & 4 && x < w && ~v[(y << 5) + x + 1] & 1) fill(y, x + 1, 1);
   };
   let ans = 0;
   for (let y = 0, x = 0; y <= h; x++ === w && (x = 0, y++)) {
-    if (~v[(y << 5) + x] & t) { fill(y, x, t); ans++; }
-    if (~v[(y << 5) + x] & b) { fill(y, x, b); ans++; }
+    if (~v[(y << 5) + x] & 8) { fill(y, x, 8); ans++; }
+    if (~v[(y << 5) + x] & 2) { fill(y, x, 2); ans++; }
   }
   return ans;
 };
