@@ -138,12 +138,12 @@ class Solution:
     if prev_group == next_group: # single ouroboros merge
       self.groups.clear()
     else: # single merge
+    (self.groups
+        .pop(next_group)
+        .pop(prev_group))
       group.removeRecord()
       group.l = prev_group.l
       group.r = next_group.r
-      (self.groups
-        .pop(next_group)
-        .pop(prev_group))
       group.addRecord()
 
   def singleOuroborosSplit(self, index):
