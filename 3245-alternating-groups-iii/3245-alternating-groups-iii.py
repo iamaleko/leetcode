@@ -138,7 +138,7 @@ class Solution:
     if prev_group == next_group: # single ouroboros merge
       self.groups.clear()
     else: # single merge
-    (self.groups
+      (self.groups
         .pop(next_group)
         .pop(prev_group))
       group.removeRecord()
