@@ -1,13 +1,10 @@
 function castShadow(arr) {
   const shadow = new Array(arr.length).fill(0);
-  let l = 0, r = 0;
-  for (let i = 0; i < arr.length; i++) {
+  for (let l = 0, r = 0, i = 0, j = arr.length - 1; i < arr.length; i++, j--, l--, r--) {
     if (arr[i] > l) l = arr[i];
-    if (arr[arr.length - i - 1] > r) r = arr[arr.length - i - 1];
+    if (arr[j] > r) r = arr[j];
     if (shadow[i] < l) shadow[i] = l;
-    if (shadow[arr.length - i - 1] < r) shadow[arr.length - i - 1] = r;
-    l--;
-    r--;
+    if (shadow[j] < r) shadow[j] = r;
   }
   return shadow;
 }
