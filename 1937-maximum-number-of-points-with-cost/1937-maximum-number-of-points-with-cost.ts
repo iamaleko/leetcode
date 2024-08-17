@@ -12,7 +12,24 @@ function castShadow(arr) {
 function maxPoints(points: number[][]): number {
   let dp = castShadow(points[0]);
   for (let y = 1; y < points.length; y++) {
-    dp = castShadow(points[y].map((v, x) => v + dp[x]));
+    for (let x = 0; x < dp.length; x++) dp[x] += points[y][x];
+    dp = castShadow(dp);
   }
   return Math.max(...dp);
 };
+
+// TLE
+// function maxPoints(points: number[][]): number {
+//   let dp = points[0];
+//   for (let y = 1; y < points.length; y++) {
+//     const row = new Array(dp.length).fill(0);
+//     for (let x = 0; x < dp.length; x++) {
+//       for (let j = 0; j < dp.length; j++) {
+//         const val = points[y][x] + dp[j] - Math.abs(x - j);
+//         if (val > row[x]) row[x] = val;
+//       }  
+//     }
+//     dp = row;
+//   }
+//   return Math.max(...dp);
+// };
