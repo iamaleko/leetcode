@@ -4,6 +4,8 @@ function minSteps(n: number): number {
   const power = Math.log2(n);
   if (power % 1 === 0) return power * 2;
   // prime factor
-  for (let i = n - 1; i > 1; i--) if (n % i === 0) return i + minSteps(n / i);
+  for (let i = 2; i < n; i++) {
+    if (n % i === 0) return i + minSteps(n / i);
+  }
   return n;
 };
