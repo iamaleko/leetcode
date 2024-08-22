@@ -1,5 +1,5 @@
 function findComplement(num: number): number {
-  return num ^ (2 ** (1 + Math.log2(num) | 0) - 1);
+  return num ^ -1 + 2 ** (1 + Math.log2(num) | 0);
 };
 
 // function findComplement(num: number): number {
