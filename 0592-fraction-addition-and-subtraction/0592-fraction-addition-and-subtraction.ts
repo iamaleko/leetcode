@@ -4,11 +4,10 @@ function fractionAddition(expression: string): string {
       if (a % i === 0 && b % i === 0) {
         a /= i;
         b /= i;
-        i = Math.min(Math.abs(a), b);
+        break;
       }
     }
     return a ? [a, b] : [0, 1];
-    return [a, b]
   }
   const subtract = (a1,b1,a2,b2): number[] => simplify(a1 * b2 - a2 * b1, b1 * b2);
   const add = (a1,b1,a2,b2): number[] => simplify(a1 * b2 + a2 * b1, b1 * b2);
