@@ -1,6 +1,6 @@
 function fractionAddition(expression: string): string {
   const simplify = (a, b): number[] => {
-    for (let i = Math.min(Math.abs(a), b); i > 0; i--) {
+    for (let i = Math.min(Math.abs(a), b); i > 1; i--) {
       if (a % i === 0 && b % i === 0) {
         a /= i;
         b /= i;
@@ -8,6 +8,7 @@ function fractionAddition(expression: string): string {
       }
     }
     return a ? [a, b] : [0, 1];
+    return [a, b]
   }
   const subtract = (a1,b1,a2,b2): number[] => simplify(a1 * b2 - a2 * b1, b1 * b2);
   const add = (a1,b1,a2,b2): number[] => simplify(a1 * b2 + a2 * b1, b1 * b2);
