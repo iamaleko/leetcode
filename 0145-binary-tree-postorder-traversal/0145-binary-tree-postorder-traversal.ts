@@ -1,7 +1,7 @@
 const postorderTraversal = (root: TreeNode | null): number[] => {
   const values: number[] = [];
   const traverse = (node: TreeNode): void => {
-    if (!node) return;
+    if (node === null) return;
     traverse(node.left);
     traverse(node.right);
     values.push(node.val);
