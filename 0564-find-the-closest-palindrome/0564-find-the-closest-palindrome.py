@@ -1,47 +1,42 @@
 class Solution:
-    def nearestPalindromic(self, n: str) -> str:
-        len_n = len(n)
-        i = len_n // 2 - 1 if len_n % 2 == 0 else len_n // 2
-        first_half = int(n[: i + 1])
-        """
-        Generate possible palindromic candidates:
-        1. Create a palindrome by mirroring the first half.
-        2. Create a palindrome by mirroring the first half incremented by 1.
-        3. Create a palindrome by mirroring the first half decremented by 1.
-        4. Handle edge cases by considering palindromes of the form 999... 
-           and 100...001 (smallest and largest n-digit palindromes).
-        """
-        possibilities = []
-        possibilities.append(
-            self.half_to_palindrome(first_half, len_n % 2 == 0)
-        )
-        possibilities.append(
-            self.half_to_palindrome(first_half + 1, len_n % 2 == 0)
-        )
-        possibilities.append(
-            self.half_to_palindrome(first_half - 1, len_n % 2 == 0)
-        )
-        possibilities.append(10 ** (len_n - 1) - 1)
-        possibilities.append(10**len_n + 1)
-
-        diff = float("inf")
-        res = 0
-        nl = int(n)
-        for cand in possibilities:
-            if cand == nl:
-                continue
-            if abs(cand - nl) < diff:
-                diff = abs(cand - nl)
-                res = cand
-            elif abs(cand - nl) == diff:
-                res = min(res, cand)
-        return str(res)
-
-    def half_to_palindrome(self, left: int, even: bool) -> int:
-        res = left
-        if not even:
-            left = left // 10
-        while left > 0:
-            res = res * 10 + left % 10
-            left //= 10
-        return res
+  def nearestPalindromic(self, n: str) -> str:
+    if int(n) <= 10:
+      return str(int(n) - 1)
+    hl = len(n) // 2
+    left = n[0:hl]
+    right = str(left)[::-1]
+    center = n[hl] if len(n) % 2 else ''
+    variants = []
+    # as is
+    variants.append(left + center + right)
+    if center:
+      # center +1
+      if int(center) < 9:
+        variants.append(left + str(int(center) + 1) + right)
+      # center -1
+      if int(center) > 0:
+        variants.append(left + str(int(center) - 1) + right)
+    else:
+      # left -1
+      if int(left):
+        _left = str(int(left) + 1)
+        _right = str(_left)[::-1]
+        variants.append(_left + _right)
+      # left +1
+      if int(left) > 1:
+        _left = str(int(left) - 1)
+        _right = str(_left)[::-1]
+        variants.append(_left + _right)
+    # pos +1
+    variants.append('1' + ('0' * (len(n) - 1)) + '1')
+    # pos -1
+    variants.append('9' * (len(n) - 1))
+    min = math.inf
+    ans = ''
+    for variant in variants:
+      diff = abs(int(variant) - int(n))
+      if diff and (min > diff or (min == diff and ans and int(ans) > int(variant))):
+        min = diff
+        ans = variant
+    return ans
+    
