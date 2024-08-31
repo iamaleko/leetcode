@@ -8,7 +8,7 @@ function maxProbability(n: number, edges: number[][], succProb: number[], start_
     graph[a][b] = succProb[i];
     graph[b][a] = succProb[i];
   }
-  // BFS
+  // BFS (full scan, could be optimized with priority queue but i am lazy today)
   const reached: Record<string, number> = { [start_node]: 1 };
   const queue: string[] = [String(start_node)];
   while (queue.length) {
