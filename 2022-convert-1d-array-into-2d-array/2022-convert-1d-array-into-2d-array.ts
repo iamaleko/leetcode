@@ -1,7 +1,7 @@
 function construct2DArray(original: number[], m: number, n: number): number[][] {
-  if (original.length !== m * n) return [];
+  if (original.length !== (m = m * n)) return [];
   const grid: number[][] = [];
-  for (let y = 0; y < m; y++) grid.push(original.slice(y * n, y * n + n));
+  for (let y = 0; y < m; y += n) grid.push(original.slice(y, y + n));
   return grid;
 };
 
