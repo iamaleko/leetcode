@@ -1,7 +1,4 @@
-import (
-  "fmt"
-  "strconv"
-)
+import "strconv"
 
 func sumDigits(n int) int {
   s := 0
