@@ -8,7 +8,6 @@ function missingRolls(rolls: number[], mean: number, n: number): number[] {
   target -= n;
   while (target) {
     if (ans[pos] === 6) pos++;
-    if (pos === n) return [];
     ans[pos]++;
     target--;
   }
