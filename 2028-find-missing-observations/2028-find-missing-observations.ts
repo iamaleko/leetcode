@@ -1,7 +1,7 @@
 function missingRolls(rolls: number[], mean: number, n: number): number[] {
   let total = n + rolls.length,
       sum = rolls.reduce((a, e) => a + e),
-      target = total * (mean - (sum / total)),
+      target = Math.round(total * (mean - (sum / total))),
       ans = new Array(n).fill(1),
       pos = 0;
   if (n * 1 > target || n * 6 < target) return [];
