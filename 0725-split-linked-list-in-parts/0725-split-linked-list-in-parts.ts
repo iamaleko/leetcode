@@ -11,18 +11,20 @@
  */
 
 function splitListToParts(head: ListNode | null, k: number): Array<ListNode | null> {
-  let ln = 0, node = head, current_ln = 0;
+  let ln = 0,
+      node = head;
   while (node) { ln++; node = node.next; } 
-  let part = Math.floor(ln / k), add = ln - part * k;
-  const ans: Array<ListNode | null> = new Array(k).fill(null);
+  const ans: Array<ListNode | null> = new Array(k).fill(null),
+        part = Math.floor(ln / k),
+        add = ln - part * k;
   node = head;
-  for (let i = 0; i < k; i++) {
-    let left = part, tail = null;
+  for (let i = 0, left: number, tail: ListNode | null; i < k; i++) {
+    left = part;
+    tail = null;
     if (i < add) left++;
     if (!left) break;
     while (node && left) {
-      if (tail) { tail.next = node; } else { ans[i] = node; }
-      tail = node;
+      if (tail) { tail = tail.next = node; } else { tail = ans[i] = node; }
       node = node.next;
       if (--left === 0) tail.next = null;
     }
