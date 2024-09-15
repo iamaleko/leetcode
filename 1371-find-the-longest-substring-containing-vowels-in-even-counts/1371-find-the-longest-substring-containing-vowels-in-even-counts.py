@@ -4,9 +4,9 @@ class Solution:
     m = { 0: -1 }
     mask = 0
     ans = 0
-    for i, ch in enumerate(s):
-      if ch in v:
-        mask ^= v[ch]
+    for i in range(len(s)):
+      if s[i] in v:
+        mask ^= v[s[i]]
       if mask in m:
         if ans < i - m[mask]:
           ans = i - m[mask]
