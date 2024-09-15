@@ -1,6 +1,6 @@
 class Solution:
   def findTheLongestSubstring(self, s: str) -> int:
-    v = { 'a': 1 << 0, 'e': 1 << 1, 'i': 1 << 2, 'o': 1 << 3, 'u': 1 << 4 }
+    v = { 'a': 1, 'e': 2, 'i': 4, 'o': 8, 'u': 16 }
     m = { 0: -1 }
     mask = 0
     ans = 0
