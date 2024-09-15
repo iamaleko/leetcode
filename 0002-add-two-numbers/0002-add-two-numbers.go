@@ -12,7 +12,7 @@ func addTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
   tail := head
   mem := 0
 
-  for l1 != nil || l2 != nil || mem > 0 {
+  for l1 != nil || l2 != nil || mem != 0 {
     sum := mem
     if l1 != nil {
       sum += l1.Val
