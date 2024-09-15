@@ -8,8 +8,8 @@
 func addTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
   if l1.Val == 0 && l1.Next == nil { return l2 }
   if l2.Val == 0 && l2.Next == nil { return l1 }
-  head := ListNode{ Val: 0, Next: nil }
-  tail := &head
+  head := &ListNode{ Val: 0, Next: nil }
+  tail := head
   mem := 0
 
   for l1 != nil || l2 != nil || mem > 0 {
