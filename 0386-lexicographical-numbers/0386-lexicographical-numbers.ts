@@ -1,16 +1,13 @@
 function lexicalOrder(n: number): number[] {
-  const ans: number[] = new Array(n).fill(0);
-  let d = 1;
-  for (let i = 0; i < n; i++) {
-    ans[i] = d;
-    do {
-      if (d * 10 <= n) {
-        d *= 10;
-      } else {
-        while (d % 10 === 9) d = Math.floor(d / 10)
-        d += 1;
-      }
-    } while (d > n);
+  const ans: number[] = new Array(n).fill(1);
+  for (let i = 1; i < n; i++) {
+    if (ans[i - 1] * 10 <= n) {
+      ans[i] = ans[i - 1] * 10;
+    } else {
+      ans[i] = ans[i - 1]
+      while (ans[i] % 10 === 9 || ans[i] + 1 > n) ans[i] = ans[i] / 10 | 0
+      ans[i] += 1;
+    }
   } 
   return ans;
 };
