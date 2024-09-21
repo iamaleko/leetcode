@@ -1,5 +1,6 @@
 function lexicalOrder(n: number): number[] {
-  const ans: number[] = new Array(n).fill(1);
+  const ans: number[] = new Array(n);
+  ans[0] = 1;
   for (let i = 1, d = 1; i < n; i++) {
     if (d * 10 <= n) {
       d *= 10;
