@@ -4,7 +4,7 @@ function lexicalOrder(n: number): number[] {
     if (d * 10 <= n) {
       d *= 10;
     } else {
-      while (d % 10 === 9 || d + 1 > n) d = d / 10 | 0
+      while (d % 10 === 9 || d >= n) d = d / 10 | 0;
       d += 1;
     }
     ans[i] = d;
