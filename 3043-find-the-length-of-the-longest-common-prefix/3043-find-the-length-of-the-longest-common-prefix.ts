@@ -8,7 +8,7 @@ function longestCommonPrefix(arr1: number[], arr2: number[]): number {
   for (const num of arr1) {
     let node = trie;
     for (const d of String(num)) {
-      if (!(d in node)) node[d] = { level: node.level + 1 };
+      if (!node.hasOwnProperty(d)) node[d] = { level: node.level + 1 };
       node = node[d];
     }
   }
@@ -16,7 +16,7 @@ function longestCommonPrefix(arr1: number[], arr2: number[]): number {
   for (const num of arr2) {
     let node = trie;
     for (const d of String(num)) {
-      if (!(d in node)) break;
+      if (!node.hasOwnProperty(d)) break;
       if (ans < node.level) ans = node.level;
       node = node[d];
     }
