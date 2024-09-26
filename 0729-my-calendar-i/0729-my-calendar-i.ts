@@ -1,24 +1,17 @@
-type Booking = {
-  start: number,
-  end: number,
-}
-enum SearchType {
-  Start = 'start',
-  End = 'end',
-}
+type Booking = [number, number];
 
 class MyCalendar {
-  bookings: Booking[];
+  #bookings: Booking[];
 
   constructor() {
-    this.bookings = [];
+    this.#bookings = [];
   }
 
   #search(n: number): number {
-    let l = 0, r = this.bookings.length - 1;
+    let l = 0, r = this.#bookings.length - 1;
     while (l <= r) {
       const c = l + r >>> 1;
-      if (this.bookings[c].end <= n) {
+      if (this.#bookings[c][1] <= n) {
         l = c + 1;
       } else {
         r = c - 1;
@@ -29,16 +22,8 @@ class MyCalendar {
 
   book(start: number, end: number): boolean {
     const i = this.#search(start);
-    // console.log(start, end, this.bookings, i, i !== this.bookings.length && this.bookings[i].start < end);
-    if (i !== this.bookings.length && this.bookings[i].start < end) return false;
-    const booking: Booking = { start: start, end: end };
-    this.bookings.splice(i, 0, booking);
+    if (i !== this.#bookings.length && this.#bookings[i][0] < end) return false;
+    this.#bookings.splice(i, 0, [start, end]);
     return true;
   }
 }
-
-/**
- * Your MyCalendar object will be instantiated and called as such:
- * var obj = new MyCalendar()
- * var param_1 = obj.book(start,end)
- */
