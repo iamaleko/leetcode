@@ -1,4 +1,4 @@
-// 132ms, beats 92.16%, O(log n)
+// 122ms, beats 100%, O(log n)
 class SplayNode {
   left?: SplayNode;
   right?: SplayNode;
@@ -38,6 +38,7 @@ class SplayTree {
           return true;
         }
       } else {
+        this._splay(curr);
         break;
       }
     }
