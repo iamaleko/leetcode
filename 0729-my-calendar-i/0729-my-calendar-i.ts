@@ -101,7 +101,6 @@ class SplayTree {
     }
   }
 }
-
 class MyCalendar {
   private _tree: SplayTree;
   constructor() {
