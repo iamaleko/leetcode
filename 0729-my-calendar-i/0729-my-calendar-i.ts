@@ -9,31 +9,32 @@ class SplayNode {
     this.end = end;
   }
 }
+
 class SplayTree {
   private _root?: SplayNode;
-  add(node: SplayNode): boolean {
+  add(start: number, end: number): boolean {
     if (this._root === undefined) {
-      this._root = node;
+      this._root = new SplayNode(start, end);
       return true;
     }
     let curr = this._root;
     while (true) {
-      if (node.start >= curr.end) {
+      if (start >= curr.end) {
         if (curr.right) {
           curr = curr.right;
         } else {
-          curr.right = node;
-          node.parent = curr;
-          this._splay(node);
+          curr.right = new SplayNode(start, end);
+          curr.right.parent = curr;
+          this._splay(curr.right);
           return true;
         }
-      } else if (node.end <= curr.start) {
+      } else if (end <= curr.start) {
         if (curr.left) {
           curr = curr.left;
         } else {
-          curr.left = node;
-          node.parent = curr;
-          this._splay(node);
+          curr.left = new SplayNode(start, end);
+          curr.left.parent = curr;
+          this._splay(curr.left);
           return true;
         }
       } else {
@@ -70,16 +71,11 @@ class SplayTree {
   }
   private _splay(node: SplayNode) {
     while (node !== this._root) {
-      if (node.parent === this._root) {
-        if (node === node.parent.left) {
-          // Zig right
-          this._rotateRight(node.parent);
-        } else {
+      if (node.parent.right === node) {
+        if (node.parent === this._root) {
           // Zig left
           this._rotateLeft(node.parent)
-        }
-      } else if (node.parent.right === node) {
-        if (node.parent.parent.right === node.parent) {
+        } else if (node.parent.parent.right === node.parent) {
           // Zig-Zig left
           this._rotateLeft(node.parent.parent);
           this._rotateLeft(node.parent);
@@ -89,7 +85,10 @@ class SplayTree {
           this._rotateRight(node.parent);
         }
       } else {
-        if (node.parent.parent.left === node.parent) {
+        if (node.parent === this._root) {
+          // Zig right
+          this._rotateRight(node.parent)
+        } else if (node.parent.parent.left === node.parent) {
           // Zig-Zig right
           this._rotateRight(node.parent.parent);
           this._rotateRight(node.parent);
@@ -102,13 +101,14 @@ class SplayTree {
     }
   }
 }
+
 class MyCalendar {
   private _tree: SplayTree;
   constructor() {
     this._tree = new SplayTree();
   }
   book(start: number, end: number): boolean {
-    return this._tree.add(new SplayNode(start, end));
+    return this._tree.add(start, end);
   }
 }
 
