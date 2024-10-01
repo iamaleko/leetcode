@@ -1,22 +1,15 @@
 class Solution:
-    def canArrange(self, arr, k):
-        remainder_count = {}
-
-        # Store the count of remainders in a map.
-        for i in arr:
-            remainder_count[(i % k + k) % k] = (
-                remainder_count.get((i % k + k) % k, 0) + 1
-            )
-
-        for i in arr:
-            rem = (i % k + k) % k
-
-            # If the remainder for an element is 0, then the count of numbers that give this remainder must be even.
-            if rem == 0:
-                if remainder_count[rem] % 2 == 1:
-                    return False
-
-            # If the remainder rem and k-rem do not have the same count then pairs can not be made.
-            elif remainder_count[rem] != remainder_count.get(k - rem, 0):
-                return False
-        return True
+  def canArrange(self, arr, k):
+    m = defaultdict(list)
+    for i in range(len(arr)):
+      key = arr[i] % k
+      alt = k - arr[i] % k if key else 0
+      if alt in m:
+        j = m[alt].pop()
+        if not m[alt]:
+          del m[alt]
+        print(arr[i], arr[j], key, alt)
+      else:
+        m[key].append(i)
+    print(m)
+    return False if len(m) else True
