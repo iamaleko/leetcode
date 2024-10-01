@@ -8,8 +8,6 @@ class Solution:
         j = m[alt].pop()
         if not m[alt]:
           del m[alt]
-        print(arr[i], arr[j], key, alt)
       else:
         m[key].append(i)
-    print(m)
     return False if len(m) else True
