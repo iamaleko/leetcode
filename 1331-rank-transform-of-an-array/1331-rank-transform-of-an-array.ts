@@ -29,26 +29,22 @@
 
 // Radix sort in-place
 const radixSort = (arr: number[]): void => {
-  const min = Math.min(...arr), max = Math.max(...arr, -min);
-  const sort = (l: number, r: number, b: number, sign: boolean = false): void => {
-    if (l < r && b) {
-      const stash = [];
-      let p = l;
-      for (let i = l; i <= r; i++) {
-        if (sign ? arr[i] >= 0 : arr[i] & b) {
-          stash.push(arr[i]);
-        } else {
-          if (i !== p) arr[p] = arr[i];
-          p++;
-        }
-      }
-      if (!sign) b >>= 1;
-      if (p <= r) arr.splice(p, stash.length, ...stash);
-      sort(l, p - 1, b);
-      sort(p, r, b);
+  const sort = (l: number, r: number, b: number, s: boolean = false): void => {
+    const stash = [];
+    let p = 0;
+    if (s) {
+      for (let i = l; i < r; i++) arr[i] < 0 ? p && (arr[i - p] = arr[i]) : stash.push(arr[p++, i]);
+    } else {
+      for (let i = l; i < r; i++) arr[i] & b ? stash.push(arr[p++, i]) : p && (arr[i - p] = arr[i]);
+      b >>= 1;
     }
+    if (p) arr.splice(r - p, p, ...stash);
+    if (!b) return;
+    if (l < r - p) sort(l, r - p, b);
+    if (r - p < r) sort(r - p, r, b);
   };
-  if (min !== max) sort(0, arr.length - 1, 1 << Math.log2(max), min < 0);
+  const min = Math.min(...arr), max = Math.max(...arr, -min);
+  if (min !== max) sort(0, arr.length, 1 << Math.log2(max), min < 0);
 }
 function arrayRankTransform(arr: number[]): number[] {
   const rank: Record<number, number> = {},
