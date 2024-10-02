@@ -30,10 +30,9 @@
 // Radix sort in-place
 const radixSort = (arr: number[]): void => {
   const sort = (l: number, r: number, b: number, s: boolean = false): void => {
-    const st = [];
-    let p = 0;
+    let st = [], p = 0;
     if (s) {
-      for (let i = l; i < r; i++) arr[i] < 0 ? st.length && (arr[i - p] = arr[i]) : st[p++] = arr[i];
+      for (let i = l; i < r; i++) arr[i] < 0 ? p && (arr[i - p] = arr[i]) : st[p++] = arr[i];
     } else {
       for (let i = l; i < r; i++) arr[i] & b ? st[p++] = arr[i] : p && (arr[i - p] = arr[i]);
       b >>= 1;
