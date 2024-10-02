@@ -5,19 +5,19 @@
 // };
 
 const radixSort = (arr: number[]): number[] => {
-  const s = (arr: number[], p: number, sign: boolean = false): number[] => {
-    let l: number[] = [], r: number[] = [];
+  const sort = (arr: number[], p: number, sign: boolean = false): number[] => {
+    const n = arr.length, l: number[] = [], r: number[] = [];
     if (sign) {
-      for (const num of arr) (num < 0 ? l : r).push(num);
+      for (let i = 0; i < n; (arr[i] < 0 ? l : r).push(arr[i++]));
     } else {
-      for (const num of arr) (num & 1 << p ? r : l).push(num);
-      p--;
+      for (let i = 0; i < n; (arr[i] & 1 << p ? r : l).push(arr[i++]));
+      if (p-- === 0) return l.concat(r);
     }
-    return p > -1 ? (l.length > 1 ? s(l, p) : l).concat(r.length > 1 ? s(r, p) : r) : l.concat(r);
+    return (l.length > 1 ? sort(l, p) : l).concat(r.length > 1 ? sort(r, p) : r);
   };
   let min = Math.min(...arr), max = Math.max(...arr, -min), p = -1;
   while (max) max >>= 1, p++;
-  return s(arr, p, min < 0);
+  return sort(arr, p, min < 0);
 }
 function arrayRankTransform(arr: number[]): number[] {
   const rank: Record<number, number> = {};
