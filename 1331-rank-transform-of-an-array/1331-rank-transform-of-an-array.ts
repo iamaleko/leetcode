@@ -29,7 +29,7 @@
 
 // Radix sort in-place
 const radixSort = (arr: number[]): number[] => {
-  const sort = (l: number, r: number, b: number, s: boolean = false): void => {
+  const sort = (l: number, r: number, b: number): void => {
     let st = [], p = 0;
     for (let i = l; i < r; i++) arr[i] & b ? st[p++] = arr[i] : p && (arr[i - p] = arr[i]);
     if (p) arr.splice(r - p, p, ...st);
