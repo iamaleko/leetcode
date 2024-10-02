@@ -38,7 +38,8 @@ const radixSort = (arr: number[]): void => {
       while (++i < r) arr[i] & b ? st[p++] = arr[i] : p && (arr[i - p] = arr[i]);
       b >>= 1;
     }
-    for (i = 0; i < p; ) arr[r - p + i] = st[i++];
+    // for (i = 0; i < p; ) arr[r - p + i] = st[i++];
+    if (p) arr.splice(r - p, p, ...st);
     if (!b) return;
     if (r - p - l > 1) sort(l, r - p, b);
     if (p > 1) sort(r - p, r, b);
