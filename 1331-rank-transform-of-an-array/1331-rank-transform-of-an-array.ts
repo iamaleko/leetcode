@@ -28,7 +28,7 @@
 // };
 
 // Radix sort in-place
-const radixSort = (arr: number[]): void => {
+const radixSort = (arr: number[]): number[] => {
   const sort = (l: number, r: number, b: number, s: boolean = false): void => {
     let st = [], p = 0;
     if (s) {
@@ -44,11 +44,10 @@ const radixSort = (arr: number[]): void => {
   };
   const min = Math.min(...arr), max = Math.max(...arr, -min);
   if (min !== max) sort(0, arr.length, 1 << Math.log2(max), min < 0);
+  return arr;
 }
 function arrayRankTransform(arr: number[]): number[] {
-  const rank: Record<number, number> = {},
-        uniq = [...new Set(arr)];
-  radixSort(uniq);
-  uniq.forEach((v, i) => rank[v] = i + 1);
+  const rank: Record<number, number> = {};
+  radixSort([...new Set(arr)]).forEach((v, i) => rank[v] = i + 1);
   return arr.map((v) => rank[v]);
 };
