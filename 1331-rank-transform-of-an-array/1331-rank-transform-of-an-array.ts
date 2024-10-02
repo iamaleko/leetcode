@@ -1,6 +1,5 @@
 function arrayRankTransform(arr: number[]): number[] {
   const rank: Record<number, number> = {};
-  let i = 1;
-  for (const num of [...new Set(arr)].sort((a, b) => a - b)) rank[num] = i++;
-  return arr.map((e) => rank[e]);
+  [...new Set(arr)].sort((a, b) => a - b).forEach((v, i) => { rank[v] = i + 1 });
+  return arr.map((v) => rank[v]);
 };
