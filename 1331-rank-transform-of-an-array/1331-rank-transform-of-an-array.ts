@@ -50,6 +50,6 @@ function arrayRankTransform(arr: number[]): number[] {
   const rank: Record<number, number> = {};
   let p = 1, l:number;
   for (const v of radixSort(arr.slice())) if (l !== v) rank[l = v] = p++;
-  for (const i in arr) arr[i] = rank[arr[i]];
+  for (let i = 0; i < arr.length; i++) arr[i] = rank[arr[i]];
   return arr;
 };
