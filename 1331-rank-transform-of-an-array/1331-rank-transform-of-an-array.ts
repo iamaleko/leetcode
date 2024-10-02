@@ -40,7 +40,7 @@ const radixSort = (arr: number[]): void => {
     }
     if (p) arr.splice(r - p, p, ...st);
     if (!b) return;
-    if (l < r - p) sort(l, r - p, b);
+    if (r - p - l > 1) sort(l, r - p, b);
     if (p > 1) sort(r - p, r, b);
   })(0, arr.length, 1 << Math.log2(max), min < 0);
 }
