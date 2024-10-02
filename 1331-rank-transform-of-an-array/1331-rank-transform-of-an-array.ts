@@ -31,16 +31,17 @@
 const radixSort = (arr: number[]): void => {
   const sort = (l: number, r: number, b: number, s: boolean = false): void => {
     const st = [];
+    let p = 0;
     if (s) {
-      for (let i = l; i < r; i++) arr[i] < 0 ? st.length && (arr[i - st.length] = arr[i]) : st.push(arr[i]);
+      for (let i = l; i < r; i++) arr[i] < 0 ? st.length && (arr[i - p] = arr[i]) : st[p++] = arr[i];
     } else {
-      for (let i = l; i < r; i++) arr[i] & b ? st.push(arr[i]) : st.length && (arr[i - st.length] = arr[i]);
+      for (let i = l; i < r; i++) arr[i] & b ? st[p++] = arr[i] : p && (arr[i - p] = arr[i]);
       b >>= 1;
     }
-    if (st.length) arr.splice(r - st.length, st.length, ...st);
+    if (p) arr.splice(r - p, p, ...st);
     if (!b) return;
-    if (l < r - st.length) sort(l, r - st.length, b);
-    if (r - st.length < r) sort(r - st.length, r, b);
+    if (l < r - p) sort(l, r - p, b);
+    if (r - p < r) sort(r - p, r, b);
   };
   const min = Math.min(...arr), max = Math.max(...arr, -min);
   if (min !== max) sort(0, arr.length, 1 << Math.log2(max), min < 0);
