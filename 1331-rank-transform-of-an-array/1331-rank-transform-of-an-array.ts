@@ -30,18 +30,17 @@
 // Radix sort in-place
 const radixSort = (arr: number[]): void => {
   const sort = (l: number, r: number, b: number, s: boolean = false): void => {
-    const stash = [];
-    let p = 0;
+    const st = [];
     if (s) {
-      for (let i = l; i < r; i++) arr[i] < 0 ? p && (arr[i - p] = arr[i]) : stash.push(arr[p++, i]);
+      for (let i = l; i < r; i++) arr[i] < 0 ? st.length && (arr[i - st.length] = arr[i]) : st.push(arr[i]);
     } else {
-      for (let i = l; i < r; i++) arr[i] & b ? stash.push(arr[p++, i]) : p && (arr[i - p] = arr[i]);
+      for (let i = l; i < r; i++) arr[i] & b ? st.push(arr[i]) : st.length && (arr[i - st.length] = arr[i]);
       b >>= 1;
     }
-    if (p) arr.splice(r - p, p, ...stash);
+    if (st.length) arr.splice(r - st.length, st.length, ...st);
     if (!b) return;
-    if (l < r - p) sort(l, r - p, b);
-    if (r - p < r) sort(r - p, r, b);
+    if (l < r - st.length) sort(l, r - st.length, b);
+    if (r - st.length < r) sort(r - st.length, r, b);
   };
   const min = Math.min(...arr), max = Math.max(...arr, -min);
   if (min !== max) sort(0, arr.length, 1 << Math.log2(max), min < 0);
