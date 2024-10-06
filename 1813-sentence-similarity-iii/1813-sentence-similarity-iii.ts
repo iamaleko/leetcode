@@ -4,21 +4,18 @@ function areSentencesSimilar(sentence1: string, sentence2: string): boolean {
       b = sentence2.split(' ');
   if (b.length > a.length) [a, b] = [b, a];
   const check = (a: string[], b: string[]): boolean => {
-    let gaps = 0, isGap = false, ap = 0, bp = 0;
+    let hasGap = false, isGap = false, ap = 0, bp = 0;
     while (ap < a.length) {
       if (bp < b.length && a[ap] === b[bp]) {
-        ap++;
         bp++;
         isGap = false;
-      } else {
-        if (!isGap) {
-          gaps++;
-          isGap = true;
-        }
-        ap++;
+      } else if (!isGap) {
+        if (hasGap) return false; 
+        hasGap = isGap = true;
       }
+      ap++;
     }
-    return bp === b.length && gaps <= 1;
+    return bp === b.length;
   }
   return check(a, b) || check(a.reverse(), b.reverse());
 };
