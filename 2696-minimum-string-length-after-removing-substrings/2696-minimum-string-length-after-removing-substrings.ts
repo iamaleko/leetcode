@@ -1,10 +1,11 @@
 function minLength(s: string): number {
+  const st: string[] = [];
   let p = -1;
-  for (let i = 0, st: string[] = []; i < s.length; i++) {
-    if (s[i] === 'B' && st[p] === 'A' || s[i] === 'D' && st[p] === 'C') {
+  for (const ch of s) {
+    if (ch === 'B' && st[p] === 'A' || ch === 'D' && st[p] === 'C') {
       p--;
     } else {
-      st[++p] = s[i];
+      st[++p] = ch;
     }
   }
   return p + 1;
