@@ -1,21 +1,12 @@
 // Bottom-up dp
 function countBits(n: number): number[] {
-  const dp: number[] = [0];
-  let bits = 0, num = 0;
-  while (dp.length <= n) {
-    if (num & 1) {
-      let bit = 1;
-      while (num & bit) {
-        num ^= bit;
-        bit <<= 1;
-        bits--;
-      }
-      num ^= bit;
-    } else {
-      num |= 1;
+  const ans = new Array(n + 1).fill(0);
+  for (let q: number, i = 1; i <= n; i++) {
+    q = i;
+    while (q) {
+      q &= q - 1;
+      ans[i]++;
     }
-    bits++;
-    dp.push(bits);
   }
-  return dp;
+  return ans;
 };
