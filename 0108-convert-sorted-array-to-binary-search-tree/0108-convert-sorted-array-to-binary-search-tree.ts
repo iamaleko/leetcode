@@ -13,7 +13,6 @@
  */
 
 function sortedArrayToBST(nums: number[]): TreeNode | null {
-  if (!nums.length) return null;
   const build = (l: number, r: number): TreeNode => {
     if (l > r) return null;
     const c = l + r >>> 1;
