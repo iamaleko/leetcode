@@ -14,11 +14,10 @@
 
 function isSymmetric(root: TreeNode | null): boolean {
   const traverse = (left: TreeNode, right: TreeNode) => {
-    if (left === null && right === null) return true;
     if (left && right && left.val === right.val) {
       return traverse(left.left, right.right) && traverse(left.right, right.left);
     }
-    return false;
+    return left === right;
   }
   return root ? traverse(root.left, root.right) : true;
 };
