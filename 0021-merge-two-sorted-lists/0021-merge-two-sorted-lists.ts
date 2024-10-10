@@ -10,22 +10,22 @@
  * }
  */
 
-function mergeTwoLists(list1: ListNode | null, list2: ListNode | null): ListNode | null {
-  if (list1 === null) return list2;
-  if (list2 === null) return list1;
-  const head = new ListNode();
-  let tail = head;
-  while (list1 && list2) {
-    if (list1.val < list2.val) {
-      tail.next = list1;
-      list1 = list1.next;
+function mergeTwoLists(a: ListNode | null, b: ListNode | null): ListNode | null {
+  if (!b) return a;
+  if (!a) return b;
+  const head = new ListNode(0);
+  let node = head;
+  while (a && b) {
+    if (a.val < b.val) {
+      node.next = a;
+      a = a.next;
     } else {
-      tail.next = list2;
-      list2 = list2.next;
+      node.next = b;
+      b = b.next;
     }
-    tail = tail.next;
+    node = node.next;
   }
-  if (list1) tail.next = list1;
-  if (list2) tail.next = list2;
+  if (a) node.next = a;
+  if (b) node.next = b;
   return head.next;
 };
