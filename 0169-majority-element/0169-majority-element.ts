@@ -1,3 +1,4 @@
+// O(n), Boyer–Moore
 function majorityElement(nums: number[]): number {
   let candidate = nums[0], count = 1;
   for (let i = 1; i < nums.length; i++) {
@@ -14,6 +15,7 @@ function majorityElement(nums: number[]): number {
   return candidate;
 };
 
+// O(n), counting
 // function majorityElement(nums: number[]): number {
 //   const freq: Record<number, number> = {};
 //   for (const num of nums) freq[num] = (freq[num] || 0) + 1;
