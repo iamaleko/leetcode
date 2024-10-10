@@ -14,6 +14,5 @@ function thirdMax(nums: number[]): number {
       }
     }
   }
-  console.log(max)
   return max[2] !== undefined ? max[2] : max[0];
 };
