@@ -10,21 +10,19 @@ class Heap {
       i = p;
     }
   }
-  static pop(heap: HeapNode[]): HeapNode | null {
-    if (!heap.length) return null;
-    [heap[0], heap[heap.length - 1]] = [heap[heap.length - 1], heap[0]];
+  static poppush(heap: HeapNode[], item: HeapNode): void {
+    heap[0] = item;
     let i = 0;
     while (true) {
       const l = i * 2 + 1,
             r = i * 2 + 2;
       let t = i;
-      if (l < heap.length - 1 && heap[t][0] > heap[l][0]) t = l;
-      if (r < heap.length - 1 && heap[t][0] > heap[r][0]) t = r;
+      if (l < heap.length && heap[t][0] > heap[l][0]) t = l;
+      if (r < heap.length && heap[t][0] > heap[r][0]) t = r;
       if (t === i) break;
       [heap[t], heap[i]] = [heap[i], heap[t]];
       i = t;
     }
-    return heap.pop();
   }
 }
 
@@ -36,8 +34,7 @@ function minGroups(intervals: number[][]): number {
   let groups = 0;
   for (const [from, to] of intervals) {
     if (heap.length && heap[0][0] < from) { // extend group
-      Heap.pop(heap);
-      Heap.push(heap, [to]);
+      Heap.poppush(heap, [to]);
     } else { // create new group
       groups++;
       Heap.push(heap, [to]);
