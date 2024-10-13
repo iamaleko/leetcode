@@ -20,6 +20,9 @@ function smallestRange(nums: number[][]): number[] {
       missed = nums.length;
 
   for (let l = 0, r = 0; r < points.length; r++) {
+    // single point edge case
+    if (points[r][1].size === nums.length) return [points[r][0], points[r][0]]; 
+
     for (const i of points[r][1]) if (represented[i]++ === 0) missed--;
     while (!missed) {
       if (upper - lower > points[r][0] - points[l][0]) {
