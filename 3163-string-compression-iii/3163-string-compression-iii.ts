@@ -1,18 +1,14 @@
 function compressedString(word: string): string {
-  if (!word) return '';
-
   let ans: string[] = [], last = '', count = 0;
-  for (let i = 0; i < word.length; i++) {
-    if (count === 9 || last && word[i] !== last) {
+  for (const ch of word) {
+    if (count === 9 || last && ch !== last) {
       ans.push(`${count}${last}`);
-      count = 0;
       last = '';
+      count = 0;
     }
-
-    if (!last) last = word[i]
-    if (word[i] === last) count++;
+    if (!last) last = ch;
+    if (ch === last) count++;
   }
-  ans.push(`${count}${last}`);
-
+  if (last) ans.push(`${count}${last}`);
   return ans.join('');
 };
