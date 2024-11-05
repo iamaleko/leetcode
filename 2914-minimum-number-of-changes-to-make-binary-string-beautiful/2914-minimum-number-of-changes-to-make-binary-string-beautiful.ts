@@ -10,7 +10,6 @@ function minChanges(s: string): number {
     count++;
   }
   if (count) parts.push([last === '1' ? 1 : 0, count]);
-  // console.log(parts)
   
   let ans = 0;
   for (let i = 1; i < parts.length; i++) {
