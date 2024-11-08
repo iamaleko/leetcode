@@ -1,14 +1,14 @@
 function subarraySum(nums: number[], k: number): number {
-  const m: Record<number, number> = {};
+  const m = new Map<number, number>();
   let sum = 0, ans = 0;
   for (let i = nums.length - 1; i >= 0; i--) {
-    m[sum] = (m.hasOwnProperty(sum) ? m[sum] : 0) + 1;
+    m.set(sum, (m.get(sum) ?? 0) + 1);
     sum += nums[i];
   }
-  m[sum] = (m.hasOwnProperty(sum) ? m[sum] : 0) + 1;
+  m.set(sum, (m.get(sum) ?? 0) + 1);
   for (const num of nums) {
-    m[sum]--;
-    if (m.hasOwnProperty(sum - k)) ans += m[sum - k];
+    m.set(sum, m.get(sum) - 1);
+    ans += m.get(sum - k) ?? 0;
     sum -= num;
   }
   return ans;
