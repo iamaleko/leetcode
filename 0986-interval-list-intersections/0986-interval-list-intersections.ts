@@ -17,7 +17,7 @@ function intervalIntersection(a: number[][], b: number[][]): number[][] {
       ans.push(int);
     }
     a[ap][1] > b[bp][1] ? bp++ : ap++;
-    console.log(ans)
+    // console.log(ans)
   }
   return ans;
 };
