@@ -1,6 +1,6 @@
 function kClosest(points: number[][], k: number): number[][] {
-  const dist: [number, number][] = [];
-  for (let i = 0; i < points.length; i++) dist.push([i, points[i][0] ** 2 + points[i][1] ** 2]);
-  dist.sort((a, b) => a[1] - b[1]);
-  return dist.slice(0, k).map(([i]) => points[i]);
+  return points.map((v) => [v[0], v[1], v[0] ** 2 + v[1] ** 2])
+         .sort((a, b) => a[2] - b[2])
+         .slice(0, k)
+         .map((v) => v.slice(0, 2));
 };
