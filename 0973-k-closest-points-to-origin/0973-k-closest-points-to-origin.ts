@@ -1,9 +1,10 @@
 function kClosest(points: number[][], k: number): number[][] {
-  const heap = MinPriorityQueue.from(points.map(([x, y]) => [[x, y], x ** 2 + y ** 2]));
-  const ans: number[][] = [];
-  k = Math.min(points.length, k);
-  while (ans.length < k) ans.push(heap.dequeue().element)
-  return ans;
+  const heap = new MaxPriorityQueue({ priority: (v) => v[2] });
+  for (const [x, y] of points) {
+    heap.enqueue([x, y, x ** 2 + y ** 2]);
+    if (heap.size() > k) heap.dequeue();
+  }
+  return heap.toArray().map((v) => [v.element[0], v.element[1]]);
 };
 
 // function kClosest(points: number[][], k: number): number[][] {
