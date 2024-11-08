@@ -1,10 +1,9 @@
 function getMaximumXor(nums: number[], maximumBit: number): number[] {
-  let xor = 0, mask = 2 ** maximumBit - 1;
-  for (const num of nums) xor ^= num;
-  const ans: number[] = [];
-  for (let i = nums.length - 1; i >= 0; i--) {
-    ans.push(xor & mask ^ mask);
-    xor ^= nums[i];
-  }
+  const n = nums.length,
+        ans: number[] = new Array(n).fill(0),
+        mask = (1 << maximumBit) - 1;
+  let xor = 0;
+  for (let i = 0; i < n; i++) xor ^= nums[i];
+  for (let i = 0; i < n; xor ^= nums[n - ++i]) ans[i] = xor & mask ^ mask;
   return ans;
 };
