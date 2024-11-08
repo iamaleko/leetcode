@@ -10,14 +10,12 @@ function intervalIntersection(a: number[][], b: number[][]): number[][] {
     }
     if (b[bp][0] > a[ap][1]) continue;
     const int = [Math.max(a[ap][0], b[bp][0]), Math.min(a[ap][1], b[bp][1])];
-    // console.log(a[ap], b[bp], int)
-    if (ans.length && ans.at(-1)[1] > int[0]) {
-      ans.at(-1)[1] = int[1];
-    } else {
+    // if (ans.length && ans.at(-1)[1] > int[0]) {
+    //   ans.at(-1)[1] = int[1];
+    // } else {
       ans.push(int);
-    }
+    // }
     a[ap][1] > b[bp][1] ? bp++ : ap++;
-    // console.log(ans)
   }
   return ans;
 };
