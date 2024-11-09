@@ -6,7 +6,7 @@ function minEnd(n: number, x: number): number {
     if (x & 1) {
       bits.push(1);
     } else {
-      bits.push(n & 1 ? 1 : 0);
+      bits.push(n & 1);
       n >>=1;
     }
     x >>= 1;
