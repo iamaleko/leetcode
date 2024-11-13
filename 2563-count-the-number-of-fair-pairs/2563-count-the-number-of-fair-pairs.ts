@@ -16,7 +16,7 @@ function countFairPairs(nums: number[], lower: number, upper: number): number {
           rr = c - 1;
         }
       }
-      ans += ll - l;
+      ans += Math.min(ll,r) - l;
       r--;
     }
   }
