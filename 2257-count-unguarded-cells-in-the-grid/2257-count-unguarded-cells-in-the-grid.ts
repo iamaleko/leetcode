@@ -35,10 +35,10 @@ function countUnguarded(m: number, n: number, guards: number[][], walls: number[
   }
   for (const [y,x] of guards) {
     grid[y][x] = Mask.GuardedVertical | Mask.GuardedHorizontal;
-    top(y, x);
-    right(y, x);
-    bottom(y, x);
-    left(y, x);
+    if (y > 0 && (grid[y - 1][x] & (Mask.GuardedVertical | Mask.Wall)) === 0) top(y, x);
+    if (x + 1 < n && (grid[y][x + 1] & (Mask.GuardedHorizontal | Mask.Wall)) === 0) right(y, x);
+    if (y + 1 < m && (grid[y + 1][x] & (Mask.GuardedVertical | Mask.Wall)) === 0) bottom(y, x);
+    if (x > 0 && (grid[y][x - 1] & (Mask.GuardedHorizontal | Mask.Wall)) === 0) left(y, x);
   }
   let ans = 0;
   for (let y = 0; y < m; y++) {
