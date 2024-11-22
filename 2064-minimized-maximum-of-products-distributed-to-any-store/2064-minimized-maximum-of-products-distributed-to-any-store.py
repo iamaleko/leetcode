@@ -2,13 +2,13 @@ import math
 
 class Solution:
   def minimizedMaximum(self, n: int, q: List[int]) -> int:
-    stores = len(q)
+    n -= len(q)
     h = [(-x, x, 1) for x in q]
     heapify(h)
 
-    while stores < n:
+    while n:
       avg, total, distributed = heappop(h)
-      _distributed = n - stores + distributed
+      _distributed = n + distributed
 
       _avg = math.ceil(total / _distributed)
       if h and _avg < -h[0][0]:
@@ -21,7 +21,7 @@ class Solution:
         break
 
       heappush(h, (-_avg, total, _distributed))
-      stores += _distributed - distributed
+      n -= _distributed - distributed
 
     return -h[0][0]
         
