@@ -14,7 +14,7 @@ class Solution:
       r -= 1
     # search
     ans = min(n - l - 1, r)
-    for l in range(l + 1):
+    for l in range(0, l + 1):
       while r < n and arr[r] < arr[l]:
         r += 1
       if ans > r - l - 1:
