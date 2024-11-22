@@ -7,15 +7,11 @@ class Solution:
     heapify(h)
 
     while n:
-      avg, total, distributed = heappop(h)
+      (avg, total, distributed) = heappop(h)
 
       _distributed = n + distributed
       if h and math.ceil(total / _distributed) < -h[0][0]:
         _distributed = math.ceil(total / (-h[0][0] - 1))
-
-      if _distributed == distributed:
-        heappush(h, (avg, total, distributed))
-        break
 
       heappush(h, (-math.ceil(total / _distributed), total, _distributed))
       n -= _distributed - distributed
