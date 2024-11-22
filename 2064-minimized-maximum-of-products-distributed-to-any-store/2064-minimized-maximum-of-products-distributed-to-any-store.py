@@ -1,41 +1,27 @@
+import math
+
 class Solution:
-    def can_distribute(self, x: int, quantities: List[int], n: int) -> bool:
-        # Pointer to the first not fully distributed product type
-        j = 0
-        # Remaining quantity of the jth product type
-        remaining = quantities[j]
+  def minimizedMaximum(self, n: int, q: List[int]) -> int:
+    stores = len(q)
+    h = [(-x, x, 1) for x in q]
+    heapify(h)
 
-        # Loop through each store
-        for i in range(n):
-            # Check if the remaining quantity of the jth product type
-            # can be fully distributed to the ith store
-            if remaining <= x:
-                # If yes, move the pointer to the next product type
-                j += 1
-                # Check if all products have been distributed
-                if j == len(quantities):
-                    return True
-                else:
-                    remaining = quantities[j]
-            else:
-                # Distribute the maximum possible quantity (x) to the ith store
-                remaining -= x
+    while stores < n:
+      avg, total, distributed = heappop(h)
+      _distributed = n - stores + distributed
 
-        return False
+      _avg = math.ceil(total / _distributed)
+      if h and _avg < -h[0][0]:
+        _avg = -h[0][0] - 1
+      _distributed = math.ceil(total / _avg)
+      _avg = math.ceil(total / _distributed)
 
-    def minimizedMaximum(self, n: int, quantities: List[int]) -> int:
-        # Initialize the boundaries of the binary search
-        left = 0
-        right = max(quantities)
+      if _distributed == distributed:
+        heappush(h, (avg, total, distributed))
+        break
 
-        # Perform binary search until the boundaries converge
-        while left < right:
-            middle = (left + right) // 2
-            if self.can_distribute(middle, quantities, n):
-                # Try for a smaller maximum
-                right = middle
-            else:
-                # Increase the minimum possible maximum
-                left = middle + 1
+      heappush(h, (-_avg, total, _distributed))
+      stores += _distributed - distributed
 
-        return left
+    return -h[0][0]
+        
