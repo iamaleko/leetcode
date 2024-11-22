@@ -23,5 +23,6 @@ class Solution:
     for l in range(0, l + 1):
       while r < len(arr) and arr[r] < arr[l]:
         r += 1
-      ans = min(ans, r - l - 1)
+      if ans > r - l - 1:
+        ans = r - l - 1
     return ans
