@@ -1,7 +1,7 @@
 function maxEqualRowsAfterFlips(m: number[][]): number {
   const count: Record<string, number> = {};
   for (let y = 0; y < m.length; y++) {
-    const unset = m[y].join(), set = m[y].map((v) => v ^ 1).join();
+    const unset = m[y].join(''), set = m[y].map((v) => v ^ 1).join('');
     count.hasOwnProperty(unset) ? count[unset]++ : count[unset] = 1;
     count.hasOwnProperty(set) ? count[set]++ : count[set] = 1;
   }
