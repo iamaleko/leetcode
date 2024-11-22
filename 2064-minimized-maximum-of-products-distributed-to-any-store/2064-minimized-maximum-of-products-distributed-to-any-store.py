@@ -10,10 +10,12 @@ class Solution:
       (avg, total, distributed) = heappop(h)
 
       _distributed = n + distributed
-      if h and math.ceil(total / _distributed) < -h[0][0]:
+      _avg = -math.ceil(total / _distributed)
+      if h and _avg > h[0][0]:
         _distributed = math.ceil(total / (-h[0][0] - 1))
+        _avg = -math.ceil(total / _distributed)
 
-      heappush(h, (-math.ceil(total / _distributed), total, _distributed))
+      heappush(h, (_avg, total, _distributed))
       n -= _distributed - distributed
 
     return -h[0][0]
