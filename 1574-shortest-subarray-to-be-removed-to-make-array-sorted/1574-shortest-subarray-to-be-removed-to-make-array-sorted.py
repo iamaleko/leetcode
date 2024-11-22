@@ -1,27 +1,21 @@
 class Solution:
   def findLengthOfShortestSubarray(self, arr: List[int]) -> int:
+    n = len(arr)
     # left bound
     l = 0
-    for i in range(1, len(arr)):
-      if arr[i] >= arr[l]:
-        l = i
-      else:
-        break
+    while l < n - 1 and arr[l + 1] >= arr[l]:
+      l += 1
     # sorted
-    if l == len(arr) - 1:
-      print('sorted')
+    if l == n - 1:
       return 0
     # right bound
-    r = len(arr) - 1
-    for i in range(len(arr) - 2, -1, -1):
-      if arr[i] <= arr[r]:
-        r = i
-      else:
-        break
+    r = n - 1
+    while r and arr[r - 1] <= arr[r]:
+      r -= 1
     # search
-    ans = min(len(arr) - l - 1, r)
-    for l in range(0, l + 1):
-      while r < len(arr) and arr[r] < arr[l]:
+    ans = min(n - l - 1, r)
+    for l in range(l + 1):
+      while r < n and arr[r] < arr[l]:
         r += 1
       if ans > r - l - 1:
         ans = r - l - 1
