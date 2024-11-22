@@ -8,12 +8,10 @@ class Solution:
 
     while n:
       avg, total, distributed = heappop(h)
+      
       _distributed = n + distributed
-
-      _avg = math.ceil(total / _distributed)
-      if h and _avg < -h[0][0]:
-        _avg = -h[0][0] - 1
-      _distributed = math.ceil(total / _avg)
+      if h and math.ceil(total / _distributed) < -h[0][0]:
+        _distributed = math.ceil(total / (-h[0][0] - 1))
       _avg = math.ceil(total / _distributed)
 
       if _distributed == distributed:
