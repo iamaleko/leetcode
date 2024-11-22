@@ -1,8 +1,8 @@
 function maxEqualRowsAfterFlips(m: number[][]): number {
   const count = new Map<string, number>();
   for (let y = 0, a: string, b: string; y < m.length; y++) {
-    count.set(a = m[y].join(''), (count.get(a) ?? 0) + 1);
-    count.set(b = m[y].map((v) => v ^ 1).join(''), (count.get(b) ?? 0) + 1);
+    count.set(a = m[y].join(), (count.get(a) ?? 0) + 1);
+    count.set(b = m[y].map((v) => v ^ 1).join(), (count.get(b) ?? 0) + 1);
   }
   return Math.max(...count.values());
 };
