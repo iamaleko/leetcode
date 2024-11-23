@@ -12,7 +12,6 @@ function rotateTheBox(box: string[][]): string[][] {
       if (e !== null && box[y][x] === Type.Stone) {
         [box[y][x], box[y][e]] = [box[y][e], box[y][x]];
         while (e > x && box[y][e] !== Type.Empty) e--;
-        if (e < 0) break;
       }
     }
   }
