@@ -7,11 +7,19 @@ function rotateTheBox(box: string[][]): string[][] {
   // move
   for (let y = 0; y < box.length; y++) {
     for (let e = null, x = box[y].length; x >= 0; x--) {
-      if (e === null && box[y][x] === Type.Empty) e = x;
-      if (box[y][x] === Type.Obstacle) e = null;
-      if (e !== null && box[y][x] === Type.Stone) {
-        [box[y][x], box[y][e]] = [box[y][e], box[y][x]];
-        while (e > x && box[y][e] !== Type.Empty) e--;
+      switch (box[y][x]) {
+        case Type.Empty:
+          if (e === null) e = x;
+        break;
+        case Type.Obstacle:
+          e = null;
+        break;
+        case Type.Stone:
+          if (e !== null) {
+            [box[y][x], box[y][e]] = [box[y][e], box[y][x]];
+            while (e > x && box[y][e] !== Type.Empty) e--;
+          }
+        break;
       }
     }
   }
