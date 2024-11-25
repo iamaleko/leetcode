@@ -1,4 +1,6 @@
 class Solution:
+  graph = None
+
   def generate(self, board, graph = {}):
     graph[board] = []
     a,b,c,d,e,f = board
@@ -15,10 +17,11 @@ class Solution:
 
   def slidingPuzzle(self, board: List[List[int]]) -> int:
     # build graph
-    graph = self.generate(t := (1,2,3,4,5,0))
+    if not self.graph:
+      self.graph = self.generate(t := (1,2,3,4,5,0))
     # bfs
     board = (board[0][0], board[0][1], board[0][2], board[1][0], board[1][1], board[1][2])
-    if board in graph:
+    if board in self.graph:
       q = deque([[board, 0]])
       v = set([board])
       while q:
@@ -26,7 +29,7 @@ class Solution:
         if board == t:
           return steps
         steps += 1
-        for node in graph[board]:
+        for node in self.graph[board]:
           if node not in v:
             q.append([node, steps])
     return -1
