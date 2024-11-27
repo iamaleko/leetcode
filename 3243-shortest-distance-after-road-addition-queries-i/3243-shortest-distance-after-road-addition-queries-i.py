@@ -16,18 +16,20 @@ class Solution:
       node.joints.add(self.map[i])
       node = self.map[i]
 
-  def updateGraph(self, node: GraphNode, dist: int) -> None:
-    if node.dist > dist:
+  def updateGraph(self, node: GraphNode, dist: int, max_dist: int) -> None:
+    if dist < max_dist and node.dist > dist:
       node.dist = dist
       for joint in node.joints:
-        self.updateGraph(joint, dist + 1)
+        self.updateGraph(joint, dist + 1, max_dist)
 
   def shortestDistanceAfterQueries(self, n: int, queries: List[List[int]]) -> List[int]:
     self.buildGraph(n)
     ans = []
+    dist = n - 1
     for a, b in queries:
       if self.map[b] not in self.map[a].joints:
         self.map[a].joints.add(self.map[b])
-        self.updateGraph(self.map[b], self.map[a].dist + 1)
-        ans.append(self.map[n - 1].dist)
+        self.updateGraph(self.map[b], self.map[a].dist + 1, dist)
+        dist = self.map[n - 1].dist
+        ans.append(dist)
     return ans
