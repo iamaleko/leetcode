@@ -30,6 +30,4 @@ class Solution:
         self.map[a].joints.add(self.map[b])
         self.updateGraph(self.map[b], self.map[a].dist + 1)
         ans.append(self.map[n - 1].dist)
-
     return ans
-        
