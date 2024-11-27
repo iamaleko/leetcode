@@ -25,11 +25,10 @@ class Solution:
   def shortestDistanceAfterQueries(self, n: int, queries: List[List[int]]) -> List[int]:
     self.buildGraph(n)
     ans = []
-    dist = n - 1
+    max_dist = n - 1
     for a, b in queries:
       if self.map[b] not in self.map[a].joints:
         self.map[a].joints.add(self.map[b])
-        self.updateGraph(self.map[b], self.map[a].dist + 1, dist)
-        dist = self.map[n - 1].dist
-        ans.append(dist)
+        self.updateGraph(self.map[b], self.map[a].dist + 1, max_dist)
+        ans.append(max_dist := self.map[n - 1].dist)
     return ans
