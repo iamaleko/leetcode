@@ -39,6 +39,5 @@ class Solution:
             border.append((y, x + 1))
           grid[y][x + 1] = VISITED
           
-      if border:
-        ans += 1
-        queue, border = border, queue
+      ans += 1
+      queue, border = border, queue
