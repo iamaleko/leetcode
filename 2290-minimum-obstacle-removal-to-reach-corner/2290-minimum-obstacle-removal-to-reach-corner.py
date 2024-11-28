@@ -1,10 +1,7 @@
 class Solution:
   def minimumObstacles(self, grid: List[List[int]]) -> int:
     ans, my, mx = 0, len(grid) - 1, len(grid[0]) - 1
-    
-    EMPTY = 0
-    OBSTACLE = 1
-    VISITED = 2
+    EMPTY, OBSTACLE, VISITED = 0, 1, 2
 
     queue = deque([(0,0)])
     grid[0][0] = VISITED
@@ -17,45 +14,31 @@ class Solution:
         if y == my and x == mx:
           return ans
 
-        for y, x in [(y - 1, x), (y + 1, x), (y, x - 1), (y, x + 1)]:
-          if y >= 0 and y <= my and x >= 0 and x <= mx:
-            if grid[y][x] == EMPTY:
-              queue.append((y, x))
-            elif grid[y][x] == OBSTACLE:
-              border.append((y, x))
-            grid[y][x] = VISITED
-
-        # if y > 0:
-        #   if grid[y - 1][x] == EMPTY:
-        #     queue.append((y - 1, x))
-        #   elif grid[y - 1][x] == OBSTACLE:
-        #     border.append((y - 1, x))
-        #   grid[y - 1][x] = VISITED
-        # if y < my:
-        #   if grid[y + 1][x] == EMPTY:
-        #     queue.append((y + 1, x))
-        #   elif grid[y + 1][x] == OBSTACLE:
-        #     border.append((y + 1, x))
-        #   grid[y + 1][x] = VISITED
-        # if x > 0:
-        #   if grid[y][x - 1] == EMPTY:
-        #     queue.append((y, x - 1))
-        #   elif grid[y][x - 1] == OBSTACLE:
-        #     border.append((y, x - 1))
-        #   grid[y][x - 1] = VISITED
-        # if x < mx:
-        #   if grid[y][x + 1] == EMPTY:
-        #     queue.append((y, x + 1))
-        #   elif grid[y][x + 1] == OBSTACLE:
-        #     border.append((y, x + 1))
-        #   grid[y][x + 1] = VISITED
-      
+        if y > 0:
+          if grid[y - 1][x] == EMPTY:
+            queue.append((y - 1, x))
+          elif grid[y - 1][x] == OBSTACLE:
+            border.append((y - 1, x))
+          grid[y - 1][x] = VISITED
+        if y < my:
+          if grid[y + 1][x] == EMPTY:
+            queue.append((y + 1, x))
+          elif grid[y + 1][x] == OBSTACLE:
+            border.append((y + 1, x))
+          grid[y + 1][x] = VISITED
+        if x > 0:
+          if grid[y][x - 1] == EMPTY:
+            queue.append((y, x - 1))
+          elif grid[y][x - 1] == OBSTACLE:
+            border.append((y, x - 1))
+          grid[y][x - 1] = VISITED
+        if x < mx:
+          if grid[y][x + 1] == EMPTY:
+            queue.append((y, x + 1))
+          elif grid[y][x + 1] == OBSTACLE:
+            border.append((y, x + 1))
+          grid[y][x + 1] = VISITED
+          
       if border:
-        while border:
-          y, x = border.popleft()
-          queue.append((y, x))
         ans += 1
-      
-
-
-        
+        queue, border = border, queue
