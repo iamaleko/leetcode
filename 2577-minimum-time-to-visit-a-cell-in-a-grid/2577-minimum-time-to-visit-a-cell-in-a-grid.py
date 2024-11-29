@@ -31,7 +31,7 @@
 
 #     return -1
 
-# NOT PASSED
+# FAILED
 # class Solution:
 #   def minimumTime(self, grid: List[List[int]]) -> int:
 #     my = len(grid) - 1
@@ -103,33 +103,20 @@ class Solution:
     if grid[0][0] < min(grid[1][0], grid[0][1]) - 1:
       return -1
 
-    # flood fill
-    h = [(0, 0, 0)]
+    # bfs
+    heap = [(0, 0, 0)]
     visited = set([(0, 0)])
-    reached = [[0] * (mx + 1) for _ in range(my + 1)]
-    for y in range(my + 1):
-      for x in range(mx + 1):
-        reached[y][x] = grid[y][x]
-    while h:
-      t, y, x = heappop(h)
-
-      # find best incoming variant
-      # for ny, nx in [(y - 1, x), (y + 1, x), (y, x - 1), (y, x + 1)]:
-      #   if (ny, nx) in visited:
-      #     _t = reached[ny][nx] + 1 if reached[ny][nx] >= grid[y][x] else grid[y][x] + (abs(reached[ny][nx] - grid[y][x]) & 1 ^ 1)
-      #     if reached[y][x] > _t:
-      #       reached[y][x] = _t
-
+    reached = [[grid[y][x] for x in range(mx + 1)] for y in range(my + 1)]
+    while heap:
+      t, y, x = heappop(heap)
       if y == my and x == mx:
-        return reached[y][x]
-
-      # add outcoming variants
+        return t
       for ny, nx in [(y - 1, x), (y + 1, x), (y, x - 1), (y, x + 1)]:
         if ny >= 0 and nx >= 0 and ny <= my and nx <= mx:
-          _t = reached[y][x] + 1 if reached[y][x] >= grid[ny][nx] else grid[ny][nx] + (abs(reached[y][x] - grid[ny][nx]) & 1 ^ 1)
-          if (ny,nx) not in visited or reached[ny][nx] > _t:
+          _t = t + 1 if t >= grid[ny][nx] else grid[ny][nx] + (abs(t - grid[ny][nx]) & 1 ^ 1)
+          if (ny, nx) not in visited or reached[ny][nx] > _t:
             reached[ny][nx] = _t
             visited.add((ny, nx))
-            heappush(h, (reached[ny][nx], ny, nx))
+            heappush(heap, (_t, ny, nx))
 
     return -1
