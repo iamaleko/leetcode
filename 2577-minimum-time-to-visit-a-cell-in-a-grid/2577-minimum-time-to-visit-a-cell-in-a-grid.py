@@ -104,7 +104,7 @@ class Solution:
       return -1
 
     # flood fill
-    queue = deque([(0, 0)])
+    h = [(0, 0, 0)]
     visited = set([(0, 0)])
     reached = [[0] * (mx + 1) for _ in range(my + 1)]
     for y in range(my + 1):
@@ -112,8 +112,8 @@ class Solution:
         reached[y][x] = grid[y][x]
 
     ans = -1
-    while queue:
-      y, x = queue.popleft()
+    while h:
+      _, y, x = heappop(h)
       # print('-----',(y,x),grid[y][x])
       t = math.inf
       for ny, nx in [(y - 1, x), (y + 1, x), (y, x - 1), (y, x + 1)]:
@@ -128,8 +128,8 @@ class Solution:
         reached[y][x] = t
       # print('t:',t)
 
-      if y == my and x == mx and (ans == -1 or ans > t):
-        ans = t
+      if y == my and x == mx:
+        return t
 
       for ny, nx in [(y - 1, x), (y + 1, x), (y, x - 1), (y, x + 1)]:
         if ny < 0 or nx < 0 or ny > my or nx > mx:
@@ -139,7 +139,7 @@ class Solution:
           # print('>',(ny,nx),reached[ny][nx],_t)
           reached[ny][nx] = _t
           visited.add((ny, nx))
-          queue.append((ny, nx))
+          heappush(h, (reached[ny][nx], ny, nx))
 
     return ans
 
