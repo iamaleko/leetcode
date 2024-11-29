@@ -110,45 +110,27 @@ class Solution:
     for y in range(my + 1):
       for x in range(mx + 1):
         reached[y][x] = grid[y][x]
-
-    ans = -1
     while h:
-      _, y, x = heappop(h)
-      # print('-----',(y,x),grid[y][x])
-      t = math.inf
+      t, y, x = heappop(h)
+
+      # find best incoming variant
       for ny, nx in [(y - 1, x), (y + 1, x), (y, x - 1), (y, x + 1)]:
         if (ny, nx) in visited:
           _t = reached[ny][nx] + 1 if reached[ny][nx] >= grid[y][x] else grid[y][x] + (abs(reached[ny][nx] - grid[y][x]) & 1 ^ 1)
-          # print('<',(ny,nx),reached[ny][nx],_t)
           if _t < t:
             t = _t
-      if t == math.inf:
-        t = reached[y][x]
-      else:
-        reached[y][x] = t
-      # print('t:',t)
+      reached[y][x] = t
 
       if y == my and x == mx:
         return t
 
+      # add outcoming variants
       for ny, nx in [(y - 1, x), (y + 1, x), (y, x - 1), (y, x + 1)]:
-        if ny < 0 or nx < 0 or ny > my or nx > mx:
-          continue
-        _t = reached[y][x] + 1 if reached[y][x] >= grid[ny][nx] else grid[ny][nx] + (abs(t - grid[ny][nx]) & 1 ^ 1)
-        if (ny,nx) not in visited or reached[ny][nx] > _t:
-          # print('>',(ny,nx),reached[ny][nx],_t)
-          reached[ny][nx] = _t
-          visited.add((ny, nx))
-          heappush(h, (reached[ny][nx], ny, nx))
+        if ny >= 0 and nx >= 0 and ny <= my and nx <= mx:
+          _t = reached[y][x] + 1 if reached[y][x] >= grid[ny][nx] else grid[ny][nx] + (abs(t - grid[ny][nx]) & 1 ^ 1)
+          if (ny,nx) not in visited or reached[ny][nx] > _t:
+            reached[ny][nx] = _t
+            visited.add((ny, nx))
+            heappush(h, (reached[ny][nx], ny, nx))
 
-    return ans
-
-# 0,7,6,6
-# 1,6,8,6
-# 1,5,8,3
-# 4,7,0,1
-
-# 0,7,8,0
-# 1,6,9,0
-# 2,0,0,0
-# 5,0,0,0
+    return -1
