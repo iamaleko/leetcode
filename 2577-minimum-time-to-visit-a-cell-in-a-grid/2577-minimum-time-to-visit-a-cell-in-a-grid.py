@@ -117,17 +117,16 @@ class Solution:
       for ny, nx in [(y - 1, x), (y + 1, x), (y, x - 1), (y, x + 1)]:
         if (ny, nx) in visited:
           _t = reached[ny][nx] + 1 if reached[ny][nx] >= grid[y][x] else grid[y][x] + (abs(reached[ny][nx] - grid[y][x]) & 1 ^ 1)
-          if _t < t:
-            t = _t
-      reached[y][x] = t
+          if _t < reached[y][x]:
+            reached[y][x] = _t
 
       if y == my and x == mx:
-        return t
+        return reached[y][x]
 
       # add outcoming variants
       for ny, nx in [(y - 1, x), (y + 1, x), (y, x - 1), (y, x + 1)]:
         if ny >= 0 and nx >= 0 and ny <= my and nx <= mx:
-          _t = reached[y][x] + 1 if reached[y][x] >= grid[ny][nx] else grid[ny][nx] + (abs(t - grid[ny][nx]) & 1 ^ 1)
+          _t = reached[y][x] + 1 if reached[y][x] >= grid[ny][nx] else grid[ny][nx] + (abs(reached[y][x] - grid[ny][nx]) & 1 ^ 1)
           if (ny,nx) not in visited or reached[ny][nx] > _t:
             reached[ny][nx] = _t
             visited.add((ny, nx))
