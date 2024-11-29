@@ -114,11 +114,11 @@ class Solution:
       t, y, x = heappop(h)
 
       # find best incoming variant
-      for ny, nx in [(y - 1, x), (y + 1, x), (y, x - 1), (y, x + 1)]:
-        if (ny, nx) in visited:
-          _t = reached[ny][nx] + 1 if reached[ny][nx] >= grid[y][x] else grid[y][x] + (abs(reached[ny][nx] - grid[y][x]) & 1 ^ 1)
-          if _t < reached[y][x]:
-            reached[y][x] = _t
+      # for ny, nx in [(y - 1, x), (y + 1, x), (y, x - 1), (y, x + 1)]:
+      #   if (ny, nx) in visited:
+      #     _t = reached[ny][nx] + 1 if reached[ny][nx] >= grid[y][x] else grid[y][x] + (abs(reached[ny][nx] - grid[y][x]) & 1 ^ 1)
+      #     if reached[y][x] > _t:
+      #       reached[y][x] = _t
 
       if y == my and x == mx:
         return reached[y][x]
