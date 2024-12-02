@@ -45,8 +45,8 @@ class Solution:
         node.prev = predecessor
         predecessor.next = node
         node = predecessor
-      if last.prev:
-        self.buildPath(last.prev)
+      # if last.prev:
+      #   self.buildPath(last.prev)
 
   def validArrangement(self, pairs: List[List[int]]) -> List[List[int]]:
     # build graph
