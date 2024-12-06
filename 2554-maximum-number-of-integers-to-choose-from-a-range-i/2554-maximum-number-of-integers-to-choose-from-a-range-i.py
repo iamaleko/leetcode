@@ -4,20 +4,20 @@ class Solution:
     ans = sqrt
     sqrtSum = int(sqrt * sqrt / 2 + sqrt / 2)
     accSum = sqrtSum
-    i = sqrt + 1
     s = set(banned)
-    # print('<', accSum, ans, i)
-    for num in s:
+
+    for num in list(s):
       if num <= sqrt:
         accSum -= num
         ans -= 1
-    # print('>', accSum, ans, i)
-    while i <= n:
-      if i not in s:
-        if accSum + i > maxSum:
-          break
-        accSum += i
-        # print('+', accSum, i)
+        s.remove(num)
+
+    for num in range(sqrt + 1, n + 1):
+      if accSum + num > maxSum:
+        break
+      if num in s:
+        s.remove(num)
+      else:
+        accSum += num
         ans += 1
-      i += 1
     return ans
