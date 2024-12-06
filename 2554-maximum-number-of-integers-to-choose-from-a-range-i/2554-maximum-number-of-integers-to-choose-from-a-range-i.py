@@ -6,18 +6,15 @@ class Solution:
     accSum = sqrtSum
     s = set(banned)
 
-    for num in list(s):
+    for num in s:
       if num <= sqrt:
         accSum -= num
         ans -= 1
-        s.remove(num)
 
     for num in range(sqrt + 1, n + 1):
       if accSum + num > maxSum:
         break
-      if num in s:
-        s.remove(num)
-      else:
+      if num not in s:
         accSum += num
         ans += 1
     return ans
