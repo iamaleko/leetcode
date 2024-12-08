@@ -5,11 +5,11 @@ class Solution:
     ans = 0
     maxEndValue = 0
     for start, end, value  in events:
-      ans = max(ans, value)
+      if ans < value: ans = value
       while heap and heap[0][0] < start:
-        maxEndValue = max(maxEndValue, heap[0][1])
+        if maxEndValue < heap[0][1]: maxEndValue = heap[0][1]
         heappop(heap)
-      ans = max(ans, value + maxEndValue)
+      if ans < value + maxEndValue: ans = value + maxEndValue
       heappush(heap, (end, value))
     return ans
         
