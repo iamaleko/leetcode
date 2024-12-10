@@ -7,7 +7,7 @@ class Solution:
       for offset in range(min(count, 3)):
         key = f"{s[i]}{count - offset}"
         d[key] += 1
-        if ans < count - offset and d[key] > 2:
-          ans = count - offset
+        if d[key] > 2:
+          ans = max(ans, count - offset)
     return ans
         
