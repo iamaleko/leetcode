@@ -7,7 +7,7 @@ class Solution:
       for offset in range(min(count := count + 1 if s[i] == s[i - 1] else 1, 3)):
         if mem[key := (count - offset << 5) + ord(s[i]) - 96] == 2:
           if ans < count - offset: ans = count - offset
-          continue
-        mem[key] += 1
+        else:
+          mem[key] += 1
     return ans
         
