@@ -1,23 +1,12 @@
 class Solution:
   def maximumLength(self, s: str) -> int:
-    ans = -1
+    count, ans = 1, -1
     d = defaultdict(int)
-    count = 1
     for i in range(len(s)):
-      if i and s[i] == s[i - 1]:
-        count += 1
-      else:
-        count = 1
-      d[f"{s[i]}{count}"] += 1
-      if d[f"{s[i]}{count}"] > 2:
-        ans = max(count, ans)
-      if count > 1:
-        d[f"{s[i]}{count - 1}"] += 1
-        if d[f"{s[i]}{count - 1}"] > 2:
-          ans = max(count - 1, ans)
-      if count > 2:
-        d[f"{s[i]}{count - 2}"] += 1
-        if d[f"{s[i]}{count - 2}"] > 2:
-          ans = max(count - 2, ans)
+      count = count + 1 if i and s[i] == s[i - 1] else 1
+      for offset in range(min(count, 3)):
+        d[f"{s[i]}{count - offset}"] += 1
+        if ans < count - offset and d[f"{s[i]}{count - offset}"] > 2:
+          ans = count - offset
     return ans
         
