@@ -1,6 +1,6 @@
 class Solution:
   def wonderfulSubstrings(self, word: str) -> int:
-    count = defaultdict(int)
+    count = [0] * (1 << 10)
     ans, mask = 0, 0
     count[mask] += 1
     for ch in word:
