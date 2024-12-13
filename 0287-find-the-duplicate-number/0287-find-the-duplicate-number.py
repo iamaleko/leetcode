@@ -8,4 +8,3 @@ class Solution:
         num = nums[i]
       if nums[num - 1] == num and i + 1 != num:
         return num
-    return -1
