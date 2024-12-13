@@ -14,7 +14,6 @@ class Solution:
           i += 1
           l += 1
         a[l] = b[j]
-        j += 1
         l += 1
 
   def largestNumber(self, nums: List[int]) -> str:
