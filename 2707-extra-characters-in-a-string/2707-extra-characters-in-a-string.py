@@ -1,3 +1,5 @@
+from functools import cache
+
 class Solution:
   @cache
   def traverse(self, i: int, val: int) -> int:
