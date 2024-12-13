@@ -11,13 +11,13 @@ class Solution:
     pos.sort()
 
     mem = {}
-    def traverse(k: int, val: int) -> int:
-      mem[pos[k][1]] = val
+    def traverse(i: int, val: int) -> int:
+      mem[pos[i][1]] = val
       res = val
-      for i in range(k + 1, len(pos)):
-        l, r = pos[i]
-        if pos[k][1] <= l and (r not in mem or mem[r] > val - (r - l)):
-          res = min(res, traverse(i, val - (r - l)))
+      for j in range(i + 1, len(pos)):
+        l, r = pos[j]
+        if pos[i][1] <= l and (r not in mem or mem[r] < val + (r - l)):
+          res = max(res, traverse(j, val + (r - l)))
       return res
 
-    return traverse(0, len(s))
+    return len(s) - traverse(0, 0)
