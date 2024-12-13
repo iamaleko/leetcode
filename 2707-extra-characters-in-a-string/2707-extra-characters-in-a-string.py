@@ -13,7 +13,8 @@ class Solution:
     mem = {}
     def traverse(i: int, j: int, val: int) -> int:
       if j in mem and mem[j] <= val:
-        return mem[j]
+        return math.inf
+
       mem[j] = val
       for i in range(i, len(pos)):
         l, r = pos[i]
