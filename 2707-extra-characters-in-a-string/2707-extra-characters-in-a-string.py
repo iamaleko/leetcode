@@ -1,7 +1,7 @@
-from functools import cache
+from functools import lru_cache
 
 class Solution:
-  @cache
+  @lru_cache(maxsize=None)
   def traverse(self, i: int, val: int) -> int:
     # self.mem[self.pos[i][1]] = val
     res = val
