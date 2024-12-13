@@ -1,11 +1,9 @@
 class Solution:
   def wonderfulSubstrings(self, word: str) -> int:
     ans, mask, count = 0, 0, [0] * (1 << 10)
-    d = dict(zip("abcdefghij", range(10)))
     count[mask] += 1
     for ch in word:
-      # mask ^= 1 << (ord(ch) - 97)
-      mask ^= 1 << d[ch]
+      mask ^= 1 << (ord(ch) - 97)
       ans += count[mask]
       for i in range(10):
         ans += count[mask ^ (1 << i)]
