@@ -17,8 +17,8 @@ class Solution:
       for j in range(i + 1, len(pos)):
         if pos[i][1] <= pos[j][0]:
           l, r = pos[j]
-          if r not in mem or mem[r] > val - (r - l):
-            res = min(res, traverse(j, val - (r - l)))
+          if r not in mem or mem[r] > val - r + l:
+            res = min(res, traverse(j, val - r + l))
       return res
 
     return traverse(0, len(s))
