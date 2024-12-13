@@ -1,6 +1,6 @@
 class Solution:
   def minExtraChar(self, s: str, words: List[str]) -> int:
-    pos = []
+    pos = [(0, 0)]
     for word in words:
       i = 0
       while True:
@@ -11,13 +11,13 @@ class Solution:
     pos.sort()
 
     mem = {}
-    def traverse(i: int, j: int, val: int) -> int:
-      mem[j] = val
+    def traverse(k: int, val: int) -> int:
+      mem[pos[k][1]] = val
       res = val
-      for i in range(i, len(pos)):
+      for i in range(k + 1, len(pos)):
         l, r = pos[i]
-        if j <= l and (r not in mem or mem[r] > val - (r - l)):
-          res = min(res, traverse(i + 1, r, val - (r - l)))
+        if pos[k][1] <= l and (r not in mem or mem[r] > val - (r - l)):
+          res = min(res, traverse(i, val - (r - l)))
       return res
 
-    return traverse(0, 0, len(s))
+    return traverse(0, len(s))
