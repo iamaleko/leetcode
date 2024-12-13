@@ -6,7 +6,7 @@ class Solution:
       while True:
         i = s.find(word, i)
         if i == -1: break
-        pos.append((i, i + len(word), len(word)))
+        pos.append((i, i + len(word)))
         i += 1
     pos.sort()
 
@@ -16,9 +16,9 @@ class Solution:
         return mem[j]
       mem[j] = val
       for i in range(i, len(pos)):
-        l, r, n = pos[i]
+        l, r = pos[i]
         if j <= l:
-          val = min(val, traverse(i + 1, r, mem[j] - n))
+          val = min(val, traverse(i + 1, r, mem[j] - (r - l)))
       return val
 
     return traverse(0, 0, len(s))
