@@ -4,8 +4,8 @@ class Solution:
     for r in range(n := len(s)):
       if c != l and s[r] != s[c]:
         ans += c - l if c - l < r - c else r - c
-        l, c = c, r
-      elif c == l and s[r] != s[l]:
+        l = c
+      if c == l and s[r] != s[l]:
         c = r
     return ans + (c - l if c - l < n - c else n - c)
         
