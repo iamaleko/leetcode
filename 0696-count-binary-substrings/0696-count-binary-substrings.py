@@ -7,7 +7,5 @@ class Solution:
         l, c = c, r
       elif c == l and s[r] != s[l]:
         c = r
-    if c != l:
-      ans += min(c - l, len(s) - c)
-    return ans
+    return ans + min(c - l, len(s) - c)
         
