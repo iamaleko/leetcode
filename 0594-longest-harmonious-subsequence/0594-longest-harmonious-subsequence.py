@@ -5,7 +5,7 @@ class Solution:
     for r in range(len(nums)):
       while nums[r] - nums[l] > 1:
         l += 1
-      if nums[r] - nums[l] == 1 and r - l + 1 > ans:
-        ans = r - l + 1
+      if nums[r] - nums[l]:
+        ans = max(ans, r - l + 1)
     return ans
         
