@@ -1,31 +1,17 @@
 class Solution:
   def sumSubarrayMins(self, arr: List[int]) -> int:
-    ans = 0
-    count, heap = {}, []
+    ans, mod, rst = 0, 1e9 + 7, [(0,-1,0)]
     for r, num in enumerate(arr):
-      # r pointer
-      ans += num
-      if num not in count:
-        count[num] = 0
-        heappush(heap, num)
-      count[num] += 1
-      # l pointer
-      _count, _heap = count.copy(), heap.copy()
-      for l in range(r):
-        while not _count[_heap[0]]: heappop(_heap)
-        ans += _heap[0]
-        _count[arr[l]] -= 1
-    return int(ans % (1e9 + 7))
+      while rst[-1][0] >= num: rst.pop()
+      rst.append((num, r, rst[-1][2] + num * (r - rst[-1][1])))
+      ans += rst[-1][2]
+      ans %= mod
+    return int(ans)
 
 # 3124
 # ---- 
-# 3    
-# 31   
-#  1   
-# 312  
-#  12  
-#   2  
-# 3124
-#  124
-#   24
-#    4
+#      (0,-1,0)
+# 3    (0,-1,0)(3,0,3)                    += 0 + 3 * (0 - -1) = 3 (3)
+# 31   (0,-1,0)(del)(1,1,2)               += 0 + 1 * (1 - -1) = 2 (5)
+# 312  (0,-1,0)(del)(1,1,2)(2,2,4)        += 2 + 2 * (2 - 1)  = 4 (9)
+# 3124 (0,-1,0)(del)(1,1,2)(2,2,4)(4,3,4) += 4 + 4 * (3 - 2)  = 4 (17)
