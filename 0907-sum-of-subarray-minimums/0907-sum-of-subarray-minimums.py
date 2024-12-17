@@ -5,8 +5,7 @@ class Solution:
       while rst[-1][0] >= num: rst.pop()
       rst.append((num, r, rst[-1][2] + num * (r - rst[-1][1])))
       ans += rst[-1][2]
-      ans %= mod
-    return int(ans)
+    return int(ans % mod)
 
 # 3124
 # ---- 
