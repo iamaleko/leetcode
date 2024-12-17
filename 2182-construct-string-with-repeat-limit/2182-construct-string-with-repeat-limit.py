@@ -1,21 +1,23 @@
 class Solution:
   def repeatLimitedString(self, s: str, limit: int) -> str:
-    count = [0] * 123
+    count, codes, last, repeat, code = [0] * 123, [], -1, 0, 122
     for ch in s:
       count[ord(ch)] += 1
-    ans, last, repeat, p = [], -1, 0, 122
     while True:
-      while p >= 0 and not count[p]: p -= 1
-      code = p
+      while code >= 0 and not count[code]: code -= 1
       if repeat == limit and code == last:
-        code = p - 1
-        while code >= 0 and not count[code]: code -= 1
-      if code < 0: break
-      count[code] -= 1
-      if last != code:
+        alt = code - 1
+        while alt >= 0 and not count[alt]: alt -= 1
+        if alt < 0: break
+        count[alt] -= 1
+        repeat = 1
+        codes.append(alt)
+        last = alt
+      else:
+        if code < 0: break
+        count[code] -= 1
+        repeat = repeat + 1 if last == code else 1
+        codes.append(code)
         last = code
-        repeat = 0
-      repeat += 1
-      ans.append(code)
-    return ''.join([chr(code) for code in ans])
+    return ''.join([chr(code) for code in codes])
         
