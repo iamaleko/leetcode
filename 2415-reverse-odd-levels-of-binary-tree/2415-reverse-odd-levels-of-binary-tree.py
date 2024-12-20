@@ -1,14 +1,14 @@
 class Solution:
-  def traverse(self, left: Optional[TreeNode], right: Optional[TreeNode]) -> None:
+  def swap(self, left: TreeNode, right: TreeNode) -> None:
     left.val, right.val = right.val, left.val
     if left.left and left.left.left:
-      self.traverse(left.left.left, right.right.right)
-      self.traverse(left.left.right, right.right.left)
-      self.traverse(left.right.left, right.left.right)
-      self.traverse(left.right.right, right.left.left)
+      self.swap(left.left.left, right.right.right)
+      self.swap(left.left.right, right.right.left)
+      self.swap(left.right.left, right.left.right)
+      self.swap(left.right.right, right.left.left)
 
   def reverseOddLevels(self, root: TreeNode) -> TreeNode:
     if root.left:
-      self.traverse(root.left, root.right)
+      self.swap(root.left, root.right)
     return root
         
