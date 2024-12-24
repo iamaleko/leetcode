@@ -19,9 +19,9 @@ class Solution:
           graph[parent].remove(leaf)
           if len(graph[parent]) <= 1:
             if parent in path:
-              longest = max(path[leaf][0] + 1, path[parent][0])
-              diam = max(path[parent][1], path[parent][0] + longest)
-              path[parent] = (longest, diam)
+              radius = max(path[leaf][0] + 1, path[parent][0])
+              diam = max(path[parent][1], path[parent][0] + radius)
+              path[parent] = (radius, diam)
             else:
               path[parent] = (path[leaf][0] + 1, path[leaf][0] + 1)
             if not len(graph[parent]):
@@ -31,7 +31,7 @@ class Solution:
     return (0, 0)
 
   def minimumDiameterAfterMerge(self, edges1: List[List[int]], edges2: List[List[int]]) -> int:
-    longest1, diam1 = self.pealGraph(self.buildGraph(edges1))
-    longest2, diam2 = self.pealGraph(self.buildGraph(edges2))
-    return max(diam1, diam2, longest1 + longest2 + 1)
+    radius1, diam1 = self.pealGraph(self.buildGraph(edges1))
+    radius2, diam2 = self.pealGraph(self.buildGraph(edges2))
+    return max(diam1, diam2, radius1 + radius2 + 1)
         
