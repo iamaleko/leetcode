@@ -7,7 +7,7 @@
 class Solution:
   def traverse(self, arr: List[int], node: TreeNode, level: int) -> None:
     if len(arr) - 1 < level:
-      arr.append(-math.inf)
+      arr.append(-inf)
     if arr[level] < node.val:
        arr[level] = node.val
     if node.left:
