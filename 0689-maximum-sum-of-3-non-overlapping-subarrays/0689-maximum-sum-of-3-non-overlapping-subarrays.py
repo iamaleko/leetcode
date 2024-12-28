@@ -13,8 +13,6 @@ class Solution:
       a = nums[r] - nums[l - 1] if l else nums[r]
       dpa[r] = (a, l) if dpa[r - 1][0] < a else dpa[r - 1]
       if l >= k:
-        b = dpa[l - 1][0] + a
-        dpb[r] = (b, dpa[l - 1][1], l) if dpb[r - 1][0] < b else dpb[r - 1]
-        c = dpb[l - 1][0] + a
-        dpc[r] = (c, dpb[l - 1][1], dpb[l - 1][2], l) if dpc[r - 1][0] < c else dpc[r - 1]
+        dpb[r] = (dpa[l - 1][0] + a, dpa[l - 1][1], l) if dpb[r - 1][0] < dpa[l - 1][0] + a else dpb[r - 1]
+        dpc[r] = (dpb[l - 1][0] + a, dpb[l - 1][1], dpb[l - 1][2], l) if dpc[r - 1][0] < dpb[l - 1][0] + a else dpc[r - 1]
     return dpc[-1][1:]
