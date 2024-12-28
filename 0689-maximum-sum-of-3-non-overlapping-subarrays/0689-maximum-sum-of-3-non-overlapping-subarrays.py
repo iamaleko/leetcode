@@ -7,15 +7,14 @@ class Solution:
     dp = [[(0,0),(0,0,0),(0,0,0,0)]] * len(nums)
     dp[k - 1][0] = (nums[k - 1], 0)
     for r in range(k, len(nums)):
-      curr = dp[r] = dp[r - 1][:]
+      dp[r] = dp[r - 1][:]
       l = r - k + 1
       a = nums[r] - nums[l - 1] if l else nums[r]
-      if curr[0][0] < a: curr[0] = (a, l)
+      if dp[r][0][0] < a: dp[r][0] = (a, l)
       if l > k - 1:
-        prev = dp[l - 1]
-        b = prev[0][0] + a
-        if curr[1][0] < b: curr[1] = (b, prev[0][1], l)
-        c = prev[1][0] + a
-        if curr[2][0] < c: curr[2] = (c, prev[1][1], prev[1][2], l)
+        b = dp[l - 1][0][0] + a
+        if dp[r][1][0] < b: dp[r][1] = (b, dp[l - 1][0][1], l)
+        c = dp[l - 1][1][0] + a
+        if dp[r][2][0] < c: dp[r][2] = (c, dp[l - 1][1][1], dp[l - 1][1][2], l)
       
     return dp[-1][2][1:]
