@@ -4,17 +4,17 @@ class Solution:
     for i in range(1, len(nums)):
       nums[i] += nums[i - 1]
     # dp
-    dp = [[(0,0),(0,0,0),(0,0,0,0)]] * len(nums)
-    dp[k - 1][0] = (nums[k - 1], 0)
+    dpa = [(0,0)] * len(nums)
+    dpb = [(0,0,0)] * len(nums)
+    dpc = [(0,0,0,0)] * len(nums)
+    dpa[k - 1] = (nums[k - 1], 0)
     for r in range(k, len(nums)):
-      dp[r] = dp[r - 1][:]
       l = r - k + 1
       a = nums[r] - nums[l - 1] if l else nums[r]
-      if dp[r][0][0] < a: dp[r][0] = (a, l)
-      if l > k - 1:
-        b = dp[l - 1][0][0] + a
-        if dp[r][1][0] < b: dp[r][1] = (b, dp[l - 1][0][1], l)
-        c = dp[l - 1][1][0] + a
-        if dp[r][2][0] < c: dp[r][2] = (c, dp[l - 1][1][1], dp[l - 1][1][2], l)
-      
-    return dp[-1][2][1:]
+      dpa[r] = (a, l) if dpa[r - 1][0] < a else dpa[r - 1]
+      if l >= k:
+        b = dpa[l - 1][0] + a
+        dpb[r] = (b, dpa[l - 1][1], l) if dpb[r - 1][0] < b else dpb[r - 1]
+        c = dpb[l - 1][0] + a
+        dpc[r] = (c, dpb[l - 1][1], dpb[l - 1][2], l) if dpc[r - 1][0] < c else dpc[r - 1]
+    return dpc[-1][1:]
