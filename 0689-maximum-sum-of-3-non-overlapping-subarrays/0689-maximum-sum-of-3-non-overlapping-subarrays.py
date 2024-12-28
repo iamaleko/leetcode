@@ -6,9 +6,9 @@ class Solution:
     dpa[k - 1] = (nums[k - 1], 0)
     for r in range(k, n):
       rr, ll, l = r - 1, r - k, r - k + 1
-      a = nums[r] - nums[ll] if l else nums[r]
-      dpa[r] = (a, l) if dpa[rr][0] < a else dpa[rr]
+      s = nums[r] - nums[ll] if l else nums[r]
+      dpa[r] = (s, l) if dpa[rr][0] < s else dpa[rr]
       if l >= k:
-        dpb[r] = (dpa[ll][0] + a, dpa[ll][1], l) if dpb[rr][0] < dpa[ll][0] + a else dpb[rr]
-        dpc[r] = (dpb[ll][0] + a, dpb[ll][1], dpb[ll][2], l) if dpc[rr][0] < dpb[ll][0] + a else dpc[rr]
+        dpb[r] = (dpa[ll][0] + s, dpa[ll][1], l) if dpb[rr][0] < dpa[ll][0] + s else dpb[rr]
+        dpc[r] = (dpb[ll][0] + s, dpb[ll][1], dpb[ll][2], l) if dpc[rr][0] < dpb[ll][0] + s else dpc[rr]
     return dpc[-1][1:]
