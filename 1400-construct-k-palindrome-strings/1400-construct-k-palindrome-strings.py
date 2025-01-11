@@ -2,11 +2,8 @@ class Solution:
   def canConstruct(self, s: str, k: int) -> bool:
     if len(s) < k: return False
     m = 0
-    for b in bytes(s, 'utf-8'):
-      m ^= 1 << b
-    while m:
-      k -= 1
-      m &= m - 1
+    for b in bytes(s, 'utf-8'): m ^= 1 << b
+    while m: k, m = k - 1, m & m - 1
     return k >= 0
 
 # class Solution:
