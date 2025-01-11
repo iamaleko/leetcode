@@ -3,7 +3,7 @@ class Solution:
     if len(s) < k: return False
     m = 0
     for b in bytes(s, 'utf-8'):
-      m ^= 1 << b - 97
+      m ^= 1 << b
     while m:
       k -= 1
       m &= m - 1
