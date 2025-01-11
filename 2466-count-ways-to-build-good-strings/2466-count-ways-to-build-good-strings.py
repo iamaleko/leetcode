@@ -3,5 +3,5 @@ class Solution:
     ans, dp = 0, [1] + [0] * (high)
     for i in range(1, high + 1):
       dp[i] = (0 if i - zero < 0 else dp[i - zero]) + (0 if i - one < 0 else dp[i - one])
-      if low <= i <= high: ans = (ans + dp[i]) % int(1e9 + 7)
-    return ans
+      if low <= i <= high: ans += dp[i]
+    return ans % int(1e9 + 7)
