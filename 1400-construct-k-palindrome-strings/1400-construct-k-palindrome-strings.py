@@ -2,8 +2,11 @@ class Solution:
   def canConstruct(self, s: str, k: int) -> bool:
     if len(s) < k: return False
     m = 0
-    for ch in s: m ^= 1 << ord(ch) - 97
-    while m: m, k = m & m - 1, k - 1
+    for ch in s:
+      m ^= 1 << ord(ch) - 97
+    while m:
+      k -= 1
+      m &= m - 1
     return k >= 0
 
 # class Solution:
