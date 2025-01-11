@@ -8,8 +8,7 @@
 
 class Solution:
   def canConstruct(self, s: str, k: int) -> bool:
-    if len(s) >= k:
-      for v in Counter(s).values(): k -= v & 1
-      return k >= 0
-    return False
+    if len(s) < k: k = -1
+    for v in Counter(s).values(): k -= v & 1
+    return k >= 0
         
