@@ -9,9 +9,7 @@
 class Solution:
   def canConstruct(self, s: str, k: int) -> bool:
     if len(s) >= k:
-      for v in Counter(s).values():
-        if v & 1 and (k := k - 1) < 0: break
-      else:
-        return True
+      for v in Counter(s).values(): k -= v & 1
+      return k >= 0
     return False
         
