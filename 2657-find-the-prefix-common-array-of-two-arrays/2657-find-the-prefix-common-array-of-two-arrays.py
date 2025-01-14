@@ -1,15 +1,15 @@
 class Solution:
   def findThePrefixCommonArray(self, a: List[int], b: List[int]) -> List[int]:
-    s, ans = set(), 0
+    s, ans = [0] * 51, 0
     for i in range(len(a)):
-      if a[i] in s:
+      if s[a[i]]:
         ans += 1
       else:
-        s.add(a[i])
-      if b[i] in s:
+        s[a[i]] = 1
+      if s[b[i]]:
         ans += 1
       else:
-        s.add(b[i])
+        s[b[i]] = 1
       a[i] = ans
     return a
         
