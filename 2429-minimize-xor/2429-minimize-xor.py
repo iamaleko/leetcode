@@ -6,7 +6,7 @@ class Solution:
       num2 &= num2 - 1
     while p and b:
       if 1 << b == p:
-        return n | (p - 1)
+        return n | p - 1
       p >>= 1
       if num1 & p:
         b -= 1
