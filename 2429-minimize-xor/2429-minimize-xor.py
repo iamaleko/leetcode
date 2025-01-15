@@ -5,9 +5,11 @@ class Solution:
       b += 1
       num2 &= num2 - 1
     while p and b:
+      if b == p:
+        return n | (1 << p) - 1
       p -= 1
-      if num1 & (1 << p) or b == p + 1:
+      if num1 & 1 << p:
         b -= 1
-        n |= (1 << p)
+        n |= 1 << p
     return n
         
