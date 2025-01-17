@@ -7,6 +7,5 @@
 
 class Solution:
   def doesValidArrayExist(self, derived: List[int]) -> bool:
-    xor = 0
-    for num in derived: xor ^= num
+    xor = reduce(lambda a, b: a ^ b, derived)
     return xor ^ 0 == 0 or xor ^ 1 == 1
