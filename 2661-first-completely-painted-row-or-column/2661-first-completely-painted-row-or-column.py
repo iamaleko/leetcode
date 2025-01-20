@@ -4,7 +4,7 @@ class Solution:
     w = len(mat[0])
     cols = [0] * w
     rows = [0] * h
-    indx = {}
+    indx = [None] + [None] * w * h
     for y in range(h):
       for x in range(w):
         indx[mat[y][x]] = (y, x)
