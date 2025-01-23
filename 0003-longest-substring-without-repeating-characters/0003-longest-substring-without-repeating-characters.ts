@@ -1,13 +1,11 @@
 function lengthOfLongestSubstring(s: string): number {
-  if (!s.length) return 0;
-  const map: Record<string, number> = {};
-  let max = 1, l = 0, r = 0;
-  for (let c of s) {
-    if (c in map && map[c] >= l) {
-      max = Math.max(max, r - l);
-      l = map[c] + 1;
+  let ans = -1;
+  for (let set = new Set<string>(), l = 0, r = 0; r < s.length; r++) {
+    while (set.has(s[r])) set.delete(s[l++])
+    set.add(s[r])
+    if (ans < r - l) {
+      ans = r - l;
     }
-    map[c] = r++;
   }
-  return Math.max(max, r - l);
+  return ans + 1;
 };
