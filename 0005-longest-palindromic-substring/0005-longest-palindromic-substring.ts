@@ -7,14 +7,12 @@ function bubbleFromCenter(s: string, left: number, right: number): string {
 }
 
 function longestPalindrome(s: string): string {
-  let ans = '';
-    
+  let ans = ''; 
   for (let i = 0; i < s.length; i++) {
     const a = bubbleFromCenter(s, i, i),
           b = bubbleFromCenter(s, i, i + 1),
           t = a.length > b.length ? a : b;
     if(t.length > ans.length) ans = t
   }
-
   return ans
 };
