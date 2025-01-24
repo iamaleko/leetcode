@@ -1,25 +1,23 @@
 class Solution:
   def eventualSafeNodes(self, graph: List[List[int]]) -> List[int]:
-    terminal = set()
+    terminal = deque()
     rev = defaultdict(set)
-    for node, neighbors in enumerate(graph):
-      if len(neighbors):
-        for neighbor in neighbors:
-          rev[neighbor].add(node)
+    for node, outnodes in enumerate(graph):
+      if len(outnodes):
+        for outnode in outnodes:
+          rev[outnode].add(node)
       else:
-        terminal.add(node)
-    ans = terminal.copy()
+        terminal.append(node)
+    ans = set(terminal)
     while terminal:
-      safe = set()
-      for node in terminal:
-        for innode in rev[node]:
-          for outnode in graph[innode]:
-            if outnode not in ans:
-              break
-          else:
+      node = terminal.popleft()
+      for innode in rev[node]:
+        for outnode in graph[innode]:
+          if outnode not in ans:
+            break
+        else:
+          if innode not in ans:
             ans.add(innode)
-            safe.add(innode)
-      terminal = safe
+            terminal.append(innode)
     return sorted(list(ans))
-
         
