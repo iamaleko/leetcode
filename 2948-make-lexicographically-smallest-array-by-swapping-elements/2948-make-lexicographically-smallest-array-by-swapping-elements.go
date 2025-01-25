@@ -13,7 +13,8 @@ func lexicographicallySmallestArray(nums []int, limit int) []int {
     if num - groups[j][len(groups[j]) - 1] <= limit {
       groups[j] = append(groups[j], num)
     } else {
-      j, groups = j + 1, append(groups, []int{ num })
+      groups = append(groups, []int{ num })
+      j++
     }
     index[num] = j
   }
