@@ -6,18 +6,18 @@ func lexicographicallySmallestArray(nums []int, limit int) []int {
   // split into backward sorted groups and build group index
   sorted := slices.Clone(nums)
   slices.Sort(sorted)
-  groups := [][]int{{ sorted[0] }}
   index := map[int]int{ sorted[0]: 0 }
+  groups := [][]int{{ sorted[0] }}
   for _, num := range sorted[1:] {
-    j := len(groups) - 1
-    if num - groups[j][len(groups[j]) - 1] <= limit {
-      groups[j] = append(groups[j], num)
+    group := &groups[len(groups) - 1]
+    if num - (*group)[len(*group) - 1] <= limit {
+      *group = append(*group, num)
     } else {
       groups = append(groups, []int{ num })
-      j++
     }
-    index[num] = j
+    index[num] = len(groups) - 1
   }
+  fmt.Println(groups)
 
   // replace elements in input array
   for i, num := range nums {
