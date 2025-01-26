@@ -1,7 +1,6 @@
 func intToRoman(num int) string {
   ans := ""
-  for num != 0 {
-    for _, s := range []struct{
+  st := []struct{
       Val int
       Str string
     } {
@@ -18,7 +17,9 @@ func intToRoman(num int) string {
       {5, "V"},
       {4, "IV"},
       {1, "I"},
-    } {
+    }
+  for num != 0 {
+    for _, s := range st {
       if num >= s.Val {
         num -= s.Val
         ans += s.Str
