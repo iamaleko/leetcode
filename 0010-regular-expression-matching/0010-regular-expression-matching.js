@@ -1,5 +1,6 @@
 const isMatch = (s, p) => {
     // tokenize pattern, remove duplicates
+	  // ba*a*. -> [ { char: 'b', count: 1 }, { char: 'a', count: null }, { char: null, count: 1 }, ... ]
     const tokens = [];
     for (let i = 0, j = -1; i < p.length; ++i) {
         const char = p[i] === '.' ? null : p[i];
