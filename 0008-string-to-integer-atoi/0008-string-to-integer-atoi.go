@@ -1,5 +1,5 @@
 import (
-  "fmt"
+  "math"
 )
 func myAtoi(s string) int {
   const Space, Plus, Minus rune = 32, 43, 45
@@ -17,10 +17,10 @@ func myAtoi(s string) int {
       ans *= 10
       ans += digit
       empty = false
-      if ans * sign < -1 << 31 {
-        return -1 << 31
-      } else if ans * sign > (1 << 31) - 1 {
-        return (1 << 31) - 1
+      if ans * sign < math.MinInt32 {
+        return math.MinInt32
+      } else if ans * sign > math.MaxInt32 {
+        return math.MaxInt32
       }
     } else {
       break
