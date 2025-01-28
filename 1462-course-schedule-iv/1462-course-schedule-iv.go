@@ -5,11 +5,9 @@ import (
 func flatten(node int, graph map[int]map[int]bool, flattened map[int]bool) map[int]bool {
   ancestors, ok := graph[node]
   if ok && !flattened[node] {
-    extension := map[int]bool{}
-    for ancestor := range ancestors {
-      maps.Insert(extension, maps.All(flatten(ancestor, graph, flattened)))
+    for ancestor := range maps.Keys(ancestors) {
+      maps.Insert(ancestors, maps.All(flatten(ancestor, graph, flattened)))
     }
-    maps.Insert(ancestors, maps.All(extension))
     flattened[node] = true   
   }
   return ancestors
