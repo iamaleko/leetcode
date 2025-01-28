@@ -6,7 +6,10 @@ func flatten(node int, graph *map[int]map[int]bool, flattened *map[int]bool) *ma
   ancestors := (*graph)[node]
   if !(*flattened)[node] {
     for ancestor := range maps.Keys(ancestors) {
-      maps.Insert(ancestors, maps.All(*flatten(ancestor, graph, flattened)))
+      for key := range maps.Keys(*flatten(ancestor, graph, flattened)) {
+        ancestors[key] = true
+      }
+      // maps.Insert(ancestors, maps.All(*flatten(ancestor, graph, flattened)))
     }
     (*flattened)[node] = true   
   }
