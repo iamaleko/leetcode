@@ -3,18 +3,16 @@ import (
 )
 
 func flatten(node int, graph map[int]map[int]bool, flattened map[int]bool) map[int]bool {
-  subnodes, ok := graph[node]
-  if ok {
-    if _, ok := flattened[node]; !ok {
-      extend := map[int]bool{}
-      for subnode := range subnodes {
-        maps.Insert(extend, maps.All(flatten(subnode, graph, flattened)))
-      }
-      maps.Insert(subnodes, maps.All(extend))
-      flattened[node] = true   
+  ancestors, ok := graph[node]
+  if ok && !flattened[node] {
+    extension := map[int]bool{}
+    for ancestor := range ancestors {
+      maps.Insert(extension, maps.All(flatten(ancestor, graph, flattened)))
     }
+    maps.Insert(ancestors, maps.All(extension))
+    flattened[node] = true   
   }
-  return subnodes
+  return ancestors
 }
 
 func checkIfPrerequisite(numCourses int, prerequisites [][]int, queries [][]int) []bool {
