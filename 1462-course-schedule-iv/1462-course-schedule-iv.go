@@ -3,14 +3,13 @@ import (
 )
 
 func flatten(node int, graph map[int]map[int]bool, flattened map[int]bool) map[int]bool {
-  ancestors, ok := graph[node]
-  if ok && !flattened[node] {
-    for ancestor := range maps.Keys(ancestors) {
-      maps.Insert(ancestors, maps.All(flatten(ancestor, graph, flattened)))
+  if !flattened[node] {
+    for ancestor := range maps.Keys(graph[node]) {
+      maps.Insert(graph[node], maps.All(flatten(ancestor, graph, flattened)))
     }
     flattened[node] = true   
   }
-  return ancestors
+  return graph[node]
 }
 
 func checkIfPrerequisite(numCourses int, prerequisites [][]int, queries [][]int) []bool {
