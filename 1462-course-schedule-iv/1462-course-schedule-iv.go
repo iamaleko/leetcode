@@ -17,17 +17,6 @@ func flatten(node int, graph map[int]map[int]bool, flattened map[int]bool) map[i
   return subnodes
 }
 
-func query(node int, target int, graph map[int]map[int]bool, flattened map[int]bool) bool {
-  nodes, ok := graph[node]
-  if !ok {
-    return false
-  }
-  if _, ok := flattened[node]; !ok {
-    flatten(node, graph, flattened)
-  }
-  return nodes[target]
-}
-
 func checkIfPrerequisite(numCourses int, prerequisites [][]int, queries [][]int) []bool {
   // build graph 
   graph := map[int]map[int]bool{}
@@ -44,8 +33,12 @@ func checkIfPrerequisite(numCourses int, prerequisites [][]int, queries [][]int)
   ans := []bool{}
   flattened := map[int]bool{}
   for _, pair := range queries {
-    ans = append(ans, query(pair[1], pair[0], graph, flattened))
+    if _, ok := graph[pair[1]]; ok {
+      ans = append(ans, flatten(pair[1], graph, flattened)[pair[0]])
+    } else {
+      ans = append(ans, false)
+    }
   }
-  // fmt.Println(flattened, graph)
+
   return ans
 }
