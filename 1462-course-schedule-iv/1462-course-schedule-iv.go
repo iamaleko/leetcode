@@ -2,14 +2,14 @@ import (
   "maps"
 )
 
-func flatten(node int, graph map[int]map[int]bool, flattened map[int]bool) map[int]bool {
-  if !flattened[node] {
-    for ancestor := range maps.Keys(graph[node]) {
-      maps.Insert(graph[node], maps.All(flatten(ancestor, graph, flattened)))
+func flatten(node int, graph *map[int]map[int]bool, flattened *map[int]bool) map[int]bool {
+  if !(*flattened)[node] {
+    for ancestor := range maps.Keys((*graph)[node]) {
+      maps.Insert((*graph)[node], maps.All(flatten(ancestor, graph, flattened)))
     }
-    flattened[node] = true   
+    (*flattened)[node] = true   
   }
-  return graph[node]
+  return (*graph)[node]
 }
 
 func checkIfPrerequisite(numCourses int, prerequisites [][]int, queries [][]int) []bool {
@@ -29,7 +29,7 @@ func checkIfPrerequisite(numCourses int, prerequisites [][]int, queries [][]int)
   flattened := map[int]bool{}
   for i, pair := range queries {
     node, target := pair[1], pair[0]
-    ans[i] = flatten(node, graph, flattened)[target]
+    ans[i] = flatten(node, &graph, &flattened)[target]
   }
 
   return ans
