@@ -30,13 +30,13 @@ func checkIfPrerequisite(numCourses int, prerequisites [][]int, queries [][]int)
   }
 
   // perform queries and flatten graph
-  ans := []bool{}
+  ans := make([]bool, len(queries))
   flattened := map[int]bool{}
-  for _, pair := range queries {
+  for i, pair := range queries {
     if _, ok := graph[pair[1]]; ok {
-      ans = append(ans, flatten(pair[1], graph, flattened)[pair[0]])
+      ans[i] = flatten(pair[1], graph, flattened)[pair[0]]
     } else {
-      ans = append(ans, false)
+      ans[i] = false
     }
   }
 
