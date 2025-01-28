@@ -21,10 +21,11 @@ func checkIfPrerequisite(numCourses int, prerequisites [][]int, queries [][]int)
   // build graph 
   graph := map[int]map[int]bool{}
   for _, pair := range prerequisites {
-    if nodes, ok := graph[pair[1]]; ok {
-      nodes[pair[0]] = true
+    node, target := pair[1], pair[0]
+    if nodes, ok := graph[node]; ok {
+      nodes[target] = true
     } else {
-      graph[pair[1]] = map[int]bool{ pair[0]: true }
+      graph[node] = map[int]bool{ target: true }
     }
   }
 
@@ -32,8 +33,9 @@ func checkIfPrerequisite(numCourses int, prerequisites [][]int, queries [][]int)
   ans := make([]bool, len(queries))
   flattened := map[int]bool{}
   for i, pair := range queries {
-    if _, ok := graph[pair[1]]; ok {
-      ans[i] = flatten(pair[1], graph, flattened)[pair[0]]
+    node, target := pair[1], pair[0]
+    if _, ok := graph[node]; ok {
+      ans[i] = flatten(node, graph, flattened)[target]
     } else {
       ans[i] = false
     }
