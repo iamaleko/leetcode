@@ -5,32 +5,33 @@
 const threeSum = (nums) => {
   if (nums.length < 3) return [];
 
+  nums.sort((a,b) => a - b);
+
   // remove duplicates
-  const map = new Map();
   const arr = [];
+  let last, repeats = 0;
   for (const num of nums) {
-    const saved = map.get(num);
-    if (saved && saved < 3) {
-      map.set(num, saved + 1);
-      arr.push(num);
-    } else if (saved === undefined) {
-      map.set(num, 1);
+    if (last === num) {
+      if (++repeats < 3) arr.push(num);
+    } else {
+      last = num;
+      repeats = 0;
       arr.push(num);
     }
   }
-  nums = arr.sort();
+  nums = arr;
 
   // find triplets
-  map.clear();
+  const map = new Map();
   let a = 0, b, c;
   while (a < nums.length - 2) {
     b = a + 1;
     while (b < nums.length - 1) {
       c = b + 1;
-      while (c < nums.length) {
+      while (c < nums.length && c >= nums[a] + nums[b]) {
         if (nums[a] + nums[b] + nums[c] === 0) {
           const triplet = [nums[a],nums[b],nums[c]];
-          map.set(triplet.join(' '), triplet);
+          map.set(triplet.join(''), triplet);
         }
         ++c;
       }
