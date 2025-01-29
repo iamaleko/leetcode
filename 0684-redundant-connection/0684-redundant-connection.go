@@ -22,11 +22,11 @@ func buildGraph(edges [][]int) map[int]map[int]bool {
   return graph
 }
 
-func first[T any](it iter.Seq[T]) T {
+func first[T any](it iter.Seq[T]) *T {
   next, stop := iter.Pull(it)
   defer stop()
   el, _ := next()
-  return el
+  return &el
 }
 
 func trimGraph(graph map[int]map[int]bool) {
@@ -40,7 +40,7 @@ func trimGraph(graph map[int]map[int]bool) {
     ln := len(leafs) - 1
     leaf := leafs[ln]
     leafs = leafs[:ln]
-    node := first[int](maps.Keys(graph[leaf]))
+    node := *first[int](maps.Keys(graph[leaf]))
     delete(graph[node], leaf)
     if len(graph[node]) == 1 {
       leafs = append(leafs, node)
