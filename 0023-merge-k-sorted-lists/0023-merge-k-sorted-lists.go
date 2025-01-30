@@ -42,12 +42,12 @@ func mergeKLists(lists []*ListNode) *ListNode {
   tail := head
   for h.Len() > 0 {
     node := heap.Pop(h).(*ListNode)
-    tail.Next = node
-    tail = tail.Next
     if node.Next != nil {
       heap.Push(h, node.Next)
       node.Next = nil
     }
+    tail.Next = node
+    tail = node
 	}
 	return head.Next
 }
