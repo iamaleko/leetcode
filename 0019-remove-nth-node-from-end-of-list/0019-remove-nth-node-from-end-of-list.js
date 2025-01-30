@@ -1,19 +1,10 @@
 const removeNthFromEnd = (head, n) => {
-    let f = head, s = null;
-    
-    while (f.next) {
-        if (n === 1) {
-            s = s === null ? head : s.next;
-        } else {
-            --n;
-        }
-        f = f.next;
-    }
-    
-    if (s === null) {
-        return head.next;
-    } else {
-        s.next = s.next.next;
-        return head;
-    }
+  head = new ListNode(0, head);
+  let node = head, prev = head;
+  while (node.next) {
+    n ? n-- : prev = prev.next;
+    node = node.next;
+  }
+  prev.next = prev.next.next;
+  return head.next;
 };
