@@ -3,19 +3,24 @@ import (
 )
 
 func generateParenthesis(n int) []string {
-  var gen func(available int, s string, opened int) []string
-  gen = func(available int, s string, opened int) []string {
+  var gen func(available int, s []rune, opened int) [][]rune
+  gen = func(available int, s []rune, opened int) [][]rune {
     if opened > 0 && available > 0 {
       return slices.Concat(
-          gen(available - 1, s + "(", opened + 1),
-          gen(available, s + ")", opened - 1),
+          gen(available - 1, append(s, '('), opened + 1),
+          gen(available, append(slices.Clone(s), ')'), opened - 1),
       )
     } else if opened > 0 {
-      return gen(available, s + ")", opened - 1)
+      return gen(available, append(s, ')'), opened - 1)
     } else if available > 0 {
-      return gen(available - 1, s + "(", opened + 1)
+      return gen(available - 1, append(s, '('), opened + 1)
     }
-    return []string{ s }
+    return [][]rune{ s }
   }
-  return gen(n, "", 0)
+  ans := []string{}
+  rns := gen(n, []rune{}, 0)
+  for _, rns := range rns {
+    ans = append(ans, string(rns))
+  }
+  return ans
 }
