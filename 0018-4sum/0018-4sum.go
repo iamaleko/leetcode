@@ -2,12 +2,9 @@ import (
   "slices"
 )
 
-// type Tree map[int]Tree
-
 func fourSum(nums []int, target int) [][]int {
   slices.Sort(nums)
   ans := [][]int{}
-  // tree := Tree{}
   n := len(nums)
   for a := 0; a < n - 3; a++ {
     if a > 0 && nums[a] == nums[a-1] { continue }
@@ -19,14 +16,10 @@ func fourSum(nums []int, target int) [][]int {
           if d > c+1 && nums[d] == nums[d-1] { continue }
           if nums[a] + nums[b] + nums[c] + nums[d] == target {
             ans = append(ans, []int{nums[a], nums[b], nums[c], nums[d]})
-            // if _, ok := tree[a][b][c][d]; !ok {
-            //   fmt.Println(a,b,c,d)
-            // }
           }
         }
       }
     }
   }
- 
   return ans
 }
