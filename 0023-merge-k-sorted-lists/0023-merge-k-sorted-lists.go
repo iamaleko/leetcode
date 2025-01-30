@@ -1,5 +1,5 @@
 import (
-  "slices"
+	"slices"
 	"container/heap"
 )
 
@@ -34,20 +34,19 @@ func (h *ListNodeHeap) Push(v any) {
  * }
  */
 func mergeKLists(lists []*ListNode) *ListNode {
-  lists = slices.DeleteFunc(lists, func(el *ListNode) bool { return el == nil })
-  var h = new(ListNodeHeap)
-  *h = ListNodeHeap(lists)
+	lists = slices.DeleteFunc(lists, func(el *ListNode) bool { return el == nil })
+	var h = new(ListNodeHeap)
+	*h = ListNodeHeap(lists)
 	heap.Init(h)
 	head := &ListNode{}
-  tail := head
-  for h.Len() > 0 {
-    node := heap.Pop(h).(*ListNode)
-    if node.Next != nil {
-      heap.Push(h, node.Next)
-      node.Next = nil
-    }
-    tail.Next = node
-    tail = node
+	tail := head
+	for h.Len() > 0 {
+		node := heap.Pop(h).(*ListNode)
+		if node.Next != nil {
+			heap.Push(h, node.Next)
+		}
+		tail.Next = node
+		tail = node
 	}
 	return head.Next
 }
