@@ -7,14 +7,8 @@ func fourSum(nums []int, target int) [][]int {
   ans := [][]int{}
   n := len(nums)
   if n > 3 {
-    for i := range n {
-      if nums[0] + nums[1] + nums[2] + nums[i] > target {
-        nums = nums[:i]
-        n = i
-        break
-      }
-    }
     for a := 0; a < n - 3; a++ {
+      if nums[a] + nums[a+1] + nums[a+2] + nums[a+3] > target { break }
       if a == 0 || nums[a] != nums[a-1] {
         for b := a + 1; b < n - 2; b++ {
           if b == a + 1 || nums[b] != nums[b-1] {
