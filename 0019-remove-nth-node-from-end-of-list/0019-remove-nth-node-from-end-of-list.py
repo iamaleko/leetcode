@@ -13,7 +13,6 @@ class Solution:
       else:
         prev = prev.next
       node = node.next
-    if prev.next:
-      prev.next = prev.next.next
+    prev.next = prev.next.next
     return head.next
         
