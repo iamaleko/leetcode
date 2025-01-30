@@ -18,6 +18,7 @@ func fourSum(nums []int, target int) [][]int {
       if nums[a] + nums[a+1] + nums[a+2] + nums[a+3] > target { break }
       if a == 0 || nums[a] != nums[a-1] {
         for b := a + 1; b < n - 2; b++ {
+          if nums[a] + nums[b] + nums[b+1] + nums[b+2] > target { break }
           if b == a + 1 || nums[b] != nums[b-1] {
             for c := b + 1; c < n - 1; c++ {
               if c == b + 1 || nums[c] != nums[c-1] {
