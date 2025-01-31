@@ -1,26 +1,20 @@
 func canBeValid(s string, locked string) bool {
   index, stack, locks := []int{}, []bool{}, []rune(locked)
-  inp, stp := 0, 0
   for i, rn := range []rune(s) {
     if locks[i] == '0' {
       stack = append(stack, false)
-      stp++
     } else if rn == ')' {
-      if stp == 0 {
+      if len(stack) == 0 {
         return false
       }
-      if inp > 0 {
-        inp--
-        stack[index[inp]] = false
-        index = index[:inp]
+      if len(index) > 0 {
+        stack[index[len(index)-1]] = false
+        index = index[:len(index)-1]
       }
-      stp--
-      stack = stack[:stp]
+      stack = stack[:len(stack)-1]
     } else {
+      index = append(index, len(stack))
       stack = append(stack, true)
-      index = append(index, stp)
-      stp++
-      inp++
     }
   }
   opened, balanced := 0, true
