@@ -1,6 +1,6 @@
 func minimumLength(s string) int {
   count, ans := [26]int{}, 0
-  for _, rn := range []rune(s) {
+  for _, rn := range s {
     count[rn - 'a']++
   }
   for _, n := range count {
