@@ -1,10 +1,12 @@
 func minimumLength(s string) int {
-  count := map[rune]int{}
-  for _, rn := range []rune(s) { count[rn]++ }
+  count := [26]int{}
+  for _, rn := range []rune(s) { count[rn - 'a']++ }
   ans := len(s)
   for _, n := range count {
-    ans -= n - 1
-    if n & 1 == 0 { ans++ }
+    if n > 2 {
+      ans -= n - 1
+      if n & 1 == 0 { ans++ }
+    }
   }
   return ans
 }
