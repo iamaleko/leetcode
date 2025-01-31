@@ -8,9 +8,9 @@ class Solution:
 
   def largestIsland(self, grid: List[List[int]]) -> int:
     self.grid = grid
+    self.sizes = defaultdict(int)
     island, blank, ans = 2, 0, 0
     self.n = len(grid)
-    self.sizes = [0] * (self.n ** 2 + 2)
 
     # find islands
     for y in range(self.n):
