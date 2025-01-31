@@ -47,7 +47,7 @@ func largestIsland(grid [][]int) int {
 					for _, offset := range offsets {
 						yo, xo := y+offset.Y, x+offset.X
 						if yo > -1 && yo < n && xo > -1 && xo < n && grid[yo][xo] > 0 &&
-              addedIslandIds[grid[yo][xo]] == false {
+							addedIslandIds[grid[yo][xo]] == false {
 							joinedSize += islandSizes[grid[yo][xo]]
 							addedIslandIds[grid[yo][xo]] = true
 						}
