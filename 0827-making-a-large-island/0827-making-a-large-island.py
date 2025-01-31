@@ -15,11 +15,8 @@ class Solution:
           q = deque([(y, x)])
           while q:
             c, d = q.pop()
-            for a, b in [(c-1,d),(c+1,d),(c,d-1),(c,d+1)]:
-              if (
-                a >= 0 and a <= my and b >= 0 and b <= mx and
-                grid[a][b] == 1
-              ):
+            for a, b in [(c-1, d), (c+1, d), (c, d-1), (c,d+1)]:
+              if a >= 0 and a <= my and b >= 0 and b <= mx and grid[a][b] == 1:
                 size += 1
                 grid[a][b] = island
                 q.append((a, b))
@@ -34,11 +31,8 @@ class Solution:
         for x in range(mx+1):
           if grid[y][x] == 0:
             size, added = 1, set()
-            for a, b in [(y-1,x),(y+1,x),(y,x-1),(y,x+1)]:
-              if (
-                a >= 0 and a <= my and b >= 0 and b <= mx and
-                grid[a][b] and grid[a][b] not in added
-              ):
+            for a, b in [(y-1, x), (y+1, x), (y, x-1), (y, x+1)]:
+              if a >= 0 and a <= my and b >= 0 and b <= mx and grid[a][b] and grid[a][b] not in added:
                 size += sizes[grid[a][b]]
                 added.add(grid[a][b])
             if size > ans: ans = size
