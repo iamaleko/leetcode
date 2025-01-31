@@ -28,11 +28,11 @@ class Solution:
       for y in range(n):
         for x in range(n):
           if grid[y][x] == 0:
-            size, added = 1, set()
+            size = {}
             for a, b in [(y-1, x), (y+1, x), (y, x-1), (y, x+1)]:
-              if a > -1 and a < n and b > -1 and b < n and grid[a][b] and grid[a][b] not in added:
-                size += sizes[grid[a][b]]
-                added.add(grid[a][b])
+              if a > -1 and a < n and b > -1 and b < n and grid[a][b]:
+                size[grid[a][b]] = sizes[grid[a][b]]
+            size = sum(size.values()) + 1
             if size > ans: ans = size
 
     return ans
