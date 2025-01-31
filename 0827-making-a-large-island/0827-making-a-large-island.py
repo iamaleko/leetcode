@@ -1,6 +1,6 @@
 class Solution:
   def largestIsland(self, grid: List[List[int]]) -> int:
-    sizes = defaultdict(int)
+    sizes = {}
     island, blank, ans = 2, 0, 0
     my, mx = len(grid)-1, len(grid[0])-1
 
@@ -24,7 +24,7 @@ class Solution:
                 grid[a][b] = island
                 q.append((a, b))
           sizes[island] = size
-          ans = max(ans, size)
+          if size > ans: ans = size
           island += 1
 
     # check connections
