@@ -3,6 +3,8 @@ func largestIsland(grid [][]int) int {
 	hasWater := false
 	ans := 0
 	n := len(grid)
+  type Offset struct{ Y, X int }
+  dir := []*Offset { &Offset{-1, 0}, &Offset{1, 0}, &Offset{0, -1}, &Offset{0, 1} }
 
 	// find islands
   yq, xq, p := []int{}, []int{}, -1
@@ -19,11 +21,12 @@ func largestIsland(grid [][]int) int {
 					y, x := yq[p], xq[p]
 					yq, xq = yq[:p], xq[:p]
 					p--
-					for _, cell := range []struct{ Y, X int }{{y - 1, x}, {y + 1, x}, {y, x - 1}, {y, x + 1}} {
-						if cell.Y > -1 && cell.Y < n && cell.X > -1 && cell.X < n && grid[cell.Y][cell.X] == 1 {
+					for _, offset := range dir {
+            yo, xo := y + offset.Y, x + offset.X
+						if yo > -1 && yo < n && xo > -1 && xo < n && grid[yo][xo] == 1 {
 							islandSize++
-							grid[cell.Y][cell.X] = islandId
-							yq, xq = append(yq, cell.Y), append(xq, cell.X)
+							grid[yo][xo] = islandId
+							yq, xq = append(yq, yo), append(xq, xo)
 							p++
 						}
 					}
