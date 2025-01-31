@@ -2,29 +2,21 @@ class Solution:
   def canBeValid(self, s, locked):
     index, stack = [], []
     for i in range(len(s)):
-      ch = s[i]
       if locked[i] == '0':
-        stack.append('')
-      elif ch == ')':
-        if not len(stack):
+        stack.append(False)
+      elif s[i] == ')':
+        if not stack:
           return False
-        if len(index):
-          stack.pop(index.pop())
-        else:
-          stack.pop()
+        stack.pop(index.pop() if index else -1)
       else:
         index.append(len(stack))
-        stack.append('(')
-    #   print(ch, stack)
-    # print(stack)
+        stack.append(True)
     opened, balanced = 0, True
-    for ch in stack:
-      if ch == '(':
+    for el in stack:
+      if el:
         opened += 1
-      elif ch == '':
-        if opened:
-          opened -= 1
-        else:
-          balanced = not balanced
-    # print(opened, balanced)
+      elif opened:
+        opened -= 1
+      else:
+        balanced = not balanced
     return opened == 0 and balanced
