@@ -1,34 +1,30 @@
 class Solution:
-    def canBeValid(self, s, locked):
-        length = len(s)
-
-        # If length of string is odd, return false.
-        if length % 2 == 1:
-            return False
-
-        open_brackets = []
-        unlocked = []
-
-        # Iterate through the string to handle '(' and ')'
-        for i in range(length):
-            if locked[i] == "0":
-                unlocked.append(i)
-            elif s[i] == "(":
-                open_brackets.append(i)
-            elif s[i] == ")":
-                if open_brackets:
-                    open_brackets.pop()
-                elif unlocked:
-                    unlocked.pop()
-                else:
-                    return False
-
-        # Match remaining open brackets and the unlocked characters
-        while open_brackets and unlocked and open_brackets[-1] < unlocked[-1]:
-            open_brackets.pop()
-            unlocked.pop()
-
-        if open_brackets:
-            return False
-
-        return True
+  def canBeValid(self, s, locked):
+    index, stack = [], []
+    for i in range(len(s)):
+      ch = s[i]
+      if locked[i] == '0':
+        stack.append('')
+      elif ch == ')':
+        if not len(stack):
+          return False
+        if len(index):
+          stack.pop(index.pop())
+        else:
+          stack.pop()
+      else:
+        index.append(len(stack))
+        stack.append('(')
+    #   print(ch, stack)
+    # print(stack)
+    opened, balanced = 0, True
+    for ch in stack:
+      if ch == '(':
+        opened += 1
+      elif ch == '':
+        if opened:
+          opened -= 1
+        else:
+          balanced = not balanced
+    # print(opened, balanced)
+    return opened == 0 and balanced
