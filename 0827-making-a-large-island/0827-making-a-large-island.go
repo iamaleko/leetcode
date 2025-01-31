@@ -5,6 +5,7 @@ func largestIsland(grid [][]int) int {
 	n := len(grid)
 
 	// find islands
+  yq, xq, p := []int{}, []int{}, -1
 	for y := range n {
 		for x := range n {
 			if grid[y][x] == 0 {
@@ -12,7 +13,8 @@ func largestIsland(grid [][]int) int {
 			} else if grid[y][x] == 1 {
 				islandSize := 1
 				grid[y][x] = islandId
-				yq, xq, p := []int{y}, []int{x}, 0
+				yq, xq = append(yq, y), append(xq, x)
+				p++
 				for p >= 0 {
 					y, x := yq[p], xq[p]
 					yq, xq = yq[:p], xq[:p]
