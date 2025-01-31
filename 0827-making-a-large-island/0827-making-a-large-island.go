@@ -27,9 +27,7 @@ func largestIsland(grid [][]int) int {
 					}
 				}
 				islandSizes[islandId] = islandSize
-				if islandSize > ans {
-					ans = islandSize
-				}
+        ans = max(ans, islandSize)
 				islandId += 1
 			}
 		}
@@ -49,9 +47,7 @@ func largestIsland(grid [][]int) int {
 							addedIslandIds[grid[cell.Y][cell.X]] = true
 						}
 					}
-					if joinedSize > ans {
-						ans = joinedSize
-					}
+          ans = max(ans, joinedSize)
 				}
 			}
 		}
