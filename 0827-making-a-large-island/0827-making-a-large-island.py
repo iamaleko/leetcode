@@ -10,7 +10,7 @@ class Solution:
         elif grid[y][x] == 1:
           size = 1
           grid[y][x] = island
-          q = deque([(y, x)])
+          q = [(y, x)]
           while q:
             c, d = q.pop()
             for a, b in [(c-1, d), (c+1, d), (c, d-1), (c, d+1)]:
@@ -34,5 +34,5 @@ class Solution:
                 size += sizes[grid[a][b]]
                 added.add(grid[a][b])
             if size > ans: ans = size
-            
+
     return ans
