@@ -6,9 +6,7 @@ function canBeValid(s: string, locked: string): boolean {
       stack.push(false);
     } else if (s[i] === ')') {
       if (!stack.length) return false;
-      if (index.length) {
-        stack[index.pop()] = false;
-      }
+      if (index.length) stack[index.pop()] = false;
       stack.pop();
     } else {
       index.push(stack.length);
