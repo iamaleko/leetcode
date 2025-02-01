@@ -7,7 +7,7 @@ function findSubstring(s: string, words: string[]): number[] {
   main: for (let i = 0, m = s.length - size * chunk; i <= m; i++) {
     const count = new Map();
     let found = 0;
-    for (let j = i; j < i + size * chunk; j += chunk) {
+    for (let j = i, m = i + size * chunk; j + chunk <= m; j += chunk) {
       const word = s.substr(j, chunk);
       const val = (count.get(word) ?? 0) + 1;
       if (val > (map.get(word) ?? 0)) continue main;
