@@ -5,10 +5,10 @@ function findSubstring(s: string, words: string[]): number[] {
   const ans: number[] = [];
   for (const word of words) map.set(word, (map.get(word) ?? 0) + 1)
   main: for (let i = 0, m = s.length - size * chunk; i <= m; i++) {
-    if (map.has(s.substr(i, chunk))) {
+    if (map.has(s.slice(i, i + chunk))) {
       const count = new Map();
       for (let j = i; j < i + size * chunk; j += chunk) {
-        const word = s.substr(j, chunk);
+        const word = s.slice(j, j + chunk);
         count.set(word, (count.get(word) ?? 0) + 1)
       }
       for (const [key, val] of map) {
