@@ -7,12 +7,12 @@ function findSubstring(s: string, words: string[]): number[] {
     word in map ? map[word]++ : map[word] = 1;
   }
   for (let i = 0; i <= (s.length - size * chunk); i++) {
-    if (s.substr(i, chunk) in map) {
+    if (map.hasOwnProperty(s.substr(i, chunk))) {
       const _map = {...map};
       let _size = size;
       for (let ii = i; ii < i + size * chunk; ii += chunk) {
         const _word = s.substr(ii,chunk);
-        if (_map[_word]) {
+        if (_map.hasOwnProperty(_word) && _map[_word]) {
           --_map[_word];
           --_size;
         } else {
