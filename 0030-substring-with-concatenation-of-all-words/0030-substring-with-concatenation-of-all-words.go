@@ -8,7 +8,6 @@ func findSubstring(s string, words []string) []int {
     count[word]++
   }
   for i, m := 0, len(s) - total * chunk; i <= m; i++ {
-    if count[s[i: i + chunk]] == 0 { continue }
     found = map[string]int{}
     added := 0
     for j, m := i, i + total * chunk - chunk; j <= m; j += chunk {
