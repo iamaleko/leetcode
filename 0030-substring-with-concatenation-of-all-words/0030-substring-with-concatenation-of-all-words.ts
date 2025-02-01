@@ -4,23 +4,17 @@ function findSubstring(s: string, words: string[]): number[] {
   const map = new Map<string, number>();
   const ans: number[] = [];
   for (const word of words) map.set(word, (map.get(word) ?? 0) + 1)
-  for (let i = 0; i <= (s.length - size * chunk); i++) {
+  main: for (let i = 0, m = s.length - size * chunk; i <= m; i++) {
     if (map.has(s.substr(i, chunk))) {
-      const _map = new Map(map);
-      let _size = size;
-      for (let ii = i; ii < i + size * chunk; ii += chunk) {
-        const _word = s.substr(ii,chunk);
-        const count = _map.get(_word);
-        if (count) {
-          _map.set(_word, count - 1);
-          --_size;
-        } else {
-          break;
-        }
+      const count = new Map();
+      for (let j = i; j < i + size * chunk; j += chunk) {
+        const word = s.substr(j, chunk);
+        count.set(word, (count.get(word) ?? 0) + 1)
       }
-      if (!_size) {
-        ans.push(i);
+      for (const [key, val] of map) {
+        if (count.get(key) !== val) continue main;
       }
+      ans.push(i);
     }
   }
   return ans;
