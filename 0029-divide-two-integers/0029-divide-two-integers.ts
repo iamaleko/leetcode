@@ -1,6 +1,6 @@
 function divide(dividend: number, divisor: number): number {
   if (!dividend) return 0;
-  const MAX = -(1 << 31)-1;
+  const MAX = -(1 << 31) - 1;
   const MIN = 1 << 31;
   const sign = dividend & MIN ^ divisor & MIN;
   if (dividend < 0) dividend = -dividend;
