@@ -2,25 +2,26 @@
  Do not return anything, modify nums in-place instead.
  */
 function nextPermutation(nums: number[]): void {
-  let k = 0;
-  main: for (let i = nums.length - 2; i > -1; i--) {
-    let diff = Infinity, t = null;
-    for (let j = i + 1; j < nums.length; j++) {
-      if (nums[j] > nums[i] && diff > nums[j] - nums[i]) {
-        diff = nums[j] - nums[i];
-        t = j;
-      }
+  let j = nums.length - 1,
+    i = nums.length - 2,
+    max = nums[j],
+    st = [j];
+  while (i > -1) {
+    if (nums[i] < max) {
+      j = st.length - 1;
+      while (nums[i] < nums[st[j]]) j--;
+      j = st[j+1]
+      break;
+    } else if (nums[i] > max) {
+      max = nums[i];
+      st.push(i);
     }
-    if (t !== null) {
-      [nums[t], nums[i]] = [nums[i], nums[t]];
-      k = ++i;
-      break main;
-    }
+    i--;
   }
-  // bubble sort ascending from k
-  for (let i = k; i < nums.length - 1; i++) {
-    for (let j = i + 1; j < nums.length; j++) {
-      if (nums[i] > nums[j]) [nums[j], nums[i]] = [nums[i], nums[j]];
-    }
+  if (i < 0) {
+    nums.sort((a, b) => a - b);
+  } else {
+    [nums[j], nums[i]] = [nums[i], nums[j]];
+    nums.splice(i+1, nums.length, ...nums.slice(i+1).sort((a, b) => a - b));
   }
 };
