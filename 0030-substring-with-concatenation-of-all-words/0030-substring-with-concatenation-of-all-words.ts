@@ -2,10 +2,11 @@ function findSubstring(s: string, words: string[]): number[] {
   const size = words.length;
   const chunk = words[0].length;
   const map = new Map<string, number>();
+  const count = new Map<string, number>();
   const ans: number[] = [];
   for (const word of words) map.set(word, (map.get(word) ?? 0) + 1)
   main: for (let i = 0, m = s.length - size * chunk; i <= m; i++) {
-    const count = new Map();
+    count.clear();
     let found = 0;
     for (let j = i, m = i + size * chunk; j + chunk <= m; j += chunk) {
       const word = s.substr(j, chunk);
