@@ -7,10 +7,10 @@ func combinationSum(candidates []int, target int) [][]int {
     arr = append(arr, candidates[pos])
 
     if sum == target {
-      ans = append(ans, arr)
+      ans = append(ans, slices.Clone(arr))
     } else {
       for pos < len(candidates) && candidates[pos] <= target - sum {
-        choose(pos, sum, slices.Clone(arr))
+        choose(pos, sum, arr)
         pos++
       }
     }
