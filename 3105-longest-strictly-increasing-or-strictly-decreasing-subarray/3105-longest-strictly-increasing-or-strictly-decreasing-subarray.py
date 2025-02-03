@@ -4,6 +4,7 @@ class Solution:
     for i in range(1, len(nums)):
       inc = inc + 1 if nums[i] > nums[i-1] else 1
       dec = dec + 1 if nums[i] < nums[i-1] else 1
-      ans = max(ans, inc, dec)
+      if inc > ans: ans = inc
+      if dec > ans: ans = dec
     return ans
         
