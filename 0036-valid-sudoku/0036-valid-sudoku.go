@@ -4,8 +4,8 @@ import (
 
 func isValidSudoku(board [][]byte) bool {
 	set := map[int]bool{}
-	for row := 0; row < len(board); row++ {
-		for col := 0; col < len(board); col++ {
+	for row := range 9 {
+		for col := range 9 {
 			val := int(rune(board[row][col]) - '0')
 			if val != -2 {
 				box := ((row / 3) * 3) + col/3
