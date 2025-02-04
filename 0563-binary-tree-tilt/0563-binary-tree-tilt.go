@@ -7,25 +7,25 @@
  * }
  */
 func findTilt(root *TreeNode) int {
-  var traverse func(node *TreeNode) (int, int)
-  traverse = func(node *TreeNode) (int, int) {
+  var traverse func(node *TreeNode) (float64, float64)
+  traverse = func(node *TreeNode) (float64, float64) {
     if node == nil {
       return 0, 0
     }
-    changedSum, nodeLeftValSum, nodeRightValSum := 0, 0, 0
+    var changedSum, leftValSum, rightValSum float64
     if node.Left != nil {
-      var nodeLeftChangedSum int
-      nodeLeftChangedSum, nodeLeftValSum = traverse(node.Left)
-      changedSum += nodeLeftChangedSum
+      var leftChangedSum float64
+      leftChangedSum, leftValSum = traverse(node.Left)
+      changedSum += leftChangedSum
     }
     if node.Right != nil {
-      var nodeRightChangedSum int
-      nodeRightChangedSum, nodeRightValSum = traverse(node.Right)
-      changedSum += nodeRightChangedSum
+      var rightChangedSum float64
+      rightChangedSum, rightValSum = traverse(node.Right)
+      changedSum += rightChangedSum
     }
-    changedSum += int(math.Abs(float64(nodeLeftValSum) - float64(nodeRightValSum)))
-    return changedSum, nodeLeftValSum + node.Val + nodeRightValSum
+    changedSum += math.Abs(leftValSum - rightValSum)
+    return changedSum, leftValSum + float64(node.Val) + rightValSum
   }
   ans, _ := traverse(root)
-  return ans
+  return int(ans)
 }
