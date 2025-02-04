@@ -14,7 +14,7 @@
 
 function findTilt(root: TreeNode | null): number {
   const traverse = (node: TreeNode | null) => {
-    if (node === null) return [0, 0]
+    if (node === null) return [0, 0];
     const [leftTiltSum, leftValSum] = traverse(node.left);
     const [rightTiltSum, rightValSum] = traverse(node.right);
     return [
