@@ -1,29 +1,13 @@
-func trap(arr []int) int {
-  n, sum := len(arr), 0
-  if n < 2 {
-    return 0
+func trap(height []int) int {
+  n := len(height)
+  r := slices.Clone(height)
+  for i := n-2; i >= 0; i-- {
+    r[i] = max(r[i], r[i+1])
   }
-  for i := 1; i < n; i++ {
-    if arr[i] < arr[i - 1] {
-      j, mi := i, i
-      for ; j < n; j++ {
-        if arr[j] >= arr[i - 1] {
-          mi = j
-          break
-        } else if arr[j] >= arr[mi] {
-          mi = j
-        }
-      }
-      if mi - i > 0 {
-        min := min(arr[i - 1], arr[mi])
-        for k := i; k < mi; k++ {
-          if arr[k] < min {
-            sum += min - arr[k]
-          }
-        }
-        i = mi - 1  
-      }
-    }
+  ans := 0
+  for l, i := 0, 0; i < n; i++ {
+    l = max(height[i], l)
+    ans += max(0, min(l, r[i]) - height[i])
   }
-  return sum
+  return ans
 }
