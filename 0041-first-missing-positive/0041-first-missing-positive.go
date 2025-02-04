@@ -1,13 +1,5 @@
 func firstMissingPositive(nums []int) int {
-  min, n := math.MaxInt, len(nums)
-  for _, num := range nums {
-    if num > 0 && num < min {
-      min = num
-    }
-  } 
-  if min > 1 {
-    return 1
-  }
+  n := len(nums)
   for i, _ := range nums {
     for nums[i]-1 != i {
       if nums[i]-1 < 0 || nums[i]-1 >= n || nums[nums[i]-1] == nums[i] {
