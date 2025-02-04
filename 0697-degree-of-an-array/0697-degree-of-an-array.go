@@ -6,13 +6,13 @@ func findShortestSubArray(nums []int) int {
   m := map[int]*Item{}
   ans, count := 0, 1
   for i, num := range nums {
-    if _, ok := m[num]; ok {
-      m[num].Count++
-      if m[num].Count > count {
-        ans = i - m[num].First
-        count = m[num].Count
-      } else if m[num].Count == count {
-        ans = min(ans, i - m[num].First)
+    if item, ok := m[num]; ok {
+      item.Count++
+      if item.Count > count {
+        ans = i - item.First
+        count = item.Count
+      } else if item.Count == count {
+        ans = min(ans, i - item.First)
       }
     } else {
       m[num] = &Item{ i, 1 }
