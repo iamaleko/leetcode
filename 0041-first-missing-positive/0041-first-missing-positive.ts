@@ -9,10 +9,6 @@ function firstMissingPositive(nums: number[]): number {
 			}
 		}
 	}
-	for (let i = 0; i < n; i++) {
-		if (nums[i] === 0) {
-			return i + 1;
-		}
-	}
-	return n + 1;
+  let i = nums.indexOf(0);
+	return i<0 ? n+1 : i+1;
 };
