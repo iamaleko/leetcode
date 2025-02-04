@@ -12,19 +12,11 @@ func findTilt(root *TreeNode) int {
     if node == nil {
       return 0, 0
     }
-    var changedSum, leftValSum, rightValSum float64
-    if node.Left != nil {
-      var leftChangedSum float64
-      leftChangedSum, leftValSum = traverse(node.Left)
-      changedSum += leftChangedSum
-    }
-    if node.Right != nil {
-      var rightChangedSum float64
-      rightChangedSum, rightValSum = traverse(node.Right)
-      changedSum += rightChangedSum
-    }
-    changedSum += math.Abs(leftValSum - rightValSum)
-    return changedSum, leftValSum + float64(node.Val) + rightValSum
+    leftTiltSum, leftValSum := traverse(node.Left)
+    rightTiltSum, rightValSum := traverse(node.Right)
+    tiltSum := math.Abs(leftValSum - rightValSum) + leftTiltSum + rightTiltSum
+    valSum := leftValSum + float64(node.Val) + rightValSum
+    return tiltSum, valSum
   }
   ans, _ := traverse(root)
   return int(ans)
