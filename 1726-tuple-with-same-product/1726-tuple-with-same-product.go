@@ -1,12 +1,11 @@
 func tupleSameProduct(nums []int) int {
-  ans, k, n, m := 0, 0, len(nums), map[int]int{}
-  for i := 0; i < n-1; i++ {
-    for j := i+1; j < n; j++ {
-      k = nums[i] * nums[j]
-      if m[k] > 0 {
-        ans += 8 * m[k]
+  ans, m := 0, map[int]int{}
+  for i, a := range nums {
+    for _, b := range nums[i+1:] {
+      if m[a * b] > 0 {
+        ans += 8 * m[a * b]
       }
-      m[k]++
+      m[a * b]++
     }
   }
   return ans
