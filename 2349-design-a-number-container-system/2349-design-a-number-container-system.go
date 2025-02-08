@@ -2,6 +2,9 @@ import "container/heap"
 
 type Heap []int
 
+func (h *Heap) Peak() int {
+	return (*h)[0]
+}
 func (h *Heap) Len() int {
 	return len(*h)
 }
@@ -16,38 +19,41 @@ func (h *Heap) Push(x any) {
 }
 func (h *Heap) Pop() (x any) {
 	x, *h = (*h)[h.Len()-1], (*h)[:h.Len()-1]
-  return
+	return
 }
 
 type NumberContainers struct {
-  Indexes map[int]*Heap
-  Numbers map[int]int
+	Indexes map[int]*Heap
+	Numbers map[int]int
 }
 
 func Constructor() NumberContainers {
-  return NumberContainers{ map[int]*Heap{}, map[int]int{} }
+	return NumberContainers{
+		Indexes: map[int]*Heap{},
+		Numbers: map[int]int{},
+	}
 }
 func (this *NumberContainers) Change(i int, num int) {
-  if h, ok := this.Indexes[num]; ok {
+	if h, ok := this.Indexes[num]; ok {
     heap.Push(h, i)
   } else {
-    this.Indexes[num] = &Heap{ i }
-    heap.Init(this.Indexes[num])
-  }
-  if old, ok := this.Numbers[i]; ok && old != num && this.Indexes[old].Len() == 1 {
-    delete(this.Indexes, old)
-  }
-  this.Numbers[i] = num
+    this.Indexes[num] = &Heap{i}
+    // heap.init() is not needed as we have only one element
+	}
+  // optimize used memory by removing old num heap with single index which will be replaced
+	if old, ok := this.Numbers[i]; ok && old != num && this.Indexes[old].Len() == 1 {
+		delete(this.Indexes, old)
+	}
+	this.Numbers[i] = num
 }
 func (this *NumberContainers) Find(num int) int {
-  if _, ok := this.Indexes[num]; ok {
-    for this.Indexes[num].Len() > 0 {
-      i := (*this.Indexes[num])[0]
-      if this.Numbers[i] == num {
-        return i
-      }
-      heap.Pop(this.Indexes[num])
-    }
-  } 
-  return -1
+	if h, ok := this.Indexes[num]; ok {
+		for h.Len() > 0 {
+			if this.Numbers[h.Peak()] == num {
+				return h.Peak()
+			}
+			heap.Pop(h)
+		}
+	}
+	return -1
 }
