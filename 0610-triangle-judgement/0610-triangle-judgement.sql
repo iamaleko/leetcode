@@ -1,0 +1,1 @@
+select x, y, z, if(x<y+z and y<x+z and z<y+x, "Yes", "No") as triangle from Triangle
