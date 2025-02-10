@@ -2,7 +2,7 @@ func clearDigits(s string) string {
 	runes := []rune(s)
 	offset := 0
 	for i, rn := range runes {
-		if unicode.IsDigit(rn) {
+		if rn >= '0' && rn <= '9' {
 			offset += 2
 		} else if offset > 0 {
 			runes[i-offset] = rn
