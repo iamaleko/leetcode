@@ -4,7 +4,7 @@ func clearDigits(s string) string {
 	for i, rn := range runes {
 		if rn >= '0' && rn <= '9' {
 			offset += 2
-		} else if offset > 0 {
+		} else {
 			runes[i-offset] = rn
 		}
 	}
