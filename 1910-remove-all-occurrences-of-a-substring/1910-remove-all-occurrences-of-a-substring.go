@@ -31,6 +31,7 @@ func removeOccurrences(s string, part string) string {
 			i = skip[i] - 1
 		}
 	}
+  
 	// build result string
 	ans := []byte{}
 	for i := 0; i < n; i++ {
