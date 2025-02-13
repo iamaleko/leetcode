@@ -9,6 +9,8 @@ class Solution:
       if s not in m:
         m[s] = num
       else:
-        ans = max(ans, num + m[s])
-        m[s] = max(m[s], num)
+        if ans < num + m[s]:
+          ans = num + m[s]
+        if m[s] < num:
+          m[s] = num
     return ans
