@@ -4,8 +4,7 @@ class Solution:
     ans = 0
     while nums[0] < k:
       x = heappop(nums)
-      y = heappop(nums)
-      heappush(nums, min(x, y) * 2 + max(x, y))
+      heappushpop(nums, min(x, nums[0]) * 2 + max(x, nums[0]))
       ans += 1
     return ans
         
