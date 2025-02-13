@@ -1,21 +1,19 @@
 func maximumSum(nums []int) int {
-	m, ans := map[int]int{}, -1
+  m := [82]int{}
+	ans := -1
+  var s, n int
 	for _, num := range nums {
-		s, n := 0, num
+		s, n = 0, num
 		for n > 0 {
 			s += n % 10
 			n /= 10
 		}
-		if app, ok := m[s]; ok {
-			if ans < num+app {
-				ans = num + app
-			}
-			if app < num {
-				m[s] = num
-			}
-		} else {
-			m[s] = num
-		}
+    if m[s] != 0 && ans < num+m[s] {
+      ans = num + m[s]
+    }
+    if m[s] < num {
+      m[s] = num
+    }
 	}
 	return ans
 }
