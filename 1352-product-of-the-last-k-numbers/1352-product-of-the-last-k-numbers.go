@@ -1,47 +1,46 @@
 type ProductOfNumbers struct {
   Nums []int
-  Zero []int
+  ZeroIndex int
+  LastIndex int
 }
 
 func Constructor() ProductOfNumbers {
-  return ProductOfNumbers{}
+  return ProductOfNumbers{ ZeroIndex: -1, LastIndex: -1 }
 }
 func (this *ProductOfNumbers) Add(num int)  {
   if num == 0 {
-    this.Zero = append(this.Zero, len(this.Zero))
+    this.ZeroIndex = this.LastIndex + 1
     this.Nums = append(this.Nums, 0)
-  } else if len(this.Nums) > 0 {
-    this.Zero = append(this.Zero, this.Zero[len(this.Zero)-1])
-    if this.Nums[len(this.Nums)-1] == 0 {
+  } else if this.LastIndex >= 0 {
+    if this.LastIndex == this.ZeroIndex {
       this.Nums = append(this.Nums, num)
     } else {
-      this.Nums = append(this.Nums, num * this.Nums[len(this.Nums)-1])
+      this.Nums = append(this.Nums, num * this.Nums[this.LastIndex])
     }
   } else {
-    this.Zero = append(this.Zero, -1)
     this.Nums = append(this.Nums, num)
   }
+  this.LastIndex++
 }
 func (this *ProductOfNumbers) GetProduct(k int) int {
-  lastIndex := len(this.Nums) - 1
-  dividerIndex := len(this.Nums) - k - 1
+  dividerIndex := this.LastIndex - k
   // stream is empty
-  if lastIndex < 0 {
+  if this.LastIndex < 0 {
     return 0
   }
   // all stream is requested
   if dividerIndex < 0 {
-    if this.Zero[lastIndex] == -1 {
-      return this.Nums[lastIndex]
+    if this.ZeroIndex == -1 {
+      return this.Nums[this.LastIndex]
     }
     return 0
   }
   // stream part is requested
-  if this.Zero[lastIndex] > dividerIndex {
+  if this.ZeroIndex > dividerIndex {
     return 0
   }
-  if this.Zero[lastIndex] == dividerIndex {
-    return this.Nums[lastIndex]
+  if this.ZeroIndex == dividerIndex {
+    return this.Nums[this.LastIndex]
   }
-  return this.Nums[lastIndex] / this.Nums[dividerIndex]
+  return this.Nums[this.LastIndex] / this.Nums[dividerIndex]
 }
