@@ -25,9 +25,6 @@ func (this *ProductOfNumbers) Add(num int)  {
 func (this *ProductOfNumbers) GetProduct(k int) int {
   lastIndex := len(this.Nums) - 1
   dividerIndex := len(this.Nums) - k - 1
-  // fmt.Println(">", k, dividerIndex, lastIndex)
-  // fmt.Println(this.Zero)
-  // fmt.Println(this.Nums)
   // stream is empty
   if lastIndex < 0 {
     return 0
@@ -46,18 +43,5 @@ func (this *ProductOfNumbers) GetProduct(k int) int {
   if this.Zero[lastIndex] == dividerIndex {
     return this.Nums[lastIndex]
   }
-  // fmt.Println(this.Nums[lastIndex], this.Nums[dividerIndex])
   return this.Nums[lastIndex] / this.Nums[dividerIndex]
 }
-
-
-/**
- * Your ProductOfNumbers object will be instantiated and called as such:
- * obj := Constructor();
- * obj.Add(num);
- * param_2 := obj.GetProduct(k);
- */
-
-//  [1, 1*2, 1*2*0, 1*2*0*3, 1*2*0*3*4]
-//  [1, 2,   0,     0,       0]
-//  [1, 2,   0,     3,       12]
