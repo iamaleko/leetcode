@@ -11,13 +11,10 @@ function sum(n: number, t: number): boolean {
 }
 
 const punishmentNumber = (() => {
-  const mem: number[] = [0];
-  return (n: number): number => {
-    let j = Math.min(mem.length - 1, n), ans = mem[j];
-    for (let i = j+1; i <= n; i++) {
-      if (sum(i * i, i)) ans += i * i;
-      mem[i] = ans;
-    }
-    return ans;
-  };
+  const cache = new Uint32Array(1001);
+  for (let i = 1; i < 1001; i++) {
+    cache[i] = cache[i - 1] + (sum(i * i, i) ? i * i : 0);
+  }
+
+  return (n: number): number => cache[n];
 })();
