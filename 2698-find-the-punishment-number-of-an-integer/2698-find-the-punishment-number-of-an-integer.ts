@@ -15,8 +15,8 @@ const punishmentNumber = (() => {
   return (n: number): number => {
     let ans = 0;
     for (let i = 1; i <= n; i++) {
-      // if (mem[i] || (mem[i] = sum(i * i, i))) ans += i * i;
-      if (sum(i * i, i)) ans += i * i;
+      if (mem[i] || (mem[i] = sum(i * i, i))) ans += i * i;
+      // if (sum(i * i, i)) ans += i * i;
     }
     return ans;
   };
