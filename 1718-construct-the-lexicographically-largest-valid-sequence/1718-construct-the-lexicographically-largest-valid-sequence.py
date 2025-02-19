@@ -1,25 +1,21 @@
 class Solution:
   def constructDistancedSequence(self, n: int) -> List[int]:
+    s = [(x, 0 if x == 1 else x, 1 << x) for x in range(n, 0, -1)]
     k = n * 2 - 1
     ans = [0] * k
-    def back(p, m):
-      if m == (1 << n + 1) - 2:
+    def back(l, m):
+      if not m:
         return True
-      if ans[p]:
-        return back(p + 1, m)
-      for i in range(n, 0, -1):
-        if m & 1 << i or i > 1 and (p + i >= k or ans[p + i]):
-          continue
-        ans[p] = i
-        if i > 1:
-          ans[p + i] = i
-        m |= 1 << i
-        if back(p + 1, m):
-          return True
-        ans[p] = 0
-        if i > 1:
-          ans[p + i] = 0
-        m ^= 1 << i
+      if ans[l]:
+        return back(l + 1, m)
+      for i, r, b in s:
+        if m & b:
+          r += l
+          if r < k and not ans[r]:
+            ans[l] = ans[r] = i
+            if back(l + 1, m ^ b):
+              return True
+            ans[l] = ans[r] = 0
       return False
-    back(0, 0)
+    back(0, (1 << n + 1) - 2)
     return ans
