@@ -7,7 +7,7 @@ class Solution:
       self.ans = s
       return
     for x in ['a','b','c']:
-      if not len(s) or s[-1] != x:
+      if s[-1:] != x:
         self.back(s + x)
 
   def getHappyString(self, n: int, k: int) -> str:
