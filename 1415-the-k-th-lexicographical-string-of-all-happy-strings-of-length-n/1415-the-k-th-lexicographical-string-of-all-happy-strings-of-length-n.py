@@ -1,18 +1,14 @@
 class Solution:
-  def back(self, s):
-    if not self.k:
-      return
-    if len(s) == self.n:
-      self.k -= 1
-      self.ans = s
-      return
-    for x in ['a','b','c']:
-      if s == '' or s[-1] != x:
-        self.back(s + x)
-
   def getHappyString(self, n: int, k: int) -> str:
-    self.n = n
-    self.k = k
-    self.ans = ''
-    self.back('')
-    return '' if self.k else self.ans
+    def back(s, k):
+      r = ''
+      if len(s) == n:
+        k -= 1
+        if not k: 
+          r = s
+      else:
+        for x in ['a','b','c']:
+          if k and s[-1:] != x:
+            r, k = back(s + x, k)
+      return r, k
+    return back('', k)[0]
