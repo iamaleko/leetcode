@@ -1,6 +1,6 @@
 class Solution:
   def constructDistancedSequence(self, n: int) -> List[int]:
-    s = [(x, 0 if x == 1 else x, 1 << x) for x in range(n, 0, -1)]
+    s = [(x, x if x > 1 else 0, 1 << x) for x in range(n, 0, -1)]
     k = n * 2 - 1
     ans = [0] * k
     def back(l, m):
