@@ -17,5 +17,5 @@ class Solution:
               return True
             ans[l] = ans[r] = 0
       return False
-    back(0, (1 << n + 1) - 2)
+    back(0, 2 ** n - 1 << 1)
     return ans
