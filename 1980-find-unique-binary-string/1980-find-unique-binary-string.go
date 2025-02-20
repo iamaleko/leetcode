@@ -1,21 +1,11 @@
 func findDifferentBinaryString(nums []string) string {
-  s := map[string]bool{}
-  for _, str := range nums {
-    s[str] = true
-  }
-  var backtrack func(n int, str string) string
-  backtrack = func(n int, str string) string {
-    if n == 0 {
-      if s[str] {
-        return ""
-      }
-      return str
+  bytes := []byte{}
+  for i := range(len(nums)) {
+    if nums[i][i] == 49 {
+      bytes = append(bytes, 48)
+    } else {
+      bytes = append(bytes, 49)
     }
-    n--
-    if str := backtrack(n, str + "0"); str != "" {
-      return str
-    }
-    return backtrack(n, str + "1")
   }
-  return backtrack(len(nums[0]), "")
+  return string(bytes)
 }
