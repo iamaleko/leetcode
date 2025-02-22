@@ -21,18 +21,19 @@ func recoverFromPreorder(traversal string) *TreeNode {
 			value = value*10 + int(rn-'0')
 		}
 	}
-	m := len(values)-1
-	var traverse func(p int) (*TreeNode, int)
-	traverse = func(p int) (*TreeNode, int) {
-    node, childDepth := &TreeNode{Val: values[p]}, depths[p]+1
-		if p < m && depths[p+1] == childDepth {
-			node.Left, p = traverse(p+1)
+	p, m := 0, len(values) - 1
+	var traverse func() *TreeNode
+	traverse = func() *TreeNode {
+		node, depth := &TreeNode{Val: values[p]}, depths[p]+1
+		if p < m && depths[p+1] == depth {
+      p++
+			node.Left = traverse()
 		}
-		if p < m && depths[p+1] == childDepth {
-			node.Right, p = traverse(p+1)
+		if p < m && depths[p+1] == depth {
+      p++
+			node.Right = traverse()
 		}
-		return node, p
+		return node
 	}
-  root, _ := traverse(0)
-	return root
+	return traverse()
 }
