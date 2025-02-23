@@ -7,33 +7,31 @@
  * }
  */
 func constructFromPrePost(preorder []int, postorder []int) *TreeNode {
-  nodes := map[int]*TreeNode{}
-  // create nodes
-  for _, node := range postorder {
-    nodes[node] = &TreeNode{ Val: node }
-  }
-  // link nodes
-  candidates := map[int]bool{}
-  for _, node := range postorder {
-    if len(candidates) != 0 {
-      found := false
-      for _, child := range preorder {
-        if found {
-          if candidates[child] {
-            if nodes[node].Left == nil {
-              nodes[node].Left = nodes[child]
-            } else {
-              nodes[node].Right = nodes[child]
-            }
-            delete(candidates, child)
+	nodes := map[int]*TreeNode{}
+	start, n := map[int]int{}, len(preorder)
+	// create nodes
+	for i, node := range preorder {
+		nodes[node] = &TreeNode{Val: node}
+		start[node] = i + 1
+	}
+	// link nodes
+	candidates := map[int]bool{}
+	for _, node := range postorder {
+		if len(candidates) != 0 {
+      for i := start[node]; i < n; i++ {
+        child := preorder[i]
+        if candidates[child] {
+          if nodes[node].Left == nil {
+            nodes[node].Left = nodes[child]
+          } else {
+            nodes[node].Right = nodes[child]
           }
-        } else if child == node {
-          found = true
+          candidates[child] = false
         }
-      }
-    }
-    candidates[node] = true
-  }
+			}
+		}
+		candidates[node] = true
+	}
 
-  return nodes[preorder[0]]
+	return nodes[preorder[0]]
 }
