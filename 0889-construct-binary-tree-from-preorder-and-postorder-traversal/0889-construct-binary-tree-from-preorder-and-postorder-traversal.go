@@ -26,12 +26,12 @@ func constructFromPrePost(preorder []int, postorder []int) *TreeNode {
           } else {
             nodes[node].Right = nodes[child]
           }
-          candidates[child] = false
+          delete(candidates, child)
         }
 			}
 		}
 		candidates[node] = true
 	}
-
+  // return root
 	return nodes[preorder[0]]
 }
