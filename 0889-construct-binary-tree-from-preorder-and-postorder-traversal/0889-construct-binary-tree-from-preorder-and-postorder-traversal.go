@@ -23,10 +23,12 @@ func constructFromPrePost(preorder []int, postorder []int) *TreeNode {
         if candidates[child] {
           if nodes[node].Left == nil {
             nodes[node].Left = nodes[child]
+            delete(candidates, child)
           } else {
             nodes[node].Right = nodes[child]
+            delete(candidates, child)
+            break
           }
-          delete(candidates, child)
         }
 			}
 		}
