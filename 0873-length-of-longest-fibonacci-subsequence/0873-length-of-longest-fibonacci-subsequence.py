@@ -14,9 +14,9 @@ class Solution:
         for num in m[nums[i]]:
           count = m[nums[i]][num] + 1
           s = num + nums[i]
-          if s not in m:
-            m[s] = {}
-          if nums[i] not in m[s] or m[s][nums[i]] < count:
+          if s not in m or nums[i] not in m[s] or m[s][nums[i]] < count:
+            if s not in m:
+              m[s] = {}
             m[s][nums[i]] = count
             ans = max(ans, count)
     return ans
