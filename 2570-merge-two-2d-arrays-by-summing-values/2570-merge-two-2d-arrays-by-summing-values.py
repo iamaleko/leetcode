@@ -3,7 +3,7 @@ class Solution:
     ans = []
     i, j = 0, 0
     n, m = len(a), len(b)
-    while i < n or j < m:
+    while True:
       if i < n and (j == m or a[i][0] < b[j][0]):
         ans.append(a[i])
         i += 1
@@ -14,5 +14,7 @@ class Solution:
         ans.append([a[i][0], a[i][1] + b[j][1]])
         i += 1
         j += 1
+      else:
+        break
     return ans
         
