@@ -15,5 +15,4 @@ class Solution:
       limit = floor(math.log(1e7) / math.log(3))
       for power in range(limit + 1):
         self.powers.append(3 ** power)
-    print(self.powers)
     return self.find(n,0)
