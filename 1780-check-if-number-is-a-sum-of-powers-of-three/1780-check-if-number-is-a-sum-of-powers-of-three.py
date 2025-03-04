@@ -4,6 +4,8 @@ class Solution:
 
   def find(self, n: int, mask: int) -> bool:
     for i, power in enumerate(self.powers):
+      if power > n:
+        break
       if not mask & 1 << i:
         mask ^= 1 << i
         if power == n or power < n and self.find(n - power, mask):
