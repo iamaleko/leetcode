@@ -2,14 +2,12 @@ class Solution:
   def __init__(self):
     self.powers = []
 
-  def find(self, n: int, mask: int) -> bool:
-    for i, power in enumerate(self.powers):
-      if power > n:
+  def find(self, n: int, m: int) -> bool:
+    for i in range(m, len(self.powers)):
+      if self.powers[i] > n:
         break
-      if not mask & 1 << i:
-        mask ^= 1 << i
-        if power == n or power < n and self.find(n - power, mask):
-          return True
+      if self.powers[i] == n or self.find(n - self.powers[i], i + 1):
+        return True
     return False
 
   def checkPowersOfThree(self, n: int) -> bool:
