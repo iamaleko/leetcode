@@ -1,14 +1,31 @@
+import (
+  "math"
+)
+
 func isPrime(num int) bool {
-  delimiter := 2
-  max := int(math.Sqrt(float64(num)))
+  fl := float64(num)
+  max := math.Sqrt(float64(num))
+  delimiter := 2.0
   for delimiter <= max {
-    if num % delimiter == 0 {
+    if (fl / delimiter) == math.Trunc(fl / delimiter) {
       return false
     }
     delimiter++
   }
   return true
 }
+
+// func isPrime(num int) bool {
+//   delimiter := 2
+//   max := int(math.Sqrt(float64(num)))
+//   for delimiter <= max {
+//     if num % delimiter == 0 {
+//       return false
+//     }
+//     delimiter++
+//   }
+//   return true
+// }
 
 func closestPrimes(left int, right int) []int {
   prime := 0
