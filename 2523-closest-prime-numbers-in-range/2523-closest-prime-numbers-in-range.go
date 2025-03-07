@@ -1,6 +1,7 @@
 func isPrime(num int) bool {
   delimiter := 2
-  for delimiter < num {
+  max := int(math.Sqrt(float64(num)))
+  for delimiter <= max {
     if num % delimiter == 0 {
       return false
     }
@@ -16,7 +17,6 @@ func closestPrimes(left int, right int) []int {
   if left == 1 {
     left++
   }
-  samples := 200 // World, forgive me!
   for left <= right {
     if isPrime(left) {
       if prime > 0 && left - prime < best {
@@ -26,10 +26,6 @@ func closestPrimes(left int, right int) []int {
         if best == 1 {
           return ans
         }
-      }
-      samples--
-      if samples <= 0 {
-        return ans
       }
       prime = left
     }
