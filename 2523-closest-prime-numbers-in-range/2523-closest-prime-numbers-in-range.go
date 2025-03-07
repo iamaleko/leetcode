@@ -28,6 +28,9 @@ func closestPrimes(left int, right int) []int {
         best = left - prime
         ans[0] = prime
         ans[1] = left
+        if best == 1 {
+          return ans
+        }
       }
       samples--
       if samples <= 0 {
