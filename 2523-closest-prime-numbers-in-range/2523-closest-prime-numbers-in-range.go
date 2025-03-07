@@ -21,7 +21,7 @@ func closestPrimes(left int, right int) []int {
   if left == 1 {
     left++
   }
-  samples := 200
+  samples := 200 // World, forgive me!
   for left <= right {
     if isPrime(left) {
       if prime > 0 && left - prime < best {
