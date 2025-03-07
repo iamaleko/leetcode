@@ -1,12 +1,7 @@
-import (
-  "math"
-)
-
 func isPrime(num int) bool {
-  fl := float64(num)
-  delimiter := 2.0
-  for delimiter < fl {
-    if (fl / delimiter) == math.Trunc(fl / delimiter) {
+  delimiter := 2
+  for delimiter < num {
+    if num % delimiter == 0 {
       return false
     }
     delimiter++
