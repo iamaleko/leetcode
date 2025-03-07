@@ -3,29 +3,17 @@ import (
 )
 
 func isPrime(num int) bool {
-  fl := float64(num)
-  max := math.Sqrt(float64(num))
+  flt := float64(num)
+  limit := math.Sqrt(flt)
   delimiter := 2.0
-  for delimiter <= max {
-    if (fl / delimiter) == math.Trunc(fl / delimiter) {
+  for delimiter <= limit {
+    if (flt / delimiter) == math.Trunc(flt / delimiter) {
       return false
     }
     delimiter++
   }
   return true
 }
-
-// func isPrime(num int) bool {
-//   delimiter := 2
-//   max := int(math.Sqrt(float64(num)))
-//   for delimiter <= max {
-//     if num % delimiter == 0 {
-//       return false
-//     }
-//     delimiter++
-//   }
-//   return true
-// }
 
 func closestPrimes(left int, right int) []int {
   prime := 0
