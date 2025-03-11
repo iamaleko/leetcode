@@ -1,11 +1,11 @@
 class Solution:
   def numberOfSubstrings(self, s: str) -> int:
-    ans, n, l, m = 0, len(s), 0, {"a": 0, "b": 0, "c": 0}
-    for r, ch in enumerate(s):
-      m[ch] += 1
-      while m["a"] and m["b"] and m["c"]:
+    ans, n, l, m = 0, len(s), 0, [0,0,0]
+    for r in range(n):
+      m[ord(s[r]) - 97] += 1
+      while all(m):
         ans += n - r
-        m[s[l]] -= 1
+        m[ord(s[l]) - 97] -= 1
         l += 1
     return ans
 
