@@ -7,10 +7,11 @@ func minZeroArray(nums []int, queries [][]int) int {
       if pos == m {
         return -1
       }
-      if queries[pos][1] >= i {
-        apply[max(i, queries[pos][0])] += queries[pos][2]
-        if queries[pos][1] + 1 < n {
-          apply[queries[pos][1] + 1] -= queries[pos][2]
+      l, r, v := max(i, queries[pos][0]), queries[pos][1] + 1, queries[pos][2]
+      if r > i {
+        apply[l] += v
+        if r < n {
+          apply[r] -= v
         }
       }
       pos++
