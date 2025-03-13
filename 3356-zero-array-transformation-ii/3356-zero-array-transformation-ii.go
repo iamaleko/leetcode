@@ -1,22 +1,25 @@
 func minZeroArray(nums []int, queries [][]int) int {
   n, m := len(nums), len(queries)
   apply := make([]int, n)
-  pos, dec := 0, 0
+  var p, d, l, r, v int
   for i, num := range nums {
-    for num - (dec + apply[i]) > 0 {
-      if pos == m {
+    for num - (d + apply[i]) > 0 {
+      if p == m {
         return -1
       }
-      l, r, v := max(i, queries[pos][0]), queries[pos][1] + 1, queries[pos][2]
+      l, r, v = queries[p][0], queries[p][1] + 1, queries[p][2]
       if r > i {
+        if i > l {
+          l = i
+        }
         apply[l] += v
         if r < n {
           apply[r] -= v
         }
       }
-      pos++
+      p++
     }
-    dec += apply[i]
+    d += apply[i]
   }
-  return pos
+  return p
 }
