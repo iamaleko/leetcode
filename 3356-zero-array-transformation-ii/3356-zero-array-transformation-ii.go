@@ -9,7 +9,10 @@ func minZeroArray(nums []int, queries [][]int) int {
       }
       l, r, v = queries[p][0], queries[p][1] + 1, queries[p][2]
       if r > i {
-        apply[max(l, i)] += v
+        if i > l {
+          l = i
+        }
+        apply[l] += v
         if r < n {
           apply[r] -= v
         }
