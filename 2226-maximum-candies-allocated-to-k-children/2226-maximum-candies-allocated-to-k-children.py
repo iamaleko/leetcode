@@ -1,24 +1,21 @@
 class Solution:
+  def check(self, c, candies, k):
+    for pile in candies:
+      if pile < c:
+        return False
+      k -= pile // c
+      if k <= 0:
+        return True
+    return False
   def maximumCandies(self, candies: List[int], k: int) -> int:
-    if len(candies) >= k:
-      candies.sort(reverse=True)
-      ans = 0
-      p, n = 0, len(candies)
-      while n - p >= k:
-        p += k
-        ans += candies[p - 1]
-      return ans
-    elif sum(candies) < k:
-      return 0
-    else:
-      n = len(candies)
-      candies = [-x for x in candies]
-      heapify(candies)
-      while n < k:
-        a = candies[0] // 2
-        b = candies[0] - a
-        heappushpop(candies, a)
-        heappush(candies, b)
-        n += 1
-      return -max(candies)
-
+    ans = 0
+    l, r = 1, max(candies)
+    candies.sort(reverse=True)
+    while l <= r:
+      c = l + r >> 1
+      if self.check(c, candies, k):
+        ans = c
+        l = c + 1
+      else:
+        r = c - 1
+    return ans
