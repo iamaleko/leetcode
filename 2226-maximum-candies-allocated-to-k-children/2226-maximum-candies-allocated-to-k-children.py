@@ -9,13 +9,14 @@ class Solution:
     return False
   def maximumCandies(self, candies: List[int], k: int) -> int:
     ans = 0
-    l, r = 1, max(candies)
-    candies.sort(reverse=True)
-    while l <= r:
-      c = l + r >> 1
-      if self.check(c, candies, k):
-        ans = c
-        l = c + 1
-      else:
-        r = c - 1
+    if sum(candies) >= k:
+      l, r = 1, max(candies)
+      candies.sort(reverse=True)
+      while l <= r:
+        c = l + r >> 1
+        if self.check(c, candies, k):
+          ans = c
+          l = c + 1
+        else:
+          r = c - 1
     return ans
