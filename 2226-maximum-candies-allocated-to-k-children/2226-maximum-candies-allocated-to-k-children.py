@@ -7,10 +7,11 @@ class Solution:
       if k <= 0:
         return True
     return False
+    
   def maximumCandies(self, candies: List[int], k: int) -> int:
     ans = 0
     if sum(candies) >= k:
-      l, r = 1, max(candies)
+      l, r = 1, sum(candies)//k
       candies.sort(reverse=True)
       while l <= r:
         c = l + r >> 1
