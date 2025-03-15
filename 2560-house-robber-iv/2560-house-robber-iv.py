@@ -1,29 +1,22 @@
 class Solution:
-  def check(self, n: int) -> bool:
-    a, b = 0, 0
-    for num in self.nums:
-      if num <= n:
-        a, b = b, a + 1
-        if b == self.k:
-          return True
-      elif b > a:
-        a = b
-    return False
-    
   def minCapability(self, nums: List[int], k: int) -> int:
-    self.nums = nums[:]
-    self.k = k
-    nums.sort()
+    srtd = sorted(nums)
     l, r = 0, len(nums) - 1
     while l < r:
-      c = l + r >> 1
-      if self.check(nums[c]):
-        r = c
+      a, b, c = 0, 0, l + r >> 1
+      for num in nums:
+        if num <= srtd[c]:
+          a, b = b, a + 1
+          if b == k:
+            r = c
+            break
+        elif b > a:
+          a = b
       else:
         l = c + 1
-    return nums[r]
+    return srtd[r]
 
-# TLE 50/64
+# DP, TLE 50/64
 # class Solution:
 #   def update(self, m, n, r):
 #     if r == len(m):
