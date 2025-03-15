@@ -1,7 +1,7 @@
 class Solution:
   def minCapability(self, nums: List[int], k: int) -> int:
-    srtd = sorted(nums)
-    l, r = 0, len(nums) - 1
+    srtd = sorted(set(nums))
+    l, r = 0, len(srtd) - 1
     while l < r:
       a, b, c = 0, 0, l + r >> 1
       for num in nums:
