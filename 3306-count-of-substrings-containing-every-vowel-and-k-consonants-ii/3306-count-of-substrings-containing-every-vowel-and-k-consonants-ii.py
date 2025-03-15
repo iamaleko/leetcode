@@ -1,11 +1,8 @@
 class Solution:
   def countOfSubstrings(self, w: str, k: int) -> int:
-    n = len(w)
-    d = {'a': 0, 'e': 1, 'i': 2, 'o': 3, 'u': 4}
-    cIndex, vIndex = [], [-1,-1,-1,-1,-1]
-    cLeft, cRight = 0, 0
-    ans = 0
-    wLeft = 0
+    ans, n, d = 0, len(w), {'a': 0, 'e': 1, 'i': 2, 'o': 3, 'u': 4}
+    cIndex, vIndex = [], [-1] * 5
+    cLeft, cRight, wLeft = 0, 0, 0
     for wRight in range(n):
       if w[wRight] in d:
         vIndex[d[w[wRight]]] = wRight
