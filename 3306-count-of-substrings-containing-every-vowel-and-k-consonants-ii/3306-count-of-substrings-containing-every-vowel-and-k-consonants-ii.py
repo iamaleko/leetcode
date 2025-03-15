@@ -2,23 +2,23 @@ class Solution:
   def countOfSubstrings(self, w: str, k: int) -> int:
     n = len(w)
     d = {'a': 0, 'e': 1, 'i': 2, 'o': 3, 'u': 4}
-    consonants, vovels = [], [-1,-1,-1,-1,-1]
-    consonantsL, consonantsR = 0, 0
+    cIndex, vIndex = [], [-1,-1,-1,-1,-1]
+    cLeft, cRight = 0, 0
     ans = 0
-    l = 0
-    for r in range(n):
-      if w[r] in d:
-        vovels[d[w[r]]] = r
+    wLeft = 0
+    for wRight in range(n):
+      if w[wRight] in d:
+        vIndex[d[w[wRight]]] = wRight
       else:
-        consonants.append(r)
-        consonantsR += 1
-      while consonantsR - consonantsL > k:
-        if w[l] in d:
-          if l == vovels[d[w[l]]]:
-            vovels[d[w[l]]] = -1
+        cIndex.append(wRight)
+        cRight += 1
+      while cRight - cLeft > k:
+        if w[wLeft] in d:
+          if wLeft == vIndex[d[w[wLeft]]]:
+            vIndex[d[w[wLeft]]] = -1
         else:
-          consonantsL += 1
-        l += 1
-      if consonantsR - consonantsL == k and min(vovels) > -1:
-        ans += 1 + min(consonants[consonantsL] if consonantsL < consonantsR else n, min(vovels)) - l 
+          cLeft += 1
+        wLeft += 1
+      if cRight - cLeft == k and min(vIndex) > -1:
+        ans += 1 + min(cIndex[cLeft] if cLeft < cRight else n, min(vIndex)) - wLeft 
     return ans
