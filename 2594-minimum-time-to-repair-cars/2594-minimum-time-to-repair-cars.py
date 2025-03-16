@@ -4,8 +4,8 @@ class Solution:
     h = [(rank, rank, 1) for rank in ranks]
     heapify(h)
     while cars > 0:
-      time, rank, repaired = h[0]
+      ans, rank, repaired = h[0]
       cars -= ranks[rank]
       repaired += 1
       heappushpop(h, (rank * repaired ** 2, rank, repaired))
-    return time
+    return ans
