@@ -1,7 +1,7 @@
 class Solution:
   def divideArray(self, nums: List[int]) -> bool:
-    s = [0] * 501
+    n = 0
     for num in nums:
-      s[num] ^= 1
-    return sum(s) == 0
+      n ^= 1 << num
+    return not n
         
