@@ -1,4 +1,4 @@
-# n * 32
+# n * 32 always
 # class Solution:
 #   def longestNiceSubarray(self, nums: List[int]) -> int:
 #     ans = 0
@@ -18,13 +18,14 @@
 #         ans = r - l
 #     return ans
 
-# n * n
+# n * 32 at worst
 class Solution:
   def longestNiceSubarray(self, nums: List[int]) -> int:
     ans = 0
     masks = {}
     n = len(nums)
     for i in range(n):
+      print(masks)
       for j in list(masks.keys()):
         if nums[i] & masks[j]:
           if ans < i - j:
