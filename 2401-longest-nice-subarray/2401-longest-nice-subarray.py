@@ -2,12 +2,11 @@
 class Solution:
   def longestNiceSubarray(self, nums: List[int]) -> int:
     ans = 0
-    bits = 32
-    prev = [-1] * bits
-    curr = [-1] * bits
+    prev = [-1] * 32
+    curr = [-1] * 32
     l = -1
     for r, num in enumerate(nums):
-      for b in range(bits):
+      for b in range(32):
         if num & 1 << b:
           prev[b] = curr[b]
           curr[b] = r
