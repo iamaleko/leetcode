@@ -14,6 +14,3 @@ class Solution:
     for j in masks:
       ans = max(ans, n - j)
     return ans
-        
-# print(bin(num)[2:].rjust(32, "0"), bin(mask)[2:].rjust(32, "0"), cur)
-        
