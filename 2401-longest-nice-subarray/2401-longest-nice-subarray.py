@@ -27,11 +27,13 @@ class Solution:
     for i in range(n):
       for j in list(masks.keys()):
         if nums[i] & masks[j]:
-          ans = max(ans, i - j)
+          if ans < i - j:
+            ans = i - j
           del masks[j]
         else:
           masks[j] |= nums[i]
       masks[i] = nums[i]
     for j in masks:
-      ans = max(ans, n - j)
+      if ans < n - j:
+        ans = n - j
     return ans
