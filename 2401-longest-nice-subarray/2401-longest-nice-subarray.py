@@ -4,8 +4,8 @@ class Solution:
     masks = {}
     n = len(nums)
     for i in range(n):
-      for j, mask in list(masks.items()):
-        if nums[i] & mask:
+      for j in list(masks.keys()):
+        if nums[i] & masks[j]:
           ans = max(ans, i - j)
           del masks[j]
         else:
