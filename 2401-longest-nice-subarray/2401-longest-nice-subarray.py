@@ -12,8 +12,8 @@ class Solution:
         if nums[i] & 1 << b:
           prev[b] = curr[b]
           curr[b] = i
-        if prev[b] > k:
-          k = prev[b]
+          if prev[b] > k:
+            k = prev[b]
       if i - k > ans:
         ans = i - k
     return ans
