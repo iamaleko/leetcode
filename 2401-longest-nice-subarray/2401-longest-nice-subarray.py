@@ -2,15 +2,17 @@
 class Solution:
   def longestNiceSubarray(self, nums: List[int]) -> int:
     ans = 0
-    prev = [-1] * 32
-    curr = [-1] * 32
+    prev, curr = [-1] * 32, [-1] * 32
     l = -1
     for r, num in enumerate(nums):
-      for b in range(32):
-        if num & 1 << b:
+      b = 0
+      while num:
+        if num & 1:
           prev[b] = curr[b]
           curr[b] = r
           l = max(l, prev[b])
+        num >>= 1
+        b += 1
       ans = max(ans, r - l)
     return ans
 
