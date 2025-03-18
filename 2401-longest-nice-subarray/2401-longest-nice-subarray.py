@@ -5,16 +5,14 @@ class Solution:
     bits = 32
     prev = [-1] * bits
     curr = [-1] * bits
-    k = -1
-    for i, num in enumerate(nums):
+    l = -1
+    for r, num in enumerate(nums):
       for b in range(bits):
         if num & 1 << b:
           prev[b] = curr[b]
-          curr[b] = i
-          if prev[b] > k:
-            k = prev[b]
-      if i - k > ans:
-        ans = i - k
+          curr[b] = r
+          l = max(l, prev[b])
+      ans = max(ans, r - l)
     return ans
 
 # n * n
