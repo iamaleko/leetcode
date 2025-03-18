@@ -10,10 +10,12 @@ class Solution:
         if num & 1:
           prev[b] = curr[b]
           curr[b] = r
-          l = max(l, prev[b])
+          if prev[b] > l:
+            l = prev[b]
         num >>= 1
         b += 1
-      ans = max(ans, r - l)
+      if r - l > ans:
+        ans = r - l
     return ans
 
 # n * n
