@@ -5,11 +5,10 @@ class Solution:
     bits = 32
     prev = [-1] * bits
     curr = [-1] * bits
-    n = len(nums)
     k = -1
-    for i in range(n):
+    for i, num in enumerate(nums):
       for b in range(bits):
-        if nums[i] & 1 << b:
+        if num & 1 << b:
           prev[b] = curr[b]
           curr[b] = i
           if prev[b] > k:
