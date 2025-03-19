@@ -4,8 +4,8 @@ class Solution:
     n = len(nums)
     for i in range(n):
       if nums[i] == 0 and n > i + 2:
-        nums[i] ^ 1
-        nums[i + 1] ^ 1
-        nums[i + 2] ^ 1
+        nums[i] ^= 1
+        nums[i + 1] ^= 1
+        nums[i + 2] ^= 1
         ops += 1
-    return ops
+    return ops if sum(nums) == n else -1
