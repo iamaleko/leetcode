@@ -4,13 +4,13 @@ class Solution:
       return days
     meetings.sort(key=lambda x: (x[0],x[1]))
     ans = 0
-    day = 1
+    day = 0
     for start, end in meetings:
-      if day < start:
-        ans += start - day
-      if day < end + 1:
-        day = end + 1
-    if day <= days:
-        ans += days + 1 - day
+      if day < start - 1:
+        ans += start - day - 1
+      if day < end:
+        day = end
+    if day < days:
+        ans += days - day
     return ans
         
