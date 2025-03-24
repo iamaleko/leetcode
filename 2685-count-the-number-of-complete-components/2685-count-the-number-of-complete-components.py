@@ -18,7 +18,6 @@ class Solution:
     sets = defaultdict(int)
     for i in range(n):
       sets[find(i)] += 1
-    print(parent, sets, graph)
     ans = 0
     for n, c in sets.items():
       c -= 1
