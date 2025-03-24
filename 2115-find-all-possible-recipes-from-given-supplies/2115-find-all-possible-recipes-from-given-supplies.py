@@ -5,16 +5,17 @@ class Solution:
     creatable = {}
     ans = []
     def check(recipe):
-      if recipe in supplies:
-        return True
       if recipe not in creatable:
-        creatable[recipe] = False
-        if recipe in recipes:
-          for supply in recipes[recipe]:
-            if not check(supply):
-              break
-          else:
-            creatable[recipe] = True
+        if recipe in supplies:
+          creatable[recipe] = True
+        else:
+          creatable[recipe] = False
+          if recipe in recipes:
+            for supply in recipes[recipe]:
+              if not check(supply):
+                break
+            else:
+              creatable[recipe] = True
       return creatable[recipe]
     for recipe in recipes:
       if check(recipe):
