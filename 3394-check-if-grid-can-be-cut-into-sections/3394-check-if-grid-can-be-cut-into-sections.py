@@ -8,7 +8,8 @@ class Solution:
         cuts += 1
         if cuts == 2:
           return True
-      cut = r
+      if r > cut:
+        cut = r
     # ver
     rectangles.sort(key=lambda x: (x[1],x[3]))
     cuts, cut = 0, 0
@@ -17,6 +18,7 @@ class Solution:
         cuts += 1
         if cuts == 2:
           return True
-      cut = r
+      if r > cut:
+        cut = r
     return False
         
