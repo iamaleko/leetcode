@@ -1,9 +1,6 @@
 class Solution:
   def minOperations(self, grid: List[List[int]], x: int) -> int:
-    arr = []
-    for row in grid:
-      for num in row:
-        arr.append(num)
+    arr = [num for row in grid for num in row]
     if (n := len(arr)) == 1:
       return 0
     arr.sort()
