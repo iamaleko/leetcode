@@ -5,10 +5,7 @@ class Solution:
     for num in nums:
       if not c:
         x = num
-      if x == num:
-        c += 1
-      else:
-        c -= 1
+      c += 1 if x == num else -1
     # find split, running sum
     l, r, n = 0, nums.count(x), len(nums)
     for i in range(n):
