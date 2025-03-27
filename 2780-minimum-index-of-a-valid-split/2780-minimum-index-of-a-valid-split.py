@@ -15,7 +15,7 @@ class Solution:
       if nums[i] == x:
         r += 1
     for i in range(1, n):
-      if l > i / 2 and r > (n - i) / 2:
+      if l > i // 2 and r > (n - i) // 2:
         return i - 1
       if nums[i] == x:
         l += 1
