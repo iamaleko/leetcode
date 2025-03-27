@@ -8,10 +8,10 @@ class Solution:
       c += 1 if x == num else -1
     # find split, running sum
     l, r, n = 0, nums.count(x), len(nums)
-    for i, num in enumerate(nums):
+    for i in range(n):
       if l > i // 2 and r > (n - i) // 2:
         return i - 1
-      if num == x:
+      if nums[i] == x:
         l += 1
         r -= 1
     return -1
