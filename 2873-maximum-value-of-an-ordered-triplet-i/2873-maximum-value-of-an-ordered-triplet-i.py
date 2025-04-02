@@ -4,8 +4,6 @@ class Solution:
     a, b = nums[:2]
     d = a - b
     for c in nums[2:]:
-      ans = max(ans, d * c)
-      a = max(a, b)
+      ans, a, b = max(ans, d * c), max(a, b), c
       d = max(d, a - c)
-      b = c
     return ans
