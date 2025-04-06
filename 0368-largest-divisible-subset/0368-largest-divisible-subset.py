@@ -4,12 +4,12 @@ class Solution:
     divisors = {}
     ans = []
     for num in nums:
-      path = divisors[num] if num in divisors else [num]
-      for divisor, divisorPath in divisors.items():
-        if num % divisor == 0 and len(path) <= len(divisorPath):
-          path = divisorPath + [num]
-      divisors[num] = path
-      if len(path) > len(ans):
-        ans = path
+      path = divisors[num] if num in divisors else []
+      for divisor in divisors:
+        if num % divisor == 0 and len(path) < len(divisors[divisor]):
+          path = divisors[divisor]
+      divisors[num] = path + [num]
+      if len(divisors[num]) > len(ans):
+        ans = divisors[num]
     return ans
         
