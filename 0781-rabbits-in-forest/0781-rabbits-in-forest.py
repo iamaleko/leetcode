@@ -4,7 +4,10 @@ class Solution:
     ans = 0
     for answer in answers:
       if answer + 1 not in count:
-        count[answer + 1] = 1
+        if answer + 1 == 1:
+          ans += 1
+        else:
+          count[answer + 1] = 1
       elif answer + 1 in count:
         count[answer + 1] += 1
         if count[answer + 1] == answer + 1:
