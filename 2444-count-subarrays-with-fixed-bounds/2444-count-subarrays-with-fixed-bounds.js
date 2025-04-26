@@ -19,29 +19,31 @@ class Heap {
       this.sink(i);
     }
     bubble(i) {
-      const pi = i >>> 1;
-      if (pi !== i && this.comparator(this.heap[i], this.heap[pi])) {
-        this.swap(i, pi);
-        this.bubble(pi);
+      let p;
+      while (true) {
+        p = i >>> 1;
+        if (p === i || !this.comparator(this.heap[i], this.heap[p])) return;
+        this.swap(i, p);
+        i = p;
       }
     }
     sink(i) {
-      const li = i * 2 + 1;
-      const ri = i * 2 + 2;
-      let si = i;
-      if (ri < this.heap.length && this.comparator(this.heap[ri], this.heap[si])) si = ri;
-      if (li < this.heap.length && this.comparator(this.heap[li], this.heap[si])) si = li;
-      if (si !== i) {
-        this.swap(i, si);
-        this.sink(si);
+      let l, r, t; 
+      while (true) {
+        l = i * 2 + 1;
+        r = i * 2 + 2;
+        t = i;
+        if (r < this.heap.length && this.comparator(this.heap[r], this.heap[t])) t = r;
+        if (l < this.heap.length && this.comparator(this.heap[l], this.heap[t])) t = l;
+        if (t === i) return;
+        this.swap(i, t);
+        i = t;
       }
     }
-    swap(a,b) {
+    swap(a, b) {
       this.map.set(this.heap[a], b);
       this.map.set(this.heap[b], a);
-      const tmp = this.heap[a];
-      this.heap[a] = this.heap[b];
-      this.heap[b] = tmp;
+      [this.heap[a], this.heap[b]] = [this.heap[b], this.heap[a]];
     }
     peek() {
       return this.heap[0];
@@ -56,10 +58,7 @@ const countSubarrays = (nums, minK, maxK) => {
     for (let r = 0; r < nums.length; r++) {
       minh.add(r);
       maxh.add(r);
-      while (
-        (minh.peek() !== undefined && nums[minh.peek()] < minK) ||
-        (maxh.peek() !== undefined && nums[maxh.peek()] > maxK)
-      ) {
+      while (nums[minh.peek()] < minK || nums[maxh.peek()] > maxK) {
         minh.remove(l);
         maxh.remove(l);
         l++;
