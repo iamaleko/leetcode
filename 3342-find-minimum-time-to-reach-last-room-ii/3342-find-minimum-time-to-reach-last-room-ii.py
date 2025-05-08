@@ -9,7 +9,7 @@ class Solution:
         return c
       for y, x in [(y-1,x),(y+1,x),(y,x-1),(y,x+1)]:
         if 0 <= y <= my and 0 <= x <= mx and moveTime[y][x] != -1:
-          heappush(h, (c + 1 + t + max(0, moveTime[y][x] - c), y, x, t ^ 1))
+          heappush(h, (1 + t + max(c, moveTime[y][x]), y, x, t ^ 1))
           moveTime[y][x] = -1
     return -1
 
