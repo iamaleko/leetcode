@@ -1,23 +1,20 @@
 class Solution(object):
-    def pushDominoes(self, dominoes):
-        N = len(dominoes)
-        force = [0] * N
-
-        # Populate forces going from left to right
-        f = 0
-        for i in range(N):
-            if dominoes[i] == 'R': f = N
-            elif dominoes[i] == 'L': f = 0
-            else: f = max(f-1, 0)
-            force[i] += f
-
-        # Populate forces going from right to left
-        f = 0
-        for i in range(N-1, -1, -1):
-            if dominoes[i] == 'L': f = N
-            elif dominoes[i] == 'R': f = 0
-            else: f = max(f-1, 0)
-            force[i] -= f
-
-        return "".join('.' if f==0 else 'R' if f > 0 else 'L'
-                       for f in force)
+  def pushDominoes(self, dominoes):
+    ans = ''
+    l = -1
+    dominoes = 'L' + dominoes + 'R'
+    for r, ch in enumerate(dominoes):
+      if ch == '.':
+        continue
+      if l != r - 1:
+        if dominoes[l] == 'L' and ch == 'L':
+          ans += 'L' * (r - l - 1)
+        elif dominoes[l] == 'R' and ch == 'R':
+          ans += 'R' * (r - l - 1)
+        elif dominoes[l] == 'L' and ch == 'R':
+          ans += '.' * (r - l - 1)
+        elif dominoes[l] == 'R' and ch == 'L':
+          ans += 'R' * ((r - l - 1) // 2) + ('.' if (r - l - 1) & 1 else '') + 'L' * ((r - l - 1) // 2)
+      ans += ch
+      l = r
+    return ans[1:-1]
