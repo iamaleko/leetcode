@@ -5,7 +5,7 @@ class Solution:
     for i, word in enumerate(words):
       best, keys = [], [word[0:j] + '.' + word[j+1:] for j in range(len(word))]
       for key in keys:
-        if key in m and groups[i] != groups[m[key][-1]] and len(m[key]) > len(best):
+        if key in m and len(m[key]) > len(best) and groups[i] != groups[m[key][-1]]:
           best = m[key]
       best = best[:] + [i]
       for key in keys:
