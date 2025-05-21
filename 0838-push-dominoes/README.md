@@ -1,4 +1,4 @@
-<h2><a href="https://leetcode.com/problems/push-dominoes">838. Push Dominoes</a></h2><h3>Medium</h3><hr><p>There are <code>n</code> dominoes in a line, and we place each domino vertically upright. In the beginning, we simultaneously push some of the dominoes either to the left or to the right.</p>
+<h2><a href="https://leetcode.com/problems/push-dominoes/?envType=problem-list-v2&envId=ajm8xatj">838. Push Dominoes</a></h2><h3>Medium</h3><hr><p>There are <code>n</code> dominoes in a line, and we place each domino vertically upright. In the beginning, we simultaneously push some of the dominoes either to the left or to the right.</p>
 
 <p>After each second, each domino that is falling to the left pushes the adjacent domino on the left. Similarly, the dominoes falling to the right push their adjacent dominoes standing on the right.</p>
 
