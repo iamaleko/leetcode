@@ -1,9 +1,8 @@
 class Solution:
   def largestPathValue(self, colors: str, edges: List[List[int]]) -> int:
     n = len(colors)
-    ans = [0] * 26
     graph = {}
-    cache = {node: [0] * 26 for node in range(n)}
+    cache = [0] * (26 * n)
     groups = [ord(color) - 97 for color in colors]
     indegree = [0] * n
 
@@ -24,25 +23,27 @@ class Solution:
       return -1
 
     def merge(a, b):
-      ans = False
+      a *= 26
+      b *= 26
       for i in range(26):
-        if a[i] < b[i]:
-          a[i] = b[i]
-          ans = True
-      return ans
+        if cache[a + i] < cache[b + i]:
+          cache[a + i] = cache[b + i]
     
     while leaves:
       node = leaves.popleft()
-      cache[node][groups[node]] += 1
+      cache[node * 26 + groups[node]] += 1
       if node in graph:
         for parent in graph[node]:
           indegree[parent] -= 1
           if indegree[parent] < 0:
             return -1
-          merge(cache[parent], cache[node])
+          merge(parent, node)
           if indegree[parent] == 0:
            leaves.append(parent)
-      else:
-        merge(ans, cache[node])
-      cache[node][groups[node]] -= 1
-    return -1 if sum(indegree) > 0 else max(ans)
+      cache[node * 26 + groups[node]] -= 1
+
+    for node in range(n):
+      if node not in graph:
+        cache[node * 26 + groups[node]] += 1
+
+    return -1 if any(indegree) else max(cache)
