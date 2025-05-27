@@ -1,11 +1,12 @@
 func differenceOfSums(n int, m int) int {
-  a, b := 0, 0
-  for i := 1; i <= n; i++ {
-    if i % m == 0 {
-      b += i
+  ans := 0
+  for n > 0 {
+    if n % m == 0 {
+      ans -= n
     } else {
-      a += i
+      ans += n
     }
+    n--
   }
-  return a - b
+  return ans
 }
