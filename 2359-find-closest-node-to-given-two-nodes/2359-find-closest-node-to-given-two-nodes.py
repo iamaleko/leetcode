@@ -1,7 +1,5 @@
 class Solution:
   def closestMeetingNode(self, edges: List[int], a: int, b: int) -> int:
-    if a == b:
-      return a
     level, levels = 0, {}
     while a > -1:
       if a in levels:
