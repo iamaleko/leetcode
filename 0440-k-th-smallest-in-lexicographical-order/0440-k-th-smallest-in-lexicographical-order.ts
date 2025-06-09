@@ -1,4 +1,4 @@
-// Trie
+// Trie from editorial, task added to "i am stupid" list
 function findKthNumber(n: number, k: number): number {
   let ans = 1;
   k--;
