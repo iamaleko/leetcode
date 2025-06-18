@@ -3,7 +3,7 @@ const divideArray = (nums, k) => {
   const res = [], l = nums.length;
   for (let i = 0; i < l; ) {
     if (nums[i + 2] - nums[i] > k) return [];
-    res[i/3] = [nums[i++], nums[i++], nums[i++]];
+    res.push([nums[i++], nums[i++], nums[i++]]);
   }
   return res;
 };
