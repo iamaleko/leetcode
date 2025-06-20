@@ -15,5 +15,5 @@ class Solution:
       elif ch == 'E':
         x += 1
         e += 1
-      m = max(abs(y) + abs(x) + min(min(n,s) * 2 + min(e,w) * 2, k * 2), m)
+      m = max(abs(y) + abs(x) + min(min(n,s) + min(e,w), k) * 2, m)
     return m
