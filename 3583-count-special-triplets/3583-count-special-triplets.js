@@ -7,8 +7,12 @@ var specialTriplets = function(nums) {
   mk = new Map();
   const MOD = 10 ** 9 + 7;
   let ans = 0;
-  for (let i = nums.length - 1, num = nums[i]; i >= 0; num = nums[--i]) {
-    if (mj.has(num / 2)) {
+  for (
+    let i = nums.length - 1, num = nums[i];
+    i >= 0;
+    num = nums[--i]
+  ) {
+    if (!(num & 1) && mj.has(num / 2)) {
       ans = (ans + mj.get(num / 2)) % MOD;
     }
     if (mk.has(num * 2)) {
