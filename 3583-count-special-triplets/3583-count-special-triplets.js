@@ -13,9 +13,9 @@ var specialTriplets = function(nums) {
       ans = (ans + mj[num / 2]) % MOD;
     }
     if ((num * 2) in mk) {
-      mj[num] = ((mj[num] ?? 0) + mk[num * 2]) % MOD;
+      mj[num] = ((mj[num] ?? 0) + mk[num * 2]);
     }
-    mk[num] = ((mk[num] ?? 0) + 1) % MOD;
+    mk[num] = ((mk[num] ?? 0) + 1);
   }
   return ans;
 };
