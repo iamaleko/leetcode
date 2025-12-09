@@ -3,19 +3,18 @@
  * @return {number}
  */
 var specialTriplets = function(nums) {
-  mj = {};
-  mk = {};
+  mj = new Map();
+  mk = new Map();
   const MOD = 10 ** 9 + 7;
   let ans = 0;
-  for (let i = nums.length - 1; i >= 0; i--) {
-    const num = nums[i];
-    if ((num / 2) in mj) {
-      ans = (ans + mj[num / 2]) % MOD;
+  for (let i = nums.length - 1, num = nums[i]; i >= 0; num = nums[--i]) {
+    if (mj.has(num / 2)) {
+      ans = (ans + mj.get(num / 2)) % MOD;
     }
-    if ((num * 2) in mk) {
-      mj[num] = ((mj[num] ?? 0) + mk[num * 2]);
+    if (mk.has(num * 2)) {
+      mj.set(num, (mj.get(num) ?? 0) + mk.get(num * 2));
     }
-    mk[num] = ((mk[num] ?? 0) + 1);
+    mk.set(num, (mk.get(num) ?? 0) + 1);
   }
   return ans;
 };
