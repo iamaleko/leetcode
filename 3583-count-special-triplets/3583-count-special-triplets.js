@@ -13,10 +13,10 @@ var specialTriplets = function(nums) {
     num = nums[--i]
   ) {
     if (!(num & 1) && mj.has(num >> 1)) {
-      ans = (ans + mj.get(num / 2)) % MOD;
+      ans = (ans + mj.get(num >> 1)) % MOD;
     }
-    if (mk.has(num * 2)) {
-      mj.set(num, (mj.get(num) ?? 0) + mk.get(num * 2));
+    if (mk.has(num << 1)) {
+      mj.set(num, (mj.get(num) ?? 0) + mk.get(num << 1));
     }
     mk.set(num, (mk.get(num) ?? 0) + 1);
   }
