@@ -12,7 +12,7 @@ var specialTriplets = function(nums) {
     i >= 0;
     num = nums[--i]
   ) {
-    if (!(num & 1) && mj.has(num / 2)) {
+    if (!(num & 1) && mj.has(num >> 1)) {
       ans = (ans + mj.get(num / 2)) % MOD;
     }
     if (mk.has(num * 2)) {
