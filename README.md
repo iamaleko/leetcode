@@ -217,6 +217,7 @@ Collection of LeetCode questions to ace the coding interview!
 | [0026-remove-duplicates-from-sorted-array](https://github.com/iamaleko/leetcode/tree/master/0026-remove-duplicates-from-sorted-array) |
 | [0027-remove-element](https://github.com/iamaleko/leetcode/tree/master/0027-remove-element) |
 | [0350-intersection-of-two-arrays-ii](https://github.com/iamaleko/leetcode/tree/master/0350-intersection-of-two-arrays-ii) |
+| [0908-smallest-range-i](https://github.com/iamaleko/leetcode/tree/main/0908-smallest-range-i/) | Easy |
 | [0929-unique-email-addresses](https://github.com/iamaleko/leetcode/tree/main/0929-unique-email-addresses/) | Easy |
 | [0942-di-string-match](https://github.com/iamaleko/leetcode/tree/main/0942-di-string-match/) | Easy |
 | [0948-sort-an-array](https://github.com/iamaleko/leetcode/tree/master/0948-sort-an-array) |
@@ -301,6 +302,7 @@ Collection of LeetCode questions to ace the coding interview!
 | [0009-palindrome-number](https://github.com/iamaleko/leetcode/tree/master/0009-palindrome-number) |
 | [0013-roman-to-integer](https://github.com/iamaleko/leetcode/tree/master/0013-roman-to-integer) |
 | [0504-base-7](https://github.com/iamaleko/leetcode/tree/master/0504-base-7) |
+| [0908-smallest-range-i](https://github.com/iamaleko/leetcode/tree/main/0908-smallest-range-i/) | Easy |
 | [1642-water-bottles](https://github.com/iamaleko/leetcode/tree/master/1642-water-bottles) |
 | [1951-find-the-winner-of-the-circular-game](https://github.com/iamaleko/leetcode/tree/master/1951-find-the-winner-of-the-circular-game) |
 | [2645-pass-the-pillow](https://github.com/iamaleko/leetcode/tree/master/2645-pass-the-pillow) |
