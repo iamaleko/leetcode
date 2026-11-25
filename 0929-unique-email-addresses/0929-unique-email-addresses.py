@@ -1,15 +1,17 @@
 class Solution:
   def numUniqueEmails(self, emails: list[str]) -> int:
-    ans = 0
-    d = {}
+    s = set()
     for email in emails:
-      [local, domain] = email.split('@', 1)
-      local = ''.join(['' if a == '.' else a for a in local.split('+', 1)[0]])
-      if domain not in d:
-        d[domain] = set([local])
-        ans+=1
-      elif local not in d[domain]:
-        d[domain].add(local)
-        ans+=1
-    return ans
+      a, b, k = False, False, []
+      for ch in email:
+        if ch == '+':
+          b = True
+        elif ch == '@':
+          a = True
+          b = False
+          k.append(ch)
+        elif not b and ch != '.' or a:
+          k.append(ch)
+      s.add(''.join(k))
+    return len(s)
         
