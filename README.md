@@ -217,6 +217,7 @@ Collection of LeetCode questions to ace the coding interview!
 | [0026-remove-duplicates-from-sorted-array](https://github.com/iamaleko/leetcode/tree/master/0026-remove-duplicates-from-sorted-array) |
 | [0027-remove-element](https://github.com/iamaleko/leetcode/tree/master/0027-remove-element) |
 | [0350-intersection-of-two-arrays-ii](https://github.com/iamaleko/leetcode/tree/master/0350-intersection-of-two-arrays-ii) |
+| [0929-unique-email-addresses](https://github.com/iamaleko/leetcode/tree/main/0929-unique-email-addresses/) | Easy |
 | [0948-sort-an-array](https://github.com/iamaleko/leetcode/tree/master/0948-sort-an-array) |
 | [1207-delete-nodes-and-return-forest](https://github.com/iamaleko/leetcode/tree/master/1207-delete-nodes-and-return-forest) |
 | [1293-three-consecutive-odds](https://github.com/iamaleko/leetcode/tree/master/1293-three-consecutive-odds) |
@@ -242,6 +243,7 @@ Collection of LeetCode questions to ace the coding interview!
 | [0013-roman-to-integer](https://github.com/iamaleko/leetcode/tree/master/0013-roman-to-integer) |
 | [0350-intersection-of-two-arrays-ii](https://github.com/iamaleko/leetcode/tree/master/0350-intersection-of-two-arrays-ii) |
 | [0726-number-of-atoms](https://github.com/iamaleko/leetcode/tree/master/0726-number-of-atoms) |
+| [0929-unique-email-addresses](https://github.com/iamaleko/leetcode/tree/main/0929-unique-email-addresses/) | Easy |
 | [1207-delete-nodes-and-return-forest](https://github.com/iamaleko/leetcode/tree/master/1207-delete-nodes-and-return-forest) |
 | [1741-sort-array-by-increasing-frequency](https://github.com/iamaleko/leetcode/tree/master/1741-sort-array-by-increasing-frequency) |
 | [2306-create-binary-tree-from-descriptions](https://github.com/iamaleko/leetcode/tree/master/2306-create-binary-tree-from-descriptions) |
@@ -320,6 +322,7 @@ Collection of LeetCode questions to ace the coding interview!
 | [0551-student-attendance-record-i](https://github.com/iamaleko/leetcode/tree/master/0551-student-attendance-record-i) |
 | [0726-number-of-atoms](https://github.com/iamaleko/leetcode/tree/master/0726-number-of-atoms) |
 | [0917-reverse-only-letters](https://github.com/iamaleko/leetcode/tree/main/0917-reverse-only-letters/) | Easy |
+| [0929-unique-email-addresses](https://github.com/iamaleko/leetcode/tree/main/0929-unique-email-addresses/) | Easy |
 | [1298-reverse-substrings-between-each-pair-of-parentheses](https://github.com/iamaleko/leetcode/tree/master/1298-reverse-substrings-between-each-pair-of-parentheses) |
 | [1720-crawler-log-folder](https://github.com/iamaleko/leetcode/tree/master/1720-crawler-log-folder) |
 | [1756-minimum-deletions-to-make-string-balanced](https://github.com/iamaleko/leetcode/tree/master/1756-minimum-deletions-to-make-string-balanced) |
