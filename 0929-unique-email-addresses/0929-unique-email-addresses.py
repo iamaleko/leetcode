@@ -3,6 +3,6 @@ class Solution:
     s = set()
     for email in emails:
       [local, domain] = email.split('@', 1)
-      s.add(''.join(['' if a == '.' else a for a in local.split('+', 1)[0]]) + '@' + domain)
+      s.add(''.join(local.split('+', 1)[0].replace('.','')) + '@' + domain)
     return len(s)
         
