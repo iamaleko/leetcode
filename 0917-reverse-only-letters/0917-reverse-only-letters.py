@@ -1,24 +1,23 @@
 class Solution:
   def reverseOnlyLetters(self, s: str) -> str:
     ls = list(s)
-    lp, rp = False, False
-    l, r = 0, len(s) - 1
+    f, l, r = 0, 0, len(s) - 1
     while l < r:
-      if not lp:
+      if f & 1 == 0:
         if ls[l].isalpha():
-          lp = True
+          f |= 1
         else:
           l += 1
-      elif not rp:
+      elif f & 2 == 0:
         if ls[r].isalpha():
-          rp = True
+          f |= 2
         else:
           r -= 1
-      if lp and rp:
+      if f == 3:
         ls[l], ls[r] = ls[r], ls[l]
         l += 1
         r -= 1
-        lp = rp = False
+        f = 0
     return ''.join(ls)
 
         
