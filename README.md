@@ -218,6 +218,7 @@ Collection of LeetCode questions to ace the coding interview!
 | [0027-remove-element](https://github.com/iamaleko/leetcode/tree/master/0027-remove-element) |
 | [0350-intersection-of-two-arrays-ii](https://github.com/iamaleko/leetcode/tree/master/0350-intersection-of-two-arrays-ii) |
 | [0929-unique-email-addresses](https://github.com/iamaleko/leetcode/tree/main/0929-unique-email-addresses/) | Easy |
+| [0942-di-string-match](https://github.com/iamaleko/leetcode/tree/main/0942-di-string-match/) | Easy |
 | [0948-sort-an-array](https://github.com/iamaleko/leetcode/tree/master/0948-sort-an-array) |
 | [1207-delete-nodes-and-return-forest](https://github.com/iamaleko/leetcode/tree/master/1207-delete-nodes-and-return-forest) |
 | [1293-three-consecutive-odds](https://github.com/iamaleko/leetcode/tree/master/1293-three-consecutive-odds) |
@@ -255,6 +256,7 @@ Collection of LeetCode questions to ace the coding interview!
 | [0027-remove-element](https://github.com/iamaleko/leetcode/tree/master/0027-remove-element) |
 | [0350-intersection-of-two-arrays-ii](https://github.com/iamaleko/leetcode/tree/master/0350-intersection-of-two-arrays-ii) |
 | [0917-reverse-only-letters](https://github.com/iamaleko/leetcode/tree/main/0917-reverse-only-letters/) | Easy |
+| [0942-di-string-match](https://github.com/iamaleko/leetcode/tree/main/0942-di-string-match/) | Easy |
 ## Binary Search
 | Problem Name | Difficulty |
 | ------- | ------- |
@@ -273,6 +275,7 @@ Collection of LeetCode questions to ace the coding interview!
 | Problem Name | Difficulty |
 | ------- | ------- |
 | [0044-wildcard-matching](https://github.com/iamaleko/leetcode/tree/master/0044-wildcard-matching) |
+| [0942-di-string-match](https://github.com/iamaleko/leetcode/tree/main/0942-di-string-match/) | Easy |
 | [1616-minimum-difference-between-largest-and-smallest-value-in-three-moves](https://github.com/iamaleko/leetcode/tree/master/1616-minimum-difference-between-largest-and-smallest-value-in-three-moves) |
 | [1711-find-valid-matrix-given-row-and-column-sums](https://github.com/iamaleko/leetcode/tree/master/1711-find-valid-matrix-given-row-and-column-sums) |
 | [1818-maximum-score-from-removing-substrings](https://github.com/iamaleko/leetcode/tree/master/1818-maximum-score-from-removing-substrings) |
@@ -323,6 +326,7 @@ Collection of LeetCode questions to ace the coding interview!
 | [0726-number-of-atoms](https://github.com/iamaleko/leetcode/tree/master/0726-number-of-atoms) |
 | [0917-reverse-only-letters](https://github.com/iamaleko/leetcode/tree/main/0917-reverse-only-letters/) | Easy |
 | [0929-unique-email-addresses](https://github.com/iamaleko/leetcode/tree/main/0929-unique-email-addresses/) | Easy |
+| [0942-di-string-match](https://github.com/iamaleko/leetcode/tree/main/0942-di-string-match/) | Easy |
 | [1298-reverse-substrings-between-each-pair-of-parentheses](https://github.com/iamaleko/leetcode/tree/master/1298-reverse-substrings-between-each-pair-of-parentheses) |
 | [1720-crawler-log-folder](https://github.com/iamaleko/leetcode/tree/master/1720-crawler-log-folder) |
 | [1756-minimum-deletions-to-make-string-balanced](https://github.com/iamaleko/leetcode/tree/master/1756-minimum-deletions-to-make-string-balanced) |
