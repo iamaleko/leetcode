@@ -7,5 +7,5 @@ class Solution:
     while n:
       last = n % 10 == x
       found = found or last
-      n = math.trunc(n / 10)
+      n = int(n / 10)
     return found and not last
