@@ -238,6 +238,7 @@ Collection of LeetCode questions to ace the coding interview!
 | [2502-sort-the-people](https://github.com/iamaleko/leetcode/tree/master/2502-sort-the-people) |
 | [2846-robot-collisions](https://github.com/iamaleko/leetcode/tree/master/2846-robot-collisions) |
 | [3235-minimum-cost-to-convert-string-i](https://github.com/iamaleko/leetcode/tree/master/3235-minimum-cost-to-convert-string-i) |
+| [3898-find-the-degree-of-each-vertex](https://github.com/iamaleko/leetcode/tree/main/3898-find-the-degree-of-each-vertex/) | Easy |
 ## Hash Table
 | Problem Name | Difficulty |
 | ------- | ------- |
@@ -375,6 +376,7 @@ Collection of LeetCode questions to ace the coding interview!
 | [1496-lucky-numbers-in-a-matrix](https://github.com/iamaleko/leetcode/tree/master/1496-lucky-numbers-in-a-matrix) |
 | [1711-find-valid-matrix-given-row-and-column-sums](https://github.com/iamaleko/leetcode/tree/master/1711-find-valid-matrix-given-row-and-column-sums) |
 | [2472-build-a-matrix-with-conditions](https://github.com/iamaleko/leetcode/tree/master/2472-build-a-matrix-with-conditions) |
+| [3898-find-the-degree-of-each-vertex](https://github.com/iamaleko/leetcode/tree/main/3898-find-the-degree-of-each-vertex/) | Easy |
 ## Trie
 | Problem Name | Difficulty |
 | ------- | ------- |
@@ -424,4 +426,8 @@ Collection of LeetCode questions to ace the coding interview!
 | Problem Name | Difficulty |
 | ------- | ------- |
 | [2255-minimum-swaps-to-group-all-1s-together-ii](https://github.com/iamaleko/leetcode/tree/master/2255-minimum-swaps-to-group-all-1s-together-ii) |
+## Graph Theory
+| Problem Name | Difficulty |
+| ------- | ------- |
+| [3898-find-the-degree-of-each-vertex](https://github.com/iamaleko/leetcode/tree/main/3898-find-the-degree-of-each-vertex/) | Easy |
 <!---LeetCode Topics End-->
