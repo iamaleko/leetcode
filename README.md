@@ -386,6 +386,7 @@ Collection of LeetCode questions to ace the coding interview!
 | [1456-find-the-city-with-the-smallest-number-of-neighbors-at-a-threshold-distance](https://github.com/iamaleko/leetcode/tree/master/1456-find-the-city-with-the-smallest-number-of-neighbors-at-a-threshold-distance) |
 | [1511-count-number-of-teams](https://github.com/iamaleko/leetcode/tree/master/1511-count-number-of-teams) |
 | [1756-minimum-deletions-to-make-string-balanced](https://github.com/iamaleko/leetcode/tree/master/1756-minimum-deletions-to-make-string-balanced) |
+| [3954-sum-of-compatible-numbers-in-range-i](https://github.com/iamaleko/leetcode/tree/main/3954-sum-of-compatible-numbers-in-range-i/) | Easy |
 ## Matrix
 | Problem Name | Difficulty |
 | ------- | ------- |
@@ -454,4 +455,9 @@ Collection of LeetCode questions to ace the coding interview!
 | Problem Name | Difficulty |
 | ------- | ------- |
 | [3950-exactly-one-consecutive-set-bits-pair](https://github.com/iamaleko/leetcode/tree/main/3950-exactly-one-consecutive-set-bits-pair/) | Easy |
+| [3954-sum-of-compatible-numbers-in-range-i](https://github.com/iamaleko/leetcode/tree/main/3954-sum-of-compatible-numbers-in-range-i/) | Easy |
+## Enumeration
+| Problem Name | Difficulty |
+| ------- | ------- |
+| [3954-sum-of-compatible-numbers-in-range-i](https://github.com/iamaleko/leetcode/tree/main/3954-sum-of-compatible-numbers-in-range-i/) | Easy |
 <!---LeetCode Topics End-->
