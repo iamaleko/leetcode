@@ -247,6 +247,7 @@ Collection of LeetCode questions to ace the coding interview!
 | [3936-minimum-swaps-to-move-zeros-to-end](https://github.com/iamaleko/leetcode/tree/main/3936-minimum-swaps-to-move-zeros-to-end/) | Easy |
 | [3940-limit-occurrences-in-sorted-array](https://github.com/iamaleko/leetcode/tree/main/3940-limit-occurrences-in-sorted-array/) | Easy |
 | [3978-unique-middle-element](https://github.com/iamaleko/leetcode/tree/main/3978-unique-middle-element/) | Easy |
+| [3982-sum-of-integers-with-maximum-digit-range](https://github.com/iamaleko/leetcode/tree/main/3982-sum-of-integers-with-maximum-digit-range/) | Easy |
 ## Hash Table
 | Problem Name | Difficulty |
 | ------- | ------- |
@@ -324,6 +325,7 @@ Collection of LeetCode questions to ace the coding interview!
 | [3908-valid-digit-number](https://github.com/iamaleko/leetcode/tree/main/3908-valid-digit-number/) | Easy |
 | [3945-digit-frequency-score](https://github.com/iamaleko/leetcode/tree/main/3945-digit-frequency-score/) | Easy |
 | [3959-check-good-integer](https://github.com/iamaleko/leetcode/tree/main/3959-check-good-integer/) | Easy |
+| [3982-sum-of-integers-with-maximum-digit-range](https://github.com/iamaleko/leetcode/tree/main/3982-sum-of-integers-with-maximum-digit-range/) | Easy |
 ## Recursion
 | Problem Name | Difficulty |
 | ------- | ------- |
