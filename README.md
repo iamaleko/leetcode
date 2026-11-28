@@ -450,4 +450,8 @@ Collection of LeetCode questions to ace the coding interview!
 | Problem Name | Difficulty |
 | ------- | ------- |
 | [3903-smallest-stable-index-i](https://github.com/iamaleko/leetcode/tree/main/3903-smallest-stable-index-i/) | Easy |
+## Bit Manipulation
+| Problem Name | Difficulty |
+| ------- | ------- |
+| [3950-exactly-one-consecutive-set-bits-pair](https://github.com/iamaleko/leetcode/tree/main/3950-exactly-one-consecutive-set-bits-pair/) | Easy |
 <!---LeetCode Topics End-->
