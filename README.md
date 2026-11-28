@@ -240,6 +240,7 @@ Collection of LeetCode questions to ace the coding interview!
 | [3235-minimum-cost-to-convert-string-i](https://github.com/iamaleko/leetcode/tree/master/3235-minimum-cost-to-convert-string-i) |
 | [3898-find-the-degree-of-each-vertex](https://github.com/iamaleko/leetcode/tree/main/3898-find-the-degree-of-each-vertex/) | Easy |
 | [3903-smallest-stable-index-i](https://github.com/iamaleko/leetcode/tree/main/3903-smallest-stable-index-i/) | Easy |
+| [3912-valid-elements-in-an-array](https://github.com/iamaleko/leetcode/tree/main/3912-valid-elements-in-an-array/) | Easy |
 ## Hash Table
 | Problem Name | Difficulty |
 | ------- | ------- |
