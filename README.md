@@ -243,6 +243,7 @@ Collection of LeetCode questions to ace the coding interview!
 | [3912-valid-elements-in-an-array](https://github.com/iamaleko/leetcode/tree/main/3912-valid-elements-in-an-array/) | Easy |
 | [3917-count-indices-with-opposite-parity](https://github.com/iamaleko/leetcode/tree/main/3917-count-indices-with-opposite-parity/) | Easy |
 | [3921-score-validator](https://github.com/iamaleko/leetcode/tree/main/3921-score-validator/) | Easy |
+| [3925-concatenate-array-with-reverse](https://github.com/iamaleko/leetcode/tree/main/3925-concatenate-array-with-reverse/) | Easy |
 ## Hash Table
 | Problem Name | Difficulty |
 | ------- | ------- |
@@ -302,6 +303,7 @@ Collection of LeetCode questions to ace the coding interview!
 | [2645-pass-the-pillow](https://github.com/iamaleko/leetcode/tree/master/2645-pass-the-pillow) |
 | [2846-robot-collisions](https://github.com/iamaleko/leetcode/tree/master/2846-robot-collisions) |
 | [3921-score-validator](https://github.com/iamaleko/leetcode/tree/main/3921-score-validator/) | Easy |
+| [3925-concatenate-array-with-reverse](https://github.com/iamaleko/leetcode/tree/main/3925-concatenate-array-with-reverse/) | Easy |
 ## Math
 | Problem Name | Difficulty |
 | ------- | ------- |
