@@ -242,6 +242,7 @@ Collection of LeetCode questions to ace the coding interview!
 | [3903-smallest-stable-index-i](https://github.com/iamaleko/leetcode/tree/main/3903-smallest-stable-index-i/) | Easy |
 | [3912-valid-elements-in-an-array](https://github.com/iamaleko/leetcode/tree/main/3912-valid-elements-in-an-array/) | Easy |
 | [3917-count-indices-with-opposite-parity](https://github.com/iamaleko/leetcode/tree/main/3917-count-indices-with-opposite-parity/) | Easy |
+| [3921-score-validator](https://github.com/iamaleko/leetcode/tree/main/3921-score-validator/) | Easy |
 ## Hash Table
 | Problem Name | Difficulty |
 | ------- | ------- |
@@ -300,6 +301,7 @@ Collection of LeetCode questions to ace the coding interview!
 | [2299-merge-nodes-in-between-zeros](https://github.com/iamaleko/leetcode/tree/master/2299-merge-nodes-in-between-zeros) |
 | [2645-pass-the-pillow](https://github.com/iamaleko/leetcode/tree/master/2645-pass-the-pillow) |
 | [2846-robot-collisions](https://github.com/iamaleko/leetcode/tree/master/2846-robot-collisions) |
+| [3921-score-validator](https://github.com/iamaleko/leetcode/tree/main/3921-score-validator/) | Easy |
 ## Math
 | Problem Name | Difficulty |
 | ------- | ------- |
@@ -341,6 +343,7 @@ Collection of LeetCode questions to ace the coding interview!
 | [2217-step-by-step-directions-from-a-binary-tree-node-to-another](https://github.com/iamaleko/leetcode/tree/master/2217-step-by-step-directions-from-a-binary-tree-node-to-another) |
 | [2502-sort-the-people](https://github.com/iamaleko/leetcode/tree/master/2502-sort-the-people) |
 | [3235-minimum-cost-to-convert-string-i](https://github.com/iamaleko/leetcode/tree/master/3235-minimum-cost-to-convert-string-i) |
+| [3921-score-validator](https://github.com/iamaleko/leetcode/tree/main/3921-score-validator/) | Easy |
 ## Stack
 | Problem Name | Difficulty |
 | ------- | ------- |
