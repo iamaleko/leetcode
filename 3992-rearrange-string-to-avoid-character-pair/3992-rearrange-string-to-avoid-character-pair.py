@@ -1,8 +1,14 @@
 class Solution:
   def rearrangeString(self, s: str, x: str, y: str) -> str:
-    ss = ''
+    a = ''
+    b = ''
+    c = ''
     for ch in s:
-      if ch != y and ch != x:
-        ss += ch
-    return y * s.count(y) + ss + x * s.count(x)
+      if ch == y:
+        a += y
+      elif ch == x:
+        c += x
+      else:
+        b += ch
+    return a + b + c
         
