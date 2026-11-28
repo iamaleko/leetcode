@@ -308,6 +308,7 @@ Collection of LeetCode questions to ace the coding interview!
 | [1642-water-bottles](https://github.com/iamaleko/leetcode/tree/master/1642-water-bottles) |
 | [1951-find-the-winner-of-the-circular-game](https://github.com/iamaleko/leetcode/tree/master/1951-find-the-winner-of-the-circular-game) |
 | [2645-pass-the-pillow](https://github.com/iamaleko/leetcode/tree/master/2645-pass-the-pillow) |
+| [3908-valid-digit-number](https://github.com/iamaleko/leetcode/tree/main/3908-valid-digit-number/) | Easy |
 ## Recursion
 | Problem Name | Difficulty |
 | ------- | ------- |
