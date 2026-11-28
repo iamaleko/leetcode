@@ -245,6 +245,7 @@ Collection of LeetCode questions to ace the coding interview!
 | [3921-score-validator](https://github.com/iamaleko/leetcode/tree/main/3921-score-validator/) | Easy |
 | [3925-concatenate-array-with-reverse](https://github.com/iamaleko/leetcode/tree/main/3925-concatenate-array-with-reverse/) | Easy |
 | [3936-minimum-swaps-to-move-zeros-to-end](https://github.com/iamaleko/leetcode/tree/main/3936-minimum-swaps-to-move-zeros-to-end/) | Easy |
+| [3940-limit-occurrences-in-sorted-array](https://github.com/iamaleko/leetcode/tree/main/3940-limit-occurrences-in-sorted-array/) | Easy |
 ## Hash Table
 | Problem Name | Difficulty |
 | ------- | ------- |
@@ -266,6 +267,7 @@ Collection of LeetCode questions to ace the coding interview!
 | [0917-reverse-only-letters](https://github.com/iamaleko/leetcode/tree/main/0917-reverse-only-letters/) | Easy |
 | [0942-di-string-match](https://github.com/iamaleko/leetcode/tree/main/0942-di-string-match/) | Easy |
 | [3936-minimum-swaps-to-move-zeros-to-end](https://github.com/iamaleko/leetcode/tree/main/3936-minimum-swaps-to-move-zeros-to-end/) | Easy |
+| [3940-limit-occurrences-in-sorted-array](https://github.com/iamaleko/leetcode/tree/main/3940-limit-occurrences-in-sorted-array/) | Easy |
 ## Binary Search
 | Problem Name | Difficulty |
 | ------- | ------- |
