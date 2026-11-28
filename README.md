@@ -246,6 +246,7 @@ Collection of LeetCode questions to ace the coding interview!
 | [3925-concatenate-array-with-reverse](https://github.com/iamaleko/leetcode/tree/main/3925-concatenate-array-with-reverse/) | Easy |
 | [3936-minimum-swaps-to-move-zeros-to-end](https://github.com/iamaleko/leetcode/tree/main/3936-minimum-swaps-to-move-zeros-to-end/) | Easy |
 | [3940-limit-occurrences-in-sorted-array](https://github.com/iamaleko/leetcode/tree/main/3940-limit-occurrences-in-sorted-array/) | Easy |
+| [3978-unique-middle-element](https://github.com/iamaleko/leetcode/tree/main/3978-unique-middle-element/) | Easy |
 ## Hash Table
 | Problem Name | Difficulty |
 | ------- | ------- |
@@ -431,6 +432,7 @@ Collection of LeetCode questions to ace the coding interview!
 | Problem Name | Difficulty |
 | ------- | ------- |
 | [0948-sort-an-array](https://github.com/iamaleko/leetcode/tree/master/0948-sort-an-array) |
+| [3978-unique-middle-element](https://github.com/iamaleko/leetcode/tree/main/3978-unique-middle-element/) | Easy |
 ## Shortest Path
 | Problem Name | Difficulty |
 | ------- | ------- |
