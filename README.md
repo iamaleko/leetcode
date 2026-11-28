@@ -295,6 +295,7 @@ Collection of LeetCode questions to ace the coding interview!
 | [1616-minimum-difference-between-largest-and-smallest-value-in-three-moves](https://github.com/iamaleko/leetcode/tree/master/1616-minimum-difference-between-largest-and-smallest-value-in-three-moves) |
 | [1711-find-valid-matrix-given-row-and-column-sums](https://github.com/iamaleko/leetcode/tree/master/1711-find-valid-matrix-given-row-and-column-sums) |
 | [1818-maximum-score-from-removing-substrings](https://github.com/iamaleko/leetcode/tree/master/1818-maximum-score-from-removing-substrings) |
+| [4000-largest-integer-with-given-digit-sum](https://github.com/iamaleko/leetcode/tree/main/4000-largest-integer-with-given-digit-sum/) | Easy |
 ## Linked List
 | Problem Name | Difficulty |
 | ------- | ------- |
@@ -328,6 +329,7 @@ Collection of LeetCode questions to ace the coding interview!
 | [3945-digit-frequency-score](https://github.com/iamaleko/leetcode/tree/main/3945-digit-frequency-score/) | Easy |
 | [3959-check-good-integer](https://github.com/iamaleko/leetcode/tree/main/3959-check-good-integer/) | Easy |
 | [3982-sum-of-integers-with-maximum-digit-range](https://github.com/iamaleko/leetcode/tree/main/3982-sum-of-integers-with-maximum-digit-range/) | Easy |
+| [4000-largest-integer-with-given-digit-sum](https://github.com/iamaleko/leetcode/tree/main/4000-largest-integer-with-given-digit-sum/) | Easy |
 ## Recursion
 | Problem Name | Difficulty |
 | ------- | ------- |
