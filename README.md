@@ -258,6 +258,7 @@ Collection of LeetCode questions to ace the coding interview!
 | [1741-sort-array-by-increasing-frequency](https://github.com/iamaleko/leetcode/tree/master/1741-sort-array-by-increasing-frequency) |
 | [2306-create-binary-tree-from-descriptions](https://github.com/iamaleko/leetcode/tree/master/2306-create-binary-tree-from-descriptions) |
 | [2502-sort-the-people](https://github.com/iamaleko/leetcode/tree/master/2502-sort-the-people) |
+| [3945-digit-frequency-score](https://github.com/iamaleko/leetcode/tree/main/3945-digit-frequency-score/) | Easy |
 ## Two Pointers
 | Problem Name | Difficulty |
 | ------- | ------- |
@@ -319,6 +320,7 @@ Collection of LeetCode questions to ace the coding interview!
 | [1951-find-the-winner-of-the-circular-game](https://github.com/iamaleko/leetcode/tree/master/1951-find-the-winner-of-the-circular-game) |
 | [2645-pass-the-pillow](https://github.com/iamaleko/leetcode/tree/master/2645-pass-the-pillow) |
 | [3908-valid-digit-number](https://github.com/iamaleko/leetcode/tree/main/3908-valid-digit-number/) | Easy |
+| [3945-digit-frequency-score](https://github.com/iamaleko/leetcode/tree/main/3945-digit-frequency-score/) | Easy |
 ## Recursion
 | Problem Name | Difficulty |
 | ------- | ------- |
