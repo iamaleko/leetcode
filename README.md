@@ -363,6 +363,7 @@ Collection of LeetCode questions to ace the coding interview!
 | [3921-score-validator](https://github.com/iamaleko/leetcode/tree/main/3921-score-validator/) | Easy |
 | [3931-check-adjacent-digit-differences](https://github.com/iamaleko/leetcode/tree/main/3931-check-adjacent-digit-differences/) | Easy |
 | [3992-rearrange-string-to-avoid-character-pair](https://github.com/iamaleko/leetcode/tree/main/3992-rearrange-string-to-avoid-character-pair/) | Easy |
+| [4006-count-valid-prefixes](https://github.com/iamaleko/leetcode/tree/main/4006-count-valid-prefixes/) | Easy |
 ## Stack
 | Problem Name | Difficulty |
 | ------- | ------- |
@@ -440,6 +441,7 @@ Collection of LeetCode questions to ace the coding interview!
 | ------- | ------- |
 | [0948-sort-an-array](https://github.com/iamaleko/leetcode/tree/master/0948-sort-an-array) |
 | [3978-unique-middle-element](https://github.com/iamaleko/leetcode/tree/main/3978-unique-middle-element/) | Easy |
+| [4006-count-valid-prefixes](https://github.com/iamaleko/leetcode/tree/main/4006-count-valid-prefixes/) | Easy |
 ## Shortest Path
 | Problem Name | Difficulty |
 | ------- | ------- |
