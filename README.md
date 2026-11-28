@@ -271,6 +271,7 @@ Collection of LeetCode questions to ace the coding interview!
 | [0942-di-string-match](https://github.com/iamaleko/leetcode/tree/main/0942-di-string-match/) | Easy |
 | [3936-minimum-swaps-to-move-zeros-to-end](https://github.com/iamaleko/leetcode/tree/main/3936-minimum-swaps-to-move-zeros-to-end/) | Easy |
 | [3940-limit-occurrences-in-sorted-array](https://github.com/iamaleko/leetcode/tree/main/3940-limit-occurrences-in-sorted-array/) | Easy |
+| [3992-rearrange-string-to-avoid-character-pair](https://github.com/iamaleko/leetcode/tree/main/3992-rearrange-string-to-avoid-character-pair/) | Easy |
 ## Binary Search
 | Problem Name | Difficulty |
 | ------- | ------- |
@@ -285,6 +286,7 @@ Collection of LeetCode questions to ace the coding interview!
 | [1741-sort-array-by-increasing-frequency](https://github.com/iamaleko/leetcode/tree/master/1741-sort-array-by-increasing-frequency) |
 | [2502-sort-the-people](https://github.com/iamaleko/leetcode/tree/master/2502-sort-the-people) |
 | [2846-robot-collisions](https://github.com/iamaleko/leetcode/tree/master/2846-robot-collisions) |
+| [3992-rearrange-string-to-avoid-character-pair](https://github.com/iamaleko/leetcode/tree/main/3992-rearrange-string-to-avoid-character-pair/) | Easy |
 ## Greedy
 | Problem Name | Difficulty |
 | ------- | ------- |
@@ -358,6 +360,7 @@ Collection of LeetCode questions to ace the coding interview!
 | [3235-minimum-cost-to-convert-string-i](https://github.com/iamaleko/leetcode/tree/master/3235-minimum-cost-to-convert-string-i) |
 | [3921-score-validator](https://github.com/iamaleko/leetcode/tree/main/3921-score-validator/) | Easy |
 | [3931-check-adjacent-digit-differences](https://github.com/iamaleko/leetcode/tree/main/3931-check-adjacent-digit-differences/) | Easy |
+| [3992-rearrange-string-to-avoid-character-pair](https://github.com/iamaleko/leetcode/tree/main/3992-rearrange-string-to-avoid-character-pair/) | Easy |
 ## Stack
 | Problem Name | Difficulty |
 | ------- | ------- |
