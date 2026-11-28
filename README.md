@@ -346,6 +346,7 @@ Collection of LeetCode questions to ace the coding interview!
 | [2502-sort-the-people](https://github.com/iamaleko/leetcode/tree/master/2502-sort-the-people) |
 | [3235-minimum-cost-to-convert-string-i](https://github.com/iamaleko/leetcode/tree/master/3235-minimum-cost-to-convert-string-i) |
 | [3921-score-validator](https://github.com/iamaleko/leetcode/tree/main/3921-score-validator/) | Easy |
+| [3931-check-adjacent-digit-differences](https://github.com/iamaleko/leetcode/tree/main/3931-check-adjacent-digit-differences/) | Easy |
 ## Stack
 | Problem Name | Difficulty |
 | ------- | ------- |
