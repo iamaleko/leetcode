@@ -1,8 +1,7 @@
 class Solution:
   def isAdjacentDiffAtMostTwo(self, s: str) -> bool:
-    a = [int(x) for x in s]
-    for i in range(1, len(a)):
-      if abs(a[i - 1] - a[i]) > 2:
+    for i in range(1, len(s)):
+      if abs(int(s[i - 1]) - int(s[i])) > 2:
         return False
     return True
         
