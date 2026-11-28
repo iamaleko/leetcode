@@ -1,4 +1,4 @@
 class Solution:
   def isMiddleElementUnique(self, nums: list[int]) -> bool:
-    return nums.count(nums[int(len(nums) / 2)]) == 1
+    return nums.count(nums[len(nums) >> 1]) == 1
         
