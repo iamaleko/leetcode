@@ -248,6 +248,7 @@ Collection of LeetCode questions to ace the coding interview!
 | [3940-limit-occurrences-in-sorted-array](https://github.com/iamaleko/leetcode/tree/main/3940-limit-occurrences-in-sorted-array/) | Easy |
 | [3978-unique-middle-element](https://github.com/iamaleko/leetcode/tree/main/3978-unique-middle-element/) | Easy |
 | [3982-sum-of-integers-with-maximum-digit-range](https://github.com/iamaleko/leetcode/tree/main/3982-sum-of-integers-with-maximum-digit-range/) | Easy |
+| [4010-maximize-pair-strength-using-gcd](https://github.com/iamaleko/leetcode/tree/main/4010-maximize-pair-strength-using-gcd/) | Easy |
 ## Hash Table
 | Problem Name | Difficulty |
 | ------- | ------- |
@@ -330,6 +331,7 @@ Collection of LeetCode questions to ace the coding interview!
 | [3959-check-good-integer](https://github.com/iamaleko/leetcode/tree/main/3959-check-good-integer/) | Easy |
 | [3982-sum-of-integers-with-maximum-digit-range](https://github.com/iamaleko/leetcode/tree/main/3982-sum-of-integers-with-maximum-digit-range/) | Easy |
 | [4000-largest-integer-with-given-digit-sum](https://github.com/iamaleko/leetcode/tree/main/4000-largest-integer-with-given-digit-sum/) | Easy |
+| [4010-maximize-pair-strength-using-gcd](https://github.com/iamaleko/leetcode/tree/main/4010-maximize-pair-strength-using-gcd/) | Easy |
 ## Recursion
 | Problem Name | Difficulty |
 | ------- | ------- |
@@ -473,4 +475,9 @@ Collection of LeetCode questions to ace the coding interview!
 | Problem Name | Difficulty |
 | ------- | ------- |
 | [3954-sum-of-compatible-numbers-in-range-i](https://github.com/iamaleko/leetcode/tree/main/3954-sum-of-compatible-numbers-in-range-i/) | Easy |
+| [4010-maximize-pair-strength-using-gcd](https://github.com/iamaleko/leetcode/tree/main/4010-maximize-pair-strength-using-gcd/) | Easy |
+## Number Theory
+| Problem Name | Difficulty |
+| ------- | ------- |
+| [4010-maximize-pair-strength-using-gcd](https://github.com/iamaleko/leetcode/tree/main/4010-maximize-pair-strength-using-gcd/) | Easy |
 <!---LeetCode Topics End-->
